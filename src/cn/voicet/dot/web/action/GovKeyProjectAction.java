@@ -1,9 +1,6 @@
 package cn.voicet.dot.web.action;
 
-import java.io.PrintStream;
-
 import javax.annotation.Resource;
-import javax.servlet.ServletOutputStream;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;

@@ -2,7 +2,6 @@ package cn.voicet.dot.util;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +15,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
+@SuppressWarnings("unchecked")
 public class ExcelTemplateGenerator {
 	private HSSFWorkbook workBook;
 	private String fileName; 	//文件名

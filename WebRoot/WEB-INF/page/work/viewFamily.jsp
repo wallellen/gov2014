@@ -18,7 +18,7 @@
 	</script>
 </head>
 <body style="background:#E0EEFB;">
-<div id="leftCon">
+<div id="leftCon1">
 	<div class="view-family-report">
     <h1>脱贫奔小康低收入农户登记表</h1>
     <p class="view-print">
@@ -174,10 +174,6 @@
 		</tr>
     </table>
     </div>
-</div>
-<!-- overview -->
-<div id="rightCon">
-<%@ include file="/WEB-INF/page/work/overView.jsp"%> 
 </div>
 <s:if test="#session.vts.hasStack()">
 	<s:property value="#session.vts.popAllList()"/>

@@ -109,14 +109,14 @@
 				<s:iterator value="#session.vts.list" var="ls">
 				<tr align="center" title="农户编码: <s:property value="#ls.c0"/>&#13;地区名称: <s:property value="#ls.c1"/>" style="height:20px; display:none;">
 					<td><s:property value="#ls.c2"/></td>
-					<td><s:property value="#ls.c3"/></td>
+					<td><s:property value="#ls.c3.substring(2,3)"/></td>
 					<td><s:property value="#ls.c4"/></td>
-					<td><s:property value="#ls.c5"/></td>
+					<td><s:property value="#ls.c5.substring(2,3)"/></td>
 					<td><s:property value="#ls.c6"/></td>
 					<td><s:property value="#ls.c7"/></td>
 					<td><s:property value="#ls.c9"/></td>
 					<td><s:property value="#ls.c10"/></td>
-					<td><s:property value="#ls.c11"/></td>
+					<td><s:property value="#ls.c11.substring(2,3)"/></td>
 					<td><s:property value="#ls.c12"/></td>
 				</tr>
 				</s:iterator>

@@ -51,8 +51,7 @@ public class GovFarmerQueryAction extends BaseAction implements ModelDriven<GovF
 	
 	public String exportMemberInfo() throws Exception{
 		DotSession ds = DotSession.getVTSession(request);
-		ds.initData();
-		govFarmerQueryService.getMemberInfoList(ds);
+		//从上次查询的list中取数据
 		String fileName = new String(("人口统计").getBytes("gb2312"), "ISO8859-1") +".xls";
 	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"member.xls";
 	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 1, ds.list);

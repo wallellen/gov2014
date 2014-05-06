@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import com.opensymphony.xwork2.ModelDriven;
 @SuppressWarnings("serial")
 public class DotMenuAction extends BaseAction implements ModelDriven<DotUserForm> {
 	
+	private static Logger LOG = Logger.getLogger(DotMenuAction.class);
 	@Resource(name=DotUserService.SERVICE_NAME)
 	private DotUserService dotUserService;
 	private DotUserForm dotUserForm = new DotUserForm();
@@ -67,6 +69,7 @@ public class DotMenuAction extends BaseAction implements ModelDriven<DotUserForm
 		}
 		ds.curBM=ds.rbm;
 		ds.subPathTitle.initPath();
+		LOG.info("account: ["+ds.account+"] login success, isedit="+ds.isedit);
 		return "mainHome";
 	}
 	

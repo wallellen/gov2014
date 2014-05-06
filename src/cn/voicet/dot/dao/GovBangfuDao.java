@@ -1,7 +1,5 @@
 package cn.voicet.dot.dao;
 
-import java.util.ArrayList;
-
 import cn.voicet.dot.util.DotSession;
 import cn.voicet.dot.web.form.GovBangfuForm;
 

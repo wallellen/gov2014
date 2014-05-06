@@ -1,7 +1,5 @@
 package cn.voicet.dot.service.impl;
 
-import java.util.ArrayList;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;

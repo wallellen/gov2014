@@ -143,10 +143,11 @@ public class GovVillageProjectDaoImpl extends CommonDaoImpl<Object> implements G
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				String proc = "{call sp_chunprj_items(?)}";
+				String proc = "{call sp_report_list(?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
-				cs.setString(1, ds.curBM);
+				cs.setString(1, "chunprj_items");
+				cs.setInt(2, 0);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.list = new ArrayList();

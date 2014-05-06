@@ -26,14 +26,11 @@ public class GovBangfuDaoImpl extends CommonDaoImpl<Object> implements GovBangfu
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				String proc = "{call sp_hourfang_detail(?,?,?,?,?)}";
+				String proc = "{call sp_report_list(?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
-				cs.setString(1, ds.rbm);
-				cs.setInt(2, 0);	//0:显示报告列表
-				cs.setString(3, null);
-				cs.setString(4, null);
-				cs.setString(5, null);
+				cs.setString(1, "hourfang_items");
+				cs.setInt(2, 0);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.list = new ArrayList();

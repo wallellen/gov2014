@@ -39,7 +39,22 @@ public class GovIncomeAction extends BaseAction implements ModelDriven<GovIncome
 		return "showIncome_detail";
 	}
 	
+	/** 查看具体户年收入 */
+	public String viewIncomeHu(){
+		DotSession ds = DotSession.getVTSession(request);
+		ds.initData();
+		govIncomeService.getIncomeInfoBycbm(ds, cbm, year);
+		return "showIncome_hu";
+	}
 	
+	
+	public String saveIncome(){
+		DotSession ds = DotSession.getVTSession(request);
+		ds.initData();
+		govIncomeService.saveIncomeYear(ds, govIncomeForm, year);
+		rflag=rflag+1;
+		return viewIncomeHu();
+	}
 	
 	private String cbm;
 	private String year;
@@ -47,6 +62,7 @@ public class GovIncomeAction extends BaseAction implements ModelDriven<GovIncome
 	private String sdt;
 	private String edt;
 	private String areaName;	//地区名称
+	private int rflag=1;		//return flag
 	public String getCbm() {
 		return cbm;
 	}
@@ -82,5 +98,11 @@ public class GovIncomeAction extends BaseAction implements ModelDriven<GovIncome
 	}
 	public void setAreaName(String areaName) {
 		this.areaName = areaName;
+	}
+	public int getRflag() {
+		return rflag;
+	}
+	public void setRflag(int rflag) {
+		this.rflag = rflag;
 	}
 }

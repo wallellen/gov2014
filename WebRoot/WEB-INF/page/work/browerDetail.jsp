@@ -19,12 +19,14 @@
 <body style="background:#E0EEFB;">
 <%@ include file="/WEB-INF/page/work/familyBaseInfo.jsp"%>
 <s:if test="%{#session.vts.map.hname!=''}">
+<!-- 
 <div id="member-info-ul">
 	<ul>
 		<li style="background:url(../images/tab-bg2.png); color:#FFF;">家庭成员信息</li>
 		<li><a href="${pageContext.request.contextPath }/system/govBrowerAction_familyIncome.do">家庭收入及帮扶情况</a> </li>
 	</ul>
 </div>
+-->
 <div id="member-info-data">
 	<h3 id="base-title">家庭成员信息</h3>
 	<ul id="ul-member">

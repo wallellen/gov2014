@@ -29,7 +29,12 @@
         <td><s:property value="#ls.c2"/></td>
         <td><s:property value="#ls.c3"/></td>
         <td>
+        	<s:if test="#session.vts.rbm.length()<12">
         	<a href="${pageContext.request.contextPath }/system/govIncomeAction_viewYearIncome.do?cbm=<s:property value="#session.vts.rbm"/>&year=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>">查看</a>
+        	</s:if>
+        	<s:else>
+        	<a href="${pageContext.request.contextPath }/system/govIncomeAction_viewIncomeHu.do?cbm=<s:property value="#session.vts.rbm"/>&year=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>">查看</a>
+        	</s:else>
         </td>
     </tr>
     </s:iterator>
