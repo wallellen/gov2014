@@ -110,6 +110,12 @@
 			<result name="showBangFu_add">/WEB-INF/page/system/govBangfu_add.jsp</result>
 			<result name="showBangFu_deptManage">/WEB-INF/page/system/govBangfu_deptManage.jsp</result>
 		</action>
+		<!--  -->
+		<action name="govIncomeAction_*" class="govIncomeAction" method="{1}">
+			<result name="showIncome_year">/WEB-INF/page/system/govIncome_year.jsp</result>
+			<result name="showIncome_detail">/WEB-INF/page/system/govIncome_detail.jsp</result>
+			
+		</action>
 	</package>  
 	<package name="dot" namespace="/system" extends="json-default">
 		<!-- 修改密码 -->

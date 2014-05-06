@@ -10,6 +10,7 @@
       		<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
       		<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
       		<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
+      		<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
 		</grp>
 		<grp name="管理配置">
      		<fun name="角色权限" action="govConfigAction_home.do" />
@@ -28,6 +29,7 @@
       		<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
       		<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
         	<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
+        	<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
 		</grp>
 	</role>
 	<role roleid="4" describle="县管理员">
@@ -37,6 +39,7 @@
 	    	<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
       		<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
       		<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
+      		<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
 		</grp>
 	</role>
 	<role roleid="5" describle="乡管理员">
@@ -44,12 +47,14 @@
 			<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
       		<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
       		<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
+      		<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
 		</grp>
 	</role>
 	<role roleid="6" describle="村管理员">
 		<grp name="日常工作">
 			<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
       		<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
+      		<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
 		</grp>
 	</role>
 	<list name="yesno" describle="是与否列表">
