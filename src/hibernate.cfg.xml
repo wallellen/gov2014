@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- 配置SQLServer连接属性 -->
+		<property name="dialect">cn.voicet.dot.dialect.MySQLServerDialect</property>
+		<!--
+		<property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="connection.url">jdbc:sqlserver://voicet.oicp.net:5566;databaseName=dot2014</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password">begin</property>
+		-->
+		<!-- 在控制台显示SQL语句 -->
+		<property name="show_sql">false</property>
+		<!-- 根据需要自动生成, 更新数据表 -->
+		<property name="hbm2ddl.auto">update</property>
+		<!-- 注册ORM映射文件 -->	
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<!-- 配置action的访问路径为.do的形式 -->
+	<constant name="struts.action.extension" value="do"></constant>
+	<!-- 配置struts的开发模式 -->
+	<constant name="struts.devMode" value="true"></constant>
+	<!-- 配置struts的简单模式 -->
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<package name="system" namespace="/system" extends="struts-default">
+		<!-- 首页功能 -->
+		<action name="dotMenuAction_*" class="dotMenuAction" method="{1}">
+			<result name="mainHome" type="redirectAction">
+				<param name="namespace">/system</param>
+				<param name="actionName">dotMenuAction_home</param>
+			</result>
+			<result name="home">/WEB-INF/page/menu/home.jsp</result>
+				<!-- 处理验证登录失败, 跳转到login.jsp -->
+			<result name="error">/WEB-INF/page/menu/login.jsp</result>
+			<result name="logout">/WEB-INF/page/menu/login.jsp</result>
+		</action>
+		<!-- 查询统计 -->
+		<action name="govBrowerAction_*" class="govBrowerAction" method="{1}">
+			<result name="home">/WEB-INF/page/work/browerView.jsp</result>
+			<result name="detail">/WEB-INF/page/work/browerDetail.jsp</result>
+			<result name="edit" type="redirectAction">
+				<param name="namespace">/system</param>
+				<param name="actionName">govBrowerAction_home</param>
+			</result>
+			<result name="showFamily" type="redirectAction">
+				<param name="namespace">/system</param>
+				<param name="actionName">govBrowerAction_detail</param>
+			</result>
+			<result name="property">/WEB-INF/page/work/propertyFarmer.jsp</result>
+			<result name="situation">/WEB-INF/page/work/situationPoverty.jsp</result>
+			<result name="dcause">/WEB-INF/page/work/dcausePoor.jsp</result>
+			<result name="farmer">/WEB-INF/page/work/farmerQuery.jsp</result>
+			<result name="reportHome">/WEB-INF/page/work/reportFamily.jsp</result>
+			<result name="viewFamily">/WEB-INF/page/work/viewFamily.jsp</result>
+			<result name="familyIncomeHome">/WEB-INF/page/work/familyIncome.jsp</result>
+			<result name="input">/WEB-INF/page/work/browerDetail.jsp</result>
+		</action>
+		<!-- 农户查询 -->
+		<action name="govFarmerQueryAction_*" class="govFarmerQueryAction" method="{1}">
+			<result name="home">/WEB-INF/page/work/farmerQuery.jsp</result>
+			<result name="showMemberHome">/WEB-INF/page/work/memberQuery.jsp</result>
+		</action>
+		<!-- 统计农户 -->
+		<action name="govFarmerStatsAction_*" class="govFarmerStatsAction" method="{1}">
+			<result name="home">/WEB-INF/page/work/farmerStats.jsp</result>
+		</action>
+		<!-- 统计人口 -->
+		<action name="govPeopleStatsAction_*" class="govPeopleStatsAction" method="{1}">
+			<result name="home">/WEB-INF/page/work/peopleStats.jsp</result>
+		</action>
+		<!-- 角色权限 -->
+		<action name="govConfigAction_*" class="govConfigAction" method="{1}">
+			<result name="home">/WEB-INF/page/system/configRole.jsp</result>
+		</action>
+		<!-- 全局参数 -->
+		<action name="sysGLParamAction_*" class="sysGLParamAction" method="{1}">
+			<result name="home">/WEB-INF/page/system/sysGLParam.jsp</result>
+		</action>
+		<!-- 优化计算 -->
+		<action name="sysReCalcAction_*" class="sysReCalcAction" method="{1}">
+			<result name="home">/WEB-INF/page/system/sysCalcuate.jsp</result>
+		</action>
+		<!-- 数据库维护 -->
+		<action name="databaseConfigAction_*" class="databaseConfigAction" method="{1}">
+			<result name="home">/WEB-INF/page/system/databaseConfig.jsp</result>
+		</action>
+		<!-- 系统日志查看 -->
+		<action name="systemLogAction_*" class="systemLogAction" method="{1}">
+			<result name="home">/WEB-INF/page/system/systemLog.jsp</result>
+		</action>
+		<!-- 财政奖补 -->
+		<action name="govJiangBuAction_*" class="govJiangBuAction" method="{1}">
+			<result name="showJiangBu_year">/WEB-INF/page/system/govJiangBu_year.jsp</result>
+			<result name="showJiangBu_xian">/WEB-INF/page/system/govJiangBu_xian.jsp</result>
+			<result name="showJiangBu_xianDetail">/WEB-INF/page/system/govJiangBu_xianDetail.jsp</result>
+			<result name="showJiangBu_cun">/WEB-INF/page/system/govJiangBu_cun.jsp</result>
+			<result name="showjiangBu_huDetail">/WEB-INF/page/system/govJiangBu_huDetail.jsp</result>
+		</action>
+		
+		<!-- 关键项目实施进度 -->
+		<action name="govKeyProjectAction_*" class="govKeyProjectAction" method="{1}">
+			<result name="showKeyProject_season">/WEB-INF/page/system/govKeyProject_season.jsp</result>
+			<result name="showKeyProject_zhen">/WEB-INF/page/system/govKeyProject_zhen.jsp</result>
+			<result name="showKeyProject_zhenDetail">/WEB-INF/page/system/govKeyProject_zhenDetail.jsp</result>
+		</action>
+		
+		<!-- 村项目实施进度 -->
+		<action name="govVillageProjectAction_*" class="govVillageProjectAction" method="{1}">
+			<result name="showVillageProject_season">/WEB-INF/page/system/govVillageProject_season.jsp</result>
+			<result name="showVillageProject_shi">/WEB-INF/page/system/govVillageProject_shi.jsp</result>
+			<result name="showVillageProject_zhen">/WEB-INF/page/system/govVillageProject_zhen.jsp</result>
+			<result name="showVillageProject_zhenDetail">/WEB-INF/page/system/govVillageProject_zhenDetail.jsp</result>
+		</action>
+		
+		<!-- 后方单位挂钩帮扶 -->
+		<action name="govBangfuAction_*" class="govBangfuAction" method="{1}">
+			<result name="showBangFu_month">/WEB-INF/page/system/govBangfu_month.jsp</result>
+			<result name="showBangFu_dept">/WEB-INF/page/system/govBangfu_dept.jsp</result>
+			<result name="showBangFu_deptDetail">/WEB-INF/page/system/govBangfu_deptDetail.jsp</result>
+			<result name="showBangFu_xian">/WEB-INF/page/system/govBangfu_xian.jsp</result>
+			<result name="showBangFu_xianDetail">/WEB-INF/page/system/govBangfu_xianDetail.jsp</result>
+			<result name="showBangFu_xianList">/WEB-INF/page/system/govBangfu_xianList.jsp</result>
+			<result name="showBangFu_add">/WEB-INF/page/system/govBangfu_add.jsp</result>
+			<result name="showBangFu_deptManage">/WEB-INF/page/system/govBangfu_deptManage.jsp</result>
+		</action>
+	</package>  
+	<package name="dot" namespace="/system" extends="json-default">
+		<!-- 修改密码 -->
+		<action name="dotUserAction_*" class="dotUserAction" method="{1}">
+			<result type="json"></result>
+		</action>
+		<!-- 清空数据库日志 -->
+		<action name="databaseConfigAction_empty" class="databaseConfigAction" method="empty">
+			<result type="json"></result>
+		</action>
+		<!-- 备份数据库 -->
+		<action name="databaseConfigAction_backup" class="databaseConfigAction" method="backup">
+			<result type="json"></result>
+		</action>
+		<!-- 数据库索引管理 -->
+		<action name="databaseConfigAction_index" class="databaseConfigAction" method="dbIndex">
+			<result type="json"></result>
+		</action>
+		
+		<action name="dotMenuAction_closeWindow" class="dotMenuAction" method="closeWindow">
+			<result type="json"></result>	
+		</action>
+	</package>
+</struts>
