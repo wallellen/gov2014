@@ -33,7 +33,7 @@
         	<p>
         	<input type="button" value="添加" onclick="popReport('add','','','','','','')" class="button43"/>
         	&nbsp;&nbsp;
-        	<input type="button" value="返回" onclick="javascript:history.go(-1)" class="button43"/>
+        	<input type="button" value="返回" onclick="javascript:history.go(-<s:property value='rflag'/>)" class="button43"/>
         	</p>
         </td>
     </tr>
@@ -57,7 +57,7 @@
 </table>
 </div>
 <div class="split-page">
-	<input type="hidden" id="pageRows" value="23"/>
+	<input type="hidden" id="pageRows" value="26"/>
 	<div id="changePage"></div>
 </div>
 
@@ -69,30 +69,31 @@
 <input type="hidden" id="isde" name="isde"/>
 <input type="hidden" name="reportflag" value="<s:property value='reportflag'/>"/>
 <input type="hidden" name="reportName" value="<s:property value='reportName'/>"/>
+<input type="hidden" name="rflag" value="<s:property value='rflag'/>"/>
 <div class="member-list">
 	<table width="450px" cellpadding="0" cellspacing="0">
 		<tr>
-			<td align="right" width="35%">代码:&nbsp;&nbsp;</td>
+			<td align="right" width="35%"><label id="showcode">代码:&nbsp;&nbsp;</label></td>
 			<td align="left" width="65%">
-				<input type="text" id="p1" name="pstr" class="report-back-input" maxlength="20"/>
+				<input type="text" id="p1" name="pstr" class="report-back-input" maxlength="10" onkeyup="checkIntInput(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right" width="45%">标题:&nbsp;&nbsp;</td>
 			<td align="left" width="55%">
-				<input type="text" id="p2" name="pstr" class="report-back-input" maxlength="20"/>
+				<input type="text" id="p2" name="pstr" class="report-back-input" maxlength="20"/><font color="red">&nbsp;*</font>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">开始日期:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="p3" name="pstr" onclick="WdatePicker({maxDate:'%y-%M-%d',skin:'whyGreen'})" class="report-back-input Wdate"/>
+				<input type="text" id="p3" name="pstr" onclick="WdatePicker({skin:'whyGreen'})" class="report-back-input Wdate"/><font color="red">&nbsp;*</font>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">结束日期:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="p4" name="pstr" onclick="WdatePicker({maxDate:'%y-%M-%d',skin:'whyGreen'})" class="report-back-input Wdate"/>
+				<input type="text" id="p4" name="pstr" onclick="WdatePicker({skin:'whyGreen'})" class="report-back-input Wdate"/><font color="red">&nbsp;*</font>
 			</td>
 		</tr>
 		<tr>
@@ -131,5 +132,6 @@
 		}
 	}	
 </script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
 </body>
 </html>

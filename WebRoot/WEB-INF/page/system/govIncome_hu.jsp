@@ -24,9 +24,9 @@
    	<tr>
    		<td rowspan="3" width="12%">农户编码</td>
         <td rowspan="3" width="8%">户主姓名</td>
-        <td colspan="8">家庭年收入情况</td>
+        <td colspan="8">家庭年收入情况(元)</td>
         <td colspan="5">帮扶情况</td>
-        <td rowspan="3" width="10%">
+        <td rowspan="3" width="8%">
         	<p>
         	<input type="button" value="返回" onclick="javascript:history.go(-<s:property value='rflag'/>)" class="button43"/>
         	</p>
@@ -36,11 +36,11 @@
     	<td rowspan="2" width="5%">1.全年家庭纯收入</td>
        	<td colspan="6">其中</td>
 		<td rowspan="2" width="5%">2.家庭人均纯收入</td>
-       	<td rowspan="2" width="5%">无偿帮扶资金</td>
-       	<td rowspan="2" width="5%">得到股份</td>
-       	<td rowspan="2" width="5%">小额贷款和互助资金</td>
-       	<td rowspan="2" width="5%">劳动力转移培训</td>
-       	<td rowspan="2" width="5%">劳动力转移就业人数</td>
+       	<td rowspan="2" width="5%">无偿帮扶资金(元)</td>
+       	<td rowspan="2" width="5%">得到股份(元)</td>
+       	<td rowspan="2" width="5%">小额贷款和互助资金(元)</td>
+       	<td rowspan="2" width="5%">劳动力转移培训(人)</td>
+       	<td rowspan="2" width="5%">劳动力转移就业人数(人)</td>
     </tr>
     <tr>
         <td width="5%">种植业纯收入</td>
@@ -173,7 +173,7 @@
 			<td></td>
 		</tr>
 		<tr>
-			<td align="right">劳动力转移培训(元):&nbsp;&nbsp;</td>
+			<td align="right">劳动力转移培训(人):&nbsp;&nbsp;</td>
 			<td align="left">
 				<input type="text" id="i12" name="instr" size="12" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
 			</td>
