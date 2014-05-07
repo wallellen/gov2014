@@ -21,7 +21,7 @@
 	</ul>
     <ul class="info2">
      	<li>承包耕地面积(亩)：<input type="text" name="fields" value="<s:property value="#session.vts.map.fields"/>" maxlength="10" onfocus="this.className='input_on'" onblur="this.className='input_off'" onkeyup="checkFloatInput(this)"/></li>
-        <li>住房面积(M<sup>2</sup>)：<input type="text" name="house" value="<s:property value="#session.vts.map.house"/>" maxlength="5" onfocus="this.className='input_on'" onblur="this.className='input_off'" onkeyup="checkFloatInput(this)"/></li>
+        <li>住房面积(m<sup>2</sup>)：<input type="text" name="house" value="<s:property value="#session.vts.map.house"/>" maxlength="5" onfocus="this.className='input_on'" onblur="this.className='input_off'" onkeyup="checkFloatInput(this)"/></li>
         <li>农户属性：<s:select name="property" list="#application.vta.GetList('family')" listKey="id" listValue="str" value="%{#session.vts.map.property}" cssClass="sele"></s:select></li>
 		<li>贫困原因：<s:select name="dcause" list="#application.vta.GetList('dcause')" listKey="id" listValue="str" value="%{#session.vts.map.dcause}" cssClass="sele"></s:select></li>
 	</ul>

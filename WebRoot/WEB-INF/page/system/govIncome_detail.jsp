@@ -19,7 +19,7 @@
     <tr>
         <td width="20%">地区编码</td>
         <td width="20%">地区名称</td>
-        <td width="20%">年总收入(单位元)</td>
+        <td width="20%">户均年总收入(元)</td>
         <td width="20%">
         	<p>
         	<input type="button" value="返回" onclick="javascript:history.go(-1)" class="button43"/>

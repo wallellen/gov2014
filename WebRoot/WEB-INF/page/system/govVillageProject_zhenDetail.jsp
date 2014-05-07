@@ -61,8 +61,8 @@
         <td rowspan="3" width="4%">项目为村集体增加经营性收入额</td>
         <td rowspan="3" width="4%">上年村集体经营性收入</td>
         <td rowspan="3" width="6%">达到省定2015年集体收入目标时间</td>
-        <td rowspan="3" width="4%">省级财政投入资金拔付进度</td>
-        <td rowspan="3" width="4%">项目实施进度</td>
+        <td rowspan="3" width="4%">省级财政投入资金拔付进度(%)</td>
+        <td rowspan="3" width="4%">项目实施进度(%)</td>
         <td rowspan="3" width="8%">
         	<s:if test="#session.vts.rbm.length()<6">
         	<p>

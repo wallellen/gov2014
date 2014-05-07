@@ -46,8 +46,8 @@
         <td rowspan="3" width="4%">项目为村集体增加经营性收入额</td>
         <td rowspan="3" width="4%">上年村集体经营性收入</td>
         <td rowspan="3" width="6%">达到省定2015年集体收入目标时间</td>
-        <td rowspan="3" width="4%">省级财政投入资金拔付进度</td>
-        <td rowspan="3" width="4%">项目实施进度</td>
+        <td rowspan="3" width="4%">省级财政投入资金拔付进度(%)</td>
+        <td rowspan="3" width="4%">项目实施进度(%)</td>
         <td rowspan="3" width="8%">
         	<p>
         	<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govVillageProjectAction_exportVillageProject.do?crid=<s:property value="crid"/>&navbm=<s:property value="navbm"/>&title=<s:property value="title"/>'" class="button43"/>

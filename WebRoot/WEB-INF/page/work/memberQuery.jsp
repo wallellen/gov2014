@@ -25,7 +25,7 @@
 				<td width="10%" align="right">性别：&nbsp;</td>
 				<td width="10%">
 					
-					<s:select name="memberstr" list="#application.vta.GetList('sex')" listKey="id" listValue="str" value="%{#session.vts.map.marr[1]}"></s:select>
+					<s:select name="memberstr" list="#application.vta.GetList('sexex')" listKey="id" listValue="str" value="%{#session.vts.map.marr[1]}"></s:select>
 					
 				</td>
 				<td width="10%" align="right">年龄：&nbsp;</td>
@@ -49,7 +49,7 @@
 			<tr height="24px;">
 				<td width="20%" align="right">在校生：</td>
 				<td width="10%" align="left">
-					<s:select name="memberstr" cssClass="borwer-sel" list="#application.vta.GetList('yesno')" listKey="id" listValue="str" value="%{#session.vts.map.marr[4]}"></s:select>
+					<s:select name="memberstr" cssClass="borwer-sel" list="#application.vta.GetList('yesnoex')" listKey="id" listValue="str" value="%{#session.vts.map.marr[4]}"></s:select>
 				</td>
 				<td width="20%" align="right">文化程度：</td>
 				<td width="10%" align="left">
@@ -72,7 +72,7 @@
 				</td>
 				<td align="right">低保人口：</td>
 				<td align="left">
-					<s:select name="memberstr" cssClass="borwer-sel" list="#application.vta.GetList('yesno')" listKey="id" listValue="str" value="%{#session.vts.map.marr[9]}"></s:select>
+					<s:select name="memberstr" cssClass="borwer-sel" list="#application.vta.GetList('yesnoex')" listKey="id" listValue="str" value="%{#session.vts.map.marr[9]}"></s:select>
 				</td>
 				<td width="10%"></td>
 			</tr>
@@ -93,13 +93,13 @@
 		<table class="data_list" width="100%" bordercolor="gray" border="0" cellpadding="0" cellspacing="0">
 			<thead>
 			<tr class="tabtr2">
-				<td width="6%">户主姓名</td>
+				<td width="6%">姓名</td>
 				<td width="4%">性别</td>
 				<td width="4%">年龄</td>
 				<td width="4%">在校生</td>
 				<td width="10%">文化程度</td>
 				<td width="10%">身体状况</td>
-				<td width="10%">残疾证号</td>
+				<td width="8%">残疾证号</td>
 				<td width="10%">劳动力状况</td>
 				<td width="10%">打工状况</td>
 				<td width="4%">低保人口</td>
@@ -108,18 +108,18 @@
 			</thead>
 			<tbody id="splitpage">
 				<s:iterator value="#session.vts.list" var="ls">
-				<tr align="center" title="农户编码: <s:property value="#ls.c0"/>&#13;地区名称: <s:property value="#ls.c1"/>" style="height:20px; display:none;">
-					<td><s:property value="#ls.c2"/></td>
+				<tr align="center" style="height:20px; display:none;">
+					<td align="left" title="农户编码: <s:property value="#ls.c0"/>&#13;地区名称: <s:property value="#ls.c1"/>">&nbsp;<s:property value="#ls.c2"/></td>
 					<td><s:property value="#ls.c3.substring(2,3)"/></td>
-					<td><s:property value="#ls.c4"/></td>
+					<td align="right"><s:property value="#ls.c4"/>&nbsp;</td>
 					<td><s:property value="#ls.c5.substring(2,3)"/></td>
-					<td><s:property value="#ls.c6"/></td>
-					<td><s:property value="#ls.c7"/></td>
-					<td><s:property value="#ls.c8"/></td>
-					<td><s:property value="#ls.c9"/></td>
-					<td><s:property value="#ls.c10"/></td>
+					<td align="left">&nbsp;<s:property value="#ls.c6"/></td>
+					<td align="left">&nbsp;<s:property value="#ls.c7"/></td>
+					<td align="left" title="残疾证号: <s:property value="#ls.c8"/>">&nbsp;<s:property value="#ls.c8.length()>10?#ls.c8.substring(0,9)+'...':#ls.c8"/></td>
+					<td align="left">&nbsp;<s:property value="#ls.c9"/></td>
+					<td align="left">&nbsp;<s:property value="#ls.c10"/></td>
 					<td><s:property value="#ls.c11.substring(2,3)"/></td>
-					<td><s:property value="#ls.c12"/></td>
+					<td align="right"><s:property value="#ls.c12"/>&nbsp;</td>
 				</tr>
 				</s:iterator>
 			</tbody>

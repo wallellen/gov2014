@@ -68,11 +68,11 @@
 				</s:if>
 				<s:else>
 					<td height="20px" width="15%">农户编码</td>
-					<td width="15%">姓名</td>
-					<td width="8%">人口</td>
-					<td width="8%">劳力</td>
-					<td width="8%">耕地</td>
-					<td width="8%">住房</td>
+					<td width="15%">户主姓名</td>
+					<td width="4%">人口</td>
+					<td width="4%">劳力</td>
+					<td width="8%">耕地(亩)</td>
+					<td width="8%">住房(m2)</td>
 					<td width="10%">属性</td>
 					<td width="10%">贫困原因</td>
 					<td width="16%" class="tabtd1">操作</td>
@@ -83,14 +83,14 @@
             	<s:iterator value="#session.vts.list" var="ls" status="li">
 				<tr style="display:none;">
 					<s:if test="#session.vts.curBM.length()<=9">
-					<td height="20px"><s:property value="#ls.bm"/></td>
-					<td title="<s:property value='#ls.oname'/>"><s:property value="#ls.oname.length()>6?#ls.oname.substring(0,5)+'...':#ls.oname"/></td>
-					<td><s:property value="#ls.htn"/></td>
-					<td><s:property value="#ls.ptn"/></td>
-					<td><s:property value="#ls.m"/></td>
-					<td><s:property value="#ls.v1"/></td>
-					<td><s:property value="#ls.v2"/></td>
-					<td><s:property value="#ls.v3"/></td>
+					<td height="20px" align="left">&nbsp;<s:property value="#ls.bm"/></td>
+					<td align="left" title="<s:property value='#ls.oname'/>">&nbsp;<s:property value="#ls.oname.length()>6?#ls.oname.substring(0,5)+'...':#ls.oname"/></td>
+					<td align="right"><s:property value="#ls.htn"/>&nbsp;</td>
+					<td align="right"><s:property value="#ls.ptn"/>&nbsp;</td>
+					<td align="right"><s:property value="#ls.m"/>&nbsp;</td>
+					<td align="right"><s:property value="#ls.v1"/>&nbsp;</td>
+					<td align="right"><s:property value="#ls.v2"/>&nbsp;</td>
+					<td align="right"><s:property value="#ls.v3"/>&nbsp;</td>
 					<td class="tabtd1">
 						<a href="#" onclick="viewBMInfo('<s:property value="#ls.bm"/>')">进入</a>
 						<s:if test="#session.vts.isedit==1">
@@ -102,14 +102,14 @@
 					</td>
 					</s:if>
 					<s:else>
-						<td height="20px"><s:property value="#ls.hm"/></td>
-						<td title="<s:property value='#ls.hname'/>"><s:property value="#ls.hname.length()>7?#ls.hname.substring(0,6)+'...':#ls.hname"/></td>
-						<td><s:property value="#ls.population"/></td>
-						<td><s:property value="#ls.labornum"/></td>
-						<td><s:property value="#ls.fields"/></td>
-						<td><s:property value="#ls.house"/></td>
-						<td><s:property value="#ls.property"/></td>
-						<td><s:property value="#ls.dcause"/></td>
+						<td align="left" height="20px">&nbsp;<s:property value="#ls.hm"/></td>
+						<td align="left" title="<s:property value='#ls.hname'/>">&nbsp;<s:property value="#ls.hname.length()>7?#ls.hname.substring(0,6)+'...':#ls.hname"/></td>
+						<td align="right"><s:property value="#ls.population"/>&nbsp;</td>
+						<td align="right"><s:property value="#ls.labornum"/>&nbsp;</td>
+						<td align="right"><s:property value="#ls.fields"/>&nbsp;</td>
+						<td align="right"><s:property value="#ls.house"/>&nbsp;</td>
+						<td align="left">&nbsp;<s:property value="#ls.property"/></td>
+						<td align="left">&nbsp;<s:property value="#ls.dcause"/></td>
 						<td class="tabtd1">
 							<s:if test="#session.vts.isedit==1">
 							<a href="${pageContext.request.contextPath }/system/govBrowerAction_detail.do?viewBM=<s:property value="#ls.hm"/>&rtf=home">编辑</a>
