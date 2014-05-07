@@ -62,6 +62,11 @@
 		<item id="1" name="1:是" />
 		<item id="2" name="2:否" />
 	</list>
+	<list name="yesnoex" describle="是与否列表">
+		<item id="0" name="不限" />
+		<item id="1" name="1:是" />
+		<item id="2" name="2:否" />
+	</list>
 	<list name="education" describle="文化程度">
 		<item id="1" name="1:文盲、半文盲" />
 		<item id="2" name="2:小学" />
@@ -129,6 +134,11 @@
 		<item id="8" name="8:其它" />
 	</list>
 	<list name="sex" describle="性别">
+		<item id="1" name="1:男" />
+		<item id="2" name="2:女" />
+	</list>
+	<list name="sexex" describle="性别">
+		<item id="0" name="不限" />
 		<item id="1" name="1:男" />
 		<item id="2" name="2:女" />
 	</list>
