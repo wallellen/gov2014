@@ -122,7 +122,7 @@ function checkinsName(){
 function checkinsHtn(){
 	var insHtn = $("#insHtn").val();
 	// 正整数
-	var pattern = /^[0-9]*[1-9][0-9]*$/;
+	var pattern = /^[0-9]*[0-9][0-9]*$/;
 	flag = pattern.test(insHtn);
 	if(insHtn=="" || insHtn==null){
 		$("#newHtnTips").html("农户总数不能为空");
@@ -141,7 +141,7 @@ function checkinsHtn(){
 function checkinsPtn(){
 	var insPtn = $("#insPtn").val();
 	// 正整数
-	var pattern = /^[0-9]*[1-9][0-9]*$/;
+	var pattern = /^[0-9]*[0-9][0-9]*$/;
 	flag = pattern.test(insPtn);
 	if(insPtn=="" || insPtn==null){
 		$("#newPtnTips").html("人口总数不能为空");
