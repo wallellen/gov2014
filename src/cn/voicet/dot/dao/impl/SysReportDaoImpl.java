@@ -56,7 +56,7 @@ public class SysReportDaoImpl extends CommonDaoImpl<Object> implements SysReport
 				CallableStatement cs = null;
 				cs = conn.prepareCall(sp_update);
 				cs.setString(1, reportflag);
-				cs.setInt(2, Integer.parseInt(pstr[0]));
+				cs.setString(2, pstr[0]);
 				cs.setString(3, pstr[1]);
 				cs.setString(4, pstr[2]);
 				cs.setString(5, pstr[3]);
