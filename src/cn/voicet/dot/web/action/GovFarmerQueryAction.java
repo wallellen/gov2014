@@ -55,9 +55,9 @@ public class GovFarmerQueryAction extends BaseAction implements ModelDriven<GovF
 		String fileName = new String(("人口统计").getBytes("gb2312"), "ISO8859-1") +".xls";
 	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"member.xls";
 	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 1, ds.list);
-	    generator.setColList("c0,c1,c2,c3,c4,c5,c6,c7,c9,c10,c11,c12");
+	    generator.setColList("c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12");
 	    generator.setDrawBoard();
-	    generator.setEffectColNum(12);
+	    generator.setEffectColNum(13);
 	    generator.exportExcelWithTemplate(response);
 		return null;
 	}

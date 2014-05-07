@@ -96,13 +96,14 @@
 				<td width="6%">户主姓名</td>
 				<td width="4%">性别</td>
 				<td width="4%">年龄</td>
-				<td width="6%">在校生</td>
+				<td width="4%">在校生</td>
 				<td width="10%">文化程度</td>
 				<td width="10%">身体状况</td>
+				<td width="10%">残疾证号</td>
 				<td width="10%">劳动力状况</td>
 				<td width="10%">打工状况</td>
-				<td width="6%">低保人口</td>
-				<td width="8%">领取金额(元)</td>
+				<td width="4%">低保人口</td>
+				<td width="6%">领取金额(元)</td>
 			</tr>
 			</thead>
 			<tbody id="splitpage">
@@ -114,6 +115,7 @@
 					<td><s:property value="#ls.c5.substring(2,3)"/></td>
 					<td><s:property value="#ls.c6"/></td>
 					<td><s:property value="#ls.c7"/></td>
+					<td><s:property value="#ls.c8"/></td>
 					<td><s:property value="#ls.c9"/></td>
 					<td><s:property value="#ls.c10"/></td>
 					<td><s:property value="#ls.c11.substring(2,3)"/></td>
