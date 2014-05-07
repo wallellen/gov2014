@@ -19,7 +19,7 @@
 	</style>
 </head>
 <body style="background:#E0EEFB;">
-<h3 class="jiangbu-title">脱贫奔小康财政奖补到户项目实施情况</h3>
+<h3 class="jiangbu-title">脱贫奔小康财政奖补到户项目实施情况&nbsp;[<s:property value="xianName"/>]</h3>
 <p class="jiangbu-title1"><span><s:property value="title"/>&nbsp;(<s:property value="sdt"/>~<s:property value="edt"/>)</span></p>
 <div id="jiangbu-data1">
 <table class="data_list" cellpadding="0" cellspacing="0" width="100%">

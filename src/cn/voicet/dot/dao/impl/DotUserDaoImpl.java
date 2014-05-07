@@ -35,8 +35,9 @@ public class DotUserDaoImpl extends CommonDaoImpl<Object> implements DotUserDao 
 				resMap.put("rolename", (String) str[2]);
 				resMap.put("isedit", String.valueOf(str[3]));
 				resMap.put("rbm", String.valueOf(str[4]));
-				resMap.put("workyear", String.valueOf(str[5]));
-				resMap.put("yearlock", String.valueOf(str[6]));
+				resMap.put("rbn", String.valueOf(str[5]));
+				resMap.put("workyear", String.valueOf(str[6]));
+				resMap.put("yearlock", String.valueOf(str[7]));
 				return resMap;
 			}
 		});

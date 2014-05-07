@@ -40,8 +40,9 @@
 	<input type="hidden" name="sdt" value="<s:property value='sdt'/>"/>
 	<input type="hidden" name="edt" value="<s:property value='edt'/>"/>
 	<input type="hidden" name="rflag" value="<s:property value='rflag'/>"/>
+	<input type="hidden" name="areaName" value="<s:property value='areaName'/>"/>
 </form>
-<h3 class="jiangbu-title">省级财政支持村级集体经济发展项目实施进度</h3><div class="jiangbu-unit">单位：万元</div>
+<h3 class="jiangbu-title">省级财政支持村级集体经济发展项目实施进度&nbsp;[<s:property value="areaName"/>]</h3><div class="jiangbu-unit">单位：万元</div>
 <p class="jiangbu-title1"><span class="j_return"></span><span><s:property value="title"/>&nbsp;(<s:property value="sdt"/>~<s:property value="edt"/>)</span></p>
 <s:if test="#session.vts.rbm.length()==2">
 <div id="village-data1">
@@ -258,6 +259,7 @@
 <input type="hidden" name="edt" value="<s:property value='edt'/>"/>
 <input type="hidden" name="crid" value="<s:property value='crid'/>"/>
 <input type="hidden" name="rflag" value="<s:property value='rflag'/>"/>
+<input type="hidden" name="areaName" value="<s:property value='areaName'/>"/>
 </form>
 </div>
 </body>

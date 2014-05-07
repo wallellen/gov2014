@@ -37,8 +37,9 @@
 	<input type="hidden" name="sdt" value="<s:property value='sdt'/>"/>
 	<input type="hidden" name="edt" value="<s:property value='edt'/>"/>
 	<input type="hidden" name="rflag" value="<s:property value='rflag'/>"/>
+	<input type="hidden" name="deptName" value="<s:property value='deptName'/>"/>
 </form>
-<h3 class="jiangbu-title">省级后方单位挂钩帮扶情况</h3>
+<h3 class="jiangbu-title">省级后方单位挂钩帮扶情况&nbsp;[<s:property value="deptName"/>]</h3>
 <p class="jiangbu-title1"><span><s:property value="title"/>&nbsp;(<s:property value="sdt"/>~<s:property value="edt"/>)</span></p>
 <div id="jiangbu-data1">
 <table class="data_list" cellpadding="0" cellspacing="0" width="100%">
@@ -222,6 +223,7 @@
 <input type="hidden" name="edt" value="<s:property value='edt'/>"/>
 <input type="hidden" name="crid" value="<s:property value='crid'/>"/>
 <input type="hidden" name="rflag" value="<s:property value='rflag'/>"/>
+<input type="hidden" name="deptName" value="<s:property value='deptName'/>"/>
 </form>
 </div>
 <!-- add jiangbu end -->

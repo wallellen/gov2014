@@ -18,7 +18,7 @@
 <div style="display:none;" id="nav-hide">
 	<s:property value="#session.vts.navPath" escape="false"/>
 </div>
-<h3 class="jiangbu-title">省级后方单位挂钩帮扶情况</h3>
+<h3 class="jiangbu-title">省级后方单位挂钩帮扶情况&nbsp;[<s:property value="#session.vts.rbn"/>]</h3>
 <p class="jiangbu-title1"><span>
 	<s:if test="#session.vts.rbm.length()==2">
 	<input type="button" value="后方单位管理" onclick="location.href='${pageContext.request.contextPath }/system/govBangfuAction_deptManage.do'" class="button44"/>
@@ -44,12 +44,12 @@
         <td><s:property value="#ls.c3"/></td>
         <td>
         	<s:if test="#session.vts.rbm.length()==2">
-        	<a href="${pageContext.request.contextPath }/system/govBangfuAction_deptTotalView.do?rid=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&byunit=按单位">按后方单位汇总查看</a>
+        	<a href="${pageContext.request.contextPath }/system/govBangfuAction_deptTotalView.do?rid=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&byunit=按单位&deptName=<s:property value='#session.vts.rbn'/>">按后方单位汇总查看</a>
         	&nbsp;&nbsp;
-        	<a href="${pageContext.request.contextPath }/system/govBangfuAction_xianTotalView.do?rid=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&byxian=按地区">按县汇总查看</a>
+        	<a href="${pageContext.request.contextPath }/system/govBangfuAction_xianTotalView.do?rid=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&byxian=按地区&deptName=<s:property value='#session.vts.rbn'/>">按县汇总查看</a>
         	</s:if>
         	<s:else>
-        	<a href="${pageContext.request.contextPath }/system/govBangfuAction_writeReport.do?rid=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>">查看</a>
+        	<a href="${pageContext.request.contextPath }/system/govBangfuAction_writeReport.do?rid=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&deptName=<s:property value='#session.vts.rbn'/>">查看</a>
         	</s:else>
         </td>
     </tr>

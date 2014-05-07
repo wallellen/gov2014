@@ -100,6 +100,7 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 	private String sdt;
 	private String edt;
 	private int rflag=1;
+	private String areaName;
 	public String getBm() {
 		return bm;
 	}
@@ -147,5 +148,11 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 	}
 	public void setRflag(int rflag) {
 		this.rflag = rflag;
+	}
+	public String getAreaName() {
+		return areaName;
+	}
+	public void setAreaName(String areaName) {
+		this.areaName = areaName;
 	}
 }

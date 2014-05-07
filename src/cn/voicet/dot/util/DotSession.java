@@ -21,6 +21,7 @@ public class DotSession {
 	public String roleID;
 	public SubPathTitle subPathTitle;
 	public String rbm;
+	public String rbn;
 	public String curBM;
 	public String curHM;
 	public String navPath;

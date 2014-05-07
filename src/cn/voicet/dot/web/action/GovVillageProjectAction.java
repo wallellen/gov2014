@@ -117,6 +117,7 @@ public class GovVillageProjectAction extends BaseAction implements ModelDriven<G
 	private String crid;
 	private String navbm;
 	private int rflag=1;
+	private String areaName;
 	public String getCm() {
 		return cm;
 	}
@@ -164,5 +165,11 @@ public class GovVillageProjectAction extends BaseAction implements ModelDriven<G
 	}
 	public void setRflag(int rflag) {
 		this.rflag = rflag;
+	}
+	public String getAreaName() {
+		return areaName;
+	}
+	public void setAreaName(String areaName) {
+		this.areaName = areaName;
 	}
 }

@@ -18,7 +18,7 @@
 	</style>
 </head>
 <body style="background:#E0EEFB;">
-<h3 class="jiangbu-title">关键工程项目实施进度和扶贫资金使用情况</h3>
+<h3 class="jiangbu-title">关键工程项目实施进度和扶贫资金使用情况&nbsp;[<s:property value="areaName"/>]</h3>
 <p class="jiangbu-title1"><span><s:property value="title"/>&nbsp;(<s:property value="sdt"/>~<s:property value="edt"/>)</span></p>
 <div id="jiangbu-data1">
 <table class="data_list" cellpadding="0" cellspacing="0" width="100%">
@@ -79,10 +79,10 @@
         <td><s:property value="#ls.c10"/></td>
         <td>
         	<s:if test="#ls.c0.length()<6">
-        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_viewKeyProjectList.do?navbm=<s:property value='#ls.c0'/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>">查看详细</a>
+        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_viewKeyProjectList.do?navbm=<s:property value='#ls.c0'/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value='#ls.c1'/>">查看详细</a>
         	</s:if>
         	<s:else>
-        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_writeReportZhen.do?navbm=<s:property value='#ls.c0'/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>">查看详细</a>
+        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_writeReportZhen.do?navbm=<s:property value='#ls.c0'/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value='#ls.c1'/>">查看详细</a>
         	</s:else>
         </td>
 	</tr>

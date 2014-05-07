@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
 </head>
 <body style="background:#E0EEFB;">
-<h3 class="jiangbu-title">关键工程项目实施进度和扶贫资金使用情况</h3>
+<h3 class="jiangbu-title">关键工程项目实施进度和扶贫资金使用情况&nbsp;[<s:property value="#session.vts.rbn"/>]</h3>
 <div id="jiangbu-data">
 <table class="data_list" cellpadding="0" cellspacing="0" width="100%">
    	<thead>
@@ -30,14 +30,14 @@
         <td><s:property value="#ls.c3"/></td>
         <td>
         <s:if test="#session.vts.rbm.length()==2">
-        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_viewKeyProjectList.do?navbm=<s:property value="#session.vts.rbm"/>&crid=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>">查看</a>
+        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_viewKeyProjectList.do?navbm=<s:property value="#session.vts.rbm"/>&crid=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&areaName=<s:property value="#session.vts.rbn"/>">查看</a>
         	</s:if>
         	<s:else>
         		<s:if test="#session.vts.rbm.length()==6">
-	        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_writeReportZhen.do?navbm=<s:property value="#session.vts.rbm"/>&crid=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>">查看</a>
+	        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_writeReportZhen.do?navbm=<s:property value="#session.vts.rbm"/>&crid=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&areaName=<s:property value="#session.vts.rbn"/>">查看</a>
 	        	</s:if>
         		<s:else>
-        		<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_gotoZhenLevel.do?crid=<s:property value="#ls.c0"/>&navbm=<s:property value="#session.vts.rbm"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>">查看</a>
+        		<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_gotoZhenLevel.do?crid=<s:property value="#ls.c0"/>&navbm=<s:property value="#session.vts.rbm"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&areaName=<s:property value="#session.vts.rbn"/>">查看</a>
         		</s:else>	
         	</s:else>
         </td>

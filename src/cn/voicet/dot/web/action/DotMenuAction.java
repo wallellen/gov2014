@@ -56,6 +56,7 @@ public class DotMenuAction extends BaseAction implements ModelDriven<DotUserForm
 		ds.password = dotUserForm.getPassword();
 		ds.account=dotUserForm.getAccount();
 		ds.rbm = map.get("rbm");
+		ds.rbn = map.get("rbn");
 		ds.roleName = map.get("rolename");
 		ds.roleID=map.get("roleid");
 		ds.isedit = Integer.valueOf(map.get("isedit"));

@@ -21,7 +21,7 @@
 	</style>
 </head>
 <body style="background:#E0EEFB;">
-<h3 class="jiangbu-title">省级财政支持村级集体经济发展项目实施进度</h3><div class="jiangbu-unit">单位：万元</div>
+<h3 class="jiangbu-title">省级财政支持村级集体经济发展项目实施进度&nbsp;[<s:property value="areaName"/>]</h3><div class="jiangbu-unit">单位：万元</div>
 <p class="jiangbu-title1"><span class="j_return"></span><span><s:property value="title"/>&nbsp;(<s:property value="sdt"/>~<s:property value="edt"/>)</span></p>
 <div id="jiangbu-data1">
 <table class="data_list" cellpadding="0" cellspacing="0" width="100%">
@@ -96,10 +96,10 @@
         <td>&nbsp;</td>
         <td>
         	<s:if test="#ls.c0.length()<9">
-        	<a href="${pageContext.request.contextPath }/system/govVillageProjectAction_viewVillProjectList.do?navbm=<s:property value="#ls.c0"/>&crid=<s:property value="crid"/>&title=<s:property value="title"/>&sdt=<s:property value="sdt"/>&edt=<s:property value="edt"/>">查看详细</a>
+        	<a href="${pageContext.request.contextPath }/system/govVillageProjectAction_viewVillProjectList.do?navbm=<s:property value="#ls.c0"/>&crid=<s:property value="crid"/>&title=<s:property value="title"/>&sdt=<s:property value="sdt"/>&edt=<s:property value="edt"/>&areaName=<s:property value='#ls.c1'/>">查看详细</a>
         	</s:if>
         	<s:else>
-        	<a href="${pageContext.request.contextPath }/system/govVillageProjectAction_viewReportByZhen.do?navbm=<s:property value="#ls.c0"/>&crid=<s:property value="crid"/>&title=<s:property value="title"/>&sdt=<s:property value="sdt"/>&edt=<s:property value="edt"/>">查看详细</a>
+        	<a href="${pageContext.request.contextPath }/system/govVillageProjectAction_viewReportByZhen.do?navbm=<s:property value="#ls.c0"/>&crid=<s:property value="crid"/>&title=<s:property value="title"/>&sdt=<s:property value="sdt"/>&edt=<s:property value="edt"/>&areaName=<s:property value='#ls.c1'/>">查看详细</a>
         	</s:else>
         </td>
 	</tr>
