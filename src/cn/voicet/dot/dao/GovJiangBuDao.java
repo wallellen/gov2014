@@ -11,7 +11,7 @@ public interface GovJiangBuDao {
 
 	void saveJiangBuInfo(DotSession ds, GovJiangBuForm govJiangBuForm, String crid);
 
-	void deleteJiangBuInfoWithRid(String chm);
+	void deleteJiangBuInfoWithRid(String chm, String crid);
 
 	void getJiangBuYear(DotSession ds);
 

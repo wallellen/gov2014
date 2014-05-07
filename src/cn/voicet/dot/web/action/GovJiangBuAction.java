@@ -77,7 +77,7 @@ public class GovJiangBuAction extends BaseAction implements ModelDriven<GovJiang
 	}
 	
 	public String deleteJiangBuInfo(){
-		govJiangBuService.deleteJiangBuInfoWithRid(chm);
+		govJiangBuService.deleteJiangBuInfoWithRid(chm, crid);
 		rflag=rflag+1;
 		return writeReport();
 	}

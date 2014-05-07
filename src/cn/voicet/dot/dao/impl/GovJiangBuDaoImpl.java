@@ -99,16 +99,16 @@ public class GovJiangBuDaoImpl extends CommonDaoImpl<Object> implements GovJiang
 		});
 	}
 
-	public void deleteJiangBuInfoWithRid(final String chm) {
+	public void deleteJiangBuInfoWithRid(final String chm, final String crid) {
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				String proc_update = "{call sp_jiangbu_delete(?,?)}";
+				String sp_delete = "{call sp_jiangbu_delete(?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = null;
-				cs = conn.prepareCall(proc_update);
+				cs = conn.prepareCall(sp_delete);
 				cs.setString(1, chm);
-				cs.setInt(2, 1);	//批次
+				cs.setString(2, crid);	//批次
 				cs.execute();
 				return null;
 			}

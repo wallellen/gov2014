@@ -30,6 +30,7 @@
 <body style="background:#E0EEFB;">
 <form id="Form1" name="Form1">
 	<input type="hidden" name="chm" id="chmIds"/>
+	<input type="hidden" name="crid" value="<s:property value='crid'/>"/>
 	<input type="hidden" name="navbm" value="<s:property value='navbm'/>"/>
 	<input type="hidden" name="title" value="<s:property value='title'/>"/>
 	<input type="hidden" name="sdt" value="<s:property value='sdt'/>"/>

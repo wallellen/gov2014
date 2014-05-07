@@ -25,8 +25,8 @@ public class GovJiangBuServiceImpl implements GovJiangBuService {
 		govJiangBuDao.saveJiangBuInfo(ds, govJiangBuForm, crid);
 	}
 
-	public void deleteJiangBuInfoWithRid(String chm) {
-		govJiangBuDao.deleteJiangBuInfoWithRid(chm);
+	public void deleteJiangBuInfoWithRid(String chm, String crid) {
+		govJiangBuDao.deleteJiangBuInfoWithRid(chm, crid);
 	}
 	
 	public void getJiangBuYear(DotSession ds) {
