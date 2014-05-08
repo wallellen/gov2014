@@ -32,7 +32,7 @@
 	<ul id="ul-member">
 		<li>家庭人口：<s:property value="#session.vts.map.population"/></li>
 	    <li>劳动力：<s:property value="#session.vts.map.labornum"/></li>
-	    <li>
+	    <li class="add-member-bt">
 	    <s:if test="#session.vts.isedit==1">
 	    <input type="button" onclick="popSaveMember('0','add','0')" value="添加人口" class="button4"/>
 	    </s:if>

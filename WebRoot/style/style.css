@@ -82,6 +82,7 @@ ul{margin:0; padding:0; list-style:none;}
 
 #ul-member{width:868px;float:left; padding-left:80px; height:30px; line-height:30px;}
 #ul-member li{float:left; margin-right:160px;}
+#ul-member .add-member-bt{float:right; width:132px;}
 .tab-member{width:100%; line-height:20px; text-align:center; border-bottom:1px solid #3B9FFF; border-right:1px solid #3B9FFF;}
 .tab-member td{border-top:1px solid #3B9FFF; border-left:1px solid #3B9FFF;}
 
