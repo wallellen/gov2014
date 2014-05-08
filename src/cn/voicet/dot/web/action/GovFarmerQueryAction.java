@@ -1,5 +1,8 @@
 package cn.voicet.dot.web.action;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Scope;
@@ -51,8 +54,9 @@ public class GovFarmerQueryAction extends BaseAction implements ModelDriven<GovF
 	
 	public String exportMemberInfo() throws Exception{
 		DotSession ds = DotSession.getVTSession(request);
-		//从上次查询的list中取数据
-		String fileName = new String(("人口统计").getBytes("gb2312"), "ISO8859-1") +".xls";
+		//从上次查询的list中取数据ds.list
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+		String fileName = "rkcx"+format.format(new Date())+".xls";
 	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"member.xls";
 	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 1, ds.list);
 	    generator.setColList("c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12");

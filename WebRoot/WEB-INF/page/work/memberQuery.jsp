@@ -8,6 +8,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
 </head>
 <body style="background:#E0EEFB;">
 <div style="float:left; width:668px; height:668px;">
@@ -33,7 +34,7 @@
 					<s:select name="memberstr" list="#application.vta.GetList('opt')" listKey="id" listValue="str" value="%{#session.vts.map.marr[2]}"></s:select>
 				</td>
 				<td width="10%" align="left">
-					<input type="text" name="memberstr" value="<s:property value="#session.vts.map.marr[3]"/>" maxlength="15" class="inptxt12" onfocus="this.className='input_on12'" onblur="this.className='input_off12'"/>
+					<input type="text" name="memberstr" value="<s:property value="#session.vts.map.marr[3]"/>" maxlength="15" class="inptxt12" onfocus="this.className='input_on12'" onblur="this.className='input_off12'" onkeyup="checkIntInput(this)"/>
 				</td>
 				<td width="20%" align="center"><input id="searchImg" type="submit" value="立即查询" class="button4"/></td>
 			</tr>
@@ -82,7 +83,7 @@
 	</form>
 	<s:if test="#session.vts.list!=null && #session.vts.list.size()>0">
 	<div style="height:18px; line-height:18px; padding-top:2px;">
-		<span>符合查询条件人口数：<s:property value="#session.vts.map.membernt"/>户</span>
+		<span>符合查询条件人口数：<s:property value="#session.vts.map.membernt"/>人</span>
 		<span style="float:right; width:60px;">
 			<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govFarmerQueryAction_exportMemberInfo.do?memberstr=<s:property value="memberstr"/>'" class="button43"/>
 		</span>
@@ -99,11 +100,11 @@
 				<td width="4%">在校生</td>
 				<td width="10%">文化程度</td>
 				<td width="10%">身体状况</td>
-				<td width="8%">残疾证号</td>
 				<td width="10%">劳动力状况</td>
 				<td width="10%">打工状况</td>
 				<td width="4%">低保人口</td>
 				<td width="6%">领取金额(元)</td>
+				<td width="4%">操作</td>
 			</tr>
 			</thead>
 			<tbody id="splitpage">
@@ -115,11 +116,13 @@
 					<td><s:property value="#ls.c5.substring(2,3)"/></td>
 					<td align="left">&nbsp;<s:property value="#ls.c6"/></td>
 					<td align="left">&nbsp;<s:property value="#ls.c7"/></td>
-					<td align="left" title="残疾证号: <s:property value="#ls.c8"/>">&nbsp;<s:property value="#ls.c8.length()>10?#ls.c8.substring(0,9)+'...':#ls.c8"/></td>
 					<td align="left">&nbsp;<s:property value="#ls.c9"/></td>
 					<td align="left">&nbsp;<s:property value="#ls.c10"/></td>
 					<td><s:property value="#ls.c11.substring(2,3)"/></td>
 					<td align="right"><s:property value="#ls.c12"/>&nbsp;</td>
+					<td>
+						<a href="${pageContext.request.contextPath }/system/govBrowerAction_viewReportFamilyWithQuery.do?viewBM=<s:property value="#ls.c0"/>">查看</a>
+					</td>
 				</tr>
 				</s:iterator>
 			</tbody>
