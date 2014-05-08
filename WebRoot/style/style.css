@@ -43,8 +43,8 @@ ul{margin:0; padding:0; list-style:none;}
 .content .tabtd1{border-right:0px solid red;}
 .split-page{width:100%; height:26px; border-top:1px solid #3B9FFF; line-height:26px; text-align:center}
 .split-page a{color:#00529E}
-.split-page a:link, .split-page a:visited{text-decoration:none;}
-.split-page a:hover{text-decoration:underline;}
+.split-page a:link, .split-page a:visited{color:#00f;text-decoration:none;}
+.split-page a:hover{color:#00f;text-decoration:underline;}
 
 /* rightCon */
 #rightCon{width:198px; height:672px; float:right; background:url(../images/over-bg.png) repeat-x; border-left:1px solid #3B9FFF; border-right:1px solid #3B9FFF;}
