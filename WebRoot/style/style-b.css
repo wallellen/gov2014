@@ -3,10 +3,10 @@ body{font-size:12px; margin: 0px 0px 0px 0px;}
 input,label { vertical-align:middle;}
 
 /** common **/
-a:link{color:#00529E; text-decoration:none}	/* 未访问的链接 */
-a:active{color:#00529E; text-decoration:none}	/* 激活链接 */
-a:visited{color:#00529E; text-decoration:none}	/* 已访问的链接 */
-a:hover{color:#00529E; text-decoration:none}	/* 鼠标在链接上 */
+a:link{color:#00f; text-decoration:none}	/* 未访问的链接 */
+a:active{color:#00f; text-decoration:none}	/* 激活链接 */
+a:visited{color:#00f; text-decoration:none}	/* 已访问的链接 */
+a:hover{color:#00f; text-decoration:none}	/* 鼠标在链接上 */
 .button8{width:140px; height:22px; display:inline; color:#FFF; border:medium none; background:url("/images/vt_rec_bt4.png");cursor:pointer;}
 
 .back-input{border:1px solid #B1D8F9; height:18px; width:100px; color:blue}
