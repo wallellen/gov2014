@@ -7,55 +7,58 @@
 		<grp name="日常工作">
 			<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
 			<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
-      		<fun name="片区关键工程项目" action="govKeyProjectAction_home.do" />
-      		<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
-      		<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
-      		<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
+			<fun name="片区关键工程项目" action="govKeyProjectAction_home.do" />
+			<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
+			<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
+			<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
 		</grp>
 		<grp name="管理配置">
-     		<fun name="角色权限" action="govConfigAction_home.do" />
-	      	<fun name="全局参数" action="sysGLParamAction_home.do" />
-	      	<fun name="优化计算" action="sysReCalcAction_home.do" />
-	      	<fun name="报告列表管理" action="sysReportAction_home.do" />
+			<fun name="角色权限" action="govConfigAction_home.do" />
+			<fun name="全局参数" action="sysGLParamAction_home.do" />
+			<fun name="优化计算" action="sysReCalcAction_home.do" />
+			<fun name="报告列表管理" action="sysReportAction_home.do" />
 		</grp>
-	    <grp name="数据库">
-	      	<fun name="数据库维护" action="databaseConfigAction_home.do" />
-        	<fun name="系统日志查看" action="systemLogAction_home.do" />
-	    </grp>
+		<grp name="数据库">
+			<fun name="数据库维护" action="databaseConfigAction_home.do" />
+			<fun name="系统日志查看" action="systemLogAction_home.do" />
+		</grp>
 	</role>
 	<role roleid="2" describle="省管理员">
 		<grp name="日常工作">
 			<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
 			<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
-      		<fun name="片区关键工程项目" action="govKeyProjectAction_home.do" />
-      		<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
-      		<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
-        	<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
+			<fun name="片区关键工程项目" action="govKeyProjectAction_home.do" />
+			<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
+			<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
+			<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
+			<fun name="小额贷款年度查看" action="govBangfuAction_home.do" />
+			<fun name="小额贷款按月查看" action="govBangfuAction_home.do" />
 		</grp>
 	</role>
 	<role roleid="4" describle="县管理员">
 		<grp name="日常工作">
-		  	<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
-		  	<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
-	    	<fun name="片区关键工程项目" action="govKeyProjectAction_home.do" />
-	    	<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
-      		<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
-      		<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
+			<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
+			<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
+			<fun name="片区关键工程项目" action="govKeyProjectAction_home.do" />
+			<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
+			<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
+			<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
+			<fun name="小额贷款月填报" action="govBangfuAction_home.do" />
 		</grp>
 	</role>
 	<role roleid="5" describle="乡管理员">
 		<grp name="日常工作">
 			<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
 			<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
-      		<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
-      		<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
+			<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
+			<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
 		</grp>
 	</role>
 	<role roleid="6" describle="村管理员">
 		<grp name="日常工作">
 			<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
 			<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
-      		<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
+			<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
 		</grp>
 	</role>
 	<list name="yesno" describle="是与否列表">
@@ -169,19 +172,19 @@
 		<item id="3" name="3:非劳动力" />
 	</list>
 	<list name="opt" describle="选项">
-		<item id="0" name="不限"/>
-		<item id="1" name="&gt;="/>
-		<item id="2" name="&lt;="/>
+		<item id="0" name="不限" />
+		<item id="1" name="&gt;=" />
+		<item id="2" name="&lt;=" />
 	</list>
 	<list name="bfdept" describle="选项">
-		<item id="1" name="省有关部门和单位"/>
-		<item id="2" name="部省属企业"/>
-		<item id="3" name="部省属有关高校、科研院所"/>
+		<item id="1" name="省有关部门和单位" />
+		<item id="2" name="部省属企业" />
+		<item id="3" name="部省属有关高校、科研院所" />
 	</list>
 	<list name="reportlist" describle="报告类型">
-		<item id="1" name="年收入及帮扶情况"/>
-		<item id="2" name="片区关键工程项目"/>
-		<item id="3" name="村级集体经济发展项目"/>
+		<item id="1" name="年收入及帮扶情况" />
+		<item id="2" name="片区关键工程项目" />
+		<item id="3" name="村级集体经济发展项目" />
 		<item id="4" name="奖补资金到户项目" />
 		<item id="5" name="省后方单位挂钩帮扶" />
 	</list>
