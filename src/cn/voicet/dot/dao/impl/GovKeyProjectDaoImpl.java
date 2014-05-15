@@ -61,11 +61,11 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 				cs.setString(3, govKeyProjectForm.getKptxt()[1]);
 				cs.setString(4, govKeyProjectForm.getKptxt()[2]);
 				cs.setString(5, govKeyProjectForm.getKptxt()[3]);
-				cs.setString(6, govKeyProjectForm.getKptxt()[4]);
-				cs.setString(7, govKeyProjectForm.getKptxt()[5]);
-				cs.setString(8, govKeyProjectForm.getKptxt()[6]);
-				cs.setString(9, govKeyProjectForm.getKptxt()[7]);
-				cs.setString(10, govKeyProjectForm.getKptxt()[8]);
+				cs.setFloat(6, Float.parseFloat(govKeyProjectForm.getKptxt()[4]));
+				cs.setFloat(7, Float.parseFloat(govKeyProjectForm.getKptxt()[5]));
+				cs.setFloat(8, Float.parseFloat(govKeyProjectForm.getKptxt()[6]));
+				cs.setFloat(9, Float.parseFloat(govKeyProjectForm.getKptxt()[7]));
+				cs.setFloat(10, Float.parseFloat(govKeyProjectForm.getKptxt()[8]));
 				cs.setString(11, govKeyProjectForm.getKptxt()[9]);
 				cs.setString(12, govKeyProjectForm.getKptxt()[10]);
 				cs.setString(13, govKeyProjectForm.getKptxt()[11]);

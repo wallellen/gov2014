@@ -151,7 +151,7 @@
 		<tr>
 			<td align="right">到村项目资金(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh4" name="bftxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="hh4" name="bftxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
 			</td>
 		</tr>
 		<tr>
@@ -163,13 +163,13 @@
 		<tr>
 			<td align="right">后方单位自筹资金(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh6" name="bftxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="hh6" name="bftxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">协调资金(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh7" name="bftxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="hh7" name="bftxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
 			</td>
 		</tr>
 		<tr>

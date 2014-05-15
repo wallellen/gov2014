@@ -240,13 +240,13 @@ public class GovBangfuDaoImpl extends CommonDaoImpl<Object> implements GovBangfu
 				cs.setString(4, govBangfuForm.getBftxt()[1]);
 				cs.setString(5, govBangfuForm.getBftxt()[2]);
 				cs.setString(6, govBangfuForm.getBftxt()[3]);
-				cs.setString(7, govBangfuForm.getBftxt()[4]);
+				cs.setFloat(7, Float.parseFloat(govBangfuForm.getBftxt()[4]));
 				cs.setString(8, govBangfuForm.getBftxt()[5]);
-				cs.setString(9, govBangfuForm.getBftxt()[6]);
-				cs.setString(10, govBangfuForm.getBftxt()[7]);
+				cs.setFloat(9, Float.parseFloat(govBangfuForm.getBftxt()[6]));
+				cs.setFloat(10, Float.parseFloat(govBangfuForm.getBftxt()[7]));
 				cs.setString(11, govBangfuForm.getBftxt()[8]);
 				cs.setString(12, govBangfuForm.getBftxt()[9]);
-				cs.setString(13, govBangfuForm.getBftxt()[10]);
+				cs.setFloat(13, Float.parseFloat(govBangfuForm.getBftxt()[10]));
 				cs.setString(14, govBangfuForm.getBftxt()[11]);
 				cs.setString(15, govBangfuForm.getBftxt()[12]);
 				cs.execute();

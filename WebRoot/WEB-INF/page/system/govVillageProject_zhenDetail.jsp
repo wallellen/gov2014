@@ -163,63 +163,63 @@
 		<tr>
 			<td align="right">省级财政投入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp3" name="vptxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp3" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">市级财政投入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp4" name="vptxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp4" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">县级财政投入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp5" name="vptxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp5" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">乡镇财政投入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp6" name="vptxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp6" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">扶贫资金投入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp7" name="vptxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp7" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">社会捐赠投入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp8" name="vptxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp8" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">项目建成后预计年效益(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp9" name="vptxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp9" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">项目为集体增加经营性收入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp10" name="vptxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp10" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">上年村集体经营性收入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp11" name="vptxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp11" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
 			</td>
 			<td></td>
 		</tr>
