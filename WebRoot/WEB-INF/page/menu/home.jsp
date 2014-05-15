@@ -80,7 +80,7 @@
         <!-- 记录js分页当前页码 -->
         <input type="hidden" id="globalCurPage"/>
         </p>
-        <span>Copyright @ 2005-2014 All Rights Reserved 版权所有 · 南京威帝通讯科技有限公司&nbsp;&nbsp;V140507</span>
+        <span>Copyright @ 2005-2014 All Rights Reserved 版权所有 · 南京威帝通讯科技有限公司&nbsp;&nbsp;V140515</span>
         
     </div>
     <!-- print window -->
