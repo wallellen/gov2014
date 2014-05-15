@@ -52,7 +52,7 @@
         <td rowspan="3" width="4%">备注</td>
         <td rowspan="3" width="8%">
         	<input type="button" value="返回" onclick="javascript:history.go(-<s:property value='rflag'/>)" class="button43"/><br/><br/>
-        	<input type="button" value="添加" onclick="location.href='${pageContext.request.contextPath }/system/govBangfuAction_addBangfu.do?rid=<s:property value="rid"/>&title=<s:property value="title"/>&sdt=<s:property value="sdt"/>&edt=<s:property value="edt"/>'" class="button43"/>
+        	<input type="button" value="添加" onclick="location.href='${pageContext.request.contextPath }/system/govBangfuAction_addBangfu.do?rid=<s:property value="rid"/>&title=<s:property value="title"/>&sdt=<s:property value="sdt"/>&edt=<s:property value="edt"/>&deptName=<s:property value="deptName"/>'" class="button43"/>
         </td>
     </tr>
     <tr>

@@ -196,6 +196,7 @@
 <input type="hidden" name="edt" value="<s:property value='edt'/>"/>
 <input type="hidden" name="crid" value="<s:property value='crid'/>"/>
 <input type="hidden" name="rflag" value="<s:property value='rflag'/>"/>
+<input type="hidden" name="deptName" value="<s:property value='deptName'/>"/>
 </form>
 </div>
 <!-- add jiangbu end -->
