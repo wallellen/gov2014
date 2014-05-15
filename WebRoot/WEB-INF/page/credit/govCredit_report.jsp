@@ -52,6 +52,7 @@
         <td rowspan="2" width="8%">与上年度累计发放比较(%)</td>
         <td rowspan="2" width="10%">
         	<p>
+        		<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govXianCreditAction_exportXiaoeYear.do?year=<s:property value="year"/>&title=<s:property value="title"/>&rflag=<s:property value="rflag"/>'" class="button43"/>
 				<input type="button" value="返回" onclick="history.go(-1)" class="button43"/>        	
         	</p>
         </td>
@@ -85,7 +86,7 @@
 	        <td><s:property value="#ls.perc"/></td>
 	        <td>
 	        	<s:if test="#ls.xid>0">
-	        	<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewXianCreditWithXbm.do?xbm=<s:property value='#ls.bm'/>&year=<s:property value='year'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value="#ls.oname"/>">查看</a>
+	        	<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewXianCreditWithXbm.do?xbm=<s:property value='#ls.bm'/>&title=<s:property value="title"/>&year=<s:property value='year'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value="#ls.oname"/>">查看</a>
 	        	</s:if>
 	        </td>
     	</tr>

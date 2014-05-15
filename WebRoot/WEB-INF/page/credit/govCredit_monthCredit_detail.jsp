@@ -52,6 +52,7 @@
         <td colspan="6">四</td>
         <td rowspan="4" width="8%">
         	<p>
+        		<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govXianCreditAction_exportXiaoeByue.do?year=<s:property value="year"/>&month=<s:property value="month"/>&title=<s:property value="title"/>&rflag=<s:property value="rflag"/>'" class="button43"/>
         		<input type="button" value="返回" onclick="history.go(-<s:property value="rflag"/>)" class="button43"/>
         	</p>
         </td>

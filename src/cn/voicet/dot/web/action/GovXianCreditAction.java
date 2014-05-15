@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 
 import cn.voicet.dot.service.GovXianCreditService;
 import cn.voicet.dot.util.DotSession;
+import cn.voicet.dot.util.ExcelTemplateGenerator;
 import cn.voicet.dot.web.form.GovXianCreditForm;
 
 import com.opensymphony.xwork2.ModelDriven;
@@ -101,6 +102,48 @@ public class GovXianCreditAction extends BaseAction implements ModelDriven<GovXi
 		return "showCredit_month";
 	}
 	
+	/** 导出按年度查看数据 */
+	public String exportXiaoeYear() throws Exception{
+		DotSession ds = DotSession.getVTSession(request);
+		govXianCreditService.getShenCreditReportList(ds, year, month, mode);
+		String fileName = new String(("扶贫小额贷款发放进度-"+title).getBytes("gb2312"), "ISO8859-1") +".xls";
+	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"xiaoe-ffjd.xls";
+	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 2, ds.list);
+	    generator.setColList("oname,tsh,tsv,th,tv,lsh,lsv,perc");
+	    generator.setDrawBoard();
+	    generator.setEffectColNum(8);
+		generator.exportExcelWithTemplate(response);
+		return null;
+	}
+	
+
+	/** 导出按年度查看,月数据 */
+	public String exportXiaoeMonth() throws Exception{
+		DotSession ds = DotSession.getVTSession(request);
+		govXianCreditService.getXianCreditByXbm(ds, year, xbm, month, mode);
+		String fileName = new String(("扶贫小额贷款发放、回收情况月统计-"+title).getBytes("gb2312"), "ISO8859-1") +".xls";
+	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"xiaoe-month.xls";
+	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 4, ds.list);
+	    generator.setColList("month,lh,lv,tsh,tsv,trh,trv,th,tv,nh,nv,en,ev");
+	    generator.setDrawBoard();
+	    generator.setEffectColNum(13);
+		generator.exportExcelWithTemplate(response);
+		return null;
+	}
+	
+	/** 导出按年度查看,月数据 */
+	public String exportXiaoeByue() throws Exception{
+		DotSession ds = DotSession.getVTSession(request);
+		govXianCreditService.getCreditMonthReportList(ds, year, month, mode);
+		String fileName = new String(("扶贫小额贷款发放、回收情况 -"+title).getBytes("gb2312"), "ISO8859-1") +".xls";
+	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"xiaoeby.xls";
+	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 4, ds.list);
+	    generator.setColList("oname,lh,lv,tsh,tsv,trh,trv,th,tv,nh,nv,en,ev");
+	    generator.setDrawBoard();
+	    generator.setEffectColNum(13);
+		generator.exportExcelWithTemplate(response);
+		return null;
+	}
 	private String year;
 	private int month;
 	private int mode;
