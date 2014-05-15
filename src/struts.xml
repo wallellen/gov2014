@@ -121,6 +121,14 @@
 			<result name="showIncome_detail">/WEB-INF/page/system/govIncome_detail.jsp</result>
 			<result name="showIncome_hu">/WEB-INF/page/system/govIncome_hu.jsp</result>
 		</action>
+		<!-- 小额贷款月填报 -->
+		<action name="govXianCreditAction_*" class="govXianCreditAction" method="{1}">
+			<result name="showCredit_year">/WEB-INF/page/credit/govXianCredit_year.jsp</result>
+			<result name="showCredit_detail">/WEB-INF/page/credit/govXianCredit_detail.jsp</result>
+			<result name="show_creditReport">/WEB-INF/page/credit/govCredit_report.jsp</result>
+			<result name="show_monthCredit_detail">/WEB-INF/page/credit/govCredit_monthCredit_detail.jsp</result>
+			<result name="showCredit_month">/WEB-INF/page/credit/govXianCredit_month.jsp</result>
+		</action>
 	</package>  
 	<package name="dot" namespace="/system" extends="json-default">
 		<!-- 修改密码 -->
@@ -140,7 +148,7 @@
 			<result type="json"></result>
 		</action>
 		
-		<action name="dotMenuAction_closeWindow" class="dotMenuAction" method="closeWindow">
+		<action name="govXianCreditAction_saveXianCredit" class="govXianCreditAction" method="saveXianCredit">
 			<result type="json"></result>	
 		</action>
 	</package>

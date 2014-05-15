@@ -60,6 +60,8 @@ public class SysReportAction extends BaseAction{
 			this.reportflag = "jiangbu_items";
 		}else if(reportflag.equals("5")){
 			this.reportflag = "hourfang_items";
+		}else if(reportflag.equals("6")){
+			this.reportflag = "xianxiaoeyear_items";
 		}else{
 			this.reportflag = reportflag;
 		}

@@ -31,8 +31,7 @@
 			<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
 			<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
 			<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
-			<fun name="小额贷款年度查看" action="govBangfuAction_home.do" />
-			<fun name="小额贷款按月查看" action="govBangfuAction_home.do" />
+			<fun name="小额贷款月填报" action="govXianCreditAction_home.do" />
 		</grp>
 	</role>
 	<role roleid="4" describle="县管理员">
@@ -43,7 +42,7 @@
 			<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
 			<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
 			<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
-			<fun name="小额贷款月填报" action="govBangfuAction_home.do" />
+			<fun name="小额贷款月填报" action="govXianCreditAction_home.do" />
 		</grp>
 	</role>
 	<role roleid="5" describle="乡管理员">
@@ -187,5 +186,20 @@
 		<item id="3" name="村级集体经济发展项目" />
 		<item id="4" name="奖补资金到户项目" />
 		<item id="5" name="省后方单位挂钩帮扶" />
+		<item id="6" name="小额贷款月填报" />
+	</list>
+	<list name="monthlist" describle="月份">
+		<item id="1" name="1" />
+		<item id="2" name="2" />
+		<item id="3" name="3" />
+		<item id="4" name="4" />
+		<item id="5" name="5" />
+		<item id="6" name="6" />
+		<item id="7" name="7" />
+		<item id="8" name="8" />
+		<item id="9" name="9" />
+		<item id="10" name="10" />
+		<item id="11" name="11" />
+		<item id="12" name="12" />
 	</list>
 </dot2014>
