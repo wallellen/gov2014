@@ -69,6 +69,7 @@ public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrower
 									int i=1;
 									map.put("hm", rs.getString(i++));
 									map.put("hname", rs.getString(i++));
+									map.put("zhu", rs.getString(i++));
 									map.put("population", rs.getString(i++));
 									map.put("labornum", rs.getString(i++));
 									map.put("fields", rs.getString(i++));
@@ -145,6 +146,7 @@ public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrower
 								//map = new HashMap();
 								ds.map.put("hm", rs.getString(i++));
 								ds.map.put("hname", rs.getString(i++));
+								ds.map.put("zhu", rs.getString(i++));
 								ds.map.put("population", rs.getString(i++));
 								ds.map.put("labornum", rs.getString(i++));
 								ds.map.put("fields", rs.getString(i++));
@@ -240,8 +242,8 @@ public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrower
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				String proc_insert = "{call sp_family_insert(?,?,?,?,?,?,?,?,?,?,?,?)}";
-				String proc_update = "{call sp_family_update(?,?,?,?,?,?,?,?,?,?,?,?)}";
+				String proc_insert = "{call sp_family_insert(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+				String proc_update = "{call sp_family_update(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = null;
 				if(ds.curHM.equals("")){
@@ -249,15 +251,16 @@ public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrower
 					cs.setString(1, ds.rbm);
 					cs.setString(2, ds.curBM);
 					cs.setString(3, govFamilyForm.getHname());
-					cs.setString(4, govFamilyForm.getFields());
-					cs.setString(5, govFamilyForm.getHouse());
-					cs.setInt(6, govFamilyForm.getProperty());
-					cs.setInt(7, govFamilyForm.getDcause());
-					cs.setString(8, govFamilyForm.getIdcno());
-					cs.setString(9, govFamilyForm.getHtel());
-					cs.setString(10, govFamilyForm.getFrname());
-					cs.setString(11, govFamilyForm.getFrtel());
-					cs.setString(12, govFamilyForm.getFrwork());
+					cs.setString(4, govFamilyForm.getZhu());
+					cs.setString(5, govFamilyForm.getFields());
+					cs.setString(6, govFamilyForm.getHouse());
+					cs.setInt(7, govFamilyForm.getProperty());
+					cs.setInt(8, govFamilyForm.getDcause());
+					cs.setString(9, govFamilyForm.getIdcno());
+					cs.setString(10, govFamilyForm.getHtel());
+					cs.setString(11, govFamilyForm.getFrname());
+					cs.setString(12, govFamilyForm.getFrtel());
+					cs.setString(13, govFamilyForm.getFrwork());
 					cs.execute();
 					ResultSet rs = cs.getResultSet();
 					if(rs!=null){
@@ -272,15 +275,16 @@ public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrower
 					cs.setString(1, ds.rbm);
 					cs.setString(2, ds.curHM);
 					cs.setString(3, govFamilyForm.getHname());
-					cs.setString(4, govFamilyForm.getFields());
-					cs.setString(5, govFamilyForm.getHouse());
-					cs.setInt(6, govFamilyForm.getProperty());
-					cs.setInt(7, govFamilyForm.getDcause());
-					cs.setString(8, govFamilyForm.getIdcno());
-					cs.setString(9, govFamilyForm.getHtel());
-					cs.setString(10, govFamilyForm.getFrname());
-					cs.setString(11, govFamilyForm.getFrtel());
-					cs.setString(12, govFamilyForm.getFrwork());
+					cs.setString(4, govFamilyForm.getZhu());
+					cs.setString(5, govFamilyForm.getFields());
+					cs.setString(6, govFamilyForm.getHouse());
+					cs.setInt(7, govFamilyForm.getProperty());
+					cs.setInt(8, govFamilyForm.getDcause());
+					cs.setString(9, govFamilyForm.getIdcno());
+					cs.setString(10, govFamilyForm.getHtel());
+					cs.setString(11, govFamilyForm.getFrname());
+					cs.setString(12, govFamilyForm.getFrtel());
+					cs.setString(13, govFamilyForm.getFrwork());
 					cs.execute();
 				}
 				return null;

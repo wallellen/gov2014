@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 
 import net.sf.json.JSONObject;
 
+import org.apache.log4j.Logger;
+import org.jfree.util.Log;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -21,6 +23,7 @@ import com.opensymphony.xwork2.ModelDriven;
 @SuppressWarnings({"serial","unchecked"})
 public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamilyForm>{
 
+	private static Logger log = Logger.getLogger(GovBrowerAction.class);
 	@Resource(name=GovBrowerService.SERVICE_NAME)
 	private GovBrowerService govBrowerService;
 	@Resource(name=GovFarmerQueryService.SERVICE_NAME)
@@ -117,6 +120,7 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 	
 	public String saveFamily(){
 		DotSession ds = DotSession.getVTSession(request);
+		log.info("saveFamily-> zhu:"+govFamilyForm.getZhu());
 		govBrowerService.saveFamilyInfo(ds, govFamilyForm);
 		govBrowerService.getGovFamilyList(ds);
 		ds.opCode = "saveFamily";

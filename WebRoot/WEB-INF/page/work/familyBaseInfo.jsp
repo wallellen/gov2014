@@ -15,9 +15,10 @@
 <form name="personForm" action="${pageContext.request.contextPath }/system/govBrowerAction_saveFamily.do" method="post">
 <div id="base-info">
 	<ul class="info1">
-		<li>户主姓名：<input type="text" name="hname" value="<s:property value="#session.vts.map.hname"/>" maxlength="10" onfocus="this.className='input_on'" onblur="this.className='input_off'"/></li>
-        <li>户主身份证号码：<input type="text" name="idcno" value="<s:property value="#session.vts.map.idcno"/>" maxlength="18" onfocus="this.className='input_on'" onblur="this.className='input_off'" onkeyup="checkCardNo(this)"/></li>
-        <li>户主联系电话：<input type="text" name="htel" value="<s:property value="#session.vts.map.telnum"/>" maxlength="15" onfocus="this.className='input_on'" onblur="this.className='input_off'" onkeyup="checkIntInput(this)"/></li>
+		<li>组名：<input type="text" name="zhu" style="width:55px; height:20px; line-height:20px; border:1px solid #D8D8D8;" value="<s:property value="#session.vts.map.zhu"/>" maxlength="10" onfocus="this.className='input_onzhu'" onblur="this.className='input_offzhu'"/></li>
+		<li>姓名：<input type="text" name="hname" value="<s:property value="#session.vts.map.hname"/>" maxlength="10" onfocus="this.className='input_on'" onblur="this.className='input_off'"/></li>
+        <li>身份证号码：<input type="text" name="idcno" value="<s:property value="#session.vts.map.idcno"/>" maxlength="18" onfocus="this.className='input_on'" onblur="this.className='input_off'" onkeyup="checkCardNo(this)"/></li>
+        <li>联系电话：<input type="text" name="htel" value="<s:property value="#session.vts.map.telnum"/>" maxlength="15" onfocus="this.className='input_on'" onblur="this.className='input_off'" onkeyup="checkIntInput(this)"/></li>
 	</ul>
     <ul class="info2">
      	<li>承包耕地面积(亩)：<input type="text" name="fields" value="<s:property value="#session.vts.map.fields"/>" maxlength="10" onfocus="this.className='input_on'" onblur="this.className='input_off'" onkeyup="checkFloatInput(this)"/></li>

@@ -12,6 +12,7 @@ public class GovFamilyForm {
 	private String frname;	//帮扶人姓名
 	private String frwork;	//帮扶人职务
 	private String frtel;	//帮扶人电话
+	private String zhu;	//组名
 	
 	private String[] incomearr; //家庭收入级帮扶情况数组
 	public String[] getIncomearr() {
@@ -79,6 +80,12 @@ public class GovFamilyForm {
 	}
 	public void setFrtel(String frtel) {
 		this.frtel = frtel;
+	}
+	public String getZhu() {
+		return zhu;
+	}
+	public void setZhu(String zhu) {
+		this.zhu = zhu;
 	}
 	
 }
