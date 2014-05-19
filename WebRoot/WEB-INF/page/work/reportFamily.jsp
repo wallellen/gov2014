@@ -27,6 +27,7 @@
             	<span><u><s:property value="#session.vts.map.x"/></u>&nbsp;&nbsp;县(市、区)</span>
                 <span><u><s:property value="#session.vts.map.xx"/></u>&nbsp;&nbsp;乡(镇)</span>
                 <span><u><s:property value="#session.vts.map.c"/></u>&nbsp;&nbsp;村</span>
+                <span><u><s:property value="#session.vts.map.z"/></u>&nbsp;&nbsp;组</span>
 			</p>
             <p class="view-sp2">
             	<span>县码：<u><s:property value="#session.vts.map.xm"/></u></span>
