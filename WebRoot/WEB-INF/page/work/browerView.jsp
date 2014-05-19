@@ -68,7 +68,8 @@
 				</s:if>
 				<s:else>
 					<td height="20px" width="15%">农户编码</td>
-					<td width="15%">户主姓名</td>
+					<td width="7%">组名</td>
+					<td width="7%">姓名</td>
 					<td width="4%">人口</td>
 					<td width="4%">劳力</td>
 					<td width="8%">耕地(亩)</td>
@@ -103,6 +104,7 @@
 					</s:if>
 					<s:else>
 						<td align="left" height="20px">&nbsp;<s:property value="#ls.hm"/></td>
+						<td align="left"><s:property value="#ls.zhu"/>&nbsp;</td>
 						<td align="left" title="<s:property value='#ls.hname'/>">&nbsp;<s:property value="#ls.hname.length()>7?#ls.hname.substring(0,6)+'...':#ls.hname"/></td>
 						<td align="right"><s:property value="#ls.population"/>&nbsp;</td>
 						<td align="right"><s:property value="#ls.labornum"/>&nbsp;</td>
