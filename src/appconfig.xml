@@ -36,12 +36,6 @@
 	      	<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
 	      	<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
 	      	<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
-	      	<!-- ex start 修改完delete -->
-	      	<fun name="片区关键工程项目" action="govKeyProjectAction_home.do" />
-      		<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
-      		<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
-      		<fun name="小额贷款月填报" action="govXianCreditAction_home.do" />
-	      	<!-- ex end -->
     	</grp>
   	</role>
 	<role roleid="4" describle="县管理员">
