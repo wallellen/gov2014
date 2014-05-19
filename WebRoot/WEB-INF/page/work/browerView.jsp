@@ -105,7 +105,7 @@
 					<s:else>
 						<td align="left" height="20px">&nbsp;<s:property value="#ls.hm"/></td>
 						<td align="left"><s:property value="#ls.zhu"/>&nbsp;</td>
-						<td align="left" title="<s:property value='#ls.hname'/>">&nbsp;<s:property value="#ls.hname.length()>7?#ls.hname.substring(0,6)+'...':#ls.hname"/></td>
+						<td align="left" title="<s:property value='#ls.hname'/>">&nbsp;<s:property value="#ls.hname.length()>4?#ls.hname.substring(0,3)+'...':#ls.hname"/></td>
 						<td align="right"><s:property value="#ls.population"/>&nbsp;</td>
 						<td align="right"><s:property value="#ls.labornum"/>&nbsp;</td>
 						<td align="right"><s:property value="#ls.fields"/>&nbsp;</td>
