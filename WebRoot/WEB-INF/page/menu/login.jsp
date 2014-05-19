@@ -38,7 +38,7 @@
 						<td background="${pageContext.request.contextPath }/images/vt_rec_login1.png">
 							<table>
 								<tr>
-									<td class="version">省扶贫农户信息管理</td>
+									<td class="version">低收入农户管理系统</td>
 								</tr>
 								<tr>
 									<td class="company"><strong>江苏省扶贫办</strong></td>

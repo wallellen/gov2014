@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dot2014 product="省扶贫农户信息管理" provider="江苏省扶贫办" customer="江苏省扶贫办"
+<dot2014 product="低收入农户管理系统" provider="江苏省扶贫办" customer="江苏省扶贫办"
 	fax="02584868924" tel="02584869817" url="http://www.voicet.com.cn"
 	mail="jime6688@163.com" version="1.0">
 	<role roleid="0" describle="未登录"></role>
@@ -7,10 +7,11 @@
 		<grp name="日常工作">
 			<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
 			<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
+      		<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
 			<fun name="片区关键工程项目" action="govKeyProjectAction_home.do" />
 			<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
 			<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
-			<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
+      		<fun name="小额贷款月填报" action="govXianCreditAction_home.do" />
 		</grp>
 		<grp name="管理配置">
 			<fun name="角色权限" action="govConfigAction_home.do" />
@@ -27,37 +28,26 @@
 		<grp name="日常工作">
 			<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
 			<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
-			<fun name="片区关键工程项目" action="govKeyProjectAction_home.do" />
-			<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
-			<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
 			<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
-			<fun name="小额贷款月填报" action="govXianCreditAction_home.do" />
 		</grp>
 	</role>
 	<role roleid="4" describle="县管理员">
 		<grp name="日常工作">
 			<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
 			<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
-			<fun name="片区关键工程项目" action="govKeyProjectAction_home.do" />
-			<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
-			<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
-			<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
-			<fun name="小额贷款月填报" action="govXianCreditAction_home.do" />
+      		<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
 		</grp>
 	</role>
 	<role roleid="5" describle="乡管理员">
 		<grp name="日常工作">
 			<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
 			<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
-			<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
-			<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
 		</grp>
 	</role>
 	<role roleid="6" describle="村管理员">
 		<grp name="日常工作">
 			<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
 			<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
-			<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
 		</grp>
 	</role>
 	<list name="yesno" describle="是与否列表">
