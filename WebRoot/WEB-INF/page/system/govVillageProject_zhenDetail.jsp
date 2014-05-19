@@ -44,7 +44,7 @@
 </form>
 <h3 class="jiangbu-title">省级财政支持村级集体经济发展项目实施进度&nbsp;[<s:property value="areaName"/>]</h3><div class="jiangbu-unit">单位：万元</div>
 <p class="jiangbu-title1"><span class="j_return"></span><span><s:property value="title"/>&nbsp;(<s:property value="sdt"/>~<s:property value="edt"/>)</span></p>
-<s:if test="#session.vts.rbm.length()==2">
+<s:if test="#session.vts.rbm.length()==2 || #session.vts.rbm.length()==4">
 <div id="village-data1">
 </s:if>
 <s:else>
@@ -113,7 +113,7 @@
         <td><s:property value="#ls.c18"/></td>
         <td><s:property value="#ls.c19"/></td>
         <td>
-        	<s:if test="#session.vts.rbm.length()>2">
+        	<s:if test="#session.vts.rbm.length()>4">
         	<a href="javascript:popVillageProjectEdit('edit','<s:property value="#ls.c1"/>','<s:property value="#ls.c0"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c4"/>','<s:property value="#ls.c7"/>','<s:property value="#ls.c8"/>','<s:property value="#ls.c9"/>','<s:property value="#ls.c10"/>','<s:property value="#ls.c12"/>','<s:property value="#ls.c13"/>','<s:property value="#ls.c14"/>','<s:property value="#ls.c15"/>','<s:property value="#ls.c16"/>','<s:property value="#ls.c17"/>','<s:property value="#ls.c18"/>','<s:property value="#ls.c19"/>','<s:property value="#ls.c2"/>')">修改</a>
         	<a href="javascript:deleteVillageProject('<s:property value="#ls.c0"/>','<s:property value="#ls.c1"/>')">删除</a>
         	</s:if>
@@ -127,7 +127,7 @@
 	<input type="hidden" id="pageRows" value="18"/>
 	<div id="changePage"></div>
 </div>
-<s:if test="#session.vts.rbm.length()>2">
+<s:if test="#session.vts.rbm.length()>4">
 <div id="village-add">
 	<fieldset>
 	<legend>请点击村名称,添加新项目</legend>

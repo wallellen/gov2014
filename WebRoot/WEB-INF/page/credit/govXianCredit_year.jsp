@@ -31,7 +31,7 @@
         <td><s:property value="#ls.c2"/></td>
         <td><s:property value="#ls.c3"/></td>
         <td>
-        	<s:if test="#session.vts.rbm.length()==2">
+        	<s:if test="#session.vts.rbm.length()==2 || #session.vts.rbm.length()==4">
         		<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewCreditReport.do?year=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&areaName=<s:property value="#session.vts.rbn"/>">年度查看</a>
         		&nbsp;&nbsp;&nbsp;&nbsp;
         		<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewMonthList.do?year=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&areaName=<s:property value="#session.vts.rbn"/>">月度查看</a>

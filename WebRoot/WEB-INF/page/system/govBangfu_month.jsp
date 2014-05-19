@@ -43,7 +43,7 @@
         <td><s:property value="#ls.c2"/></td>
         <td><s:property value="#ls.c3"/></td>
         <td>
-        	<s:if test="#session.vts.rbm.length()==2">
+        	<s:if test="#session.vts.rbm.length()==2 || #session.vts.rbm.length()==4">
         	<a href="${pageContext.request.contextPath }/system/govBangfuAction_deptTotalView.do?rid=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&byunit=按单位&deptName=<s:property value='#session.vts.rbn'/>">按后方单位汇总查看</a>
         	&nbsp;&nbsp;
         	<a href="${pageContext.request.contextPath }/system/govBangfuAction_xianTotalView.do?rid=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&byxian=按地区&deptName=<s:property value='#session.vts.rbn'/>">按县汇总查看</a>

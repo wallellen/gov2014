@@ -70,7 +70,7 @@
         <td><s:property value="#ls.c13"/></td>
         <td><s:property value="#ls.c14"/></td>
         <td>
-        	<s:if test="#session.vts.isedit==1 && #session.vts.rbm.length()>2">
+        	<s:if test="#session.vts.isedit==1 && #session.vts.rbm.length()>4">
 			<s:if test="#ls.c2.length()>0">        	
 			<a href="javascript:popIncomeYear('edit','<s:property value="#ls.c0"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c4"/>','<s:property value="#ls.c5"/>','<s:property value="#ls.c6"/>','<s:property value="#ls.c7"/>','<s:property value="#ls.c8"/>','<s:property value="#ls.c10"/>','<s:property value="#ls.c11"/>','<s:property value="#ls.c12"/>','<s:property value="#ls.c13"/>','<s:property value="#ls.c14"/>')">修改</a>
         	</s:if>
