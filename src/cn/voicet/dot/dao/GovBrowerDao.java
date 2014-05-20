@@ -31,4 +31,6 @@ public interface GovBrowerDao {
 
 	void isDirectWithBmHm(DotSession ds);
 
+	void deleteFamilyWithHbm(DotSession ds, String hbm, int cause);
+
 }

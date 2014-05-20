@@ -34,7 +34,7 @@ a:hover{color:#00f; text-decoration:none}	/* 鼠标在链接上 */
 
 /** 管理权限 */
 .manage-list{width:400px; height:140px; border:0px solid red; line-height:30px; margin-left:50px; margin-top:0px;}
-
+manage-list22{width:400px; height:100px; border:0px solid red; line-height:30px; margin-left:50px; margin-top:0px;}
 /** 详情  */
 .detail-list{width:400px; height:140px; border:0px solid red; line-height:30px; margin-left:50px; margin-top:0px;}
 /** 主页面logo样式 **/

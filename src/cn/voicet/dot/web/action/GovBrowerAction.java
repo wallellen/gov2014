@@ -280,6 +280,12 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 		return null;
 	}
 	
+	public String deleteFamily(){
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("deleteFamily-> hbm:"+hbm+", cause:"+cause);
+		govBrowerService.deleteFamilyWithHbm(ds, hbm, cause);
+		return viewArea();
+	}
 	
 	
 	private String viewBM="";
@@ -314,6 +320,8 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 	private String proYear;	//扶贫情况年
 	
 	private String bmhm;	// 编码户码，是否进入
+	
+	private int cause;
 	
 	public String getViewBM() {
 		return viewBM;
@@ -425,5 +433,11 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 	}
 	public void setBmhm(String bmhm) {
 		this.bmhm = bmhm;
+	}
+	public int getCause() {
+		return cause;
+	}
+	public void setCause(int cause) {
+		this.cause = cause;
 	}
 }

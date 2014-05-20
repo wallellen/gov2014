@@ -62,4 +62,8 @@ public class GovBrowerServiceImpl implements GovBrowerService {
 	public void isDirectWithBmHm(DotSession ds) {
 		govBrowerDao.isDirectWithBmHm(ds);
 	}
+
+	public void deleteFamilyWithHbm(DotSession ds, String hbm, int cause) {
+		govBrowerDao.deleteFamilyWithHbm(ds, hbm, cause);
+	}
 }

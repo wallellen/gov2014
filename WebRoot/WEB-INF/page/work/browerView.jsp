@@ -19,6 +19,9 @@
 		#overlay-manage{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
 		#win-manage{position:absolute;top:50%;left:50%;width:500px;height:240px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;}
 		
+		#overlay-delfamily{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
+		#win-delfamily{position:absolute;top:50%;left:50%;width:400px;height:160px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;}
+		
 		h2{font-size:12px;height:18px;text-align:right;background:#3F89EC;border-bottom:3px solid #F7F7F7;padding:2px;cursor:move;margin-top:2px;} 
 		h2 span{border:0px solid #f90;padding:0 2px;} 
 	</style>
@@ -120,6 +123,7 @@
 							</s:if>
 							<a href="${pageContext.request.contextPath }/system/govBrowerAction_viewReportFamily.do?viewBM=<s:property value="#ls.hm"/>">查看</a>
 			 				<a id="printBt" href="${pageContext.request.contextPath }/system/govBrowerAction_printFamily.do?viewBM=<s:property value="#ls.hm"/>" target="printFrame">打印</a>
+			 				<a href="javascript:popDelFamily('<s:property value="#ls.hm"/>','<s:property value="#ls.hname"/>')">删除</a>
 						</td>
 					</s:else>
 				</tr>
@@ -202,6 +206,35 @@
 </form>
 </div> 
 <!-- manage end -->
+
+<!-- delete family start  -->
+<div id="overlay-delfamily"></div>
+<div id="win-delfamily" style="line-height: 30px">
+<h2 style="line-height:20px; text-align:left"><span><font color="#fff">删除农户</font></span></h2>
+<form name="delFamilyForm" action="" method="post">
+<input type="hidden" id="delhm" name="hbm"/>
+<div class="manage-list22">
+	<table width="350px" cellpadding="0" cellspacing="0">
+		<tr height="20px">
+			<td width="45%" align="right">农户姓名:&nbsp;&nbsp;</td>
+			<td width="55%" align="left"><label id="delname"></label></td>
+		</tr>
+		<tr height="20px">
+			<td align="right">删除原因:&nbsp;&nbsp;</td>
+			<td align="left">
+			<s:select name="cause" list="#application.vta.GetList('delfamcause')" listKey="id" listValue="str" cssClass="sele"></s:select>	
+			</td>
+		</tr>
+	</table>
+</div>
+<div style="margin-top:5px; margin-left:150px;">
+	<input type="button" value="确定" class="button4" onclick="subDelFamilyBt()"/>&nbsp;&nbsp;&nbsp;&nbsp;
+	<input id="close-delfamily" type="button" value="取消" class="button4"/>
+</div>
+</form>
+</div> 
+<!-- delete family end -->
+
 <s:if test="#session.vts.hasStack()">
 	<s:property value="#session.vts.popAllList()"/>
 </s:if>

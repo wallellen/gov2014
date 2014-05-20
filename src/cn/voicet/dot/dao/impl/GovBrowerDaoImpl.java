@@ -571,4 +571,20 @@ public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrower
 		});
 	}
 
+	public void deleteFamilyWithHbm(final DotSession ds, final String hbm, final int cause) {
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				String proc = "{call sp_family_delete(?,?,?)}";
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall(proc);
+				cs.setString(1, ds.account);
+				cs.setString(2, hbm);
+				cs.setInt(3, cause);
+				cs.execute();
+				return null;
+			}
+		});
+	}
+
 }
