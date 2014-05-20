@@ -41,7 +41,7 @@
         <li><input type="button" onClick="location.href='${pageContext.request.contextPath }/system/govBrowerAction_viewPoverty.do'" value="扶贫情况" class="button41"/></li>
         <li><input type="button" onClick="location.href='${pageContext.request.contextPath }/system/govBrowerAction_overView.do?page=dcause&viewBM=<s:property value="#session.vts.curBM"/>'" value="贫困原因" class="button41"/></li>
         -->
-        <li><input type="text" id="dirBM" value="<s:property value="#session.vts.bmhm"/>" maxlength="18" onkeyup="checkIntInput(this)" onkeydown="javascript:if(event.keyCode==13) directAccess();" class="input-goto"/>&nbsp;<input type="button" id="btn-go" value="直接进入" onclick="directAccess();return false;" class="button4"/></li>
+        <li>输入代码：<input type="text" id="dirBM" value="<s:property value="#session.vts.bmhm"/>" maxlength="18" onkeyup="checkIntInput(this)" onkeydown="javascript:if(event.keyCode==13) directAccess();" class="input-goto"/>&nbsp;<input type="button" id="btn-go" value="直接进入" onclick="directAccess();return false;" class="button4"/></li>
         <li>
         	<s:if test="#session.vts.isedit==1">
 			<s:if test="#session.vts.curBM.length()==12">
