@@ -201,7 +201,7 @@
 		<item id="12" name="12" />
 	</list>
 	<list name="delfamcause" describle="删除农户原因">
-		<item id="10" name="脱贫" />
-		<item id="100" name="纠正错档" />
+		<item id="10" name="10:脱贫" />
+		<item id="100" name="100:纠正错档" />
 	</list>
 </dot2014>
