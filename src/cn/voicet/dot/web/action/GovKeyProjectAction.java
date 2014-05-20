@@ -67,9 +67,9 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 	    String fileName = new String(("关键工程项目实施进度和扶贫资金使用情况-"+title).getBytes("gb2312"), "ISO8859-1") +".xls";
 	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"keyproject.xls";
 	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 2, ds.list);
-	    generator.setColList("c1,c2,c3,c4,c5,c6,c7,c8");
+	    generator.setColList("c1,c2,c3,c4,c5,c6,c7,c8,c9");
 	    generator.setDrawBoard();
-	    generator.setEffectColNum(10);
+	    generator.setEffectColNum(11);
 	    if(navbm.length()==4){
 	    	generator.setCellName();
 	    	generator.setCellName("县名");

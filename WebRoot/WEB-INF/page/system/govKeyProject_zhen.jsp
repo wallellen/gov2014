@@ -34,7 +34,7 @@
 			</s:if>
         </td>
         <td rowspan="2" width="4%">项目数</td>
-    	<td colspan="3">资金总量(万元)</td>
+    	<td colspan="4">资金总量(万元)</td>
         <td colspan="2">资金拨付情况(万元)</td>
         <td colspan="3">项目实施进度</td>
         <td rowspan="2" width="5%">
@@ -53,6 +53,7 @@
         </td>
     </tr>
     <tr>
+    	<td width="4%">合计</td>
         <td width="4%">省级财政安排</td>
         <td width="4%">市县财政安排</td>
         <td width="4%">其他资金</td>
@@ -77,6 +78,7 @@
         <td><s:property value="#ls.c8"/></td>
         <td><s:property value="#ls.c9"/></td>
         <td><s:property value="#ls.c10"/></td>
+        <td>&nbsp;&nbsp;</td>
         <td>
         	<s:if test="#ls.c0.length()<6">
         	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_viewKeyProjectList.do?navbm=<s:property value='#ls.c0'/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value='#ls.c1'/>">查看详细</a>

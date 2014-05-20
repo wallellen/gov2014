@@ -84,8 +84,8 @@
     <s:iterator value="#session.vts.list" var="ls" status="sc">
     <tr style="display:none">
 		<td><label id="#sc.count"></label><s:property value="#sc.count"/></td>
-        <td title="<s:property value='#ls.c2'/>"><s:property value="#ls.c2.length()>11?#ls.c2.substring(0,10)+'...':#ls.c2"/></td>
         <td title="<s:property value='#ls.c3'/>"><s:property value="#ls.c3.length()>13?#ls.c3.substring(0,12)+'...':#ls.c3"/></td>
+        <td title="<s:property value='#ls.c2'/>"><s:property value="#ls.c2.length()>11?#ls.c2.substring(0,10)+'...':#ls.c2"/></td>
         <td><s:property value="#ls.c4"/></td>
         <td><s:property value="#ls.c5"/></td>
         <td><s:property value="#ls.c6"/></td>
