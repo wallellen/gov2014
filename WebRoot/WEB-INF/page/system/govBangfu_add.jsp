@@ -166,7 +166,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td align="right">3.帮扶实物折价(万元):&nbsp;&nbsp;</td>
+			<td align="right">帮扶实物折价(万元):&nbsp;&nbsp;</td>
 			<td align="left">
 				<input type="text" id="hh10" name="bftxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
 			</td>
