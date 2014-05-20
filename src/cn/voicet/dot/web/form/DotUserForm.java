@@ -7,6 +7,7 @@ public class DotUserForm {
 	private String roleid;
 	private String oldpwd;
 	private String newpwd;
+	private int xflag = 0;
 	
 	public String getAccount() {
 		return account;
@@ -53,6 +54,11 @@ public class DotUserForm {
 		else
 			newpwd = null;
 	}
-	
+	public int getXflag() {
+		return xflag;
+	}
+	public void setXflag(int xflag) {
+		this.xflag = xflag;
+	}
 	
 }

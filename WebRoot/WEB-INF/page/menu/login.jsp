@@ -17,6 +17,19 @@
 		}
 	}
 %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String tit = "";
+if(!basePath.contains("gov"))
+{
+	tit = "低收入农户管理系统";
+}
+else
+{
+	tit = "扶贫项目资金管理系统";
+}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -26,7 +39,7 @@
  	<style type="text/css">
  		.errorMessage{padding-bottom:2px; padding-right:30px; height:5px}
  	</style>
- 	<title>低收入农户管理系统</title>
+ 	<title><%=tit %></title>
  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
@@ -38,7 +51,7 @@
 						<td background="${pageContext.request.contextPath }/images/vt_rec_login1.png">
 							<table>
 								<tr>
-									<td class="version">低收入农户管理系统</td>
+									<td class="version"><%=tit %></td>
 								</tr>
 								<tr>
 									<td class="company"><strong>江苏省扶贫办</strong></td>

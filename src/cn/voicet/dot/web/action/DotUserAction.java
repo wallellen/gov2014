@@ -26,6 +26,15 @@ public class DotUserAction extends BaseAction {
 	/** ÐÞ¸ÄÃÜÂë */
 	public String updatepwd() {
 		DotSession ds=DotSession.getVTSession(request);
+		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";
+		if(!basePath.contains("gov"))
+		{
+			ds.sflag=0;
+		}
+		else
+		{
+			ds.sflag=1;
+		}
 		JSONObject jsonObj = new JSONObject();
 		Integer res = dotUserService.updateUserPassword(ds, oldpwd, newpwd);
 		if(res==1){

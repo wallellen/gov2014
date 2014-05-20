@@ -24,7 +24,15 @@ public class DotUserDaoImpl extends CommonDaoImpl<Object> implements DotUserDao 
 		Map<String, String> map = (Map<String, String>) getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				SQLQuery query = session.createSQLQuery("{call sys_userlogin(?,?)}");
+				SQLQuery query = null ;
+				if(dotUserForm.getXflag()==0)
+				{
+					query = session.createSQLQuery("{call sys_userlogin(?,?)}");
+				}
+				else
+				{
+					query = session.createSQLQuery("{call sys_userloginex(?,?)}");
+				}
 				query.setParameter(0, dotUserForm.getAccount());
 				query.setParameter(1, dotUserForm.getPassword());
 				List list = query.list();
@@ -49,7 +57,15 @@ public class DotUserDaoImpl extends CommonDaoImpl<Object> implements DotUserDao 
 		Integer res = (Integer) getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				SQLQuery query = session.createSQLQuery("{call sys_accountchgpwd(?,?,?,?)}");
+				SQLQuery query = null;
+				if(ds.sflag==0)
+				{
+					query = session.createSQLQuery("{call sys_accountchgpwd(?,?,?,?)}");
+				}
+				else
+				{
+					query = session.createSQLQuery("{call sys_accountchgpwdex(?,?,?,?)}");
+				}
 				query.setString(0, ds.account);
 				query.setString(1, ds.roleID);
 				query.setString(2, oldpwd);

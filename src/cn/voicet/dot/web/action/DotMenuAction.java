@@ -22,7 +22,7 @@ import com.opensymphony.xwork2.ModelDriven;
 @SuppressWarnings("serial")
 public class DotMenuAction extends BaseAction implements ModelDriven<DotUserForm> {
 	
-	private static Logger LOG = Logger.getLogger(DotMenuAction.class);
+	private static Logger log = Logger.getLogger(DotMenuAction.class);
 	@Resource(name=DotUserService.SERVICE_NAME)
 	private DotUserService dotUserService;
 	private DotUserForm dotUserForm = new DotUserForm();
@@ -39,8 +39,22 @@ public class DotMenuAction extends BaseAction implements ModelDriven<DotUserForm
 	
 	/** 用户登录 */
 	public String login() throws Exception{
-		String xmlFilePath = ServletActionContext.getServletContext().getRealPath("/WEB-INF/classes/appconfig.xml");
 		DotRoleMenu roleMenu = (DotRoleMenu)ServletActionContext.getServletContext().getAttribute("vta");
+		Map<String, String> map = null;
+		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";
+		log.info("basePath:"+basePath);
+		String xmlFilePath = null;
+		if(!basePath.contains("gov"))
+		{
+			xmlFilePath = ServletActionContext.getServletContext().getRealPath("/WEB-INF/classes/appconfig.xml");
+			dotUserForm.setXflag(0);
+		}
+		else
+		{
+			xmlFilePath = ServletActionContext.getServletContext().getRealPath("/WEB-INF/classes/appconfigex.xml");
+			dotUserForm.setXflag(1);
+		}
+		log.info("xmlFilePath:"+xmlFilePath);
 		if (roleMenu == null) {
 			roleMenu = new DotRoleMenu();
 			roleMenu.loadInfoFromXML(xmlFilePath);
@@ -51,7 +65,9 @@ public class DotMenuAction extends BaseAction implements ModelDriven<DotUserForm
 			request.getSession().setAttribute("vts", ds);
 		}
 		DotSession ds=DotSession.getVTSession(request);
-		Map<String, String> map = dotUserService.dotUserLogin(dotUserForm);
+		
+		map = dotUserService.dotUserLogin(dotUserForm);
+		
 		ds.username=map.get("username");
 		ds.password = dotUserForm.getPassword();
 		ds.account=dotUserForm.getAccount();
@@ -70,7 +86,7 @@ public class DotMenuAction extends BaseAction implements ModelDriven<DotUserForm
 		}
 		ds.curBM=ds.rbm;
 		ds.subPathTitle.initPath();
-		LOG.info("account: ["+ds.account+"] login success, isedit="+ds.isedit);
+		log.info("account: ["+ds.account+"] login success, isedit="+ds.isedit);
 		return "mainHome";
 	}
 	

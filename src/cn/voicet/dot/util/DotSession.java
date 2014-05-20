@@ -44,6 +44,8 @@ public class DotSession {
 	
 	public String bmhm;
 	
+	public int sflag;
+	
 	private class StackInfo{
 		
 		public StackInfo(){}
@@ -134,6 +136,7 @@ public class DotSession {
 		for (int i=0; i<8; i++) {
 			arrayStackInfo[i] = new StackInfo();
 		}
+		sflag=0;
 	}
 	
 	public void clear() {
