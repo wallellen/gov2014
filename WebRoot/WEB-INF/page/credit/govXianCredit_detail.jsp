@@ -148,13 +148,13 @@
 			<td width="10%"></td>
 		</tr>
 		<tr>
-			<td align="right">上年(月)结余</td>
-			<td align="right">户数:&nbsp;&nbsp;</td>
-			<td align="left">
+			<td width="20%" align="right">上年(月)结余</td>
+			<td width="10%" align="right">户数:&nbsp;&nbsp;</td>
+			<td width="20%" align="left">
 				<label id="c2"></label>
 			</td>
-			<td align="right">金额(万元):&nbsp;&nbsp;</td>
-			<td align="left">
+			<td width="20%" align="right">金额(万元):&nbsp;&nbsp;</td>
+			<td width="10%" align="left">
 				<label id="c3"></label>	
 			</td>
 			<td></td>
