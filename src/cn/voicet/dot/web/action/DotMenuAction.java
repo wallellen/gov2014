@@ -78,11 +78,15 @@ public class DotMenuAction extends BaseAction implements ModelDriven<DotUserForm
 		ds.isedit = Integer.valueOf(map.get("isedit"));
 		ds.workyear=Integer.valueOf(map.get("workyear"));
 		ds.yearlock=Integer.valueOf(map.get("yearlock"));
-		// 记住密码操作
-		LogonUtils.rememberPassByCookie(request, response);
-		if (ds.roleID.equals("0")) {
+		if (ds.roleID.equals("0")) 
+		{
 			this.addFieldError("error", "您输入的账号或密码不正确");
 			return "error";
+		}
+		else
+		{
+			// 记住密码操作
+			LogonUtils.rememberPassByCookie(request, response);
 		}
 		ds.curBM=ds.rbm;
 		ds.subPathTitle.initPath();

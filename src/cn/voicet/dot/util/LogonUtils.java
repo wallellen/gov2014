@@ -10,37 +10,37 @@ public class LogonUtils {
 
 	/**
 	 * @throws Exception 
-	 * @see Ê×Ò³µÇÂ¼ÖĞÌí¼ÓÑéÖ¤ÂëµÄ¹¦ÄÜ
+	 * @seeé¦–é¡µç™»å½•ä¸­æ·»åŠ éªŒè¯ç çš„åŠŸèƒ½
 	 */
 	public static void rememberPassByCookie(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		// »ñÈ¡Ò³ÃæÖĞµÄµÇÂ¼ÃûºÍÃÜÂë
+		// è·å–é¡µé¢ä¸­çš„ç™»å½•åå’Œå¯†ç 
 		String account = request.getParameter("account");
 		String password = request.getParameter("password");
-		// ´´½¨2¸öCookie, ·Ö±ğÓÃÀ´´æ·ÅµÇÂ¼ÃûºÍÃÜÂë
-		// ´¦ÀíCookieÖĞ´æÔÚµÄÖĞÎÄ×Ö·û
+		// åˆ›å»º2ä¸ªCookie, åˆ†åˆ«ç”¨æ¥å­˜æ”¾ç™»å½•åå’Œå¯†ç 
+		// å¤„ç†Cookieä¸­å­˜åœ¨çš„ä¸­æ–‡å­—ç¬¦
 		if(null!=account && null!=password){
 			String codeName = URLEncoder.encode(account, "UTF-8");
 			Cookie accountCookie = new Cookie("account", codeName);
 			Cookie passwordCookie = new Cookie("password", password);
 			
-			// ÉèÖÃCookieµÄÓĞĞ§Â·¾¶, ÓĞĞ§Â·¾¶¶¨ÒåÎªÏîÄ¿µÄ¸ùÂ·¾¶
+			// è®¾ç½®Cookieçš„æœ‰æ•ˆè·¯å¾„, æœ‰æ•ˆè·¯å¾„å®šä¹‰ä¸ºé¡¹ç›®çš„æ ¹è·¯å¾„
 			accountCookie.setPath(request.getContextPath() + "/");
 			passwordCookie.setPath(request.getContextPath() + "/");
 		
 			/*
-			 *  ´ÓÒ³ÃæÖĞ»ñÈ¡¼Ç×¡ÎÒµÄ¸´Ñ¡¿òµÄÖµ 
-			 *  	Èç¹ûÓĞÖµ, ÉèÖÃCookieµÄÓĞĞ§Ê±³¤
-			 *  	Èç¹ûÃ»ÓĞÖµ, Çå¿ÕCookieµÄÓĞĞ§Ê±³¤
+			 *  ä»é¡µé¢ä¸­è·å–è®°ä½æˆ‘çš„å¤é€‰æ¡†çš„å€¼ 
+			 *  	å¦‚æœæœ‰å€¼, è®¾ç½®Cookieçš„æœ‰æ•ˆæ—¶é•¿
+			 *  	å¦‚æœæ²¡æœ‰å€¼, æ¸…ç©ºCookieçš„æœ‰æ•ˆæ—¶é•¿
 			 */
 			String rememberPass = request.getParameter("rememberPass");
 			if (rememberPass!=null && rememberPass.equals("yes")) {
-				// ÉèÖÃCookieµÄÓĞĞ§Ê±³¤
+				// è®¾ç½®Cookieçš„æœ‰æ•ˆæ—¶é•¿
 				accountCookie.setMaxAge(7*24*60*60);
 				passwordCookie.setMaxAge(7*24*60*60);
 			} else {
-				// Çå¿ÕCookieµÄÓĞĞ§Ê±³¤
+				// æ¸…ç©ºCookieçš„æœ‰æ•ˆæ—¶é•¿
 				accountCookie.setMaxAge(0);
 				passwordCookie.setMaxAge(0);
 			}
