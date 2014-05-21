@@ -102,7 +102,7 @@ public class GovVillageProjectAction extends BaseAction implements ModelDriven<G
 	    String fileName = new String(("省级财政支持村级集体经济发展项目实施进度-"+title).getBytes("gb2312"), "ISO8859-1") +".xls";
 	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"villageproject-detail.xls";
 	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 3, ds.list);
-	    generator.setColList("c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18");
+	    generator.setColList("c2,c3,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19");
 	    generator.setDrawBoard();
 	    generator.setEffectColNum(17);
 	    generator.exportExcelWithTemplate(response);
