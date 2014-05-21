@@ -50,7 +50,7 @@
         <td width="5%">五</td>
         <td rowspan="4" width="8%">
         	<p>
-        		<s:if test="#session.vts.rbm.length()==2">
+        		<s:if test="#session.vts.rbm.length()==2 || #session.vts.rbm.length()==4">
         		<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govXianCreditAction_exportXiaoeMonth.do?year=<s:property value="year"/>&xbm=<s:property value="xbm"/>&title=<s:property value="title"/>&rflag=<s:property value="rflag"/>'" class="button43"/>
         		</s:if>
         		<input type="button" value="返回" onclick="history.go(-<s:property value="rflag"/>)" class="button43"/>
