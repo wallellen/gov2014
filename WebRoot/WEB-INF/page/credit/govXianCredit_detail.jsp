@@ -105,12 +105,15 @@
 	        <td>
 	        	<s:if test="#session.vts.rbm.length()==6">
 		        	<s:if test="#ls.lh.length()>0">
-		        	<a href="javascript:popXianCreditEdit('edit','<s:property value="#ls.month"/>','<s:property value="#ls.lh"/>','<s:property value="#ls.lv"/>','<s:property value="#ls.tsh"/>','<s:property value="#ls.tsv"/>','<s:property value="#ls.trh"/>','<s:property value="#ls.trv"/>','<s:property value="#ls.th"/>','<s:property value="#ls.tv"/>','<s:property value="#ls.nh"/>','<s:property value="#ls.nv"/>','<s:property value="#ls.eh"/>','<s:property value="#ls.ev"/>')">修改</a>
+			        	<s:if test="#session.vts.map.month-1==#ls.month">
+			        	<a href="javascript:popXianCreditEdit('edit','<s:property value="#ls.month"/>','<s:property value="#ls.lh"/>','<s:property value="#ls.lv"/>','<s:property value="#ls.tsh"/>','<s:property value="#ls.tsv"/>','<s:property value="#ls.trh"/>','<s:property value="#ls.trv"/>','<s:property value="#ls.th"/>','<s:property value="#ls.tv"/>','<s:property value="#ls.nh"/>','<s:property value="#ls.nv"/>','<s:property value="#ls.eh"/>','<s:property value="#ls.ev"/>')">修改</a>
+			        	<a href="javascript:deleteXianCredit('<s:property value="#ls.month"/>')">删除</a>
+			        	</s:if>
 		        	</s:if>
 		        	<s:else>
-		        	<s:if test="#session.vts.map.month==#ls.month">
-		        	<a href="javascript:popXianCreditEdit('add','<s:property value="#ls.month"/>','<s:property value="#session.vts.map.lh"/>','<s:property value="#session.vts.map.lv"/>','','','','','','','','','','')">添加</a>
-		        	</s:if>
+			        	<s:if test="#session.vts.map.month==#ls.month">
+			        	<a href="javascript:popXianCreditEdit('add','<s:property value="#ls.month"/>','<s:property value="#session.vts.map.lh"/>','<s:property value="#session.vts.map.lv"/>','','','','','','','','','','')">添加</a>
+			        	</s:if>
 		        	</s:else>
 	        	</s:if>
 	        </td>
