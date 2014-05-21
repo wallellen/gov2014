@@ -171,19 +171,19 @@
 		<tr>
 			<td align="right">省级财政奖补资金(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vv1" name="jbtxt" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vv1" name="jbtxt" class="back-input" maxlength="8" onkeyup="checkIntInput(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">地方财政(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vv2" name="jbtxt" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vv2" name="jbtxt" class="back-input" maxlength="8" onkeyup="checkIntInput(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">挂钩帮扶单位(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vv3" name="jbtxt" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vv3" name="jbtxt" class="back-input" maxlength="8" onkeyup="checkIntInput(this)"/>
 			</td>
 		</tr>
 		<tr>
