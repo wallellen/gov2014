@@ -101,11 +101,11 @@
         <td>
         	<s:if test="#session.vts.rbm.length()>4">
         	<s:if test="#ls.c9>0">
-        	<a href="javascript:popJiangBuEdit('edit','<s:property value="#ls.c0"/>','<s:property value="#ls.c2"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c4"/>','<s:property value="#ls.c5"/>','<s:property value="#ls.c6"/>','<s:property value="#ls.c7"/>','<s:property value="#ls.c8"/>','<s:property value="#ls.c10"/>','<s:property value="#ls.c11"/>','<s:property value="#ls.c12"/>','<s:property value="#ls.c13"/>')">修改</a>
+        	<a href="javascript:popJiangBuEdit('edit','<s:property value="#ls.c0"/>','<s:property value="#ls.c2"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c4"/>','<s:property value="#ls.c5"/>','<s:property value="#ls.c6"/>','<s:property value="#ls.c7"/>','<s:property value="#ls.c8"/>','<s:property value="#ls.c10"/>','<s:property value="#ls.c11"/>','<s:property value="#ls.c12"/>','<s:property value="#ls.c13"/>','<s:property value="#ls.c1"/>')">修改</a>
         	<a href="javascript:deleteJiangBu('<s:property value="#ls.c0"/>')">删除</a>
         	</s:if>
         	<s:else>
-        	<a href="javascript:popJiangBuEdit('add','<s:property value="#ls.c0"/>','','','','','','','','','','','')">添加</a>
+        	<a href="javascript:popJiangBuEdit('add','<s:property value="#ls.c0"/>','','','','','','','','','','','','<s:property value="#ls.c1"/>')">添加</a>
         	</s:else>
         	</s:if>
         </td>

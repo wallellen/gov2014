@@ -1,5 +1,5 @@
 // JavaScript Document
-function popJiangBuEdit(s,r1,t1,t2,t3,t4,t5,t6,t7,v1,v2,v3,b1){
+function popJiangBuEdit(s,r1,t1,t2,t3,t4,t5,t6,t7,v1,v2,v3,b1,hname){
 	//title
 	var jt = document.getElementById("jtitle");
 	jt.innerHTML="";
@@ -17,7 +17,7 @@ function popJiangBuEdit(s,r1,t1,t2,t3,t4,t5,t6,t7,v1,v2,v3,b1){
 	document.getElementById("vv3").value='';
 	
 	if(s=="edit"){
-		jt.innerHTML="<font color='#fff'>修改奖补项目信息</font>";
+		jt.innerHTML="<font color='#fff'>修改奖补项目信息&nbsp;["+hname+"]</font>";
 		if(t1==1){
 			document.getElementById("tt1").checked=true;
 		}
@@ -47,7 +47,7 @@ function popJiangBuEdit(s,r1,t1,t2,t3,t4,t5,t6,t7,v1,v2,v3,b1){
 		document.getElementById("vv3").value=v3;
 		
 	}else{
-		jt.innerHTML="<font color='#fff'>添加奖补项目信息</font>";
+		jt.innerHTML="<font color='#fff'>添加奖补项目信息&nbsp;["+hname+"]</font>";
 		document.getElementById("vv1").value=0;
 		document.getElementById("vv2").value=0;
 		document.getElementById("vv3").value=0;
