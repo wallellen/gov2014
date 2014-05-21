@@ -138,10 +138,9 @@
 		<tr>
 			<td width="20%" align="right"></td>
 			<td width="10%" align="right"></td>
-			<td width="20%" align="left">
-				<h3><s:property value="year"/>&nbsp;年&nbsp;&nbsp;<label id="c1"></label>&nbsp;月</h3>
+			<td width="40%" colspan="2" align="center">
+			<h3>[&nbsp;<s:property value="year"/>年&nbsp;&nbsp;<label id="c1"></label>月&nbsp;]</h3>
 			</td>
-			<td width="20%" align="right">&nbsp;&nbsp;</td>
 			<td width="20%" align="left"></td>
 			<td width="10%"></td>
 		</tr>
