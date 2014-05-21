@@ -11,7 +11,7 @@ public interface GovKeyProjectService {
 
 	void saveKeyProjectInfo(DotSession ds, GovKeyProjectForm govKeyProjectForm, String crid);
 
-	void deleteKeyProjectByPid(String bm, String pid);
+	void deleteKeyProjectByPid(String bm, String pid, String crid);
 
 	void getKeyProjectSeason(DotSession ds);
 

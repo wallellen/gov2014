@@ -25,8 +25,8 @@ public class GovKeyProjectServiceImpl implements GovKeyProjectService {
 		govKeyProjectDao.saveKeyProjectInfo(ds, govKeyProjectForm, crid);
 	}
 
-	public void deleteKeyProjectByPid(String bm, String pid) {
-		govKeyProjectDao.deleteKeyProjectByPid(bm, pid);
+	public void deleteKeyProjectByPid(String bm, String pid, String crid) {
+		govKeyProjectDao.deleteKeyProjectByPid(bm, pid, crid);
 	}
 
 	public void getKeyProjectSeason(DotSession ds) {

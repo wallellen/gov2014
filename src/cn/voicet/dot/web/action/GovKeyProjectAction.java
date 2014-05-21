@@ -55,7 +55,7 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 	
 	/** É¾³ýÏîÄ¿ */
 	public String deleteKeyProject(){
-		govKeyProjectService.deleteKeyProjectByPid(bm,pid);
+		govKeyProjectService.deleteKeyProjectByPid(bm,pid,crid);
 		rflag=rflag+1;
 		return writeReportZhen();
 	}

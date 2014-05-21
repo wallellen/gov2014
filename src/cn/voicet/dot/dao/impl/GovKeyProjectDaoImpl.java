@@ -77,14 +77,14 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 
 	
 	/** 根据项目编号删除项目 */
-	public void deleteKeyProjectByPid(final String bm, final String pid) {
+	public void deleteKeyProjectByPid(final String bm, final String pid, final String crid) {
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall("{call sp_keyprj_delete(?,?,?)}");
 				cs.setString(1, bm);
-				cs.setInt(2, 1);
+				cs.setString(2, crid);
 				cs.setInt(3, Integer.parseInt(pid));
 				cs.execute();
 				return null;
