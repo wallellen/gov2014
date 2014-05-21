@@ -37,7 +37,7 @@
         		村名称
         	</s:if>
         </td>
-		<td colspan="7">资金到户方式(在相应栏目内打"√")</td>
+		<td colspan="7">资金到户方式农户统计数</td>
 		<td colspan="4">项目资金到户(元)</td>
         <td rowspan="3" width="4%">备注</td>
         <td rowspan="3" width="6%">
@@ -73,13 +73,13 @@
     <tr style="display:none">
         <td><s:property value="#ls.c0"/></td>
         <td><s:property value="#ls.c1"/></td>
-        <td><s:property value="#ls.c2==1?'√':''"/></td>
-        <td><s:property value="#ls.c3==1?'√':''"/></td>
-        <td><s:property value="#ls.c4==1?'√':''"/></td>
-        <td><s:property value="#ls.c5==1?'√':''"/></td>
-        <td><s:property value="#ls.c6==1?'√':''"/></td>
-        <td><s:property value="#ls.c7==1?'√':''"/></td>
-        <td><s:property value="#ls.c8==1?'√':''"/></td>
+        <td><s:property value="#ls.c2"/></td>
+        <td><s:property value="#ls.c3"/></td>
+        <td><s:property value="#ls.c4"/></td>
+        <td><s:property value="#ls.c5"/></td>
+        <td><s:property value="#ls.c6"/></td>
+        <td><s:property value="#ls.c7"/></td>
+        <td><s:property value="#ls.c8"/></td>
         <td><s:property value="#ls.c9"/></td>
         <td><s:property value="#ls.c10"/></td>
         <td><s:property value="#ls.c11"/></td>
