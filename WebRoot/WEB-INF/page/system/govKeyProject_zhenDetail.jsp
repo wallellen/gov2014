@@ -57,12 +57,9 @@
         	<input type="button" value="添加" onclick="popKeyProjectEdit('add','<s:property value="#session.vts.rbm"/>','','','','','','','','','','','')" class="button43"/>
         	</s:if>
         	</p>
-        	<s:if test="#session.vts.rbm.length()==2 || #session.vts.rbm.length()==4">
-        	<p>
+        	<p style="margin-top:4px; margin-bottom:4px;">
         		<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govKeyProjectAction_exportKeyProjectDetail.do?crid=<s:property value="crid"/>&navbm=<s:property value="navbm"/>&title=<s:property value="title"/>'" class="button43"/>
         	</p>
-        	</s:if>
-        	<p>&nbsp;</p>
         	<p>
         	<input type="button" value="返回" onclick="javascript:history.go(-<s:property value='rflag'/>)" class="button43"/>
         	</p>
