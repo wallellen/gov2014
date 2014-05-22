@@ -58,6 +58,15 @@
 		<session-timeout>20</session-timeout>
 	</session-config>
 	
+	<servlet>
+		<servlet-name>RegFileDownLoad</servlet-name>
+		<servlet-class>cn.voicet.dot.servlet.RegFileDownLoad</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegFileDownLoad</servlet-name>
+		<url-pattern>/regFileDownLoad</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

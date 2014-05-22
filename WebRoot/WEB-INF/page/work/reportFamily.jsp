@@ -18,6 +18,7 @@
 	</script>
 </head>
 <body onload="findPrint3()" style="background:#E0EEFB;">
+<div id="leftCon1">
 <div class="view-family-report1">
     <h1>脱贫奔小康低收入农户登记表</h1>
     <p class="view-print">&nbsp; </p>
@@ -55,7 +56,7 @@
 			<td width="4%">文化程度</td>
 			<td width="4%">身体状况</td>
 			<td width="14%">残疾证号</td>
-			<td width="6%">劳动力状况</td>
+			<td width="6%">劳动力<br/>状况</td>
 			<td width="4%">打工状况</td>
 			<td width="8%">低保人口<br/>1是2否</td>
 			<td width="12%">领取低保金、五保、残疾金(元)</td>
@@ -170,6 +171,7 @@
     <p class="view-report-tip1"><font style="font-size:16px;">②</font>身体健状况：1健康，2体弱多病，3长期慢性病，4患有大病，5残疾人；</p>
     <p class="view-report-tip1"><font style="font-size:16px;">③</font>劳动力状况：1劳动力，2丧失劳动力，3非劳动力；</p>
     <p class="view-report-tip1"><font style="font-size:16px;">④</font>打工状况：1在家务农，2县内务工，3县外省内务工，4省外务工，5其他（国外）。</p>
+</div>
 </div>
 <s:if test="#session.vts.hasStack()">
 	<s:property value="#session.vts.popAllList()"/>

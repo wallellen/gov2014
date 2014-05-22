@@ -63,7 +63,7 @@
 			<td width="4%">文化程度</td>
 			<td width="4%">身体状况</td>
 			<td width="14%">残疾证号</td>
-			<td width="6%">劳动力状况</td>
+			<td width="6%">劳动力<br/>状况</td>
 			<td width="4%">打工状况</td>
 			<td width="8%">低保人口<br/>1是2否</td>
 			<td width="12%">领取低保金、五保、残疾金(元)</td>
