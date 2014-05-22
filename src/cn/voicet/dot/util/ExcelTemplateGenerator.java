@@ -27,6 +27,7 @@ public class ExcelTemplateGenerator {
 	private boolean isDrawBoard;//是否画边框
 	private boolean isSetCellName;
 	private String tCellName;
+	private boolean isHookSymbol;
 	
 	public ExcelTemplateGenerator(String filePath, String fileName, int srowData, List fieldData) {
 		this.fileName = fileName;
@@ -110,7 +111,21 @@ public class ExcelTemplateGenerator {
 							sColName = "c"+String.valueOf(j);
 						}
 						if(sColName!="^"){
-							dataCell.setCellValue((String)numMap.get(sColName));
+							if(isHookSymbol)
+							{
+								if(j==2 || j==3 || j==4 || j==5 || j==6 || j==7 || j==8)
+								{
+									dataCell.setCellValue(((String)numMap.get(sColName)).equals("1")?"√":"");
+								}
+								else
+								{
+									dataCell.setCellValue((String)numMap.get(sColName));
+								}
+							}	
+							else
+							{
+								dataCell.setCellValue((String)numMap.get(sColName));
+							}
 						}
 					}
 				}
@@ -129,5 +144,10 @@ public class ExcelTemplateGenerator {
 		}
 		out.flush();
 		out.close();
+	}
+	
+	/** 替换勾符号 */
+	public void setGouCharacter(){
+		isHookSymbol = true;
 	}
 }

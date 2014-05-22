@@ -134,6 +134,7 @@ public class GovJiangBuAction extends BaseAction implements ModelDriven<GovJiang
 	    generator.setColList("c1,c0,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12");
 	    generator.setDrawBoard();
 	    generator.setEffectColNum(13);
+	    generator.setGouCharacter();
 	    generator.exportExcelWithTemplate(response);
         return null;
 	}

@@ -51,11 +51,9 @@
 		<td colspan="4">项目资金到户(元)</td>
         <td rowspan="3" width="4%">备注</td>
         <td rowspan="3" width="6%">
-        	<s:if test="navbm.length()<12">
         	<p>
         	<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govJiangBuAction_exportJiangbuTohu.do?crid=<s:property value="crid"/>&navbm=<s:property value="navbm"/>&title=<s:property value="title"/>'" class="button43"/>
         	</p>
-        	</s:if>
         	<p>&nbsp;</p>
         	<p>
         	<input type="button" value="返回" onclick="javascript:history.go(-<s:property value="rflag"/>)" class="button43"/>
