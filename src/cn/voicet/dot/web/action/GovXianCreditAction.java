@@ -109,9 +109,10 @@ public class GovXianCreditAction extends BaseAction implements ModelDriven<GovXi
 		String fileName = new String(("扶贫小额贷款发放进度-"+title).getBytes("gb2312"), "ISO8859-1") +".xls";
 	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"xiaoe-ffjd.xls";
 	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 2, ds.list);
-	    generator.setColList("oname,tsh,tsv,th,tv,lsh,lsv,perc");
+	    generator.setColList("oname,tsh,tsv,th,tv,lsh,lsv,perc,xid");
 	    generator.setDrawBoard();
 	    generator.setEffectColNum(8);
+	    generator.setLineBackGround();
 		generator.exportExcelWithTemplate(response);
 		return null;
 	}

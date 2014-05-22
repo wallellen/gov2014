@@ -14,6 +14,8 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.IndexedColors;
 
 @SuppressWarnings("unchecked")
 public class ExcelTemplateGenerator {
@@ -28,6 +30,7 @@ public class ExcelTemplateGenerator {
 	private boolean isSetCellName;
 	private String tCellName;
 	private boolean isHookSymbol;
+	private boolean isLineBackGround;
 	
 	public ExcelTemplateGenerator(String filePath, String fileName, int srowData, List fieldData) {
 		this.fileName = fileName;
@@ -95,12 +98,12 @@ public class ExcelTemplateGenerator {
 					Map numMap=(Map)fieldData.get(i);
 					dataRow = sheet.createRow(i+srowData);
 					int dl= endcol>0 ? endcol : numMap.size();
-					
 					for(int j=0; j<dl; j++){
 						dataCell = dataRow.createCell(j);
 						if(isDrawBoard){
 							dataCell.setCellStyle(style);
 						}
+						
 						if(null!=colNameArr && colNameArr.length>0){
 							if(colNameArr.length>j){
 								sColName = colNameArr[j];
@@ -126,6 +129,7 @@ public class ExcelTemplateGenerator {
 							{
 								dataCell.setCellValue((String)numMap.get(sColName));
 							}
+							dataCell.setCellValue((String)numMap.get(sColName));
 						}
 					}
 				}
@@ -147,7 +151,15 @@ public class ExcelTemplateGenerator {
 	}
 	
 	/** 替换勾符号 */
-	public void setGouCharacter(){
+	public void setGouCharacter()
+	{
 		isHookSymbol = true;
 	}
+	
+	/** 设置一行背景色 */
+	public void setLineBackGround()
+	{
+		isLineBackGround = true;
+	}
+	
 }
