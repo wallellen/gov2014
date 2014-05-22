@@ -51,6 +51,10 @@
        	<td colspan="10">挂钩帮扶全县情况</td>
         <td rowspan="3" width="4%">备注</td>
         <td rowspan="3" width="8%">
+        	<p>
+        	<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govBangfuAction_exportWriteWithDept.do?rid=<s:property value="rid"/>&title=<s:property value="title"/>&byunit=<s:property value="byunit"/>'" class="button43"/>
+        	</p>
+        	<p>&nbsp;</p>
         	<input type="button" value="返回" onclick="javascript:history.go(-<s:property value='rflag'/>)" class="button43"/><br/><br/>
         	<input type="button" value="添加" onclick="location.href='${pageContext.request.contextPath }/system/govBangfuAction_addBangfu.do?rid=<s:property value="rid"/>&title=<s:property value="title"/>&sdt=<s:property value="sdt"/>&edt=<s:property value="edt"/>&deptName=<s:property value="deptName"/>'" class="button43"/>
         </td>
