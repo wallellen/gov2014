@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFDataFormat;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -87,11 +88,18 @@ public class ExcelTemplateGenerator {
 		        HSSFCellStyle style=null;
 		        //设置边框
 		        style = workBook.createCellStyle();
+		        //背景色
 		        HSSFCellStyle styleColor = workBook.createCellStyle();
+		        //单元格格式
+		        
 		        if(isLineBackGround)
 		        {
 					styleColor.setFillForegroundColor(HSSFColor.GREY_50_PERCENT.index);//前景颜色
 					styleColor.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);//填充方式，前色填充
+					styleColor.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+					styleColor.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+					styleColor.setBorderRight(HSSFCellStyle.BORDER_THIN);
+					styleColor.setBorderTop(HSSFCellStyle.BORDER_THIN);
 		        }
 		        if(isDrawBoard)
 		        {
