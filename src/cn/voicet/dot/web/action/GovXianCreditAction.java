@@ -142,7 +142,8 @@ public class GovXianCreditAction extends BaseAction implements ModelDriven<GovXi
 	    generator.setColList("oname,lh,lv,tsh,tsv,trh,trv,th,tv,nh,nv,en,ev");
 	    generator.setDrawBoard();
 	    generator.setEffectColNum(13);
-		generator.exportExcelWithTemplate(response);
+	    generator.setLineBackGround();
+		generator.exportExcelWithTemplate2(response);
 		return null;
 	}
 	private String year;

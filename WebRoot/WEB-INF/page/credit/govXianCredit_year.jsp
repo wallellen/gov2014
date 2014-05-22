@@ -37,7 +37,7 @@
         		<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewMonthList.do?year=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&areaName=<s:property value="#session.vts.rbn"/>">月度查看</a>
         	</s:if>
         	<s:else>
-        		<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewCreditYear.do?year=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&areaName=<s:property value='#session.vts.rbn'/>">查看</a>
+        		<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewCreditYear.do?xbm=<s:property value="#session.vts.rbm"/>&year=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&areaName=<s:property value='#session.vts.rbn'/>">查看</a>
         	</s:else>
         </td>
     </tr>
