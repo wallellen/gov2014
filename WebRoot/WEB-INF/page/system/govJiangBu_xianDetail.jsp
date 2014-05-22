@@ -37,7 +37,7 @@
         		村名称
         	</s:if>
         </td>
-		<td colspan="7">资金到户方式农户统计数</td>
+		<td colspan="7">资金到户方式农户数统计</td>
 		<td colspan="4">项目资金到户(元)</td>
         <td rowspan="3" width="4%">备注</td>
         <td rowspan="3" width="6%">
