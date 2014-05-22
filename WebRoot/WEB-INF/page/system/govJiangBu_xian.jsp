@@ -26,8 +26,8 @@
    	<thead>
    	<tr>
 		<td rowspan="3" width="6%">建档立卡号</td>
-        <td rowspan="3" width="10%">市、县名称</td>
-		<td colspan="7">资金到户方式农户统计数</td>
+        <td rowspan="3" width="10%">地区名称</td>
+		<td colspan="7">资金到户方式农户数统计</td>
 		<td colspan="4">项目资金到户(元)</td>
         <td rowspan="3" width="4%">备注</td>
         <td rowspan="3" width="6%" align="center">
