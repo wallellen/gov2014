@@ -14,8 +14,7 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.hssf.util.HSSFColor;
 
 @SuppressWarnings("unchecked")
 public class ExcelTemplateGenerator {
@@ -87,8 +86,15 @@ public class ExcelTemplateGenerator {
 		        String sColName;
 		        HSSFCellStyle style=null;
 		        //设置边框
-		        if(isDrawBoard){
-			        style = workBook.createCellStyle();
+		        style = workBook.createCellStyle();
+		        HSSFCellStyle styleColor = workBook.createCellStyle();
+		        if(isLineBackGround)
+		        {
+					styleColor.setFillForegroundColor(HSSFColor.GREY_50_PERCENT.index);//前景颜色
+					styleColor.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);//填充方式，前色填充
+		        }
+		        if(isDrawBoard)
+		        {
 			        style.setBorderBottom(HSSFCellStyle.BORDER_THIN);
 			        style.setBorderLeft(HSSFCellStyle.BORDER_THIN);
 			        style.setBorderRight(HSSFCellStyle.BORDER_THIN);
@@ -103,7 +109,6 @@ public class ExcelTemplateGenerator {
 						if(isDrawBoard){
 							dataCell.setCellStyle(style);
 						}
-						
 						if(null!=colNameArr && colNameArr.length>0){
 							if(colNameArr.length>j){
 								sColName = colNameArr[j];
@@ -129,7 +134,12 @@ public class ExcelTemplateGenerator {
 							{
 								dataCell.setCellValue((String)numMap.get(sColName));
 							}
-							dataCell.setCellValue((String)numMap.get(sColName));
+							if(isLineBackGround){
+								if(numMap.get("xid").equals("0"))
+								{
+									dataCell.setCellStyle(styleColor);
+								}
+							}
 						}
 					}
 				}
