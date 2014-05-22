@@ -113,7 +113,7 @@ public class GovXianCreditAction extends BaseAction implements ModelDriven<GovXi
 	    generator.setDrawBoard();
 	    generator.setEffectColNum(8);
 	    generator.setLineBackGround();
-		generator.exportExcelWithTemplate(response);
+		generator.exportExcelWithTemplate2(response);
 		return null;
 	}
 	
