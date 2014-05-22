@@ -65,11 +65,9 @@
         <td rowspan="3" width="4%">省级财政投入资金拔付进度(%)</td>
         <td rowspan="3" width="4%">项目实施进度(%)</td>
         <td rowspan="3" width="8%">
-        	<s:if test="#session.vts.rbm.length()<6">
         	<p>
         	<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govVillageProjectAction_exportVillageProjectDetail.do?crid=<s:property value="crid"/>&navbm=<s:property value="navbm"/>&title=<s:property value="title"/>'" class="button43"/>
         	</p>
-        	</s:if>
         	<p>&nbsp;</p>
         	<p>
 			<input type="button" value="返回" onclick="javascript:history.go(-<s:property value='rflag'/>)" class="button43"/>
