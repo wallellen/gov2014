@@ -124,7 +124,6 @@ function responseCredit(data, textStatus, jqXHR)
 {
 	if(data.status=="ok")
 	{
-		alert("操作成功");
 		location.reload();
 	}
 	else
