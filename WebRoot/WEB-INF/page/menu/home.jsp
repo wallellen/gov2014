@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <a href="#">收藏本站</a>&nbsp;|&nbsp;
         <a href="#">联系我们</a>&nbsp;|&nbsp;
         <a href="#">帮助中心</a>&nbsp;|&nbsp;
-        <a href="<%=basePath %>question.jsp" target="_blank">常见问题</a>
+        <a href="${pageContext.request.contextPath }/help/question.jsp" target="_blank">常见问题</a>
         <!-- 记录js分页当前页码 -->
         <input type="hidden" id="globalCurPage"/>
         </p>
