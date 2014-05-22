@@ -49,16 +49,16 @@
         </tr>
         <tr>
         	<td width="10%">姓名</td>
-            <td width="8%">性别1男2女</td>
-			<td width="6%">年龄</td>
-			<td width="10%">在校生1是2否</td>
-			<td width="6%">文化程度</td>
-			<td width="10%">身体状况</td>
-			<td width="10%">残疾证号</td>
-			<td width="10%">劳动力状况</td>
-			<td width="6%">打工状况</td>
-			<td width="10%">低保人口1是2否</td>
-			<td width="10%">领取低保金、五保、残疾金(元)</td>
+            <td width="6%">性别<br/>1男2女</td>
+			<td width="4%">年龄</td>
+			<td width="8%">在校生<br/>1是2否</td>
+			<td width="4%">文化程度</td>
+			<td width="4%">身体状况</td>
+			<td width="14%">残疾证号</td>
+			<td width="6%">劳动力状况</td>
+			<td width="4%">打工状况</td>
+			<td width="8%">低保人口<br/>1是2否</td>
+			<td width="12%">领取低保金、五保、残疾金(元)</td>
         </tr>
         <s:iterator value="#session.vts.list" var="ls" status="sc">
 		<tr>

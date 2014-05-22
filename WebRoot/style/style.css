@@ -218,8 +218,8 @@ ul{margin:0; padding:0; list-style:none;}
 .view-family-report .view-print{height:22px; line-height:22px; text-align:right}
 #view-family-tit{width:649px; height:60px;}
 #view-family-tit .viewleft{float:left; width:495px; height:30px; line-height:30px;}
-#view-family-tit .viewleft .view-sp1 span{width:115px; padding-left:5px; display:block; float:left;}
-#view-family-tit .viewleft .view-sp2 span{width:80px; margin-right:20px; padding-left:10px; display:block; float:left;}
+#view-family-tit .viewleft .view-sp1 span{width:115px; height:30px; padding-left:5px; display:block; float:left; overflow:hidden}
+#view-family-tit .viewleft .view-sp2 span{width:80px; height:30px; margin-right:20px; padding-left:10px; display:block; float:left; overflow:hidden}
 #view-family-tit .viewright{float:right; width:145px; padding-top:10px; text-align:left;}
 
 .view-family-report1{padding-top:10px; width:666px; height:667px; line-height:18px;}

@@ -61,7 +61,7 @@
 			<td width="4%">年龄</td>
 			<td width="8%">在校生<br/>1是2否</td>
 			<td width="4%">文化程度</td>
-			<td width="6%">身体状况</td>
+			<td width="4%">身体状况</td>
 			<td width="14%">残疾证号</td>
 			<td width="6%">劳动力状况</td>
 			<td width="4%">打工状况</td>
