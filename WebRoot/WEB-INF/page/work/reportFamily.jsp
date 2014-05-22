@@ -24,10 +24,10 @@
     <div id="view-family-tit">
     	<div class="viewleft">
         	<p class="view-sp1">
-            	<span><u><s:property value="#session.vts.map.x"/></u>&nbsp;&nbsp;县(市、区)</span>
-                <span><u><s:property value="#session.vts.map.xx"/></u>&nbsp;&nbsp;乡(镇)</span>
-                <span><u><s:property value="#session.vts.map.c"/></u>&nbsp;&nbsp;村</span>
-                <span><u><s:property value="#session.vts.map.z"/></u>&nbsp;&nbsp;组</span>
+            	<span><u><s:property value="#session.vts.map.x"/></u>&nbsp;县(市、区)</span>
+                <span><u><s:property value="#session.vts.map.xx"/></u>&nbsp;乡(镇)</span>
+                <span><u><s:property value="#session.vts.map.c"/></u>&nbsp;村</span>
+                <span><u><s:property value="#session.vts.map.z"/></u>&nbsp;组</span>
 			</p>
             <p class="view-sp2">
             	<span>县码：<u><s:property value="#session.vts.map.xm"/></u></span>
@@ -166,6 +166,10 @@
 	       	<td>&nbsp;</td>
 		</tr>
     </table>
+    <p class="view-report-tip">注：<font style="font-size:16px;">①</font>文化程度：1文盲、半文盲，2小学，3初中，4高中，5大专，6大专以上，7学龄年儿童；</p>
+    <p class="view-report-tip1"><font style="font-size:16px;">②</font>身体健状况：1健康，2体弱多病，3长期慢性病，4患有大病，5残疾人；</p>
+    <p class="view-report-tip1"><font style="font-size:16px;">③</font>劳动力状况：1劳动力，2丧失劳动力，3非劳动力；</p>
+    <p class="view-report-tip1"><font style="font-size:16px;">④</font>打工状况：1在家务农，2县内务工，3县外省内务工，4省外务工，5其他（国外）。</p>
 </div>
 <s:if test="#session.vts.hasStack()">
 	<s:property value="#session.vts.popAllList()"/>

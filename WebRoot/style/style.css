@@ -218,7 +218,7 @@ ul{margin:0; padding:0; list-style:none;}
 .view-family-report .view-print{height:22px; line-height:22px; text-align:right}
 #view-family-tit{width:649px; height:60px;}
 #view-family-tit .viewleft{float:left; width:495px; height:30px; line-height:30px;}
-#view-family-tit .viewleft .view-sp1 span{width:105px; margin-right:5px; padding-left:5px; display:block; float:left;}
+#view-family-tit .viewleft .view-sp1 span{width:115px; padding-left:5px; display:block; float:left;}
 #view-family-tit .viewleft .view-sp2 span{width:80px; margin-right:20px; padding-left:10px; display:block; float:left;}
 #view-family-tit .viewright{float:right; width:145px; padding-top:10px; text-align:left;}
 
@@ -229,4 +229,7 @@ ul{margin:0; padding:0; list-style:none;}
 .view-family-report1 .last-tab{border-bottom:1px solid #000;}
 
 .report-back-input{height:18px; width:180px; color:blue}
+
+.view-report-tip{float:left; padding-left:40px;}
+.view-report-tip1{float:left; padding-left:64px;}
 

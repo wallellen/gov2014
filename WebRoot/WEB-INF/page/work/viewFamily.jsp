@@ -31,10 +31,10 @@
     <div id="view-family-tit">
     	<div class="viewleft">
         	<p class="view-sp1">
-            	<span><u><s:property value="#session.vts.map.x"/></u>&nbsp;&nbsp;县(市、区)</span>
-                <span><u><s:property value="#session.vts.map.xx"/></u>&nbsp;&nbsp;乡(镇)</span>
-                <span><u><s:property value="#session.vts.map.c"/></u>&nbsp;&nbsp;村</span>
-                <span><u><s:property value="#session.vts.map.z"/></u>&nbsp;&nbsp;组</span>
+            	<span><u><s:property value="#session.vts.map.x"/></u>&nbsp;县(市、区)</span>
+                <span><u><s:property value="#session.vts.map.xx"/></u>&nbsp;乡(镇)</span>
+                <span><u><s:property value="#session.vts.map.c"/></u>&nbsp;村</span>
+                <span><u><s:property value="#session.vts.map.z"/></u>&nbsp;组</span>
 			</p>
             <p class="view-sp2">
             	<span>县码：<u><s:property value="#session.vts.map.xm"/></u></span>
@@ -57,16 +57,16 @@
         </tr>
         <tr>
         	<td width="10%">姓名</td>
-            <td width="8%">性别1男2女</td>
-			<td width="6%">年龄</td>
-			<td width="10%">在校生1是2否</td>
-			<td width="6%">文化程度</td>
-			<td width="10%">身体状况</td>
-			<td width="10%">残疾证号</td>
-			<td width="10%">劳动力状况</td>
-			<td width="6%">打工状况</td>
-			<td width="10%">低保人口1是2否</td>
-			<td width="10%">领取低保金、五保、残疾金(元)</td>
+            <td width="6%">性别<br/>1男2女</td>
+			<td width="4%">年龄</td>
+			<td width="8%">在校生<br/>1是2否</td>
+			<td width="4%">文化程度</td>
+			<td width="6%">身体状况</td>
+			<td width="14%">残疾证号</td>
+			<td width="6%">劳动力状况</td>
+			<td width="4%">打工状况</td>
+			<td width="8%">低保人口<br/>1是2否</td>
+			<td width="12%">领取低保金、五保、残疾金(元)</td>
         </tr>
         <s:iterator value="#session.vts.list" var="ls" status="sc">
 		<tr>
@@ -174,6 +174,10 @@
 	       	<td>&nbsp;</td>
 		</tr>
     </table>
+  	<p class="view-report-tip">注：<font style="font-size:16px;">①</font>文化程度：1文盲、半文盲，2小学，3初中，4高中，5大专，6大专以上，7学龄年儿童；</p>
+    <p class="view-report-tip1"><font style="font-size:16px;">②</font>身体健状况：1健康，2体弱多病，3长期慢性病，4患有大病，5残疾人；</p>
+    <p class="view-report-tip1"><font style="font-size:16px;">③</font>劳动力状况：1劳动力，2丧失劳动力，3非劳动力；</p>
+    <p class="view-report-tip1"><font style="font-size:16px;">④</font>打工状况：1在家务农，2县内务工，3县外省内务工，4省外务工，5其他（国外）。</p>
     </div>
 </div>
 <s:if test="#session.vts.hasStack()">
