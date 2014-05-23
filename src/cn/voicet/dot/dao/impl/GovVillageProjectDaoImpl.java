@@ -28,7 +28,7 @@ public class GovVillageProjectDaoImpl extends CommonDaoImpl<Object> implements G
 					SQLException {
 				Map map;
 				ds.initData();
-				String proc = "{call sp_chunprj_list(?,?)}";
+				String proc = "{call sp_chunprj_detail(?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
 				cs.setString(1, navbm);
@@ -37,6 +37,7 @@ public class GovVillageProjectDaoImpl extends CommonDaoImpl<Object> implements G
 				ResultSet rs = null;
 				int rid=0;
 				int updateCount = -1;
+				ds.initData();
 				ds.list = new ArrayList();
 				ds.list2 = new ArrayList();
 				do{
@@ -49,28 +50,10 @@ public class GovVillageProjectDaoImpl extends CommonDaoImpl<Object> implements G
 					if(null != rs){
 						while(rs.next()){
 							if(rid ==0){
-								ResultSetMetaData rsm =rs.getMetaData(); //获得列集
-								int col = rsm.getColumnCount();
-								for(int i=0; i<9; i++){
-									if(i<col){
-										ds.map.put("c"+i, rsm.getColumnName(i+1));
-									}else{
-										ds.map.put("c"+i, "");
-									}
-								}
 								map = new HashMap();
 								ds.putMapData(map, rs);
 								ds.list.add(map);
 							}else if (rid == 1 ){
-								ResultSetMetaData rsm =rs.getMetaData(); //获得列集
-								int col = rsm.getColumnCount();
-								for(int i=0; i<9; i++){
-									if(i<col){
-										ds.map.put("c"+i, rsm.getColumnName(i+1));
-									}else{
-										ds.map.put("c"+i, "");
-									}
-								}
 								map = new HashMap();
 								ds.putMapData(map, rs);
 								ds.list2.add(map);
@@ -175,6 +158,7 @@ public class GovVillageProjectDaoImpl extends CommonDaoImpl<Object> implements G
 				cs.setString(2, crid);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
+				ds.initData();
 				ds.list = new ArrayList();
 				Map map;
 				if(rs!=null){
