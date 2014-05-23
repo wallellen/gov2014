@@ -188,7 +188,7 @@ public class DotRoleMenu {
 		List<GrpInfo> grpList=Role.grpInfoList;
 		List<FunInfo> funList;
 		for(int i=0; i<grpList.size(); i++){
-			menuInfo += "<li class='level1'><a href='#'>";
+			menuInfo += "<li class='level1'><a href='javascript:void(0)'>";
 			menuInfo += grpList.get(i).getGrpName()+"</a>";
 			menuInfo += "<ul id='ChildMenu"+i+"' class='level2'>";
 			funList = grpList.get(i).funInfoList;
