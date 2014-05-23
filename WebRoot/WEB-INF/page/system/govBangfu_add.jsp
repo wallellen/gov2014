@@ -48,8 +48,8 @@
 	<div id="Tab">
 	  	<div class="Menubox">
 	    	<ul>
-		      	<s:iterator value="#session.vts.list" var="ls" status="sc">
-					<li id="menu<s:property value="#sc.count"/>" onmouseover="setTab('menu',<s:property value="#sc.count"/>,4)"><s:property value="#ls.c1"/></li>	      	
+		      	<s:iterator value="#application.vta.GetList('bfdept')" var="ls" status="sc">
+					<li id="menu<s:property value="#sc.count"/>" onmouseover="setTab('menu',<s:property value="#sc.count"/>,4)"><s:property value="#ls.str"/></li>	      	
 		      	</s:iterator>
 		      	<li class="box_return"><input type="button" value="返回" onclick="javascript:history.go(-1)" class="button43"/></li>
 	    	</ul>
@@ -60,29 +60,29 @@
 	  	<div class="Contentbox"> 
 	    	<div id="con_menu_1" class="hover">
 	      		<ul>
-				<s:iterator value="#session.vts.list2" var="ls2">
-				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls2.c0"/>','','','','','','','','','1')" title="<s:property value='#ls2.c1'/>"><s:property value="#ls2.c1"/></a></li>
+				<s:iterator value="#session.vts.list" var="ls">
+				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls.c0"/>','','','','','','','','','1')" title="<s:property value='#ls.c1'/>"><s:property value="#ls.c1"/></a></li>
 				</s:iterator>
 	    		</ul>
 	    	</div>
 	    	<div id="con_menu_2" style="display:none">
 	      		<ul>
-				<s:iterator value="#session.vts.list3" var="ls3">
-				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls3.c0"/>','','','','','','','','','2')" title="<s:property value='#ls3.c1'/>"><s:property value="#ls3.c1"/></a></li>
+				<s:iterator value="#session.vts.list2" var="ls2">
+				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls2.c0"/>','','','','','','','','','2')" title="<s:property value='#ls2.c1'/>"><s:property value="#ls2.c1"/></a></li>
 				</s:iterator>
 	    		</ul>
 	    	</div>
 	    	<div id="con_menu_3"style="display:none">
 		      	<ul>
-				<s:iterator value="#session.vts.list4" var="ls4">
-				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls4.c0"/>','','','','','','','','','3')" title="<s:property value='#ls4.c1'/>"><s:property value="#ls4.c1.length()>13?#ls4.c1.substring(0,12)+'...':#ls4.c1"/></a></li>
+				<s:iterator value="#session.vts.list3" var="ls3">
+				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls3.c0"/>','','','','','','','','','3')" title="<s:property value='#ls3.c1'/>"><s:property value="#ls3.c1.length()>13?#ls3.c1.substring(0,12)+'...':#ls3.c1"/></a></li>
 				</s:iterator>
 	    		</ul>
 	    	</div>
 	    	<div id="con_menu_4"style="display:none">
 		      	<ul>
-				<s:iterator value="#session.vts.list5" var="ls5">
-				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls5.c0"/>','','','','','','','','','4')" title="<s:property value='#ls5.c1'/>"><s:property value="#ls5.c1.length()>13?#ls5.c1.substring(0,12)+'...':#ls5.c1"/></a></li>
+				<s:iterator value="#session.vts.list4" var="ls4">
+				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls4.c0"/>','','','','','','','','','4')" title="<s:property value='#ls4.c1'/>"><s:property value="#ls4.c1.length()>13?#ls4.c1.substring(0,12)+'...':#ls4.c1"/></a></li>
 				</s:iterator>
 	    		</ul>
 	    	</div>
