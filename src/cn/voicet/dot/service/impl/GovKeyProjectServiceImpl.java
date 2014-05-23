@@ -25,8 +25,8 @@ public class GovKeyProjectServiceImpl implements GovKeyProjectService {
 		govKeyProjectDao.saveKeyProjectInfo(ds, govKeyProjectForm, crid);
 	}
 
-	public void deleteKeyProjectByPid(String bm, String pid, String crid) {
-		govKeyProjectDao.deleteKeyProjectByPid(bm, pid, crid);
+	public void deleteKeyProjectByPid(DotSession ds, String bm, String pid, String crid) {
+		govKeyProjectDao.deleteKeyProjectByPid(ds, bm, pid, crid);
 	}
 
 	public void getKeyProjectSeason(DotSession ds) {
@@ -35,6 +35,15 @@ public class GovKeyProjectServiceImpl implements GovKeyProjectService {
 
 	public void getKeyProjectZhen(DotSession ds, String navbm, String crid) {
 		govKeyProjectDao.getKeyProjectZhen(ds, navbm, crid);
+	}
+
+	public void getPianquInfoList(DotSession ds, String navbm, String crid) {
+		govKeyProjectDao.getPianquInfoList(ds, navbm, crid);
+	}
+
+	public void getKeyProjectListByPiqnquId(DotSession ds, String navbm,
+			String crid) {
+		govKeyProjectDao.getKeyProjectListByPiqnquId(ds, navbm, crid);
 	}
 
 }

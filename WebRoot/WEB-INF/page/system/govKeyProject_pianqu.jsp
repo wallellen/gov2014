@@ -25,15 +25,15 @@
    	<thead>
    	<tr>
      	<td rowspan="2" width="4%">序号</td>
-        <td rowspan="2" width="16%">县名</td>
+        <td rowspan="2" width="16%">片区名称</td>
         <td rowspan="2" width="4%">项目数</td>
     	<td colspan="4">资金总量(万元)</td>
         <td colspan="2">资金拨付情况(万元)</td>
         <td colspan="3">项目实施进度</td>
         <td rowspan="2" width="5%">
         	<p>
-			<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govKeyProjectAction_exportKeyProject.do?crid=<s:property value="crid"/>&navbm=<s:property value="navbm"/>&title=<s:property value="title"/>'" class="button43"/>
-        	</p>
+			<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govKeyProjectAction_exportPianProject.do?crid=<s:property value="crid"/>&navbm=<s:property value="navbm"/>&title=<s:property value="title"/>'" class="button43"/>
+			</p>
         	<p>&nbsp;</p>
         	<p>
         	<input type="button" value="返回" onclick="javascript:history.go(-1)" class="button43"/>
@@ -56,8 +56,8 @@
     <s:iterator value="#session.vts.list" var="ls" status="sc">
     <tr style="display:none">
 		<td><s:property value="#ls.bm"/></td>
-        <td><s:property value="#ls.oname"/></td>
-        <td><s:property value="#ls.m"/></td>
+        <td align="left">&nbsp;<s:property value="#ls.oname"/></td>
+        <td><s:property value="#ls.rm"/></td>
         <td><s:property value="#ls.prt"/></td>
         <td><s:property value="#ls.spr"/></td>
         <td><s:property value="#ls.sspr"/></td>
@@ -68,8 +68,8 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>
-        	<s:if test="#session.vts.rbm.length()==2">
-        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_writeReportZhen.do?navbm=<s:property value='#ls.bm'/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value='#ls.oname'/>">查看详细</a>
+        	<s:if test="#ls.bm.length()<6">
+        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_viewKeyProjectList.do?navbm=<s:property value='#ls.bm'/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value='#ls.oname'/>">查看详细</a>
         	</s:if>
         	<s:else>
         	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_writeReportZhen.do?navbm=<s:property value='#ls.c0'/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value='#ls.oname'/>">查看详细</a>

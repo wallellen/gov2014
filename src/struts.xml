@@ -94,6 +94,11 @@
 			<result name="showKeyProject_season">/WEB-INF/page/system/govKeyProject_season.jsp</result>
 			<result name="showKeyProject_zhen">/WEB-INF/page/system/govKeyProject_zhen.jsp</result>
 			<result name="showKeyProject_zhenDetail">/WEB-INF/page/system/govKeyProject_zhenDetail.jsp</result>
+			
+			<result name="show_pianqu">/WEB-INF/page/system/govKeyProject_pianqu.jsp</result>
+			<result name="showKeyProject_zhen">/WEB-INF/page/system/govKeyProject_zhen.jsp</result>
+			
+			
 		</action>
 		
 		<!-- 村项目实施进度 -->

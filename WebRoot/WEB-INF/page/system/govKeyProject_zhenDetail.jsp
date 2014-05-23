@@ -57,7 +57,7 @@
         	<input type="button" value="添加" onclick="popKeyProjectEdit('add','<s:property value="#session.vts.rbm"/>','','','','','','','','','','','')" class="button43"/>
         	</s:if>
         	</p>
-        	<p style="margin-top:4px; margin-bottom:4px;">
+        	<p style="margin-top:8px; margin-bottom:8px;">
         		<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govKeyProjectAction_exportKeyProjectDetail.do?crid=<s:property value="crid"/>&navbm=<s:property value="navbm"/>&title=<s:property value="title"/>'" class="button43"/>
         	</p>
         	<p>
@@ -80,22 +80,22 @@
     <tbody id="splitpage">
     <s:iterator value="#session.vts.list" var="ls" status="sc">
     <tr style="display:none">
-		<td><label id="#sc.count"></label><s:property value="#sc.count"/></td>
-        <td title="<s:property value='#ls.c3'/>"><s:property value="#ls.c3.length()>13?#ls.c3.substring(0,12)+'...':#ls.c3"/></td>
-        <td title="<s:property value='#ls.c2'/>"><s:property value="#ls.c2.length()>11?#ls.c2.substring(0,10)+'...':#ls.c2"/></td>
-        <td><s:property value="#ls.c4"/></td>
-        <td><s:property value="#ls.c5"/></td>
-        <td><s:property value="#ls.c6"/></td>
-        <td><s:property value="#ls.c7"/></td>
-        <td><s:property value="#ls.c8"/></td>
-        <td><s:property value="#ls.c9"/></td>
-        <td><s:property value="#ls.c10"/></td>
-        <td><s:property value="#ls.c11"/></td>
-        <td><s:property value="#ls.c12"/></td>
+		<td><s:property value="#ls.pid"/></td>
+        <td title="<s:property value='#ls.itemname'/>"><s:property value="#ls.itemname.length()>13?#ls.itemname.substring(0,12)+'...':#ls.itemname"/></td>
+        <td title="<s:property value='#ls.oname'/>"><s:property value="#ls.oname.length()>11?#ls.oname.substring(0,10)+'...':#ls.oname"/></td>
+        <td><s:property value="#ls.prt"/></td>
+        <td><s:property value="#ls.spr"/></td>
+        <td><s:property value="#ls.sspr"/></td>
+        <td><s:property value="#ls.opr"/></td>
+        <td><s:property value="#ls.pyt"/></td>
+        <td><s:property value="#ls.spy"/></td>
+        <td><s:property value="#ls.yt"/></td>
+        <td><s:property value="#ls.yp"/></td>
+        <td><s:property value="#ls.np"/></td>
         <td>
         	<s:if test="#session.vts.rbm.length()==6">
-        	<a href="javascript:popKeyProjectEdit('edit','<s:property value="#ls.c1"/>','<s:property value="#ls.c0"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c2"/>','<s:property value="#ls.c5"/>','<s:property value="#ls.c6"/>','<s:property value="#ls.c7"/>','<s:property value="#ls.c8"/>','<s:property value="#ls.c9"/>','<s:property value="#ls.c10"/>','<s:property value="#ls.c11"/>','<s:property value="#ls.c12"/>')">修改</a>
-        	<a href="javascript:deleteKeyProject('<s:property value="#ls.c0"/>','<s:property value="#ls.c1"/>')">删除</a>
+        	<a href="javascript:popKeyProjectEdit('edit','<s:property value="#ls.bm"/>','<s:property value="#ls.pid"/>','<s:property value="#ls.itemname"/>','<s:property value="#ls.oname"/>','<s:property value="#ls.spr"/>','<s:property value="#ls.sspr"/>','<s:property value="#ls.opr"/>','<s:property value="#ls.pyt"/>','<s:property value="#ls.spy"/>','<s:property value="#ls.yt"/>','<s:property value="#ls.yp"/>','<s:property value="#ls.np"/>')">修改</a>
+        	<a href="javascript:deleteKeyProject('<s:property value="#ls.pid"/>','<s:property value="#ls.bm"/>')">删除</a>
         	</s:if>
         </td>
 	</tr>

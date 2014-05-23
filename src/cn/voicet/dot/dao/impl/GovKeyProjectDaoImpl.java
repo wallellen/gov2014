@@ -27,18 +27,20 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 					SQLException {
 				Map map;
 				ds.initData();
-				String proc = "{call sp_keyprj_detail(?,?)}";
+				String proc = "{call sp_keyprj_detailex(?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
-				cs.setString(1, navbm);
+				cs.setString(1, ds.rbm);
 				cs.setString(2, crid);
+				cs.setString(3, navbm);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
+				ds.initData();
 				ds.list = new ArrayList();
 				if(rs!=null){
 					while (rs.next()) {
 						map = new HashMap();
-						ds.putMapData(map, rs);
+						ds.putMapDataByColName(map, rs);
 		        		ds.list.add(map);
 					}
 				}
@@ -52,23 +54,24 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				String proc_update = "{call sp_keyprj_update(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+				String proc_update = "{call sp_keyprj_updateex(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = null;
 				cs = conn.prepareCall(proc_update);
 				cs.setString(1, govKeyProjectForm.getKptxt()[0]);
 				cs.setString(2, crid);
-				cs.setString(3, govKeyProjectForm.getKptxt()[1]);
-				cs.setString(4, govKeyProjectForm.getKptxt()[2]);
-				cs.setString(5, govKeyProjectForm.getKptxt()[3]);
-				cs.setFloat(6, Float.parseFloat(govKeyProjectForm.getKptxt()[4]));
-				cs.setFloat(7, Float.parseFloat(govKeyProjectForm.getKptxt()[5]));
-				cs.setFloat(8, Float.parseFloat(govKeyProjectForm.getKptxt()[6]));
-				cs.setFloat(9, Float.parseFloat(govKeyProjectForm.getKptxt()[7]));
-				cs.setFloat(10, Float.parseFloat(govKeyProjectForm.getKptxt()[8]));
-				cs.setString(11, govKeyProjectForm.getKptxt()[9]);
-				cs.setString(12, govKeyProjectForm.getKptxt()[10]);
-				cs.setString(13, govKeyProjectForm.getKptxt()[11]);
+				cs.setString(3, (String)ds.map.get("pqid"));
+				cs.setString(4, govKeyProjectForm.getKptxt()[1]);
+				cs.setString(5, govKeyProjectForm.getKptxt()[2]);
+				cs.setString(6, govKeyProjectForm.getKptxt()[3]);
+				cs.setFloat(7, Float.parseFloat(govKeyProjectForm.getKptxt()[4]));
+				cs.setFloat(8, Float.parseFloat(govKeyProjectForm.getKptxt()[5]));
+				cs.setFloat(9, Float.parseFloat(govKeyProjectForm.getKptxt()[6]));
+				cs.setFloat(10, Float.parseFloat(govKeyProjectForm.getKptxt()[7]));
+				cs.setFloat(11, Float.parseFloat(govKeyProjectForm.getKptxt()[8]));
+				cs.setString(12, govKeyProjectForm.getKptxt()[9]);
+				cs.setString(13, govKeyProjectForm.getKptxt()[10]);
+				cs.setString(14, govKeyProjectForm.getKptxt()[11]);
 				cs.execute();
 				return null;
 			}
@@ -77,15 +80,16 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 
 	
 	/** 根据项目编号删除项目 */
-	public void deleteKeyProjectByPid(final String bm, final String pid, final String crid) {
+	public void deleteKeyProjectByPid(final DotSession ds, final String bm, final String pid, final String crid) {
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
 				Connection conn = session.connection();
-				CallableStatement cs = conn.prepareCall("{call sp_keyprj_delete(?,?,?)}");
+				CallableStatement cs = conn.prepareCall("{call sp_keyprj_deleteex(?,?,?,?)}");
 				cs.setString(1, bm);
 				cs.setString(2, crid);
-				cs.setInt(3, Integer.parseInt(pid));
+				cs.setString(3, (String)ds.map.get("pqid"));
+				cs.setInt(4, Integer.parseInt(pid));
 				cs.execute();
 				return null;
 			}
@@ -103,6 +107,7 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 				cs.setInt(2, 0);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
+				ds.initData();
 				ds.list = new ArrayList();
 				Map map;
 				if(rs!=null){
@@ -117,23 +122,85 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 		});
 	}
 
+	
 	public void getKeyProjectZhen(final DotSession ds, final String navbm, final String crid) {
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				String proc = "{call sp_keyprj_detail(?,?)}";
+				String proc = "{call sp_keyprj_detailex(?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
-				cs.setString(1, navbm);
+				cs.setString(1, ds.rbm);
 				cs.setString(2, crid);
+				cs.setString(3, navbm);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
+				ds.initData();
 				ds.list = new ArrayList();
 				Map map;
 				if(rs!=null){
 					while (rs.next()) {
 						map = new HashMap();
-						ds.putMapData(map, rs);
+						ds.putMapDataByColName(map, rs);
+		        		ds.list.add(map);
+					}
+				}
+				return null;
+			}
+		});
+	}
+
+	/** 片区列表 */
+	public void getPianquInfoList(final DotSession ds, final String navbm, final String crid) {
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				String proc = "{call sp_keyprj_detailex(?,?,?)}";
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall(proc);
+				cs.setString(1, ds.rbm);
+				cs.setString(2, crid);
+				cs.setString(3, null);
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				ds.initData();
+				ds.list = new ArrayList();
+				Map map;
+				if(rs!=null){
+					while (rs.next()) {
+						map = new HashMap();
+						ds.putMapDataByColName(map, rs);
+		        		ds.list.add(map);
+		        		if(ds.list.size()==1){
+							ds.map.put("pqid", rs.getString(1));
+						}
+					}
+				}
+				return null;
+			}
+		});
+	}
+
+	public void getKeyProjectListByPiqnquId(final DotSession ds, final String navbm,
+			final String crid) {
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				String proc = "{call sp_keyprj_detailex(?,?,?)}";
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall(proc);
+				cs.setString(1, ds.rbm);
+				cs.setString(2, crid);
+				cs.setString(3, (String)ds.map.get("pqid"));
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				ds.initData();
+				ds.list = new ArrayList();
+				Map map;
+				if(rs!=null){
+					while (rs.next()) {
+						map = new HashMap();
+						ds.putMapDataByColName(map, rs);
 		        		ds.list.add(map);
 					}
 				}
