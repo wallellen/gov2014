@@ -186,8 +186,8 @@
 		<item id="3" name="村级集体经济发展项目" />
 		<item id="4" name="奖补资金到户项目" />
 		<item id="5" name="省后方单位挂钩帮扶" />
-		<item id="6" name="小额贷款填报年项目" />
-		<item id="7" name="小额贷款填报月项目" />
+		<item id="6" name="扶贫小额贷款年项目" />
+		<item id="7" name="扶贫小额贷款月项目" />
 	</list>
 	<list name="monthlist" describle="月份">
 		<item id="1" name="1" />
