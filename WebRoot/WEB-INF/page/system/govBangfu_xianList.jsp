@@ -55,8 +55,13 @@
         	<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govBangfuAction_exportWriteWithDept.do?rid=<s:property value="rid"/>&title=<s:property value="title"/>&byunit=<s:property value="byunit"/>'" class="button43"/>
         	</p>
         	<p>&nbsp;</p>
+        	<p>
         	<input type="button" value="添加" onclick="location.href='${pageContext.request.contextPath }/system/govBangfuAction_addBangfu.do?rid=<s:property value="rid"/>&title=<s:property value="title"/>&sdt=<s:property value="sdt"/>&edt=<s:property value="edt"/>&deptName=<s:property value="deptName"/>'" class="button43"/>
+        	</p>
+        	<p>&nbsp;</p>
+        	<p>
         	<input type="button" value="返回" onclick="javascript:history.go(-<s:property value='rflag'/>)" class="button43"/><br/><br/>
+        	</p>
         </td>
     </tr>
     <tr>
