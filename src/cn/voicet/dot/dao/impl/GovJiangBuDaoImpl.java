@@ -50,7 +50,7 @@ public class GovJiangBuDaoImpl extends CommonDaoImpl<Object> implements GovJiang
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				String proc = "{call sp_jiangbu_list(?,?)}";
+				String proc = "{call sp_jiangbu_detail(?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
 				cs.setString(1, navbm);
