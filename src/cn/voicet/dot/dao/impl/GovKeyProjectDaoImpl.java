@@ -27,7 +27,7 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 					SQLException {
 				Map map;
 				ds.initData();
-				String proc = "{call sp_keyprj_list(?,?)}";
+				String proc = "{call sp_keyprj_detail(?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
 				cs.setString(1, navbm);
