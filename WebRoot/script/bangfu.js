@@ -64,8 +64,8 @@ function popBangfuDeptEdit(s,f1,f2,f3,f4){
 }
 function subBangfuDeptBt(){
 	document.bangFuDeptForm.action="govBangfuAction_saveBangfuDept.do";
-	var tPage = document.getElementById("t_page").innerHTML;
-	parent.document.getElementById("globalCurPage").value=tPage;
+	//var tPage = document.getElementById("t_page").innerHTML;
+	//parent.document.getElementById("globalCurPage").value=tPage;
 	document.bangFuDeptForm.submit();
 }
 
