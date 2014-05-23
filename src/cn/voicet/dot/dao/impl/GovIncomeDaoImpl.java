@@ -58,6 +58,7 @@ public class GovIncomeDaoImpl extends CommonDaoImpl<Object> implements GovIncome
 				cs.setString(2, year);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
+				ds.initData();
 				ds.list = new ArrayList();
 				Map map;
 				if(rs!=null){

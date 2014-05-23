@@ -28,6 +28,10 @@
         <td colspan="5">帮扶情况</td>
         <td rowspan="3" width="8%">
         	<p>
+        	<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govIncomeAction_exportIncome.do?cbm=<s:property value="cbm"/>&title=<s:property value="title"/>&sdt=<s:property value="sdt"/>&edt=<s:property value="edt"/>&year=<s:property value="year"/>&areaName=<s:property value="areaName"/>'" class="button43"/>
+        	</p>
+        	<p>&nbsp;</p>
+        	<p>
         	<input type="button" value="返回" onclick="javascript:history.go(-<s:property value='rflag'/>)" class="button43"/>
         	</p>
         </td>

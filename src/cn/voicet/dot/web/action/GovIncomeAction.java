@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 
 import cn.voicet.dot.service.GovIncomeService;
 import cn.voicet.dot.util.DotSession;
+import cn.voicet.dot.util.ExcelTemplateGenerator;
 import cn.voicet.dot.web.form.GovIncomeForm;
 
 import com.opensymphony.xwork2.ModelDriven;
@@ -48,6 +49,8 @@ public class GovIncomeAction extends BaseAction implements ModelDriven<GovIncome
 	}
 	
 	
+	
+	
 	public String saveIncome(){
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
@@ -55,6 +58,21 @@ public class GovIncomeAction extends BaseAction implements ModelDriven<GovIncome
 		rflag=rflag+1;
 		return viewIncomeHu();
 	}
+	
+	/** 导出年收入 */
+	public String exportIncome() throws Exception{
+		DotSession ds = DotSession.getVTSession(request);
+		govIncomeService.getIncomeInfoBycbm(ds, cbm, year);
+		String fileName = new String(("年收入及帮扶情况-"+title).getBytes("gb2312"), "ISO8859-1") +".xls";
+	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"income.xls";
+	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 3, ds.list);
+	    generator.setColList("c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14");
+	    generator.setDrawBoard();
+	    generator.setEffectColNum(15);
+		generator.exportExcelWithTemplate(response);
+		return null;
+	}
+	
 	
 	private String cbm;
 	private String year;
