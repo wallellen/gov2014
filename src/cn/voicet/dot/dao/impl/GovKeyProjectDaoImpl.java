@@ -32,7 +32,7 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 				CallableStatement cs = conn.prepareCall(proc);
 				cs.setString(1, ds.rbm);
 				cs.setString(2, crid);
-				cs.setString(3, navbm);
+				cs.setString(3, (String)ds.map.get("pqid"));
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();

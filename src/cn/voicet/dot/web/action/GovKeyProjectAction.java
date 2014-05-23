@@ -42,6 +42,7 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 		log.info("viewPianquProject-> ds.list.size:"+ds.list.size());
 		if(ds.list.size()==1)
 		{
+			log.info("viewPianquProject-> pqid:"+ds.map.get("pqid"));
 			govKeyProjectService.getKeyProjectListByPiqnquId(ds, navbm, crid);
 			return "showKeyProject_zhenDetail";
 		}
@@ -113,6 +114,7 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 	
 	public String exportKeyProjectDetail() throws Exception{
 		DotSession ds = DotSession.getVTSession(request);
+		log.info("exportKeyProjectDetail-> pqid:"+ds.map.get("pqid"));
 		govKeyProjectService.getKeyProjectInfo(ds, navbm, crid);
 	    String fileName = new String(("关键工程项目实施进度和扶贫资金使用情况-"+title).getBytes("gb2312"), "ISO8859-1") +".xls";
 	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"keyproject1.xls";
