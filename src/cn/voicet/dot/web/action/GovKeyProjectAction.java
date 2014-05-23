@@ -58,14 +58,20 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 	public String viewKeyProjectList(){
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("viewKeyProjectList-> navbm:"+navbm);
-		govKeyProjectService.getKeyProjectZhen(ds, navbm, crid);
+		govKeyProjectService.getKeyProjectZhen(ds, navbm, crid, pianId);
 		return "showKeyProject_zhen";
 	}
 	
 	/** 项目详细信息 */
 	public String writeReportZhen(){
 		DotSession ds = DotSession.getVTSession(request);
-		govKeyProjectService.getKeyProjectInfo(ds, navbm, crid);
+		if(null==pianId || pianId.length()==0)
+		{
+			pianId = (String) ds.map.get("pqid");
+			
+		}
+		log.info("writeReportZhen-> pianId:"+pianId);
+		govKeyProjectService.getKeyProjectInfo(ds, navbm, crid, pianId);
 		return "showKeyProject_zhenDetail";
 	}
 	
@@ -101,11 +107,11 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 	public String exportKeyProject() throws Exception{
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
-		govKeyProjectService.getKeyProjectZhen(ds, navbm, crid);
+		govKeyProjectService.getKeyProjectZhen(ds, navbm, crid, pianId);
 	    String fileName = new String(("关键工程项目实施进度和扶贫资金使用情况-"+title).getBytes("gb2312"), "ISO8859-1") +".xls";
 	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"keyproject.xls";
 	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 2, ds.list);
-	    generator.setColList("bm,oname,m,pry,spr,sspr,opr,pyt,spy");
+	    generator.setColList("oname,rn,prt,spr,sspr,opr,pyt,spy");
 	    generator.setDrawBoard();
 	    generator.setEffectColNum(11);
 	    generator.exportExcelWithTemplate(response);
@@ -114,8 +120,13 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 	
 	public String exportKeyProjectDetail() throws Exception{
 		DotSession ds = DotSession.getVTSession(request);
-		log.info("exportKeyProjectDetail-> pqid:"+ds.map.get("pqid"));
-		govKeyProjectService.getKeyProjectInfoDetail(ds, navbm, crid);
+		if(null==pianId || pianId.length()==0)
+		{
+			pianId = (String) ds.map.get("pqid");
+			
+		}
+		log.info("exportKeyProjectDetail-> pianId:"+pianId);
+		govKeyProjectService.getKeyProjectInfoDetail(ds, navbm, crid, pianId);
 	    String fileName = new String(("关键工程项目实施进度和扶贫资金使用情况-"+title).getBytes("gb2312"), "ISO8859-1") +".xls";
 	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"keyproject1.xls";
 	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 2, ds.list);
@@ -135,6 +146,7 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 	private String edt;
 	private int rflag=1;
 	private String areaName;
+	private String pianId;
 	public String getBm() {
 		return bm;
 	}
@@ -188,5 +200,11 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 	}
 	public void setAreaName(String areaName) {
 		this.areaName = areaName;
+	}
+	public String getPianId() {
+		return pianId;
+	}
+	public void setPianId(String pianId) {
+		this.pianId = pianId;
 	}
 }

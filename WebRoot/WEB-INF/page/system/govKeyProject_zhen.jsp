@@ -32,7 +32,7 @@
         <td colspan="3">项目实施进度</td>
         <td rowspan="2" width="5%">
         	<p>
-			<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govKeyProjectAction_exportKeyProject.do?crid=<s:property value="crid"/>&navbm=<s:property value="navbm"/>&title=<s:property value="title"/>'" class="button43"/>
+			<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govKeyProjectAction_exportKeyProject.do?crid=<s:property value="crid"/>&navbm=<s:property value="navbm"/>&pianId=<s:property value="pianId"/>&title=<s:property value="title"/>'" class="button43"/>
         	</p>
         	<p>&nbsp;</p>
         	<p>
@@ -57,7 +57,7 @@
     <tr style="display:none">
 		<td><s:property value="#ls.bm"/></td>
         <td><s:property value="#ls.oname"/></td>
-        <td><s:property value="#ls.m"/></td>
+        <td><s:property value="#ls.rn"/></td>
         <td><s:property value="#ls.prt"/></td>
         <td><s:property value="#ls.spr"/></td>
         <td><s:property value="#ls.sspr"/></td>
@@ -68,12 +68,7 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>
-        	<s:if test="#session.vts.rbm.length()==2">
-        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_writeReportZhen.do?navbm=<s:property value='#ls.bm'/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value='#ls.oname'/>">查看详细</a>
-        	</s:if>
-        	<s:else>
-        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_writeReportZhen.do?navbm=<s:property value='#ls.c0'/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value='#ls.oname'/>">查看详细</a>
-        	</s:else>
+        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_writeReportZhen.do?navbm=<s:property value='#ls.bm'/>&pianId=<s:property value="pianId"/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value='#ls.oname'/>">查看详细</a>
         </td>
 	</tr>
 	</s:iterator>

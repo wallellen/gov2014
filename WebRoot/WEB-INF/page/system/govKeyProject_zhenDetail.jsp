@@ -30,6 +30,7 @@
 <body style="background:#E0EEFB;">
 <form name="Form1" id="Form1">
 	<input type="hidden" name="bm" id="bmIds"/>
+	<input type="hidden" name="pianId" value="<s:property value='pianId'/>"/>
 	<input type="hidden" name="pid" id="pidIds"/>
 	<input type="hidden" name="crid" value="<s:property value='crid'/>"/>
 	<input type="hidden" name="navbm" value="<s:property value='navbm'/>"/>
@@ -58,7 +59,7 @@
         	</s:if>
         	</p>
         	<p style="margin-top:8px; margin-bottom:8px;">
-        		<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govKeyProjectAction_exportKeyProjectDetail.do?crid=<s:property value="crid"/>&navbm=<s:property value="navbm"/>&title=<s:property value="title"/>'" class="button43"/>
+        		<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govKeyProjectAction_exportKeyProjectDetail.do?crid=<s:property value="crid"/>&navbm=<s:property value="navbm"/>&pianId=<s:property value="pianId"/>&title=<s:property value="title"/>'" class="button43"/>
         	</p>
         	<p>
         	<input type="button" value="返回" onclick="javascript:history.go(-<s:property value='rflag'/>)" class="button43"/>
@@ -196,6 +197,7 @@
 	<input id="y-close" type="button" value="取消" class="button4"/>
 </div>
 <input type="hidden" name="navbm" value="<s:property value='navbm'/>"/>
+<input type="hidden" name="pianId" value="<s:property value='pianId'/>"/>
 <input type="hidden" name="title" value="<s:property value='title'/>"/>
 <input type="hidden" name="sdt" value="<s:property value='sdt'/>"/>
 <input type="hidden" name="edt" value="<s:property value='edt'/>"/>

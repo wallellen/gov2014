@@ -21,7 +21,7 @@ import cn.voicet.dot.web.form.GovKeyProjectForm;
 @SuppressWarnings({"deprecation","unchecked","static-access"})
 public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKeyProjectDao {
 
-	public void getKeyProjectInfo(final DotSession ds, final String navbm, final String crid) {
+	public void getKeyProjectInfo(final DotSession ds, final String navbm, final String crid, final String pianId) {
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
@@ -30,9 +30,9 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 				String proc = "{call sp_keyprj_detailex(?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
-				cs.setString(1, ds.rbm);
+				cs.setString(1, navbm);
 				cs.setString(2, crid);
-				cs.setString(3, navbm);
+				cs.setString(3, pianId);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
@@ -123,16 +123,16 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 	}
 
 	
-	public void getKeyProjectZhen(final DotSession ds, final String navbm, final String crid) {
+	public void getKeyProjectZhen(final DotSession ds, final String navbm, final String crid, final String pianId) {
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
 				String proc = "{call sp_keyprj_detailex(?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
-				cs.setString(1, ds.rbm);
+				cs.setString(1, navbm);
 				cs.setString(2, crid);
-				cs.setString(3, navbm);
+				cs.setString(3, pianId);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
@@ -189,7 +189,7 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 				String proc = "{call sp_keyprj_detailex(?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
-				cs.setString(1, ds.rbm);
+				cs.setString(1, navbm);
 				cs.setString(2, crid);
 				cs.setString(3, (String)ds.map.get("pqid"));
 				cs.execute();
@@ -210,7 +210,7 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 	}
 
 	
-	public void getKeyProjectInfoDetail(final DotSession ds, final String navbm, final String crid) {
+	public void getKeyProjectInfoDetail(final DotSession ds, final String navbm, final String crid, final String pianId) {
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
@@ -219,9 +219,9 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 				String proc = "{call sp_keyprj_detailex(?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
-				cs.setString(1, ds.rbm);
+				cs.setString(1, navbm);
 				cs.setString(2, crid);
-				cs.setString(3, (String)ds.map.get("pqid"));
+				cs.setString(3, pianId);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();

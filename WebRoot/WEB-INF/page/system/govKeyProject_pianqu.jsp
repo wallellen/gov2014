@@ -68,12 +68,7 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>
-        	<s:if test="#ls.bm.length()<6">
-        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_viewKeyProjectList.do?navbm=<s:property value='#ls.bm'/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value='#ls.oname'/>">查看详细</a>
-        	</s:if>
-        	<s:else>
-        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_writeReportZhen.do?navbm=<s:property value='#ls.c0'/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value='#ls.oname'/>">查看详细</a>
-        	</s:else>
+        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_viewKeyProjectList.do?navbm=<s:property value='navbm'/>&pianId=<s:property value="#ls.bm"/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value='#ls.oname'/>">查看详细</a>
         </td>
 	</tr>
 	</s:iterator>

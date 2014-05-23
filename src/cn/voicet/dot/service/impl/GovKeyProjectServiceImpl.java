@@ -17,8 +17,8 @@ public class GovKeyProjectServiceImpl implements GovKeyProjectService {
 	@Resource(name=GovKeyProjectDao.SERVICE_NAME)
 	private GovKeyProjectDao govKeyProjectDao;
 
-	public void getKeyProjectInfo(DotSession ds, String navbm, String crid) {
-		govKeyProjectDao.getKeyProjectInfo(ds, navbm, crid);
+	public void getKeyProjectInfo(DotSession ds, String navbm, String crid, String pianId) {
+		govKeyProjectDao.getKeyProjectInfo(ds, navbm, crid, pianId);
 	}
 
 	public void saveKeyProjectInfo(DotSession ds, GovKeyProjectForm govKeyProjectForm, String crid) {
@@ -33,8 +33,8 @@ public class GovKeyProjectServiceImpl implements GovKeyProjectService {
 		govKeyProjectDao.getKeyProjectSeason(ds);
 	}
 
-	public void getKeyProjectZhen(DotSession ds, String navbm, String crid) {
-		govKeyProjectDao.getKeyProjectZhen(ds, navbm, crid);
+	public void getKeyProjectZhen(DotSession ds, String navbm, String crid, String pianId) {
+		govKeyProjectDao.getKeyProjectZhen(ds, navbm, crid, pianId);
 	}
 
 	public void getPianquInfoList(DotSession ds, String navbm, String crid) {
@@ -46,8 +46,8 @@ public class GovKeyProjectServiceImpl implements GovKeyProjectService {
 		govKeyProjectDao.getKeyProjectListByPiqnquId(ds, navbm, crid);
 	}
 
-	public void getKeyProjectInfoDetail(DotSession ds, String navbm, String crid) {
-		govKeyProjectDao.getKeyProjectInfoDetail(ds, navbm, crid);
+	public void getKeyProjectInfoDetail(DotSession ds, String navbm, String crid, String pianId) {
+		govKeyProjectDao.getKeyProjectInfoDetail(ds, navbm, crid, pianId);
 	}
 
 }
