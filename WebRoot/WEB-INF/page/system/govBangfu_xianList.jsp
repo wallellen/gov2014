@@ -55,8 +55,8 @@
         	<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govBangfuAction_exportWriteWithDept.do?rid=<s:property value="rid"/>&title=<s:property value="title"/>&byunit=<s:property value="byunit"/>'" class="button43"/>
         	</p>
         	<p>&nbsp;</p>
-        	<input type="button" value="返回" onclick="javascript:history.go(-<s:property value='rflag'/>)" class="button43"/><br/><br/>
         	<input type="button" value="添加" onclick="location.href='${pageContext.request.contextPath }/system/govBangfuAction_addBangfu.do?rid=<s:property value="rid"/>&title=<s:property value="title"/>&sdt=<s:property value="sdt"/>&edt=<s:property value="edt"/>&deptName=<s:property value="deptName"/>'" class="button43"/>
+        	<input type="button" value="返回" onclick="javascript:history.go(-<s:property value='rflag'/>)" class="button43"/><br/><br/>
         </td>
     </tr>
     <tr>
@@ -102,7 +102,7 @@
         <td><s:property value="#ls.c13"/></td>
         <td></td>
         <td>
-        	<a href="javascript:popBangfuEdit('edit','<s:property value="#ls.c0"/>','<s:property value="#ls.c2"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c5"/>','<s:property value="#ls.c6"/>','<s:property value="#ls.c8"/>','<s:property value="#ls.c9"/>','<s:property value="#ls.c10"/>','<s:property value="#ls.c12"/>','<s:property value="#ls.c13"/>')">修改</a>
+        	<a href="javascript:popBangfuEdit('edit','<s:property value="#ls.c0"/>','<s:property value="#ls.c2"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c5"/>','<s:property value="#ls.c6"/>','<s:property value="#ls.c8"/>','<s:property value="#ls.c9"/>','<s:property value="#ls.c10"/>','<s:property value="#ls.c12"/>','<s:property value="#ls.c13"/>','<s:property value="#ls.c1"/>')">修改</a>
         	<a href="javascript:deleteBangFu('<s:property value="#ls.c0"/>')">删除</a>
         </td>
     </tr>

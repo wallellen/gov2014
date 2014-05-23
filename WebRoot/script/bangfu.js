@@ -71,7 +71,7 @@ function subBangfuDeptBt(){
 
 
 // JavaScript Document
-function popBangfuEdit(s,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10){
+function popBangfuEdit(s,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,fdept){
 	//title
 	var bt = document.getElementById("btitle");
 	bt.innerHTML="";
@@ -90,7 +90,7 @@ function popBangfuEdit(s,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10){
 	document.getElementById("hh12").value='';
 	//
 	if(s=="edit"){
-		bt.innerHTML="<font color='#fff'>修改后方单位帮扶信息</font>";
+		bt.innerHTML="<font color='#fff'>修改后方单位帮扶信息&nbsp;["+fdept+"]</font>";
 		document.getElementById("hh1").value=f1;
 		document.getElementById("hh2").value='';
 		document.getElementById("hh3").value='';
