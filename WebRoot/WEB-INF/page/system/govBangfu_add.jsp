@@ -39,7 +39,7 @@
 		.Contentbox ul{list-style:none;margin:7px;padding:0;}
 		.Contentbox ul li{line-height:24px; width:158px; float:left; margin-right:5px;}	
 		
-		.Menubox ul .box_return{float:left;width:158px;background:#E0EEFB;line-height:27px;display:block;text-align:center;color:#E0EEFB;font-weight:bold;border-top:0px solid #64B8E4;border-left:0px solid #64B8E4;border-right:0px solid #64B8E4; margin-left:190px;}
+		.Menubox ul .box_return{float:left;width:128px;background:#E0EEFB;line-height:27px;display:block;text-align:center;color:#E0EEFB;font-weight:bold;border-top:0px solid #64B8E4;border-left:0px solid #64B8E4;border-right:0px solid #64B8E4; margin-left:50px;}
 	</style>
 </head>
 <body style="background:#E0EEFB;">
@@ -49,7 +49,7 @@
 	  	<div class="Menubox">
 	    	<ul>
 		      	<s:iterator value="#session.vts.list" var="ls" status="sc">
-					<li id="menu<s:property value="#sc.count"/>" onmouseover="setTab('menu',<s:property value="#sc.count"/>,3)"><s:property value="#ls.c1"/></li>	      	
+					<li id="menu<s:property value="#sc.count"/>" onmouseover="setTab('menu',<s:property value="#sc.count"/>,4)"><s:property value="#ls.c1"/></li>	      	
 		      	</s:iterator>
 		      	<li class="box_return"><input type="button" value="返回" onclick="javascript:history.go(-1)" class="button43"/></li>
 	    	</ul>
@@ -76,6 +76,13 @@
 		      	<ul>
 				<s:iterator value="#session.vts.list4" var="ls4">
 				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls4.c0"/>','','','','','','','','','3')" title="<s:property value='#ls4.c1'/>"><s:property value="#ls4.c1.length()>13?#ls4.c1.substring(0,12)+'...':#ls4.c1"/></a></li>
+				</s:iterator>
+	    		</ul>
+	    	</div>
+	    	<div id="con_menu_4"style="display:none">
+		      	<ul>
+				<s:iterator value="#session.vts.list5" var="ls5">
+				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls5.c0"/>','','','','','','','','','4')" title="<s:property value='#ls5.c1'/>"><s:property value="#ls5.c1.length()>13?#ls5.c1.substring(0,12)+'...':#ls5.c1"/></a></li>
 				</s:iterator>
 	    		</ul>
 	    	</div>
