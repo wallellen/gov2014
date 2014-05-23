@@ -46,4 +46,8 @@ public class GovKeyProjectServiceImpl implements GovKeyProjectService {
 		govKeyProjectDao.getKeyProjectListByPiqnquId(ds, navbm, crid);
 	}
 
+	public void getKeyProjectInfoDetail(DotSession ds, String navbm, String crid) {
+		govKeyProjectDao.getKeyProjectInfoDetail(ds, navbm, crid);
+	}
+
 }

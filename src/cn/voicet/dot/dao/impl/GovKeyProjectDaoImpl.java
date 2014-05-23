@@ -32,7 +32,7 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 				CallableStatement cs = conn.prepareCall(proc);
 				cs.setString(1, ds.rbm);
 				cs.setString(2, crid);
-				cs.setString(3, (String)ds.map.get("pqid"));
+				cs.setString(3, navbm);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
@@ -197,6 +197,35 @@ public class GovKeyProjectDaoImpl extends CommonDaoImpl<Object> implements GovKe
 				ds.initData();
 				ds.list = new ArrayList();
 				Map map;
+				if(rs!=null){
+					while (rs.next()) {
+						map = new HashMap();
+						ds.putMapDataByColName(map, rs);
+		        		ds.list.add(map);
+					}
+				}
+				return null;
+			}
+		});
+	}
+
+	
+	public void getKeyProjectInfoDetail(final DotSession ds, final String navbm, final String crid) {
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				Map map;
+				ds.initData();
+				String proc = "{call sp_keyprj_detailex(?,?,?)}";
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall(proc);
+				cs.setString(1, ds.rbm);
+				cs.setString(2, crid);
+				cs.setString(3, (String)ds.map.get("pqid"));
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				ds.initData();
+				ds.list = new ArrayList();
 				if(rs!=null){
 					while (rs.next()) {
 						map = new HashMap();

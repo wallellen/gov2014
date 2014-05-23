@@ -13,4 +13,5 @@ public interface GovKeyProjectDao {
 	void getKeyProjectZhen(DotSession ds, String navbm, String crid);
 	void getPianquInfoList(DotSession ds, String navbm, String crid);
 	void getKeyProjectListByPiqnquId(DotSession ds, String navbm, String crid);
+	void getKeyProjectInfoDetail(DotSession ds, String navbm, String crid);
 }

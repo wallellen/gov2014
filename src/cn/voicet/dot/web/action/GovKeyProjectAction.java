@@ -91,7 +91,7 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 	    String fileName = new String(("关键工程项目实施进度和扶贫资金使用情况-"+title).getBytes("gb2312"), "ISO8859-1") +".xls";
 	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"keypianqu.xls";
 	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 2, ds.list);
-	    generator.setColList("oname,m,pry,spr,sspr,opr,pyt,spy");
+	    generator.setColList("oname,rn,prt,spr,sspr,opr,pyt,spy");
 	    generator.setDrawBoard();
 	    generator.setEffectColNum(11);
 	    generator.exportExcelWithTemplate(response);
@@ -115,7 +115,7 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 	public String exportKeyProjectDetail() throws Exception{
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("exportKeyProjectDetail-> pqid:"+ds.map.get("pqid"));
-		govKeyProjectService.getKeyProjectInfo(ds, navbm, crid);
+		govKeyProjectService.getKeyProjectInfoDetail(ds, navbm, crid);
 	    String fileName = new String(("关键工程项目实施进度和扶贫资金使用情况-"+title).getBytes("gb2312"), "ISO8859-1") +".xls";
 	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"keyproject1.xls";
 	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 2, ds.list);

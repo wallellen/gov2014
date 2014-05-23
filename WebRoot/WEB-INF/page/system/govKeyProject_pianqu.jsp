@@ -57,7 +57,7 @@
     <tr style="display:none">
 		<td><s:property value="#ls.bm"/></td>
         <td align="left">&nbsp;<s:property value="#ls.oname"/></td>
-        <td><s:property value="#ls.rm"/></td>
+        <td><s:property value="#ls.rn"/></td>
         <td><s:property value="#ls.prt"/></td>
         <td><s:property value="#ls.spr"/></td>
         <td><s:property value="#ls.sspr"/></td>
