@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta http-equiv="description" content="This is my page">
 	</head>
 	<body>
-		<p>如遇ie浏览器打印农户详细信息时，页面显示不正常[缩小]时，可以点击
+		<p>如遇ie浏览器打印农户详细信息时，页面显示不正常[页面缩小]时，可以点击
 		<a href="${pageContext.request.contextPath }/regFileDownLoad">下载</a>
 		，双击下载的文件安装，然后重启浏览器即可。</p>
 	</body>
