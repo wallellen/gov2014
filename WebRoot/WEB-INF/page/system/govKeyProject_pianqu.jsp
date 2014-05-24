@@ -21,6 +21,7 @@
 <h3 class="jiangbu-title">关键工程项目实施进度和扶贫资金使用情况&nbsp;[<s:property value="areaName"/>]</h3>
 <p class="jiangbu-title1"><span><s:property value="title"/>&nbsp;(<s:property value="sdt"/>~<s:property value="edt"/>)</span></p>
 <div id="jiangbu-data1">
+<s:if test="#session.vts.rbm.length()==2">
 <table class="data_list" cellpadding="0" cellspacing="0" width="100%">
    	<thead>
    	<tr>
@@ -74,6 +75,33 @@
 	</s:iterator>
 	</tbody>
 </table>
+</s:if>
+<s:else>
+<table class="data_list" cellpadding="0" cellspacing="0" width="100%">
+	<thead>
+	<tr>
+		<td>片区编号</td>
+		<td>片区名称</td>
+		<td>
+			<p>
+        	<input type="button" value="返回" onclick="javascript:history.go(-1)" class="button43"/>
+        	</p>
+		</td>
+	</tr>
+	</thead>
+	<tbody id="splitpage">
+    <s:iterator value="#session.vts.list" var="ls" status="sc">
+    <tr style="display:none">
+		<td><s:property value="#ls.pqid"/></td>
+		<td><s:property value="#ls.pqname"/></td>
+		<td>
+        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_writeReportZhen.do?navbm=<s:property value='navbm'/>&pianId=<s:property value="#ls.pqid"/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value='#ls.pqname'/>">查看详细</a>
+        </td>
+	</tr>
+	</s:iterator>
+	</tbody>
+</table>
+</s:else>
 </div>
 <div class="split-page">
 	<input type="hidden" id="pageRows" value="21"/>
