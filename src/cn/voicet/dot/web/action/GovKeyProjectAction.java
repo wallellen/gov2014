@@ -39,6 +39,7 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 		DotSession ds = DotSession.getVTSession(request);
 		//pqid is null
 		govKeyProjectService.getPianquInfoList(ds, navbm, crid);
+		log.info("viewPianquProject-> ds.list:"+ds.list);
 		log.info("viewPianquProject-> ds.list.size:"+ds.list.size());
 		if(ds.list.size()==1)
 		{
@@ -70,6 +71,7 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 			pianId = (String) ds.map.get("pqid");
 			
 		}
+		ds.map.put("pqid", pianId);
 		log.info("writeReportZhen-> pianId:"+pianId);
 		govKeyProjectService.getKeyProjectInfo(ds, navbm, crid, pianId);
 		return "showKeyProject_zhenDetail";
