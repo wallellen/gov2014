@@ -118,12 +118,12 @@
 						<td align="left">&nbsp;<s:property value="#ls.property"/></td>
 						<td align="left">&nbsp;<s:property value="#ls.dcause"/></td>
 						<td class="tabtd1">
-							<s:if test="#session.vts.isedit==1">
-							<a href="${pageContext.request.contextPath }/system/govBrowerAction_detail.do?viewBM=<s:property value="#ls.hm"/>&rtf=home">编辑</a>
-							</s:if>
 							<a href="${pageContext.request.contextPath }/system/govBrowerAction_viewReportFamily.do?viewBM=<s:property value="#ls.hm"/>">查看</a>
 			 				<a id="printBt" href="${pageContext.request.contextPath }/system/govBrowerAction_printFamily.do?viewBM=<s:property value="#ls.hm"/>" target="printFrame">打印</a>
-			 				<a href="javascript:popDelFamily('<s:property value="#ls.hm"/>','<s:property value="#ls.hname"/>')">删除</a>
+			 				<s:if test="#session.vts.isedit==1">
+							<a href="${pageContext.request.contextPath }/system/govBrowerAction_detail.do?viewBM=<s:property value="#ls.hm"/>&rtf=home">编辑</a>
+							<a href="javascript:popDelFamily('<s:property value="#ls.hm"/>','<s:property value="#ls.hname"/>')">删除</a>
+			 				</s:if>
 						</td>
 					</s:else>
 				</tr>
