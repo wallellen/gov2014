@@ -88,11 +88,11 @@
     </thead>
     <tbody id="splitpage">
     <s:iterator value="#session.vts.list" var="ls" status="sc">
-    <tr style="display:none" title="省级后方单位名称: <s:property value='#ls.c1'/>">
+    <tr style="display:none" title="省级后方单位名称: <s:property value='#ls.c1'/>&#10;所在乡镇名称: <s:property value='#ls.c14'/>&#10;挂钩村名称: <s:property value='#ls.c15'/>">
         <td><s:property value="#sc.count"/></td>
         <td align="left">&nbsp;<s:property value="#ls.c1.length()>10?#ls.c1.substring(0,9)+'...':#ls.c1"/></td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
+        <td><s:property value="#ls.c14.length()>3?#ls.c14.substring(0,2)+'...':#ls.c14"/></td>
+        <td><s:property value="#ls.c15.length()>3?#ls.c15.substring(0,2)+'...':#ls.c15"/></td>
         <td><s:property value="#ls.c2"/></td>
         <td><s:property value="#ls.c3"/></td>
         <td><s:property value="#ls.c4"/></td>
@@ -107,7 +107,7 @@
         <td><s:property value="#ls.c13"/></td>
         <td></td>
         <td>
-        	<a href="javascript:popBangfuEdit('edit','<s:property value="#ls.c0"/>','<s:property value="#ls.c2"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c5"/>','<s:property value="#ls.c6"/>','<s:property value="#ls.c8"/>','<s:property value="#ls.c9"/>','<s:property value="#ls.c10"/>','<s:property value="#ls.c12"/>','<s:property value="#ls.c13"/>','<s:property value="#ls.c1"/>')">修改</a>
+        	<a href="javascript:popBangfuEdit('edit','<s:property value="#ls.c0"/>','<s:property value="#ls.c2"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c5"/>','<s:property value="#ls.c6"/>','<s:property value="#ls.c8"/>','<s:property value="#ls.c9"/>','<s:property value="#ls.c10"/>','<s:property value="#ls.c12"/>','<s:property value="#ls.c13"/>','<s:property value="#ls.c1"/>','<s:property value="#ls.c14"/>','<s:property value="#ls.c15"/>')">修改</a>
         	<a href="javascript:deleteBangFu('<s:property value="#ls.c0"/>')">删除</a>
         </td>
     </tr>

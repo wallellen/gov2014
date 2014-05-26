@@ -66,7 +66,7 @@
     </thead>
     <tbody id="splitpage">
     <s:iterator value="#session.vts.list" var="ls" status="sc">
-    <tr style="display:none" title="省级后方单位名称: <s:property value='#ls.c1'/>&#10;所在乡镇名称: <s:property value='#ls.c2'/>&#10;挂钩村名称: <s:property value='#ls.c3'/>">
+    <tr style="display:none" title="县名称: <s:property value='#ls.c1'/>">
         <td><s:property value="#sc.count"/></td>
         <td align="left">&nbsp;<s:property value="#ls.c1.length()>10?#ls.c1.substring(0,9)+'...':#ls.c1"/></td>
         <td><s:property value="#ls.c14"/></td>
