@@ -16,14 +16,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 		<center>
 		<h4 style="width:600px; text-align:left">1.解决IE8下打印被缩小的问题</h4>
-		<p style="width:600px; text-align:left">由于IE8对打印增加了【缩小字体填充】功能，会采用75%比例缩小模式，在打印农户信息时，
+		<p style="width:600px; text-align:left">
+		由于IE8对打印增加了【缩小字体填充】功能，会采用75%比例缩小模式，在打印农户信息时，
 		可能不能占满A4纸张，如出现这样的问题，
 		请点<a href="${pageContext.request.contextPath }/regFileDownLoad">下载</a>，
-		双击下载的文件,选择是，将注册表信息导入系统，如下图所示</p>
+		双击下载的文件,选择是，将注册表信息导入系统，如下图所示
+		</p>
 		<p style="width:600px; text-align:left"><img src="<%=basePath %>/images/reg_writeg.jpg"/></p>
 		<p style="width:600px; text-align:left">关闭IE8浏览器，重新登录并打开打印页面进行打印。</p>
 		<h4 style="width:600px; text-align:left">2.解决IE8打印空白问题</h4>
-		
+		<p style="width:600px; text-align:left">
+			由于IE保护模式下 %Temp%\Low 文件夹工作不正常引起的（被误删除、移位等等）<br/>
+			解决方法：
+			依次单击"开始->所有程序->附件->命令提示符",在命令提示符处键入以下命令，然后按回车键：<br/>
+			Mkdir %TEMP%\Low<br/>
+			ICACLS "%Temp%\Low" /setintegritylevel (OI)(CI)low<br/>
+			如下图所示:
+		</p>
+		<p style="width:600px; text-align:left"><img src="<%=basePath %>/images/2295289.png"/></p>
 		</center>
 	</body>
 </html>
