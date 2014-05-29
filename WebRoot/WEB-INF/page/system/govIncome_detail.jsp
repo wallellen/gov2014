@@ -20,6 +20,7 @@
         <td width="20%">地区编码</td>
         <td width="20%">地区名称</td>
         <td width="20%">户均年总收入(元)</td>
+        <td width="10%">填报户数</td>
         <td width="20%">
         	<p>
         	<input type="button" value="返回" onclick="javascript:history.go(-1)" class="button43"/>
@@ -33,6 +34,7 @@
         <td><s:property value="#ls.c0"/></td>
         <td><s:property value="#ls.c1"/></td>
         <td><s:property value="#ls.c2"/></td>
+        <td><s:property value="#ls.c3"/></td>
         <td>
         	<s:if test="#ls.c0.length()<12">
         	<a href="${pageContext.request.contextPath }/system/govIncomeAction_viewYearIncome.do?cbm=<s:property value="#ls.c0"/>&year=<s:property value="year"/>&title=<s:property value="title"/>&sdt=<s:property value="sdt"/>&edt=<s:property value="edt"/>&areaName=<s:property value="#ls.c1"/>">查看</a>
