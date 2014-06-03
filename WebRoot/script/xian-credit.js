@@ -150,9 +150,11 @@ function autoCalculate1()
 	//本月余额户数
 	var th = (parseInt(lh)+parseInt(tsh))-parseInt(trh);
 	var tv = (parseFloat(lv)+parseFloat(tsv))-parseFloat(trv);
+	tv = tv.toFixed(1);
 	//未到期贷款户数
 	nh = parseInt(th)-parseInt(eh);
 	nv = parseFloat(tv)-parseFloat(ev);
+	nv = nv.toFixed(1);
 	//计算逾期贷款户数
 	document.getElementById("c8").innerHTML=th;
 	document.getElementById("c9").innerHTML=tv;
@@ -178,13 +180,15 @@ function autoCalculate2()
 	//本月余额户数
 	var th = (parseInt(lh)+parseInt(tsh))-parseInt(trh);
 	var tv = (parseFloat(lv)+parseFloat(tsv))-parseFloat(trv);
+	tv = tv.toFixed(1);
 	//未到期贷款户数
 	eh = parseInt(th)-parseInt(nh);
 	ev = parseFloat(tv)-parseFloat(nv);
+	ev = ev.toFixed(1);
 	//计算逾期贷款户数
 	document.getElementById("c8").innerHTML=th;
 	document.getElementById("c9").innerHTML=tv;
 	document.getElementById("c12").value=eh;
 	document.getElementById("c13").value=ev;
 }
-	
+
