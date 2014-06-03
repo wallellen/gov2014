@@ -14,6 +14,14 @@
 		#win-member{position:absolute;top:30%;left:45%;width:500px;height:460px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;} 
 		h2{font-size:12px;height:18px;text-align:right;background:#3F89EC;border-bottom:3px solid #F7F7F7;padding:5px;cursor:move;} 
 		h2 span{border:0px solid #f90;padding:0 2px;} 
+		
+		.error-tips{
+			position:absolute;
+			width:120px; 
+			height:18px;
+			line-height:18px;
+			color:#F00;
+		}
 	</style>
 </head>
 <body style="background:#E0EEFB;">
@@ -110,10 +118,12 @@
 	<table width="450px" cellpadding="0" cellspacing="0">
 		<tr>
 			<td width="35%" align="right">姓名:&nbsp;&nbsp;</td>
-			<td width="25%" align="left">
-				<input type="text" id="d-uname" name="uname" class="back-input" maxlength="10" onblur="checkName()"/>
+			<td width="35%" align="left">
+				<input type="text" id="d-uname" name="uname" class="back-input" maxlength="10" onblur="checkName()" placeholder="请输入姓名"/>
 			</td>
-			<td width="40%"><span id="nameTips" class="ptips"></span></td>
+			<td width="30%">
+				<div id="errTip" class="error-tips"></div>
+			</td>
 		</tr>
 		<tr>
 			<td align="right">性别:&nbsp;&nbsp;</td>
@@ -153,9 +163,9 @@
 		<tr>
 			<td align="right">残疾证号:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="d-dcno" name="dcno" class="back-input" maxlength="10" onkeyup="value=value.replace(/[\W]/g,'')" />
+				<input type="text" id="d-dcno" name="dcno" class="back-input" maxlength="20" placeholder="请输入数字或字母" onblur="checkDcno()"/>
 			</td>
-			<td><font color="gray">请输入数字或字母</font></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td align="right">劳动力状况:&nbsp;&nbsp;</td>
@@ -181,9 +191,9 @@
 		<tr>
 			<td align="right">领取低保金、残疾金(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="d-tbfd" name="tbfd" class="back-input" maxlength="6" onkeyup="value=value.replace(/[^\d]/g,'')"/>
+				<input type="text" id="d-tbfd" name="tbfd" class="back-input" maxlength="6" placeholder="请输入金额"  onblur="checkDibao()"/>
 			</td>
-			<td><font color="gray">请输入金额</font></td>
+			<td></td>
 		</tr>
 	</table>
 </div>

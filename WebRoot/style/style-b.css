@@ -9,7 +9,7 @@ a:visited{color:#00f; text-decoration:none}	/* 已访问的链接 */
 a:hover{color:#00f; text-decoration:none}	/* 鼠标在链接上 */
 .button8{width:140px; height:22px; display:inline; color:#FFF; border:medium none; background:url("/images/vt_rec_bt4.png");cursor:pointer;}
 
-.back-input{border:1px solid #B1D8F9; height:18px; width:100px; color:blue}
+.back-input{border:1px solid #B1D8F9; height:22px; width:150px;}
 
 /* div  */
 .div-center{margin:0 auto; ; width:200px; margin-top:10px; height:200px; border:0px solid #F00;}

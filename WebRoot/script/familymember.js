@@ -1,14 +1,18 @@
+
+
 function popSaveMember(m,s,c){
 	var mtitle = document.getElementById("mtitle");
 	mtitle.innerHTML="";
+	
 	//clear
 	document.getElementById("d-uname").value='';
-	document.getElementById("nameTips").innerHTML='';
 	document.getElementById("d-age").value='';
-	document.getElementById("ageTips").value='';
 	document.getElementById("d-dcno").value='';
 	document.getElementById("d-tbfd").value='';
 	document.getElementById("mid").value='';
+	
+	hideErrTip();
+	
 	if(s=="edit"){
 		mtitle.innerHTML="<font color='#fff'>修改家庭成员信息</font>";
 		var uname = document.getElementById("una"+c);
@@ -108,6 +112,9 @@ function popSaveMember(m,s,c){
 	    }  
 		var blaRadio = document.getElementsByName("bla");
 		blaRadio[0].checked = "checked";
+		
+		
+		
 	}
 	
 	var oWin = document.getElementById("win-member");
@@ -137,7 +144,7 @@ function popSaveMember(m,s,c){
 		if (!bDrag) return; 
 		var event = event || window.event; 
 		var iL = event.clientX - disX; 
-		var iT = event.clientY - disY; 
+		var iT = event.clientY - disY;
 		var maxL = document.documentElement.clientWidth - oWin.offsetWidth; 
 		var maxT = document.documentElement.clientHeight - oWin.offsetHeight; 
 		iL = iL < 0 ? 0 : iL; 
@@ -161,15 +168,37 @@ function subMemberBt(){
 		document.memberForm.submit();
 	}
 }
-//check member
+
+function showErrTip(top,c)
+{
+	var errTip=document.getElementById("errTip");
+	errTip.style.marginTop=top+"px";
+	errTip.style.display="";
+	errTip.innerHTML = c;
+}
+function hideErrTip()
+{
+	var errTip=document.getElementById("errTip");
+	errTip.style.display="none";
+}
+
 function checkName(){
 	var duname = $("#d-uname").val();
-	if(duname==""){
-		$("#nameTips").html("姓名不能为空");
+	var m = /^[0-9\u4e00-\u9faf]+$/;
+	if(duname=="")
+	{
+		showErrTip(-10,"姓名必须输入");
 		memberForm.duname.focus(); 
 		return false;
-	}else{
-		$("#nameTips").html("");
+	}
+	else if(!m.test(duname) || duname.length<2)
+	{
+		showErrTip(-10,"姓名不可以少于2个字");
+		memberForm.duname.focus(); 
+		return false;
+	}
+	else{
+		hideErrTip();
 		return true;
 	}
 }
@@ -177,15 +206,53 @@ function checkName(){
 function checkAge(){
 	var dage = $("#d-age").val();
 	if(dage==""){
-		$("#ageTips").html("出生年份不能为空");
+		showErrTip(52,"出生年份不能为空");
 		memberForm.dage.focus(); 
 		return false;
 	}else if(dage<1900 || dage>2020){
-		$("#ageTips").html("出生年份范围1900-2020");
+		showErrTip(52,"出生年份范围1900-2020");
 		memberForm.dage.focus(); 
 		return false;
 	}else{
-		$("#ageTips").html("");
 		return true;
 	}
 }
+
+//check member
+function checkDcno()
+{
+	var dcno = $("#d-dcno").val();
+	if(dcno.length ==0 || (dcno.length==20 && dcno.match(/^[0-9a-zA-Z]+$/)))
+	{
+		hideErrTip();
+	}
+	else
+	{
+		showErrTip(172,"残疾证号可以为空或20位字母与数字的组合");
+	}
+}
+
+//check dibao
+function checkDibao(){
+	var tb = $("#d-tbfd").val();
+	if(tb.match(/^[0-9]+$/) && tb>=0)
+	{
+		hideErrTip();
+	}
+	else
+	{
+		showErrTip(295,"低保金只能是大于0的数字");
+	}
+	var blaRadio = document.getElementsByName("bla");
+	if(blaRadio[0].checked){
+		if(tb.length==0 || tb==0 || !tb.match(/^[0-9]+$/)){
+			showErrTip(295,"低保金只能是大于0的数字");
+		}
+		else
+		{
+			hideErrTip();
+		}
+	}
+}
+
+
