@@ -184,7 +184,7 @@ function hideErrTip()
 
 function checkName(){
 	var duname = $("#d-uname").val();
-	var m = /^[0-9\u4e00-\u9faf]+$/;
+	var m = /^[\u4e00-\u9faf]+$/;
 	if(duname=="")
 	{
 		showErrTip(-10,"姓名必须输入");
@@ -254,5 +254,114 @@ function checkDibao(){
 		}
 	}
 }
+
+//PersonIDCard
+function checkIDCard()
+{
+	var num = document.getElementById("idcno").value;
+	var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+    //身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X。  
+	if(num.length>0 && !reg.test(num))   
+    {
+         alert('输入的身份证号长度不对，或者号码不符合规定！\n15位号码应全为数字，18位号码末位可以为数字或X。');
+         personForm.idcno.focus(); 
+         return false;
+    } 
+	else
+	{
+		return true;
+	}
+}
+
+//tel
+function checkTelphone()
+{
+	var tel = $("#htel").val();
+	if(tel.length ==0 || ((tel.length==11 || tel.length==12) && dcno.match(/^[0-9]+$/)))
+	{
+		return true;
+	}
+	else
+	{
+		alert("请输入合法的电话号码");
+		personForm.htel.focus(); 
+        return false;
+	}
+}
+
+//size
+
+
+//house
+function checkHouse(){
+	var house = $("#house").val();
+	if(isNaN(house))
+	{        
+		alert("非法数字");
+		return false;
+    }
+	if(house<10 || house>300)
+	{
+		alert("请输入合理的面积");
+		return false;
+	}
+}
+
+
+function checkBanfPerson(){
+	var banf = $("#frname").val();
+	var m = /^[\u4e00-\u9faf]+$/;
+	if(banf.length>0 && (!m.test(banf) || banf.length<2))
+	{
+		alert("挂钩帮扶人只能是汉字，且不能少于2个字符");
+		memberForm.frname.focus(); 
+		return false;
+	}
+}
+
+function checkBanfWork(){
+	var banfw = $("#frwork").val();
+	var m = /^[\u4e00-\u9faf]+$/;
+	if(banfw.length>0 && (!m.test(banfw) || banfw.length<2))
+	{
+		alert("单位职务只能是汉字，且不能少于2个字符");
+		memberForm.frwork.focus(); 
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+	return false;
+}
+
+//guagouTel
+function checkBanfTelphone()
+{
+	var tel = $("#frtel").val();
+	if(tel.length ==0 || ((tel.length==11 || tel.length==12) && tel.match(/^[0-9]+$/)))
+	{
+		return true;
+	}
+	else
+	{
+		alert("请输入合法的电话号码");
+		personForm.htel.focus(); 
+        return false;
+	}
+}
+
+//
+function checkPersonForm()
+{
+	if(checkIDCard() && checkTelphone() && checkHouse() && checkBanfPerson() && checkBanfWork()){
+		return true;
+	}
+	return false;
+}
+
+
+
+
 
 
