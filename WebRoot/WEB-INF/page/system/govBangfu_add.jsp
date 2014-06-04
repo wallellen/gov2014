@@ -39,6 +39,13 @@
 		.Contentbox ul{list-style:none;margin:7px;padding:0;}
 		.Contentbox ul li{line-height:24px; width:158px; float:left; margin-right:5px;}	
 		
+		.hourf-errtip{
+			width:265px; 
+			height:18px;
+			line-height:18px;
+			color:#F00;
+		}
+		
 		.Menubox ul .box_return{float:left;width:128px;background:#E0EEFB;line-height:27px;display:block;text-align:center;color:#E0EEFB;font-weight:bold;border-top:0px solid #64B8E4;border-left:0px solid #64B8E4;border-right:0px solid #64B8E4; margin-left:50px;}
 	</style>
 </head>
@@ -139,59 +146,60 @@
 		<tr>
 			<td align="right">到村项目资金(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh4" name="bftxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="hh4" name="bftxt" class="back-input" maxlength="3" onblur="checkHoufMoney(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">到村项目个数(个):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh5" name="bftxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="hh5" name="bftxt" class="back-input" maxlength="5" onblur="checkHoufItem(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">后方单位自筹资金(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh6" name="bftxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="hh6" name="bftxt" class="back-input" maxlength="3" onblur="checkHoufMoney(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">协调资金(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh7" name="bftxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="hh7" name="bftxt" class="back-input" maxlength="3" onblur="checkHoufMoney(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">完成项目数(个):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh8" name="bftxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="hh8" name="bftxt" class="back-input" maxlength="5" onblur="checkHoufItem(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">在建项目数(个):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh9" name="bftxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="hh9" name="bftxt" class="back-input" maxlength="5" onblur="checkHoufItem(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">帮扶实物折价(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh10" name="bftxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="hh10" name="bftxt" class="back-input" maxlength="3" onblur="checkHoufMoney(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">单位领导:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh11" name="bftxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="hh11" name="bftxt" class="back-input" maxlength="3" onblur="checkHoufItem(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">中层及以下人员:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh12" name="bftxt" class="back-input" maxlength="3" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="hh12" name="bftxt" class="back-input" maxlength="3" onblur="checkHoufItem(this)"/>
 			</td>
 		</tr>
 	</table>
 </div>
+<div id="houfErrTip" class="hourf-errtip"></div>
 <div style="margin-top:20px; margin-left:150px;">
 	<input type="button" value="确定" class="button4" onclick="subJiangBuBt()"/>&nbsp;&nbsp;&nbsp;&nbsp;
 	<input id="y-close" type="button" value="取消" class="button4"/>

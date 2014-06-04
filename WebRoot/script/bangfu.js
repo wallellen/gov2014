@@ -64,8 +64,6 @@ function popBangfuDeptEdit(s,f1,f2,f3,f4){
 }
 function subBangfuDeptBt(){
 	document.bangFuDeptForm.action="govBangfuAction_saveBangfuDept.do";
-	//var tPage = document.getElementById("t_page").innerHTML;
-	//parent.document.getElementById("globalCurPage").value=tPage;
 	document.bangFuDeptForm.submit();
 }
 
@@ -88,6 +86,8 @@ function popBangfuEdit(s,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,fdept,fx,fc){
 	document.getElementById("hh10").value='';
 	document.getElementById("hh11").value='';
 	document.getElementById("hh12").value='';
+	
+	hideBanfErrTip();
 	//
 	if(s=="edit"){
 		bt.innerHTML="<font color='#fff'>修改后方单位帮扶信息&nbsp;["+fdept+"]</font>";
@@ -167,9 +167,63 @@ function popBangfuEdit(s,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,fdept,fx,fc){
 }
 function subJiangBuBt(){
 	document.bangFuForm.action="govBangfuAction_saveBangfu.do";
+	
+	if(!checkHoufMoney(document.all.hh4))return;
+	if(!checkHoufItem(document.all.hh5))return;
+	if(!checkHoufMoney(document.all.hh6))return;
+	if(!checkHoufMoney(document.all.hh7))return;
+	if(!checkHoufItem(document.all.hh8))return;
+	if(!checkHoufItem(document.all.hh9))return;
+	if(!checkHoufMoney(document.all.hh10))return;
+	if(!checkHoufItem(document.all.hh11))return;
+	if(!checkHoufItem(document.all.hh12))return;
 	document.bangFuForm.submit();
 }
 
 
+function showBanfErrTip(top,c)
+{
+	var errTip=document.getElementById("houfErrTip");
+	errTip.style.marginLeft=top+"px";
+	errTip.style.display="";
+	errTip.innerHTML = c;
+}
+function hideBanfErrTip()
+{
+	var errTip=document.getElementById("houfErrTip");
+	errTip.innerHTML = '';
+}
 
+function checkHoufMoney(obj)
+{
+	var banf = obj.value;
+	var reg = /^[0-9]+([.]{1}[0-9]{1})?$/;
+	if(reg.test(banf))
+	{
+		hideBanfErrTip();
+		return true;
+	}
+	else
+	{
+		showBanfErrTip(120,"请输入大于零的万元金额，最多可以输入一位小数！");
+		obj.focus();
+		return false;
+	}
+}
+function checkHoufItem(obj)
+{
+	var reg = /^[0-9]*[0-9][0-9]*$/;
+	var item = obj.value;
+	if(reg.test(item))
+	{
+		hideBanfErrTip();
+		return true;
+	}
+	else
+	{
+		showBanfErrTip(120,"请输入大于零的数字！");
+		obj.focus();
+		return false;
+	}
+}
 	
