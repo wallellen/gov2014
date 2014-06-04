@@ -18,6 +18,13 @@
 		#overlay-villageproject{position:absolute;top:0;left:0;width:100%;height:670px;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
 		#win-villageproject{position:absolute;top:30%;left:45%;width:500px;height:530px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;}
 		#win-villageproject .back-input{height:20px; width:140px;}
+		
+		.vill-errtip{
+			width:125px; 
+			height:18px;
+			line-height:18px;
+			color:#F00;
+		}
 	</style>
 	<script type="text/javascript">
 		function deleteVillageProject(c0,c1){
@@ -147,102 +154,90 @@
 		<tr>
 			<td width="40%" align="right">项目名称:&nbsp;&nbsp;</td>
 			<td width="30%" align="left">
-				<input type="text" id="vp1" name="vptxt" class="back-input" maxlength="20"/>
+				<input type="text" id="vp1" name="vptxt" class="back-input" maxlength="20" onblur="checkVillProName(this)"/>
 			</td>
-			<td width="30%"></td>
+			<td width="30%" rowspan="14" valign="top">
+			<div id="villErrTip" class="vill-errtip"></div>
+			</td>
 		</tr>
 		<tr>
 			<td align="right">项目描述:&nbsp;&nbsp;</td>
 			<td align="left">
 				<input type="text" id="vp2" name="vptxt" class="back-input" maxlength="20"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">省级财政投入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp3" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp3" name="vptxt" class="back-input" maxlength="5" onblur="checkMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">市级财政投入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp4" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp4" name="vptxt" class="back-input" maxlength="5" onblur="checkMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">县级财政投入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp5" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp5" name="vptxt" class="back-input" maxlength="5" onblur="checkMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">乡镇财政投入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp6" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp6" name="vptxt" class="back-input" maxlength="5" onblur="checkMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">扶贫资金投入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp7" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp7" name="vptxt" class="back-input" maxlength="5" onblur="checkMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">社会捐赠投入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp8" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp8" name="vptxt" class="back-input" maxlength="5" onblur="checkMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">项目建成后预计年效益(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp9" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp9" name="vptxt" class="back-input" maxlength="5" onblur="checkMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">项目为集体增加经营性收入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp10" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp10" name="vptxt" class="back-input" maxlength="5" onblur="checkMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">上年村集体经营性收入(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp11" name="vptxt" class="back-input" maxlength="5" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="vp11" name="vptxt" class="back-input" maxlength="5" onblur="checkMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">2015目标时间:&nbsp;&nbsp;</td>
 			<td align="left">
 				<input type="text" id="vp12" name="vptxt" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" class="Wdate back-input" maxlength="8"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">省级财政投入资金拨付进度(%):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp13" name="vptxt" class="back-input" maxlength="3" onkeyup="checkPercentInput(this)"/>
+				<input type="text" id="vp13" name="vptxt" class="back-input" maxlength="3" onblur="checkPercent(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">项目实施进度(%):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vp14" name="vptxt" class="back-input" maxlength="3" onkeyup="checkPercentInput(this)"/>
+				<input type="text" id="vp14" name="vptxt" class="back-input" maxlength="3" onblur="checkPercent(this)"/>
 			</td>
-			<td></td>
 		</tr>
-		
 	</table>
 </div>
 <div style="margin-top:20px; margin-left:150px;">

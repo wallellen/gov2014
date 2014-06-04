@@ -106,6 +106,87 @@ function popVillageProjectEdit(s,v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14,
 }
 function subVillageProjectBt(){
 	document.villageProjectForm.action="govVillageProjectAction_saveVillageProject.do";
+	if(!checkVillProName(document.all.vp1)) return;
+	
+	if(!checkMoney(document.all.vp3)) return;
+	if(!checkMoney(document.all.vp4)) return;
+	if(!checkMoney(document.all.vp5)) return;
+	if(!checkMoney(document.all.vp6)) return;
+	if(!checkMoney(document.all.vp7)) return;
+	if(!checkMoney(document.all.vp8)) return;
+	if(!checkMoney(document.all.vp9)) return;
+	if(!checkMoney(document.all.vp10)) return;
+	if(!checkMoney(document.all.vp11)) return;
+
 	document.villageProjectForm.submit();
 }
+
+//validate
+function showVillErrTip(top,c)
+{
+	var errTip=document.getElementById("villErrTip");
+	errTip.style.marginTop=top+"px";
+	errTip.style.display="";
+	errTip.innerHTML = c;
+}
+function hideVillErrTip()
+{
+	var errTip=document.getElementById("villErrTip");
+	errTip.innerHTML = '';
+}
+
+function checkVillProName(obj)
+{
+	var vpName = obj.value;
+	if(vpName=="")
+	{
+		showVillErrTip(5, "项目名称不能为空");
+		obj.focus();
+		return false;
+	}
+	else
+	{
+		hideVillErrTip();
+		return true;
+	}
+}
+function checkMoney(obj)
+{
+	var t = obj.value;
+	var reg = /^[0-9]+([.]{1}[0-9]{1})?$/;
+	if(reg.test(t))
+	{
+		hideVillErrTip();
+		return true;
+	}
+	else
+	{
+		showVillErrTip(60,"请输入大于零的万元金额，最多可以输入一位小数！");
+		obj.focus();
+		return false;
+	}
+}
+function checkPercent(obj)
+{
+	var p = obj.value;
+	if(isNaN(p))
+	{
+		showVillErrTip(378,"只能输入数字");
+		obj.focus();
+		return false;
+	}
+	else if(p<0 || p>100)
+	{
+		showVillErrTip(378,"只能输入1-100之间的数字");
+		obj.focus();
+		return false;	
+	}
+	else
+	{
+		hideVillErrTip();
+		return true;
+	}
+}
+
+
 
