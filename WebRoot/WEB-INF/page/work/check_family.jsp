@@ -10,14 +10,14 @@
 </head>
 <body style="background:#E0EEFB;">
 <h3 class="jiangbu-title">审核家庭基本信息&nbsp;[<s:property value="hbm"/>]
-	<span>
+	<span style="width:60px; float:right">
 		<input type="button" value="返回" class="button43" onclick="history.go(-1)"/>
 	</span>
 </h3>
 <div id="jiangbu-data">
 <table class="data_list" cellpadding="0" cellspacing="0" width="100%">
    	<thead>
-    <tr>
+    <tr class="tabtr12">
         <td width="20%" align="center">代码</td>
         <td width="80%">审核信息</td>
     </tr>
