@@ -164,9 +164,13 @@ function popSaveMember(m,s,c){
 }
 function subMemberBt(){
 	document.memberForm.action="govBrowerAction_saveMember.do";
-	if(checkName() && checkAge()){
-		document.memberForm.submit();
-	}
+	if(!checkName(document.all.d-uname)) return;
+	if(!checkAge(document.all.d-age)) return;
+	if(!checkDcno(document.all.d-dcno)) return;
+	if(!checkDibao(document.all.d-tbfd)) return;
+	
+	
+	document.memberForm.submit();
 }
 
 function showErrTip(top,c)
@@ -182,19 +186,19 @@ function hideErrTip()
 	errTip.style.display="none";
 }
 
-function checkName(){
-	var duname = $("#d-uname").val();
+function checkName(obj){
+	var duname = obj.value;
 	var m = /^[\u4e00-\u9faf]+$/;
 	if(duname=="")
 	{
 		showErrTip(-10,"姓名必须输入");
-		memberForm.duname.focus(); 
+		obj.focus(); 
 		return false;
 	}
 	else if(!m.test(duname) || duname.length<2)
 	{
 		showErrTip(-10,"姓名不可以少于2个字");
-		memberForm.duname.focus(); 
+		obj.focus(); 
 		return false;
 	}
 	else{
@@ -203,15 +207,15 @@ function checkName(){
 	}
 }
 //check age
-function checkAge(){
-	var dage = $("#d-age").val();
+function checkAge(obj){
+	var dage = obj.value;
 	if(dage==""){
 		showErrTip(52,"出生年份不能为空");
-		memberForm.dage.focus(); 
+		obj.focus(); 
 		return false;
 	}else if(dage<1900 || dage>2020){
 		showErrTip(52,"出生年份范围1900-2020");
-		memberForm.dage.focus(); 
+		obj.focus(); 
 		return false;
 	}else{
 		return true;
@@ -219,72 +223,127 @@ function checkAge(){
 }
 
 //check member
-function checkDcno()
+function checkDcno(obj)
 {
-	var dcno = $("#d-dcno").val();
+	var dcno = obj.value;
 	if(dcno.length ==0 || (dcno.length==20 && dcno.match(/^[0-9a-zA-Z]+$/)))
 	{
 		hideErrTip();
+		return true;
 	}
 	else
 	{
 		showErrTip(172,"残疾证号可以为空或20位字母与数字的组合");
+		obj.focus(); 
+		return false;
 	}
 }
 
 //check dibao
-function checkDibao(){
-	var tb = $("#d-tbfd").val();
+function checkDibao(obj){
+	var tb = obj.value;
 	if(tb.match(/^[0-9]+$/) && tb>=0)
 	{
 		hideErrTip();
+		return true;
 	}
 	else
 	{
 		showErrTip(295,"低保金只能是大于0的数字");
+		obj.focus(); 
+		return false;
 	}
 	var blaRadio = document.getElementsByName("bla");
 	if(blaRadio[0].checked){
 		if(tb.length==0 || tb==0 || !tb.match(/^[0-9]+$/)){
 			showErrTip(295,"低保金只能是大于0的数字");
+			obj.focus(); 
+			return false;
 		}
 		else
 		{
 			hideErrTip();
+			return true;
 		}
 	}
 }
 
-//PersonIDCard
-function checkIDCard()
+/*************************/
+function showFamilyErrTip(top,c)
 {
-	var num = document.getElementById("idcno").value;
+	var errTip=document.getElementById("familyErrTip");
+	errTip.style.marginLeft=top+"px";
+	errTip.style.display="";
+	errTip.innerHTML = c;
+}
+function hideFamilyErrTip()
+{
+	var errTip=document.getElementById("familyErrTip");
+	errTip.innerHTML = '';
+}
+
+
+
+//baseinfo name
+function checkHuName(obj){
+	var duname = obj.value;
+	var m = /^[\u4e00-\u9faf]+$/;
+	if(duname=="")
+	{
+		showFamilyErrTip(50,"姓名必须输入");
+		obj.focus(); 
+		return false;
+	}
+	else if(!m.test(duname))
+	{
+		showFamilyErrTip(50,"姓名只能是汉字,且不能有空格");
+		obj.focus(); 
+		return false;
+	}
+	else if(duname.length<2)
+	{
+		showFamilyErrTip(50,"姓名不能少于2个汉字");
+		obj.focus(); 
+		return false;
+	}
+	else{
+		hideFamilyErrTip();
+		return true;
+	}
+}
+
+//PersonIDCard
+function checkIDCard(obj)
+{
+	var num = obj.value;
 	var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
     //身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X。  
 	if(num.length>0 && !reg.test(num))   
     {
-         alert('输入的身份证号长度不对，或者号码不符合规定！\n15位号码应全为数字，18位号码末位可以为数字或X。');
-         personForm.idcno.focus(); 
-         return false;
+		showFamilyErrTip(50,"输入的身份证号长度不对，或者号码不符合规定！\n15位号码应全为数字，18位号码末位可以为数字或X。");
+        obj.focus(); 
+        return false;
     } 
 	else
 	{
+		hideFamilyErrTip();
 		return true;
 	}
 }
 
 //tel
-function checkTelphone()
+function checkTelphone(obj)
 {
-	var tel = $("#htel").val();
-	if(tel.length ==0 || ((tel.length==11 || tel.length==12) && dcno.match(/^[0-9]+$/)))
+	var tel = obj.value;
+	if(tel.length ==0 || ((tel.length==11 || tel.length==12) && tel.match(/^[0-9]+$/)))
 	{
+		hideFamilyErrTip();
 		return true;
 	}
 	else
 	{
-		alert("请输入合法的电话号码");
-		personForm.htel.focus(); 
+		showFamilyErrTip(50,"请输入合法的电话号码");
+		obj.focus(); 
         return false;
 	}
 }
@@ -293,60 +352,72 @@ function checkTelphone()
 
 
 //house
-function checkHouse(){
-	var house = $("#house").val();
+function checkHouse(obj){
+	var house = obj.value;
 	if(isNaN(house))
 	{        
-		alert("非法数字");
+		showFamilyErrTip(50,"非法数字");
+		obj.focus();
 		return false;
     }
-	if(house<10 || house>300)
+	else if(house<10 || house>300)
 	{
-		alert("请输入合理的面积");
+		showFamilyErrTip(50,"请输入合理的面积[大于10，小于300]");
+		obj.focus();
 		return false;
+	}
+	else
+	{
+		hideFamilyErrTip();
+		return true;
 	}
 }
 
-
-function checkBanfPerson(){
-	var banf = $("#frname").val();
+function checkBanfPerson(obj){
+	var banf = obj.value;
 	var m = /^[\u4e00-\u9faf]+$/;
 	if(banf.length>0 && (!m.test(banf) || banf.length<2))
 	{
-		alert("挂钩帮扶人只能是汉字，且不能少于2个字符");
-		memberForm.frname.focus(); 
+		showFamilyErrTip(50,"挂钩帮扶人只能是汉字，且不能少于2个字符");
+		obj.focus(); 
 		return false;
+	}
+	else
+	{
+		hideFamilyErrTip();
+		return true;
 	}
 }
 
-function checkBanfWork(){
-	var banfw = $("#frwork").val();
+function checkBanfWork(obj){
+	var banfw = obj.value;
 	var m = /^[\u4e00-\u9faf]+$/;
 	if(banfw.length>0 && (!m.test(banfw) || banfw.length<2))
 	{
-		alert("单位职务只能是汉字，且不能少于2个字符");
-		memberForm.frwork.focus(); 
+		showFamilyErrTip(50,"单位职务只能是汉字，且不能少于2个字符");
+		objfocus(); 
 		return false;
 	}
 	else
 	{
+		hideFamilyErrTip();
 		return true;
 	}
-	return false;
 }
 
 //guagouTel
-function checkBanfTelphone()
+function checkBanfTelphone(obj)
 {
-	var tel = $("#frtel").val();
+	var tel = obj.value;
 	if(tel.length ==0 || ((tel.length==11 || tel.length==12) && tel.match(/^[0-9]+$/)))
 	{
+		hideFamilyErrTip();
 		return true;
 	}
 	else
 	{
-		alert("请输入合法的电话号码");
-		personForm.htel.focus(); 
+		showFamilyErrTip(50,"请输入合法的电话号码");
+		obj.focus(); 
         return false;
 	}
 }
@@ -354,10 +425,15 @@ function checkBanfTelphone()
 //
 function checkPersonForm()
 {
-	if(checkIDCard() && checkTelphone() && checkHouse() && checkBanfPerson() && checkBanfWork()){
-		return true;
-	}
-	return false;
+	document.personForm.action="govBrowerAction_saveFamily.do";
+	if(!checkHuName(document.all.hname)) return;
+	if(!checkIDCard(document.all.idcno)) return;
+	if(!checkTelphone(document.all.htel)) return;
+	if(!checkHouse(document.all.house)) return;
+	if(!checkBanfPerson(document.all.frname)) return;
+	if(!checkBanfWork(document.all.frwork)) return;
+	if(!checkBanfTelphone(document.all.frtel)) return;
+	document.personForm.submit();
 }
 
 

@@ -52,7 +52,7 @@
 			<td width="4%">性别</td>
 			<td width="4%">出生<br/>年份</td>
 			<td width="4%">在校生</td>
-			<td width="6%">文化程度</td>
+			<td width="8%">文化程度</td>
 			<td width="8%">身体状况</td>
 			<td width="12%">残疾证号</td>
 			<td width="8%">劳动力状况</td>
@@ -119,7 +119,7 @@
 		<tr>
 			<td width="35%" align="right">姓名:&nbsp;&nbsp;</td>
 			<td width="35%" align="left">
-				<input type="text" id="d-uname" name="uname" class="back-input" maxlength="10" onblur="checkName()" placeholder="请输入姓名"/>
+				<input type="text" id="d-uname" name="uname" class="back-input" maxlength="10" onblur="checkName(this)" placeholder="请输入姓名"/>
 			</td>
 			<td width="30%">
 				<div id="errTip" class="error-tips"></div>
@@ -135,7 +135,7 @@
 		<tr>
 			<td align="right">出生年份:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="d-age" name="age" class="back-input" maxlength="4" onkeyup="checkIntWithRangeInput(this,'4','1900','2020')" onblur="checkAge()" />
+				<input type="text" id="d-age" name="age" class="back-input" maxlength="4" onblur="checkAge(this)" />
 			</td>
 			<td><span id="ageTips" class="ptips"></span></td>
 		</tr>
@@ -163,7 +163,7 @@
 		<tr>
 			<td align="right">残疾证号:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="d-dcno" name="dcno" class="back-input" maxlength="20" placeholder="请输入数字或字母" onblur="checkDcno()"/>
+				<input type="text" id="d-dcno" name="dcno" class="back-input" maxlength="20" placeholder="请输入数字或字母" onblur="checkDcno(this)"/>
 			</td>
 			<td></td>
 		</tr>
@@ -191,7 +191,7 @@
 		<tr>
 			<td align="right">领取低保金、残疾金(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="d-tbfd" name="tbfd" class="back-input" maxlength="6" placeholder="请输入金额"  onblur="checkDibao()"/>
+				<input type="text" id="d-tbfd" name="tbfd" class="back-input" maxlength="6" placeholder="请输入金额"  onblur="checkDibao(this)"/>
 			</td>
 			<td></td>
 		</tr>
