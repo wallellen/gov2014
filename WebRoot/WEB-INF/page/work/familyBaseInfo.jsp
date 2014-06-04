@@ -9,10 +9,14 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/script/familymember.js"></script>
 <style type="text/css">
-	.family-errtip{color:#F00; height:20px; line-height:20px; width:570px}
+	.family-errtip{color:#F00; height:20px; line-height:20px; width:570px; display:none;}
 </style>
 <s:if test="%{#session.vts.map.hname!=''}">
-<h3 id="base-title">[<s:property value="#session.vts.curHM"/>&nbsp;<s:property value="#session.vts.map.hname"/>]家庭基本信息</h3>
+<h3 id="base-title" style="height:28px;">[<s:property value="#session.vts.curHM"/>&nbsp;<s:property value="#session.vts.map.hname"/>]家庭基本信息
+	<span style="width:90px; height:28px; line-height:28px; float:right; padding-top:3px">
+	<input type="button" value="审核" class="button4" onclick="location.href='${pageContext.request.contextPath }/system/govBrowerAction_checkFamily.do?hbm=<s:property value="#session.vts.curHM"/>'"/>
+	</span>
+</h3>
 </s:if>
 <s:else>
 <h3 id="base-title">家庭基本信息</h3>

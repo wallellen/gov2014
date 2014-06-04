@@ -21,5 +21,6 @@ public interface GovBrowerService {
 	void findFamilyYearInfoWithTab2(DotSession ds);
 	void isDirectWithBmHm(DotSession ds);
 	void deleteFamilyWithHbm(DotSession ds, String hbm, int cause);
+	void checkFamilyInfoByHbm(DotSession ds, String hbm);
 
 }

@@ -279,7 +279,7 @@ function showFamilyErrTip(top,c)
 function hideFamilyErrTip()
 {
 	var errTip=document.getElementById("familyErrTip");
-	errTip.innerHTML = '';
+	errTip.style.display="none";
 }
 
 

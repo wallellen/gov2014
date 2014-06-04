@@ -287,6 +287,13 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 		return viewArea();
 	}
 	
+	/** 检查家庭其本信息合法性 */
+	public String checkFamily(){
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("checkFamily-> hbm:"+hbm);
+		govBrowerService.checkFamilyInfoByHbm(ds, hbm);
+		return "show_checkFamily";
+	}
 	
 	private String viewBM="";
 	private String hbm;

@@ -41,6 +41,9 @@
 			<result name="viewFamily">/WEB-INF/page/work/viewFamily.jsp</result>
 			<result name="familyIncomeHome">/WEB-INF/page/work/familyIncome.jsp</result>
 			<result name="input">/WEB-INF/page/work/browerDetail.jsp</result>
+			
+			<!-- check family -->
+			<result name="show_checkFamily">/WEB-INF/page/work/check_family.jsp</result>
 		</action>
 		<!-- 农户查询 -->
 		<action name="govFarmerQueryAction_*" class="govFarmerQueryAction" method="{1}">
