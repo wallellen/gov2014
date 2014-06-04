@@ -5,14 +5,14 @@ function popXianCreditEdit(s,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13){
 	//clear
 	document.getElementById("c0").value='';
 	document.getElementById("c1").value='';
-	document.getElementById("c2").value='';
-	document.getElementById("c3").value='';
+	document.getElementById("c2").innerHTML='';
+	document.getElementById("c3").innerHTML='';
 	document.getElementById("c4").value='';
 	document.getElementById("c5").value='';
 	document.getElementById("c6").value='';
 	document.getElementById("c7").value='';
-	document.getElementById("c8").value='';
-	document.getElementById("c9").value='';
+	document.getElementById("c8").innerHTML='';
+	document.getElementById("c9").innerHTML='';
 	document.getElementById("c10").value='';
 	document.getElementById("c11").value='';
 	document.getElementById("c12").value='';
