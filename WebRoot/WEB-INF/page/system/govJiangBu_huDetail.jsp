@@ -16,6 +16,13 @@
 		#overlay-jiangbu{position:absolute;top:0;left:0;width:100%;height:670px;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
 		#win-jiangbu{position:absolute;top:30%;left:45%;width:500px;height:460px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;}
 		#win-jiangbu .back-input{height:20px; width:140px;}
+		
+		.jiang-errtip{
+			width:260px; 
+			height:18px;
+			line-height:18px;
+			color:#F00;
+		}
 	</style>
 	<script type="text/javascript">
 		function deleteJiangBu(c){
@@ -169,19 +176,19 @@
 		<tr>
 			<td align="right">省级财政奖补资金(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vv1" name="jbtxt" class="back-input" maxlength="8" onkeyup="checkIntInput(this)"/>
+				<input type="text" id="vv1" name="jbtxt" class="back-input" maxlength="8" onblur="checkMoney(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">地方财政(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vv2" name="jbtxt" class="back-input" maxlength="8" onkeyup="checkIntInput(this)"/>
+				<input type="text" id="vv2" name="jbtxt" class="back-input" maxlength="8" onblur="checkMoney(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">挂钩帮扶单位(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="vv3" name="jbtxt" class="back-input" maxlength="8" onkeyup="checkIntInput(this)"/>
+				<input type="text" id="vv3" name="jbtxt" class="back-input" maxlength="8" onblur="checkMoney(this)"/>
 			</td>
 		</tr>
 		<tr>
@@ -192,6 +199,7 @@
 		</tr>
 	</table>
 </div>
+<div id="jiangErrTip" class="jiang-errtip"></div>
 <div style="margin-top:20px; margin-left:150px;">
 	<input type="button" value="确定" class="button4" onclick="subJiangBuBt()"/>&nbsp;&nbsp;&nbsp;&nbsp;
 	<input id="y-close" type="button" value="取消" class="button4"/>

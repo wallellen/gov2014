@@ -16,6 +16,8 @@ function popJiangBuEdit(s,r1,t1,t2,t3,t4,t5,t6,t7,v1,v2,v3,b1,hname){
 	document.getElementById("vv2").value='';
 	document.getElementById("vv3").value='';
 	
+	hideJiangErrTip();
+	
 	if(s=="edit"){
 		jt.innerHTML="<font color='#fff'>修改奖补项目信息&nbsp;["+hname+"]</font>";
 		if(t1==1){
@@ -115,6 +117,10 @@ function subJiangBuBt(){
 	var vs3 = document.getElementById("vv3").value;
 	var vst = parseInt(vs1)+parseInt(vs2)+parseInt(vs3);
 	
+	if(!checkMoney(document.all.vv1))return;
+	if(!checkMoney(document.all.vv2))return;
+	if(!checkMoney(document.all.vv3))return;
+	
 	if(s.indexOf("1")>=0 && vst>0){
 		document.getElementById("jbstr").value=s;
 		document.jBForm.action="govJiangBuAction_saveJiangBu.do";
@@ -123,5 +129,37 @@ function subJiangBuBt(){
 		alert("至少需要选择一项,且金额大于0");
 	}
 }
+//
+
+function showJiangErrTip(top,c)
+{
+	var errTip=document.getElementById("jiangErrTip");
+	errTip.style.marginLeft=top+"px";
+	errTip.style.display="";
+	errTip.innerHTML = c;
+}
+
+function hideJiangErrTip()
+{
+	var errTip=document.getElementById("jiangErrTip");
+	errTip.innerHTML = '';
+}
+function checkMoney(obj)
+{
+	var t = obj.value;
+	var reg = /^[0-9]+([.]{1}[0-9]{1})?$/;
+	if(reg.test(t))
+	{
+		hideJiangErrTip();
+		return true;
+	}
+	else
+	{
+		showJiangErrTip(175, "请输入大于零的金额,最多可以输入一位小数");
+		obj.focus();
+		return false;
+	}
+}
+
 
 	
