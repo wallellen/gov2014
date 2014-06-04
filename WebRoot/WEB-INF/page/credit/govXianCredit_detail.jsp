@@ -15,6 +15,13 @@
 		#overlay-credit{position:absolute;top:0;left:0;width:100%;height:670px;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
 		#win-credit{position:absolute;top:30%;left:45%;width:500px;height:360px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;}
 		#win-credit .back-input{height:20px; width:100px;}
+		
+		.xiaoe-errtip{
+			width:290px; 
+			height:18px;
+			line-height:18px;
+			color:#F00;
+		}
 	</style>
 	<script type="text/javascript">
 		function deleteXianCredit(x){
@@ -164,11 +171,11 @@
 			<td align="right">本月发放</td>
 			<td align="right">户数:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="c4" name="xestr" class="back-input" maxlength="8" onkeyup="checkIntInput(this)"/>
+				<input type="text" id="c4" name="xestr" class="back-input" maxlength="8" onblur="checkHuInt(this)"/>
 			</td>
 			<td align="right">金额(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="c5" name="xestr" class="back-input" maxlength="8" onkeydown="checkFloatInput(this)"/>
+				<input type="text" id="c5" name="xestr" class="back-input" maxlength="8" onblur="checkMoney(this)"/>
 			</td>
 			<td></td>
 		</tr>
@@ -176,11 +183,11 @@
 			<td align="right">本月收回</td>
 			<td align="right">户数:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="c6" name="xestr" class="back-input" maxlength="8" onkeyup="checkIntInput(this)"/>
+				<input type="text" id="c6" name="xestr" class="back-input" maxlength="8" onblur="checkHuInt(this)"/>
 			</td>
 			<td align="right">金额(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="c7" name="xestr" class="back-input" maxlength="8" onkeydown="checkFloatInput(this)"/>
+				<input type="text" id="c7" name="xestr" class="back-input" maxlength="8" onblur="checkMoney(this)"/>
 			</td>
 			<td></td>
 		</tr>
@@ -200,11 +207,11 @@
 			<td align="right">未到期贷款</td>
 			<td align="right">户数:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="c10" name="xestr" class="back-input" maxlength="8" onkeyup="checkIntInput(this)"/>	
+				<input type="text" id="c10" name="xestr" class="back-input" maxlength="8" onblur="checkHuInt(this)"/>	
 			</td>
 			<td align="right">金额(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="c11" name="xestr" class="back-input" maxlength="8" onkeydown="checkFloatInput(this)"/>
+				<input type="text" id="c11" name="xestr" class="back-input" maxlength="8" onblur="checkMoney(this)"/>
 			</td>
 			<td>
 				<input type="button" value="计算" onclick="autoCalculate1()"/>
@@ -214,11 +221,11 @@
 			<td align="right">逾期贷款</td>
 			<td align="right">户数:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="c12" name="xestr" class="back-input" maxlength="8" onkeyup="checkIntInput(this)"/>
+				<input type="text" id="c12" name="xestr" class="back-input" maxlength="8" onblur="checkHuInt(this)"/>
 			</td>
 			<td align="right">金额(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="c13" name="xestr" class="back-input" maxlength="8" onkeydown="checkFloatInput(this)"/>	
+				<input type="text" id="c13" name="xestr" class="back-input" maxlength="8" onblur="checkMoney(this)"/>	
 			</td>
 			<td>
 				<input type="button" value="计算" onclick="autoCalculate2()"/>
@@ -227,6 +234,7 @@
 		
 	</table>
 </div>
+<div id="xiaoErrTip" class="xiaoe-errtip"></div>
 <div style="margin-top:20px; margin-left:150px;">
 	<input type="button" value="确定" class="button4" onclick="subXianCreditBt()"/>&nbsp;&nbsp;&nbsp;&nbsp;
 	<input id="y-close" type="button" value="取消" class="button4"/>

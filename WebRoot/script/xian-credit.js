@@ -18,6 +18,8 @@ function popXianCreditEdit(s,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13){
 	document.getElementById("c12").value='';
 	document.getElementById("c13").value='';
 	document.getElementById("xerrortip").innerHTML='';
+	
+	hideXiaoeErrTip();
 	//
 	if(s=="edit"){
 		xt.innerHTML="<font color='#fff'>修改扶贫小额贷款发放、回收情况</font>";
@@ -92,32 +94,39 @@ function popXianCreditEdit(s,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13){
 }
 function subXianCreditBt()
 {
-	var year = document.getElementById("i_year").value;;
-	var month = document.getElementById("i_month").value;
-	var tsh = document.getElementById("c4").value;
-	var tsv = document.getElementById("c5").value;
-	var trh = document.getElementById("c6").value;
-	var trv = document.getElementById("c7").value;
-	var nh = document.getElementById("c10").value;
-	var nv = document.getElementById("c11").value;
-	var eh = document.getElementById("c12").value;
-	var ev = document.getElementById("c13").value;
-	
-	
-	
-	
-	var url = "govXianCreditAction_saveXianCredit.do";
-	var datajson = {"year":year, "month":month, "tsh":tsh, "tsv":tsv, "trh":trh, "trv":trv, "nh":nh, "nv":nv, "eh":eh, "ev":ev};
-	$.ajax({
-        type: "POST",
-        url: url,
-        dataType: "json",
-        data: datajson,
-        success: responseCredit,
-        error: function () {
-            alert("修改失败");
-        }
-    });
+	if(!checkHuInt(document.all.c4))return;
+	if(!checkMoney(document.all.c5))return;
+	if(!checkHuInt(document.all.c6))return;
+	if(!checkMoney(document.all.c7))return;
+	if(!checkHuInt(document.all.c10))return;
+	if(!checkMoney(document.all.c11))return;
+	if(!checkHuInt(document.all.c12))return;
+	if(!checkMoney(document.all.c13))return;
+	if($("#xiaoErrTip").val().length==0){
+		var year = document.getElementById("i_year").value;;
+		var month = document.getElementById("i_month").value;
+		var tsh = document.getElementById("c4").value;
+		var tsv = document.getElementById("c5").value;
+		var trh = document.getElementById("c6").value;
+		var trv = document.getElementById("c7").value;
+		var nh = document.getElementById("c10").value;
+		var nv = document.getElementById("c11").value;
+		var eh = document.getElementById("c12").value;
+		var ev = document.getElementById("c13").value;
+		
+		var url = "govXianCreditAction_saveXianCredit.do";
+		var datajson = {"year":year, "month":month, "tsh":tsh, "tsv":tsv, "trh":trh, "trv":trv, "nh":nh, "nv":nv, "eh":eh, "ev":ev};
+		$.ajax({
+	        type: "POST",
+	        url: url,
+	        dataType: "json",
+	        data: datajson,
+	        success: responseCredit,
+	        error: function () {
+	            alert("修改失败");
+	        }
+	    });
+	}
 }
 
 function responseCredit(data, textStatus, jqXHR)
@@ -190,5 +199,54 @@ function autoCalculate2()
 	document.getElementById("c9").innerHTML=tv;
 	document.getElementById("c12").value=eh;
 	document.getElementById("c13").value=ev;
+}
+
+function showXiaoeErrTip(top,c)
+{
+	var errTip=document.getElementById("xiaoErrTip");
+	errTip.style.marginLeft=top+"px";
+	errTip.style.display="";
+	errTip.innerHTML = c;
+}
+
+function hideXiaoeErrTip()
+{
+	var errTip=document.getElementById("xiaoErrTip");
+	errTip.innerHTML = '';
+}
+
+function checkHuInt(obj)
+{
+	document.getElementById("xerrortip").innerHTML='';
+	var reg = /^[0-9]*[0-9][0-9]*$/;
+	var tsh = obj.value;
+	if(reg.test(tsh))
+	{
+		hideXiaoeErrTip();
+		return true;
+	}
+	else
+	{
+		showXiaoeErrTip(120,"请输入大于零的户数！");
+		obj.focus();
+		return false;
+	}
+}
+
+function checkMoney(obj)
+{
+	var tsv = obj.value;
+	var reg = /^[0-9]+([.]{1}[0-9]{1})?$/;
+	if(reg.test(tsv))
+	{
+		hideXiaoeErrTip();
+		return true;
+	}
+	else
+	{
+		showXiaoeErrTip(120,"请输入大于零的万元金额，最多可以输入一位小数！");
+		obj.focus();
+		return false;
+	}
 }
 
