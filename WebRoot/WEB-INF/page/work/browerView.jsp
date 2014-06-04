@@ -131,7 +131,7 @@
 							<a href="${pageContext.request.contextPath }/system/govBrowerAction_detail.do?viewBM=<s:property value="#ls.hm"/>&rtf=home">编辑</a>
 							<a href="javascript:popDelFamily('<s:property value="#ls.hm"/>','<s:property value="#ls.hname"/>')">删除</a>
 			 				</s:if>
-			 				<a href="${pageContext.request.contextPath }/system/govBrowerAction_checkFamily.do?hbm=<s:property value="#ls.hm"/>">审核</a>
+			 				<a href="${pageContext.request.contextPath }/system/govBrowerAction_checkFamily.do?hbm=<s:property value="#ls.hm"/>">审查</a>
 						</td>
 					</s:else>
 				</tr>

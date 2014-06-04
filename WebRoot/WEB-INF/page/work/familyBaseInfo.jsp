@@ -14,7 +14,7 @@
 <s:if test="%{#session.vts.map.hname!=''}">
 <h3 id="base-title" style="height:28px;">[<s:property value="#session.vts.curHM"/>&nbsp;<s:property value="#session.vts.map.hname"/>]家庭基本信息
 	<span style="width:90px; height:28px; line-height:28px; float:right; padding-top:3px">
-	<input type="button" value="审核" class="button4" onclick="location.href='${pageContext.request.contextPath }/system/govBrowerAction_checkFamily.do?hbm=<s:property value="#session.vts.curHM"/>'"/>
+	<input type="button" value="审查" class="button4" onclick="location.href='${pageContext.request.contextPath }/system/govBrowerAction_checkFamily.do?hbm=<s:property value="#session.vts.curHM"/>'"/>
 	</span>
 </h3>
 </s:if>
