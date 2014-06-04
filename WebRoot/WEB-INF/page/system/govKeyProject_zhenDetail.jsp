@@ -89,8 +89,8 @@
     <s:iterator value="#session.vts.list" var="ls" status="sc">
     <tr style="display:none">
 		<td><s:property value="#ls.pid"/></td>
-        <td title="<s:property value='#ls.itemname'/>"><s:property value="#ls.itemname.length()>13?#ls.itemname.substring(0,12)+'...':#ls.itemname"/></td>
-        <td title="<s:property value='#ls.oname'/>"><s:property value="#ls.oname.length()>11?#ls.oname.substring(0,10)+'...':#ls.oname"/></td>
+        <td align="left" title="<s:property value='#ls.itemname'/>">&nbsp;<s:property value="#ls.itemname.length()>13?#ls.itemname.substring(0,12)+'...':#ls.itemname"/></td>
+        <td align="left" title="<s:property value='#ls.oname'/>">&nbsp;<s:property value="#ls.oname.length()>11?#ls.oname.substring(0,10)+'...':#ls.oname"/></td>
         <td><s:property value="#ls.prt"/></td>
         <td><s:property value="#ls.spr"/></td>
         <td><s:property value="#ls.sspr"/></td>
