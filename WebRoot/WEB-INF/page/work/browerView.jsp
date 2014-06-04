@@ -72,8 +72,8 @@
 					<td width="18%" class="tabtd1">操作</td>
 				</s:if>
 				<s:else>
-					<td height="20px" width="15%">农户编码</td>
-					<td width="7%">组名</td>
+					<td height="20px" width="10%">农户编码</td>
+					<td width="4%">组名</td>
 					<td width="7%">姓名</td>
 					<td width="4%">人口</td>
 					<td width="4%">劳力</td>
@@ -81,7 +81,7 @@
 					<td width="8%">住房(m2)</td>
 					<td width="10%">属性</td>
 					<td width="10%">贫困原因</td>
-					<td width="16%" class="tabtd1">操作</td>
+					<td width="18%" class="tabtd1">操作</td>
 				</s:else>
                 </tr>
             </thead>
@@ -124,6 +124,7 @@
 							<a href="${pageContext.request.contextPath }/system/govBrowerAction_detail.do?viewBM=<s:property value="#ls.hm"/>&rtf=home">编辑</a>
 							<a href="javascript:popDelFamily('<s:property value="#ls.hm"/>','<s:property value="#ls.hname"/>')">删除</a>
 			 				</s:if>
+			 				<a href="${pageContext.request.contextPath }/system/govBrowerAction_checkFamily.do?hbm=<s:property value="#ls.hm"/>">审核</a>
 						</td>
 					</s:else>
 				</tr>
