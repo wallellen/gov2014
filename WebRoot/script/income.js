@@ -16,6 +16,9 @@ function popIncomeYear(s,i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12){
 	document.getElementById("i11").value = '';
 	document.getElementById("i12").value = '';
 	document.getElementById("i13").value = '';
+	//
+	hideIncomeErrTip();
+	
 	if(s=="edit"){
 		ytitle.innerHTML="<font color='#fff'>修改家庭收入及帮扶情况</font>";
 		document.getElementById("i1").value = 1;
@@ -95,5 +98,65 @@ function popIncomeYear(s,i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12){
 }
 function subYearBt(){
 	document.incomeForm.action="govIncomeAction_saveIncome.do";
+	if(!checkIncomeMoney(document.all.i3))return;
+	if(!checkIncomeMoney(document.all.i4))return;
+	if(!checkIncomeMoney(document.all.i5))return;
+	if(!checkIncomeMoney(document.all.i6))return;
+	if(!checkIncomeMoney(document.all.i7))return;
+	if(!checkIncomeMoney(document.all.i8))return;
+	if(!checkIncomeMoney(document.all.i9))return;
+	if(!checkIncomeMoney(document.all.i10))return;
+	if(!checkIncomeMoney(document.all.i11))return;
+	
+	if(!checkIncomePerson(document.all.i12))return;
+	if(!checkIncomePerson(document.all.i13))return;
+	
 	document.incomeForm.submit();
+}
+
+function showIncomeErrTip(top,c)
+{
+	var errTip=document.getElementById("incomeErrTip");
+	errTip.style.marginTop=top+"px";
+	errTip.style.display="";
+	errTip.innerHTML = c;
+}
+function hideIncomeErrTip()
+{
+	var errTip=document.getElementById("incomeErrTip");
+	errTip.innerHTML = '';
+}
+
+function checkIncomeMoney(obj)
+{
+	var income = obj.value;
+	var reg = /^[0-9]+([.]{1}[0-9]{1})?$/;
+	if(reg.test(income))
+	{
+		hideIncomeErrTip();
+		return true;
+	}
+	else
+	{
+		showIncomeErrTip(0,"请输入大于零的金额，最多可以输入一位小数！");
+		obj.focus();
+		return false;
+	}
+}
+
+function checkIncomePerson(obj)
+{
+	var reg = /^[0-9]*[0-9][0-9]*$/;
+	var inper = obj.value;
+	if(reg.test(inper))
+	{
+		hideIncomeErrTip();
+		return true;
+	}
+	else
+	{
+		showIncomeErrTip(260,"请输入大于零的人数！");
+		obj.focus();
+		return false;
+	}
 }

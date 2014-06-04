@@ -14,6 +14,16 @@
 		#win-year{position:absolute;top:30%;left:45%;width:500px;height:460px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;} 
 		h2{font-size:12px;height:18px;text-align:right;background:#3F89EC;border-bottom:3px solid #F7F7F7;padding:5px;cursor:move;} 
 		h2 span{border:0px solid #f90;padding:0 2px;} 
+		
+		.back-input{
+			width:120px; height:20px;
+		}
+		.income-errtip{
+			width:125px; 
+			height:18px;
+			line-height:18px;
+			color:#F00;
+		}
 	</style>
 </head>
 <body style="background:#E0EEFB;">
@@ -112,83 +122,75 @@
 <!-- hm -->
 <input type="hidden" id="i2" name="instr"/>
 <div class="member-list">
-	<table width="450px" cellpadding="0" cellspacing="0">
+	<table width="500px" cellpadding="0" cellspacing="0">
 		<tr>
-			<td align="right">种植业收入(元):&nbsp;&nbsp;</td>
-			<td align="left">
-				<input type="text" id="i3" name="instr" size="12" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
+			<td width="40%" align="right">种植业收入(元):&nbsp;&nbsp;</td>
+			<td width="30%" align="left">
+				<input type="text" id="i3" name="instr" size="12" class="back-input" maxlength="8" onblur="checkIncomeMoney(this)"/>
 			</td>
-			<td></td>
+			<td width="35%" rowspan="11">
+				<div id="incomeErrTip" class="income-errtip"></div>
+			</td>
 		</tr>
 		<tr>
 			<td align="right">养殖业收入(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="i4" name="instr" size="12" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="i4" name="instr" size="12" class="back-input" maxlength="8" onblur="checkIncomeMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">务工收入(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="i5" name="instr" size="12" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="i5" name="instr" size="12" class="back-input" maxlength="8" onblur="checkIncomeMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">低保、五保、养老收入(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="i6" name="instr" size="12" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="i6" name="instr" size="12" class="back-input" maxlength="8" onblur="checkIncomeMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">补贴性收入(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="i7" name="instr" size="12" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="i7" name="instr" size="12" class="back-input" maxlength="8" onblur="checkIncomeMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">其他收入(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="i8" name="instr" size="12" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="i8" name="instr" size="12" class="back-input" maxlength="8" onblur="checkIncomeMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">无偿帮扶资金(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="i9" name="instr" size="12" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="i9" name="instr" size="12" class="back-input" maxlength="8" onblur="checkIncomeMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">股份分红(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="i10" name="instr" size="12" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="i10" name="instr" size="12" class="back-input" maxlength="8" onblur="checkIncomeMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">小额贷款和互相资金(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="i11" name="instr" size="12" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="i11" name="instr" size="12" class="back-input" maxlength="8" onblur="checkIncomeMoney(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">劳动力转移培训(人):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="i12" name="instr" size="12" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="i12" name="instr" size="12" class="back-input" maxlength="8" onblur="checkIncomePerson(this)"/>
 			</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td align="right">劳动力转移就业人数(人):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="i13" name="instr" size="12" class="back-input" maxlength="8" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="i13" name="instr" size="12" class="back-input" maxlength="8" onblur="checkIncomePerson(this)"/>
 			</td>
-			<td></td>
 		</tr>
 	</table>
 </div>
