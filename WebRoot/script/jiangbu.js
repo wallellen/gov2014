@@ -147,7 +147,7 @@ function hideJiangErrTip()
 function checkMoney(obj)
 {
 	var t = obj.value;
-	var reg = /^[0-9]+([.]{1}[0-9]{1})?$/;
+	var reg = /^[0-9]*[0-9][0-9]*$/;
 	if(reg.test(t))
 	{
 		hideJiangErrTip();
@@ -155,7 +155,7 @@ function checkMoney(obj)
 	}
 	else
 	{
-		showJiangErrTip(175, "请输入大于零的金额,最多可以输入一位小数");
+		showJiangErrTip(175, "请输入大于零的整数");
 		obj.focus();
 		return false;
 	}
