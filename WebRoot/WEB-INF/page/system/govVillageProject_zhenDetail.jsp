@@ -143,13 +143,13 @@
 <h2 style="line-height:20px; text-align:left; margin-top:2px;"><span id="vtitle"><font color="#fff">修改关键项目情况</font></span></h2>
 <form name="villageProjectForm" action="" method="post">
 <div class="member-list">
-	<table width="450px" cellpadding="0" cellspacing="0">
+	<table width="500px" cellpadding="0" cellspacing="0">
 		<tr>
-			<td align="right">项目名称:&nbsp;&nbsp;</td>
-			<td align="left">
+			<td width="40%" align="right">项目名称:&nbsp;&nbsp;</td>
+			<td width="30%" align="left">
 				<input type="text" id="vp1" name="vptxt" class="back-input" maxlength="20"/>
 			</td>
-			<td></td>
+			<td width="30%"></td>
 		</tr>
 		<tr>
 			<td align="right">项目描述:&nbsp;&nbsp;</td>
