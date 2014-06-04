@@ -15,6 +15,8 @@ function popKeyProjectEdit(s,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12){
 	document.getElementById("kp9").value='';
 	document.getElementById("kp10").value='';
 	
+	hideKeyErrTip();
+	
 	if(s=="edit"){
 		kt.innerHTML="<font color='#fff'>修改关键项目信息</font>";
 		document.getElementById("kxxm").value=p1;	//要更新或插入的项目所在乡的编码
@@ -92,6 +94,104 @@ function popKeyProjectEdit(s,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12){
 }
 function subKeyProjectBt(){
 	document.keyProjectForm.action="govKeyProjectAction_saveKeyProject.do";
+	
+	if(!checkKeyName(document.all.kp1))return;
+	if(!checkMoney(document.all.kp3))return;
+	if(!checkMoney(document.all.kp4))return;
+	if(!checkMoney(document.all.kp5))return;
+	if(!checkMoney(document.all.kp6))return;
+	if(!checkMoney(document.all.kp7))return;
+	if(!checkKprj(document.all.kp8))return;
+	if(!checkPercent(document.all.kp9))return;
+	if(!checkPercent(document.all.kp10))return;
+	
 	document.keyProjectForm.submit();
 }
+
+//
+function showKeyErrTip(top,c)
+{
+	var errTip=document.getElementById("keyErrTip");
+	errTip.style.marginLeft=top+"px";
+	errTip.style.display="";
+	errTip.innerHTML = c;
+}
+function hideKeyErrTip()
+{
+	var errTip=document.getElementById("keyErrTip");
+	errTip.innerHTML = '';
+}
+function checkKeyName(obj)
+{
+	var keyName = obj.value;
+	if(keyName=="")
+	{
+		showKeyErrTip(100, "项目名称不能为空");
+		obj.focus();
+		return false;
+	}
+	else
+	{
+		hideKeyErrTip();
+		return true;
+	}
+}
+function checkMoney(obj)
+{
+	var t = obj.value;
+	var reg = /^[0-9]+([.]{1}[0-9]{1})?$/;
+	if(reg.test(t))
+	{
+		hideKeyErrTip();
+		return true;
+	}
+	else
+	{
+		showKeyErrTip(100,"请输入大于零的万元金额，最多可以输入一位小数！");
+		obj.focus();
+		return false;
+	}
+}
+function checkKprj(obj)
+{
+	var y = obj.value;
+	var reg = /^[0-9]*[0-9][0-9]*$/;
+	if(reg.test(y))
+	{
+		hideKeyErrTip();
+		return true;
+	}
+	else
+	{
+		showKeyErrTip(100,"项目实施年限大于0！");
+		obj.focus();
+		return false;
+	}
+}
+function checkPercent(obj)
+{
+	var p = obj.value;
+	if(isNaN(p))
+	{
+		showKeyErrTip(100,"只能输入数字");
+		obj.focus();
+		return false;
+	}
+	else if(p<0 || p>100)
+	{
+		showKeyErrTip(100,"只能输入1-100之间的数字");
+		obj.focus();
+		return false;	
+	}
+	else
+	{
+		hideKeyErrTip();
+		return true;
+	}
+}
+
+
+
+
+
 	

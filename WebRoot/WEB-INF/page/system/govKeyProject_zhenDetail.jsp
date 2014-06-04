@@ -15,6 +15,13 @@
 		#overlay-keyproject{position:absolute;top:0;left:0;width:100%;height:670px;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
 		#win-keyproject{position:absolute;top:30%;left:45%;width:500px;height:460px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;}
 		#win-keyproject .back-input{height:20px; width:140px;}
+		
+		.key-errtip{
+			width:290px; 
+			height:18px;
+			line-height:18px;
+			color:#F00;
+		}
 	</style>
 	<script type="text/javascript">
 		function deleteKeyProject(c0,c1){
@@ -116,14 +123,14 @@
 <input type="hidden" id="kxxm" name="kptxt" value=""/>
 <input type="hidden" id="kpid" name="kptxt" value=""/>
 <div class="member-list">
-	<table width="450px" cellpadding="0" cellspacing="0">
+	<table width="500px" cellpadding="0" cellspacing="0">
 		<tr height="10px"></tr>
 		<tr>
-			<td align="right">项目名称:&nbsp;&nbsp;</td>
-			<td align="left">
-				<input type="text" id="kp1" name="kptxt" class="back-input" maxlength="20"/>
+			<td width="50%" align="right">项目名称:&nbsp;&nbsp;</td>
+			<td width="35%" align="left">
+				<input type="text" id="kp1" name="kptxt" class="back-input" maxlength="20" onblur="checkKeyName(this)"/>
 			</td>
-			<td align="left"></td>
+			<td width="15%" align="left"></td>
 		</tr>
 		<tr>
 			<td align="right">项目实施所在乡(镇):&nbsp;&nbsp;</td>
@@ -135,62 +142,63 @@
 		<tr>
 			<td align="right">省级财政安排(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="kp3" name="kptxt" class="back-input" maxlength="4" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="kp3" name="kptxt" class="back-input" maxlength="4" onblur="checkMoney(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">市县财政安排(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="kp4" name="kptxt" class="back-input" maxlength="4" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="kp4" name="kptxt" class="back-input" maxlength="4" onblur="checkMoney(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">其他资金(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="kp5" name="kptxt" class="back-input" maxlength="4" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="kp5" name="kptxt" class="back-input" maxlength="4" onblur="checkMoney(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">资金拨付合计(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="kp6" name="kptxt" class="back-input" maxlength="4" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="kp6" name="kptxt" class="back-input" maxlength="4" onblur="checkMoney(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">其中,已拨付省级财政补助资金(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="kp7" name="kptxt" class="back-input" maxlength="4" onkeyup="checkFloatInput(this)"/>
+				<input type="text" id="kp7" name="kptxt" class="back-input" maxlength="4" onblur="checkMoney(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">项目实施年限:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="kp8" name="kptxt" class="back-input" maxlength="6" onkeyup="value=value.replace(/[^\d]/g,'')"/>
+				<input type="text" id="kp8" name="kptxt" class="back-input" maxlength="6" onblur="checkKprj(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">全年计划进度(%):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="kp9" name="kptxt" class="back-input" maxlength="3" onkeyup="checkPercentInput(this)"/>
+				<input type="text" id="kp9" name="kptxt" class="back-input" maxlength="3" onblur="checkPercent(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">截至报告日项目实施进度(%):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="kp10" name="kptxt" class="back-input" maxlength="3" onkeyup="checkPercentInput(this)"/>
+				<input type="text" id="kp10" name="kptxt" class="back-input" maxlength="3" onblur="checkPercent(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		
 	</table>
 </div>
+<div id="keyErrTip" class="key-errtip"></div>
 <div style="margin-top:20px; margin-left:150px;">
 	<input type="button" value="确定" class="button4" onclick="subKeyProjectBt()"/>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

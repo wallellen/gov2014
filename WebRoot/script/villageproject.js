@@ -19,6 +19,7 @@ function popVillageProjectEdit(s,v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14,
 	document.getElementById("vp13").value='';
 	document.getElementById("vp14").value='';
 
+	hideVillErrTip();
 	
 	if(s=="edit"){
 		vt.innerHTML="<font color='#fff'>【"+n+"】 修改项目</font>";
@@ -117,6 +118,9 @@ function subVillageProjectBt(){
 	if(!checkMoney(document.all.vp9)) return;
 	if(!checkMoney(document.all.vp10)) return;
 	if(!checkMoney(document.all.vp11)) return;
+	//
+	if(!checkPercent(document.all.vp13)) return;
+	if(!checkPercent(document.all.vp14)) return;
 
 	document.villageProjectForm.submit();
 }
