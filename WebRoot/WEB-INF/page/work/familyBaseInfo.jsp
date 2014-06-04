@@ -9,7 +9,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/script/familymember.js"></script>
 <style type="text/css">
-	.family-errtip{color:#F00; height:20px; line-height:20px; width:570px; display:none;}
+	.family-errtip{color:#F00; width:570px;}
 </style>
 <s:if test="%{#session.vts.map.hname!=''}">
 <h3 id="base-title" style="height:28px;">[<s:property value="#session.vts.curHM"/>&nbsp;<s:property value="#session.vts.map.hname"/>]家庭基本信息
