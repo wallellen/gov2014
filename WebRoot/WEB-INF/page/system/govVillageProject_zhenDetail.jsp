@@ -100,8 +100,8 @@
     <s:iterator value="#session.vts.list" var="ls" status="sc">
     <tr style="display:none" title="村名: <s:property value='#ls.c2'/>&#10;村编码: <s:property value='#ls.c1'/>&#10;项目名称: <s:property value='#ls.c3'/>&#10;项目描述: <s:property value='#ls.c4'/>">
 		<td><label id="#sc.count"></label><s:property value="#sc.count"/></td>
-		<td><s:property value="#ls.c2.length()>6?#ls.c2.substring(0,5)+'...':#ls.c2"/></td>
-		<td><s:property value="#ls.c3.length()>11?#ls.c3.substring(0,10)+'...':#ls.c3"/></td>
+		<td align="left">&nbsp;<s:property value="#ls.c2.length()>6?#ls.c2.substring(0,5)+'...':#ls.c2"/></td>
+		<td align="left">&nbsp;<s:property value="#ls.c3.length()>11?#ls.c3.substring(0,10)+'...':#ls.c3"/></td>
         <td><s:property value="#ls.c5"/></td>
         <td><s:property value="#ls.c6"/></td>
         <td><s:property value="#ls.c7"/></td>

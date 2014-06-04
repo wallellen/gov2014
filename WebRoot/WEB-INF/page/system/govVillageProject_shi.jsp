@@ -77,7 +77,9 @@
     <s:iterator value="#session.vts.list" var="ls" status="sc">
     <tr style="display:none">
 		<td><label id="#sc.count"></label><s:property value="#sc.count"/></td>
-        <td title="<s:property value="#ls.c1"/>"><s:property value="#ls.c1.length()>6?#ls.c1.substring(0,5)+'...':#ls.c1"/></td>
+        <td title="<s:property value="#ls.c1"/>" align="left">
+        	&nbsp;<s:property value="#ls.c1.length()>6?#ls.c1.substring(0,5)+'...':#ls.c1"/>
+        </td>
 		<td><s:property value="#ls.c2"/></td>
 		<td><s:property value="#ls.c3"/></td>
         <td><s:property value="#ls.c4"/></td>
