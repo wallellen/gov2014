@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
 </head>
 <body style="background:#E0EEFB;">
-<h3 class="jiangbu-title">审核家庭基本信息&nbsp;[<s:property value="hbm"/>]
+<h3 class="jiangbu-title">审核家庭基本信息&nbsp;&nbsp;户码：<s:property value="hbm"/>
 	<span style="width:60px; float:right">
 		<input type="button" value="返回" class="button43" onclick="history.go(-1)"/>
 	</span>
