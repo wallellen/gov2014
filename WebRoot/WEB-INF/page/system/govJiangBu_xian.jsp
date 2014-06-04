@@ -62,7 +62,9 @@
     <s:iterator value="#session.vts.list" var="ls" status="sc">
     <tr style="display:none">
         <td><s:property value="#ls.c0"/></td>
-        <td><s:property value="#ls.c1"/></td>
+        <td align="left" title="<s:property value="#ls.c1"/>">
+        	&nbsp;<s:property value="#ls.c1.length()>8?#ls.c1.substring(0,7)+'...':#ls.c1"/>
+        </td>
         <td><s:property value="#ls.c2"/></td>
         <td><s:property value="#ls.c3"/></td>
         <td><s:property value="#ls.c4"/></td>
