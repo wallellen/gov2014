@@ -111,13 +111,13 @@
 						<td align="left" height="20px">&nbsp;<s:property value="#ls.hm"/></td>
 						<td align="left" title="<s:property value='#ls.zhu'/>">
 							<s:if test="#ls.zhu!=null">
-							<s:property value="#ls.zhu.length()>3?#ls.zhu.substring(0,2)+'...':#ls.zhu"/>&nbsp;
+							&nbsp;<s:property value="#ls.zhu.length()>2?#ls.zhu.substring(0,2)+'..':#ls.zhu"/>
 							</s:if>
 							<s:else>
 								&nbsp;&nbsp;
 							</s:else>
 						</td>
-						<td align="left" title="<s:property value='#ls.hname'/>">&nbsp;<s:property value="#ls.hname.length()>4?#ls.hname.substring(0,3)+'...':#ls.hname"/></td>
+						<td align="left" title="<s:property value='#ls.hname'/>">&nbsp;<s:property value="#ls.hname.length()>4?#ls.hname.substring(0,3)+'..':#ls.hname"/></td>
 						<td align="right"><s:property value="#ls.population"/>&nbsp;</td>
 						<td align="right"><s:property value="#ls.labornum"/>&nbsp;</td>
 						<td align="right"><s:property value="#ls.fields"/>&nbsp;</td>
