@@ -213,11 +213,19 @@ function checkAge(obj){
 		showErrTip(52,"出生年份不能为空");
 		obj.focus(); 
 		return false;
-	}else if(dage<1900 || dage>2020){
+	}
+	else if(isNaN(dage))
+	{
+		showErrTip(52,"出生年份只能是数字格式");
+		obj.focus(); 
+		return false;
+	}
+	else if(dage<1900 || dage>2020){
 		showErrTip(52,"出生年份范围1900-2020");
 		obj.focus(); 
 		return false;
 	}else{
+		hideErrTip();
 		return true;
 	}
 }
