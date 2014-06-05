@@ -89,7 +89,7 @@
 			<a href="javascript:popIncomeYear('edit','<s:property value="#ls.c0"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c4"/>','<s:property value="#ls.c5"/>','<s:property value="#ls.c6"/>','<s:property value="#ls.c7"/>','<s:property value="#ls.c8"/>','<s:property value="#ls.c10"/>','<s:property value="#ls.c11"/>','<s:property value="#ls.c12"/>','<s:property value="#ls.c13"/>','<s:property value="#ls.c14"/>','<s:property value="#ls.c1"/>')">修改</a>
         	</s:if>
         	<s:else>
-        	<a href="javascript:popIncomeYear('add','<s:property value="#ls.c0"/>','','','','','','','','','','','<s:property value="#ls.c1"/>')">添加</a>
+        	<a href="javascript:popIncomeYear('add','<s:property value="#ls.c0"/>','','','','','','','','','','','','<s:property value="#ls.c1"/>')">添加</a>
         	</s:else>
         	</s:if>
         	<a href="${pageContext.request.contextPath }/system/govBrowerAction_viewReportFamily.do?viewBM=<s:property value='#ls.c0'/>">查看</a>
