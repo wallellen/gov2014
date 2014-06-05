@@ -90,7 +90,7 @@
 				<tr style="display:none;">
 					<s:if test="#session.vts.curBM.length()<=9">
 					<td height="20px" align="left">&nbsp;<s:property value="#ls.bm"/></td>
-					<td align="left" title="<s:property value='#ls.oname'/>">&nbsp;<s:property value="#ls.oname.length()>6?#ls.oname.substring(0,5)+'...':#ls.oname"/></td>
+					<td align="left" title="<s:property value='#ls.oname'/>">&nbsp;<s:property value="#ls.oname.length()>7?#ls.oname.substring(0,7)+'..':#ls.oname"/></td>
 					<td align="right"><s:property value="#ls.htn"/>&nbsp;</td>
 					<td align="right"><s:property value="#ls.ptn"/>&nbsp;</td>
 					<td align="right"><s:property value="#ls.m"/>&nbsp;</td>
@@ -111,7 +111,7 @@
 						<td align="left" height="20px">&nbsp;<s:property value="#ls.hm"/></td>
 						<td align="left" title="<s:property value='#ls.zhu'/>">
 							<s:if test="#ls.zhu!=null">
-							&nbsp;<s:property value="#ls.zhu.length()>2?#ls.zhu.substring(0,2)+'..':#ls.zhu"/>
+							<s:property value="#ls.zhu.length()>3?#ls.zhu.substring(0,2)+'..':#ls.zhu"/>
 							</s:if>
 							<s:else>
 								&nbsp;&nbsp;

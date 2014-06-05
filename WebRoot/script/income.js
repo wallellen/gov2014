@@ -1,5 +1,5 @@
 /** add year **/
-function popIncomeYear(s,i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12){
+function popIncomeYear(s,i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,hn){
 	var ytitle = document.getElementById("ytitle");
 	ytitle.innerHTML="";
 	//clear
@@ -20,7 +20,7 @@ function popIncomeYear(s,i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12){
 	hideIncomeErrTip();
 	
 	if(s=="edit"){
-		ytitle.innerHTML="<font color='#fff'>修改家庭收入及帮扶情况</font>";
+		ytitle.innerHTML="<font color='#fff'>修改家庭收入及帮扶情况&nbsp;["+hn+"]</font>";
 		document.getElementById("i1").value = 1;
 		document.getElementById("i2").value = i1;
 		document.getElementById("i3").value = i2;
@@ -35,7 +35,7 @@ function popIncomeYear(s,i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12){
 		document.getElementById("i12").value = i11;
 		document.getElementById("i13").value = i12;
 	}else{
-		ytitle.innerHTML="<font color='#fff'>添加家庭收入及帮扶情况</font>";
+		ytitle.innerHTML="<font color='#fff'>添加家庭收入及帮扶情况&nbsp;["+hn+"]</font>";
 		document.getElementById("i1").value = 0;
 		document.getElementById("i2").value = i1;
 		document.getElementById("i3").value = 0;
