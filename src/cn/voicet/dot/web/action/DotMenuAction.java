@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import cn.voicet.dot.service.DotUserService;
 import cn.voicet.dot.util.DotRoleMenu;
 import cn.voicet.dot.util.DotSession;
-import cn.voicet.dot.util.LogonUtils;
 import cn.voicet.dot.web.form.DotUserForm;
 
 import com.opensymphony.xwork2.ModelDriven;
@@ -82,11 +81,6 @@ public class DotMenuAction extends BaseAction implements ModelDriven<DotUserForm
 		{
 			this.addFieldError("error", "您输入的账号或密码不正确");
 			return "error";
-		}
-		else
-		{
-			// 记住密码操作
-			LogonUtils.rememberPassByCookie(request, response);
 		}
 		ds.curBM=ds.rbm;
 		ds.subPathTitle.initPath();

@@ -18,7 +18,7 @@
 	<!-- 配置数据源相同的内容 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-		<property name="jdbcUrl" value="jdbc:sqlserver://114.222.97.29:6634;databaseName=gov2014"/>
+		<property name="jdbcUrl" value="jdbc:sqlserver://222.95.183.169:6634;databaseName=gov2014"/>
 		<property name="user" value="sa" />
 		<property name="password" value="begin" />
 		<!--连接池中保留的最小连接数。-->

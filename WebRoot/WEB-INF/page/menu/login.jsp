@@ -2,22 +2,6 @@
 <%@ page import="java.net.*" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%
-	String account = "";
-	String password = "";
-	String checked = "";
-	Cookie cookies[] = request.getCookies();
-	for (int i=0; cookies!=null && i<cookies.length; i++) {
-		Cookie cookie = cookies[i];
-		if (cookie!=null && "account".equals(cookie.getName())) {
-			account = URLDecoder.decode(cookie.getValue(),"UTF-8");	
-			checked = "checked";
-		}
-		if (cookie!=null && "password".equals(cookie.getName())) {
-			password = cookie.getValue();
-		}
-	}
-%>
-<%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String tit = "";
@@ -36,6 +20,33 @@ else
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style-b.css" />
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style.css" />
 	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/script/cookie.js"></script>
+ 	
+ 	<script type="text/javascript">
+ 	$(document).ready(function() {
+ 		document.all.account.focus();
+		try {
+			var account = Cookie.getCookie("account3");
+			var password =  Cookie.getCookie("password3");
+			if(account!="" && account!=null){
+				$("#account").val(account);
+				$("#password").val(password);
+				$("#rememberPass").attr("checked", true); 
+			}
+		} catch(e) {
+			
+		}
+ 	});
+ 	document.onkeydown = function(e) {   
+		var theEvent = e || window.event;   
+		var code = theEvent.keyCode || theEvent.which || theEvent.charCode; 
+		if (code == 13) {   
+    		login();
+    		return false;   
+		}   
+		return true;
+	}
+ 	</script>
  	<style type="text/css">
  		.errorMessage{padding-bottom:2px; padding-right:30px; height:5px}
  	</style>
@@ -74,16 +85,16 @@ else
 											<tbody>
 												<tr height="31px" style="padding-top:6px;">
 													<th>账号&nbsp;</th>
-													<td><input type="text" id="account" name="account" value="<%=account %>" tabindex="1" class="inputbox" onblur="this.className='inputbox'" onfocus="this.className='inputbox2'"/></td>
+													<td><input type="text" id="account" name="account" autocomplete="off" value="" placeholder="输入账号" tabindex="1" class="inputbox" onblur="this.className='inputbox'" onfocus="this.className='inputbox2'"/></td>
 												</tr>
 												<tr height="31px">
 													<th>密码&nbsp;</th>
-													<td><input type="password" id="password" name="password" value="<%=password %>" tabindex="2" class="inputbox" onblur="this.className='inputbox'" onfocus="this.className='inputbox2'"/></td>
+													<td><input type="password" id="password" name="password" autocomplete="off" value="" placeholder="输入密码" tabindex="2" class="inputbox" onblur="this.className='inputbox'" onfocus="this.className='inputbox2'"/></td>
 												</tr>
 												<tr height="31px">
 													<th></th>
 													<td>
-														<input type="checkbox" id="rememberPass" name="rememberPass" value="yes" <%=checked %> class="cbox-midd"/><label for="auto" class="lab-midd">记住密码</label>
+														<input type="checkbox" id="rememberPass" name="rememberPass" value="yes" class="cbox-midd"/><label for="auto" class="lab-midd">记住密码</label>
 													</td>
 												</tr>
 												<tr height="30px">
@@ -117,16 +128,26 @@ else
 	});
 	function check(){
 	    var theForm = document.forms[0];
-	    if(!checkNull(theForm.account)){
-			alert("请输入用户名");
-			theForm.account.focus(); 
-			return false;
-		}
 		if(Trim(theForm.account.value)==""){
 			alert("请输入用户名");
 			theForm.account.focus();
 			return false;
 	    }
+		if(Trim(theForm.password.value)==""){
+			alert("请输入密码");
+			theForm.password.focus();
+			return false;
+	    }
+		if($("#rememberPass").attr("checked")==true)
+		{
+			Cookie.setCookie("account3",$("#account").val());
+			Cookie.setCookie("password3",$("#password").val());
+		}
+		else
+		{
+			Cookie.clearCookie("account3");	
+			Cookie.clearCookie("password3");	
+		}
 	}
 </script>
 </body>
