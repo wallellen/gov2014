@@ -350,29 +350,30 @@ public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrower
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
 				Connection conn = session.connection();
-				String proc_insert = "{call sp_year_insert(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+				String proc_insert = "{call sp_year_insert(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 				String proc_update = "{call sp_year_update(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 				CallableStatement cs;
 				if(govFamilyForm.getIncomearr()[0].equals("0")){
 					cs = conn.prepareCall(proc_insert);
 					cs.setString(1, ds.rbm);
 					cs.setString(2, ds.curHM);
-					cs.setFloat(3, Float.valueOf(govFamilyForm.getIncomearr()[2]));
-					cs.setFloat(4, Float.valueOf(govFamilyForm.getIncomearr()[3]));
-					cs.setFloat(5, Float.valueOf(govFamilyForm.getIncomearr()[4]));
-					cs.setFloat(6, Float.valueOf(govFamilyForm.getIncomearr()[5]));
-					cs.setFloat(7, Float.valueOf(govFamilyForm.getIncomearr()[6]));
-					cs.setFloat(8, Float.valueOf(govFamilyForm.getIncomearr()[7]));
-					cs.setFloat(9, Float.valueOf(govFamilyForm.getIncomearr()[8]));
-					cs.setFloat(10, Float.valueOf(govFamilyForm.getIncomearr()[9]));
-					cs.setFloat(11, Float.valueOf(govFamilyForm.getIncomearr()[10]));
-					cs.setInt(12, Integer.valueOf(govFamilyForm.getIncomearr()[11]));
-					cs.setInt(13, Integer.valueOf(govFamilyForm.getIncomearr()[12]));
+					cs.setString(3, govFamilyForm.getIncomearr()[1]);
+					cs.setFloat(4, Float.valueOf(govFamilyForm.getIncomearr()[2]));
+					cs.setFloat(5, Float.valueOf(govFamilyForm.getIncomearr()[3]));
+					cs.setFloat(6, Float.valueOf(govFamilyForm.getIncomearr()[4]));
+					cs.setFloat(7, Float.valueOf(govFamilyForm.getIncomearr()[5]));
+					cs.setFloat(8, Float.valueOf(govFamilyForm.getIncomearr()[6]));
+					cs.setFloat(9, Float.valueOf(govFamilyForm.getIncomearr()[7]));
+					cs.setFloat(10, Float.valueOf(govFamilyForm.getIncomearr()[8]));
+					cs.setFloat(11, Float.valueOf(govFamilyForm.getIncomearr()[9]));
+					cs.setFloat(12, Float.valueOf(govFamilyForm.getIncomearr()[10]));
+					cs.setInt(13, Integer.valueOf(govFamilyForm.getIncomearr()[11]));
+					cs.setInt(14, Integer.valueOf(govFamilyForm.getIncomearr()[12]));
 				}else{
 					cs = conn.prepareCall(proc_update);
 					cs.setString(1, ds.rbm);
 					cs.setString(2, ds.curHM);
-					cs.setInt(3, Integer.valueOf(govFamilyForm.getIncomearr()[1]));
+					cs.setString(3, govFamilyForm.getIncomearr()[1]);
 					cs.setFloat(4, Float.valueOf(govFamilyForm.getIncomearr()[2]));
 					cs.setFloat(5, Float.valueOf(govFamilyForm.getIncomearr()[3]));
 					cs.setFloat(6, Float.valueOf(govFamilyForm.getIncomearr()[4]));
@@ -527,28 +528,89 @@ public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrower
 
 	/** 获取家庭年收入信息Tab2 */
 	public void findFamilyYearInfoWithTab2(final DotSession ds) {
-		getHibernateTemplate().execute(new HibernateCallback() {
-			public Object doInHibernate(Session session) throws HibernateException,
-					SQLException {
-				String proc = "{call sp_year_detail(?)}";
-				Connection conn = session.connection();
-				CallableStatement cs = conn.prepareCall(proc);
-				cs.setString(1, ds.curHM);
-				cs.execute();
-				ResultSet rs = cs.getResultSet();
-				ds.initData();
-				ds.list5 = new ArrayList();
-				Map map;
-				if(rs!=null){
-					while (rs.next()) {
-						map = new HashMap();
-						ds.putMapData(map, rs);
-		        		ds.list5.add(map);
+	getHibernateTemplate().execute(new HibernateCallback() {
+		public Object doInHibernate(Session session) throws HibernateException,
+				SQLException {
+			Map map;
+			ds.initData();
+			String proc = "{call sp_family_detail(?)}";
+			Connection conn = session.connection();
+			CallableStatement cs = conn.prepareCall(proc);
+			cs.setString(1, ds.curHM);
+			cs.execute();
+			ds.list5 = new ArrayList();
+			ResultSet rs = null;
+			int rid=0;
+			int updateCount = -1;
+			do{
+				updateCount = cs.getUpdateCount();
+				if(updateCount != -1){	
+					cs.getMoreResults();
+					continue;
+				}
+				rs = cs.getResultSet();
+				if(null != rs){
+					while(rs.next()){
+						if(rid ==0){
+							int i=1;
+							//map = new HashMap();
+							ds.map.put("hm", rs.getString(i++));
+							ds.map.put("hname", rs.getString(i++));
+							ds.map.put("zhu", rs.getString(i++));
+							ds.map.put("population", rs.getString(i++));
+							ds.map.put("labornum", rs.getString(i++));
+							ds.map.put("fields", rs.getString(i++));
+							ds.map.put("house", rs.getString(i++));
+							ds.map.put("property", rs.getString(i++));
+							ds.map.put("telnum", rs.getString(i++));
+							ds.map.put("dcause", rs.getString(i++));
+							ds.map.put("idcno", rs.getString(i++));
+							ds.map.put("frname", rs.getString(i++));
+							ds.map.put("frtel", rs.getString(i++));
+							ds.map.put("frwork", rs.getString(i++));
+							String year = rs.getString(i++);
+							ds.map.put("lastyear", year);
+							
+							ds.map.put("intotal", rs.getString(i++));
+							ds.map.put("inpersonal", rs.getString(i++));
+							if(Integer.valueOf(year)<Calendar.getInstance().get(Calendar.YEAR)){
+								ds.map.put("addyear", 1);
+							}else{
+								ds.map.put("addyear", 0);
+							}
+							//ds.map=map;
+						}else if (rid == 1 ){
+							int i=1;
+							map = new HashMap();
+							map.put("mid", rs.getString(i++));
+							map.put("uname", rs.getString(i++));
+							map.put("sex", rs.getString(i++));
+							map.put("age", rs.getString(i++));
+							map.put("school", rs.getString(i++));
+							map.put("education", rs.getString(i++));
+							map.put("health", rs.getString(i++));
+							map.put("dcno", rs.getString(i++));
+							map.put("labors", rs.getString(i++));
+							map.put("works", rs.getString(i++));
+							map.put("bla", rs.getString(i++));
+							map.put("tbfd", rs.getString(i++));
+							ds.list.add(map);
+						}else if(rid == 2){
+							map = new HashMap();
+							ds.putMapData(map, rs);
+							ds.list5.add(map);
+						}
 					}
 				}
-				return null;
-			}
-		});
+				if(rs != null){
+					cs.getMoreResults();
+					rid++;
+					continue;
+				}
+			}while(!(updateCount == -1 && rs == null));
+			return null;
+		}
+	});
 	}
 
 	public void isDirectWithBmHm(final DotSession ds) {

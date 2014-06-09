@@ -9,6 +9,7 @@
 		document.personForm.action="govBrowerAction_saveFamilyEx.do";
 		document.personForm.submit();
 	}
+	
 </script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/script/familymember.js"></script>

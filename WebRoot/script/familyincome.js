@@ -42,8 +42,10 @@ function popSaveYear(s,y1,y2,y3,y4,y5,y6,y7,y8,y9,y10,y11,y12){
 	}else{
 		ytitle.innerHTML="<font color='#fff'>添加家庭收入及帮扶情况</font>";
 		document.getElementById("yflag").value = "0";
-		document.getElementById("yearhidden").innerHTML='';
-		document.getElementById("y-year").style.display='none';
+		document.getElementById("yearhidden").innerHTML='年份:&nbsp;&nbsp;';
+		document.getElementById("y-year").style.display='block';
+		document.getElementById("y-year").readOnly='true';
+		document.getElementById("y-year").value = y1;
 		document.getElementById("yinCrop").value = 0;
 		document.getElementById("yinLovStock").value = 0;
 		document.getElementById("yinWork").value = 0;

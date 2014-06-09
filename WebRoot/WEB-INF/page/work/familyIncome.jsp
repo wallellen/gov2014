@@ -33,44 +33,33 @@
 </div>
 <div id="member-info-data">
 	<h3 id="base-title" style="float:left">家庭收入及帮扶情况</h3>
-	<ul id="ul-member">
-		<li><s:property value="#session.vts.map.lastyear"/>年总收入：<s:property value="#session.vts.map.intotal"/></li>
-	    <li>人均收入：<s:property value="#session.vts.map.inpersonal"/></li>
-	    <li>
-	    	<s:if test="#session.vts.isedit==1">
-			<s:if test="%{#session.vts.map.addyear==1}">
-	    	<input type="button" onclick="popSaveYear('add','','','','','','','','','','','','')" value="添加年份" class="button4"/>
-	    	</s:if>
-			</s:if>
-	    	</li>
-	</ul>
 	<table class="tab-member" cellpadding="0" cellspacing="0">
 		<thead>
-   	<tr>
-   		<td rowspan="3" width="4%">年份</td>
-        <td colspan="8">家庭年收入情况(元)</td>
-        <td colspan="5">帮扶情况</td>
-        <td rowspan="3" width="8%">操作</td>
-    </tr>
-    <tr>
-    	<td rowspan="2" width="5%">1.全年家庭纯收入</td>
-       	<td colspan="6">其中</td>
-		<td rowspan="2" width="5%">2.家庭人均纯收入</td>
-       	<td rowspan="2" width="5%">无偿帮扶资金(元)</td>
-       	<td rowspan="2" width="5%">得到股份(元)</td>
-       	<td rowspan="2" width="5%">小额贷款和互助资金(元)</td>
-       	<td rowspan="2" width="5%">劳动力转移培训(人)</td>
-       	<td rowspan="2" width="5%">劳动力转移就业人数(人)</td>
-    </tr>
-    <tr>
-        <td width="5%">种植业纯收入</td>
-        <td width="5%">养殖业纯收入</td>
-        <td width="5%">务工收入</td>
-        <td width="5%">低保、五保、养老收入</td>
-        <td width="5%">补贴性收入 </td>
-        <td width="5%">其他收入</td>
-    </tr>
-    </thead>
+	   	<tr>
+	   		<td rowspan="3" width="4%">年份</td>
+	        <td colspan="8">家庭年收入情况(元)</td>
+	        <td colspan="5">帮扶情况</td>
+	        <td rowspan="3" width="8%">操作</td>
+	    </tr>
+	    <tr>
+	    	<td rowspan="2" width="5%">1.全年家庭纯收入</td>
+	       	<td colspan="6">其中</td>
+			<td rowspan="2" width="5%">2.家庭人均纯收入</td>
+	       	<td rowspan="2" width="5%">无偿帮扶资金(元)</td>
+	       	<td rowspan="2" width="5%">得到股份(元)</td>
+	       	<td rowspan="2" width="5%">小额贷款和互助资金(元)</td>
+	       	<td rowspan="2" width="5%">劳动力转移培训(人)</td>
+	       	<td rowspan="2" width="5%">劳动力转移就业人数(人)</td>
+	    </tr>
+	    <tr>
+	        <td width="5%">种植业纯收入</td>
+	        <td width="5%">养殖业纯收入</td>
+	        <td width="5%">务工收入</td>
+	        <td width="5%">低保、五保、养老收入</td>
+	        <td width="5%">补贴性收入 </td>
+	        <td width="5%">其他收入</td>
+	    </tr>
+	    </thead>
 	    <s:iterator value="#session.vts.list5" var="ls5" status="tc">
 		<tr>
 			<td><s:property value="#ls5.c0"/></td>
@@ -88,9 +77,12 @@
 			<td><s:property value="#ls5.c12"/></td>
 			<td><s:property value="#ls5.c13"/></td>
 			<td>
-			<s:if test="#session.vts.isedit==1">
-				<s:if test="#session.vts.workyear==#ls5.c0">
+			<s:if test="#session.vts.isedit==1 && #ls5.c14==1">
+				<s:if test="#ls5.c1.length()>0">
 				<a href="javascript:popSaveYear('edit','<s:property value="#ls5.c0"/>','<s:property value="#ls5.c2"/>','<s:property value="#ls5.c3"/>','<s:property value="#ls5.c4"/>','<s:property value="#ls5.c5"/>','<s:property value="#ls5.c6"/>','<s:property value="#ls5.c7"/>','<s:property value="#ls5.c9"/>','<s:property value="#ls5.c10"/>','<s:property value="#ls5.c11"/>','<s:property value="#ls5.c12"/>','<s:property value="#ls5.c13"/>')">修改</a>
+				</s:if>
+				<s:if test="#ls5.c1.length()==0">
+					<a href="javascript:popSaveYear('add','<s:property value="#ls5.c0"/>','','','','','','','','','','','')">添加</a>
 				</s:if>
 			</s:if>
 			</td>
