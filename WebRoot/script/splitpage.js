@@ -24,6 +24,7 @@ $(document).ready(function() {
 	}
 });
 function upPage(p){
+	
 	if(p<=1){
 		nowPage = 1;
 	} else if(p > PagesLen){
@@ -31,7 +32,7 @@ function upPage(p){
 	}else{
 		nowPage=p;
 	}
-	//隐藏所有行 
+	
 	if(lastPagex>0)
 	{
 		for (var i=(lastPagex-1)*listNum; i<(lastPagex)*listNum; i++){
@@ -40,6 +41,7 @@ function upPage(p){
 		}
 	}
 	//
+	
 	if(nowPage==0)
 	{
 		nowPage=1;
@@ -54,6 +56,7 @@ function upPage(p){
 		if(obj[i])
 			obj[i].style.display="";
 	}
+	
 	lastPagex = nowPage;
 	topPage='<a href="javascript:upPage(1)">首页&nbsp;</a>  ';
 	if(nowPage<1){
@@ -70,10 +73,11 @@ function upPage(p){
 	}
 	lastPage = '<a href="javascript:upPage('+PagesLen+')">尾页&nbsp;</a>  ';
 	showPage = nowPage+'/'+'<span id="t_page">'+PagesLen+'</span>';
+	
 	document.getElementById("changePage").innerHTML=topPage+priPage+showPage+jumpPage+nextPage+lastPage;
 	document.getElementById("num").value = nowPage; 
-	//
 	parent.document.getElementById("globalCurPage").value=nowPage;
+	document.getElementById("changePage").style.display='block';
 }
 function jumpPages(){
 	var numb = $("#num").val();
