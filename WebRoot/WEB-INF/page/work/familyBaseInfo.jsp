@@ -1,6 +1,10 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <script type="text/javascript">
+	window.onload=function(){
+		//页面加载时，组名获取输入焦点
+		document.all.zhu.focus();
+	}
 	function saveReturnFamily(){
 		document.personForm.action="govBrowerAction_saveFamilyEx.do";
 		document.personForm.submit();
@@ -25,7 +29,7 @@
 <form name="personForm" action="" method="post">
 <div id="base-info">
 	<ul class="info1">
-		<li>组名：<input type="text" name="zhu" style="width:55px; height:20px; line-height:20px; border:1px solid #D8D8D8;" value="<s:property value="#session.vts.map.zhu"/>" maxlength="10" onfocus="this.className='input_onzhu'" onblur="this.className='input_offzhu'"/></li>
+		<li>组名：<input type="text" id="zhu" name="zhu" style="width:55px; height:20px; line-height:20px; border:1px solid #D8D8D8;" value="<s:property value="#session.vts.map.zhu"/>" maxlength="10" onfocus="this.className='input_onzhu'" onblur="this.className='input_offzhu'"/></li>
 		<li>姓名：<input type="text" id="hname" name="hname" value="<s:property value="#session.vts.map.hname"/>" maxlength="10" onfocus="this.className='input_on'" onblur="checkHuName(this)"/></li>
         <li>身份证号码：<input type="text" id="idcno" name="idcno" value="<s:property value="#session.vts.map.idcno"/>" maxlength="18" onfocus="this.className='input_on'" onblur="checkIDCard(this)"/></li>
         <li>联系电话：<input type="text" id="htel" name="htel" value="<s:property value="#session.vts.map.telnum"/>" maxlength="15" onfocus="this.className='input_on'" onblur="checkTelphone(this)"/></li>
