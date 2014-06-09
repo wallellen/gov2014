@@ -164,6 +164,22 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 	/** 保存或更新家庭收入及帮扶情况  */
 	public String saveYear() {
 		DotSession ds = DotSession.getVTSession(request);
+		log.info("saveYear-> rbm:"+ds.rbm+", curHM:"+ds.curHM);
+		log.info("saveYear-> year:"+govFamilyForm.getIncomearr()[1]);
+		log.info("saveYear-> inCrop:"+govFamilyForm.getIncomearr()[2]);
+		log.info("saveYear-> inLovStock:"+govFamilyForm.getIncomearr()[3]);
+		log.info("saveYear-> inWork:"+govFamilyForm.getIncomearr()[4]);
+		log.info("saveYear-> inBla:"+govFamilyForm.getIncomearr()[5]);
+		log.info("saveYear-> inSubSide:"+govFamilyForm.getIncomearr()[6]);
+		log.info("saveYear-> inOther:"+govFamilyForm.getIncomearr()[7]);
+		log.info("saveYear-> grantAid:"+govFamilyForm.getIncomearr()[8]);
+		log.info("saveYear-> share:"+govFamilyForm.getIncomearr()[9]);
+		log.info("saveYear-> pettyLoan:"+govFamilyForm.getIncomearr()[10]);
+		log.info("saveYear-> labTrain:"+govFamilyForm.getIncomearr()[11]);
+		log.info("saveYear-> labJob:"+govFamilyForm.getIncomearr()[12]);
+		
+		
+		
 		govBrowerService.saveYearInfo(ds, govFamilyForm);
 		ds.opCode = "saveYear";
 		return familyIncome();

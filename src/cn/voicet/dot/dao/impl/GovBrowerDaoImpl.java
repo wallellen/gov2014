@@ -533,10 +533,10 @@ public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrower
 				String proc = "{call sp_year_detail(?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
-				ds.initData();
 				cs.setString(1, ds.curHM);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
+				ds.initData();
 				ds.list5 = new ArrayList();
 				Map map;
 				if(rs!=null){
