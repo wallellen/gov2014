@@ -81,6 +81,7 @@ public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrower
 									map.put("frname", rs.getString(i++));
 									map.put("frtel", rs.getString(i++));
 									map.put("frwork", rs.getString(i++));
+									map.put("ischeck", rs.getString(i++));
 								}
 								ds.list.add(map);
 							}else if(rid == 2){

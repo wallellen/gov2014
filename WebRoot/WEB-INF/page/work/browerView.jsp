@@ -81,6 +81,7 @@
 					<td width="4%">住房</td>
 					<td width="10%">属性</td>
 					<td width="10%">贫困原因</td>
+					<td width="4%">审查</td>
 					<td width="18%" class="tabtd1">操作</td>
 				</s:else>
                 </tr>
@@ -124,6 +125,17 @@
 						<td align="right"><s:property value="#ls.house"/>&nbsp;</td>
 						<td align="left">&nbsp;<s:property value="#ls.property"/></td>
 						<td align="left">&nbsp;<s:property value="#ls.dcause"/></td>
+						<td align="center">
+							<s:if test="#ls.ischeck==1">
+							√
+							</s:if>
+							<s:elseif test="#ls.ischeck==2">
+							乂
+							</s:elseif>
+							<s:else>
+							
+							</s:else>
+						</td>
 						<td class="tabtd1">
 							<a href="${pageContext.request.contextPath }/system/govBrowerAction_viewReportFamily.do?viewBM=<s:property value="#ls.hm"/>">查看</a>
 			 				<a id="printBt" href="${pageContext.request.contextPath }/system/govBrowerAction_printFamily.do?viewBM=<s:property value="#ls.hm"/>" target="printFrame">打印</a>
