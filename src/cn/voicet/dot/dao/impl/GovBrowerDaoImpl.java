@@ -65,6 +65,7 @@ public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrower
 									map.put("v2", rs.getString(i++));
 									map.put("v3", rs.getString(i++));
 									map.put("ptn", rs.getString(i++));
+									map.put("cknum", rs.getString(i++));
 								}else{
 									int i=1;
 									map.put("hm", rs.getString(i++));

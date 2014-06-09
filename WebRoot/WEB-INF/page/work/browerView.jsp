@@ -63,12 +63,13 @@
                 	<s:if test="#session.vts.curBM.length()<=9">
 					<td height="20px" width="12%">地区编码</td>
 					<td width="15%">地区名称</td>
-					<td width="10%">农户总数</td>
-					<td width="10%">人口总数</td>
-					<td width="10%">低收入户</td>
+					<td width="8%">农户总数</td>
+					<td width="8%">人口总数</td>
+					<td width="8%">低收入户</td>
 					<td width="8%">扶贫户</td>
 					<td width="8%">低保户</td>
 					<td width="8%">五保户</td>
+					<td width="6%">审查数</td>
 					<td width="18%" class="tabtd1">操作</td>
 				</s:if>
 				<s:else>
@@ -98,6 +99,7 @@
 					<td align="right"><s:property value="#ls.v1"/>&nbsp;</td>
 					<td align="right"><s:property value="#ls.v2"/>&nbsp;</td>
 					<td align="right"><s:property value="#ls.v3"/>&nbsp;</td>
+					<td align="right"><s:property value="#ls.cknum"/>&nbsp;</td>
 					<td class="tabtd1">
 						<a href="#" onclick="viewBMInfo('<s:property value="#ls.bm"/>')">进入</a>
 						<s:if test="#session.vts.isedit==1">
