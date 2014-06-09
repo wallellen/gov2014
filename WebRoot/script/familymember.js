@@ -5,10 +5,10 @@ function popSaveMember(m,s,c){
 	mtitle.innerHTML="";
 	
 	//clear
-	document.getElementById("d-uname").value='';
-	document.getElementById("d-age").value='';
-	document.getElementById("d-dcno").value='';
-	document.getElementById("d-tbfd").value='';
+	document.getElementById("duname").value='';
+	document.getElementById("dage").value='';
+	document.getElementById("ddcno").value='';
+	document.getElementById("dtbfd").value='';
 	document.getElementById("mid").value='';
 	
 	hideErrTip();
@@ -16,7 +16,7 @@ function popSaveMember(m,s,c){
 	if(s=="edit"){
 		mtitle.innerHTML="<font color='#fff'>修改家庭成员信息</font>";
 		var uname = document.getElementById("una"+c);
-		document.getElementById("d-uname").value = uname.innerHTML;
+		document.getElementById("duname").value = uname.innerHTML;
 		//sec
 		var usex = document.getElementById("sex"+c).innerHTML;
 		usex = usex.substring(0,1)-1;
@@ -24,7 +24,7 @@ function popSaveMember(m,s,c){
 		sexRadio[usex].checked = "checked"; 
 		//age									
 		var uage = document.getElementById("age"+c);
-		document.getElementById("d-age").value = uage.innerHTML;
+		document.getElementById("dage").value = uage.innerHTML;
 		//school
 		var uschool = document.getElementById("sch"+c).innerHTML;
 		uschool = uschool.substring(0,1)-1;
@@ -52,7 +52,7 @@ function popSaveMember(m,s,c){
 	    }
 	    //dcno
 		var udcno = document.getElementById("dcn"+c);
-		document.getElementById("d-dcno").value = udcno.innerHTML;
+		document.getElementById("ddcno").value = udcno.innerHTML;
 		//labors
 		var ulabors = document.getElementById("lab"+c).innerHTML;
 		ulabors = ulabors.substring(0,1);
@@ -80,7 +80,7 @@ function popSaveMember(m,s,c){
 		blaRadio[ubla].checked = "checked";
 		//dbfd
 		var utbf = document.getElementById("tbf"+c);
-		document.getElementById("d-tbfd").value = utbf.innerHTML;
+		document.getElementById("dtbfd").value = utbf.innerHTML;
 		//mid
 		document.getElementById("mid").value=m;
 	}else{
@@ -164,12 +164,10 @@ function popSaveMember(m,s,c){
 }
 function subMemberBt(){
 	document.memberForm.action="govBrowerAction_saveMember.do";
-	if(!checkName(document.all.d-uname)) return;
-	if(!checkAge(document.all.d-age)) return;
-	if(!checkDcno(document.all.d-dcno)) return;
-	if(!checkDibao(document.all.d-tbfd)) return;
-	
-	
+	if(!checkName(document.all.duname)) return;
+	if(!checkAge(document.all.dage)) return;
+	if(!checkDcno(document.all.ddcno)) return;
+	if(!checkDibao(document.all.dtbfd)) return;
 	document.memberForm.submit();
 }
 

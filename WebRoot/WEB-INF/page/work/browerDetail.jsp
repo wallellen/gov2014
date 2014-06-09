@@ -119,7 +119,7 @@
 		<tr>
 			<td width="35%" align="right">姓名:&nbsp;&nbsp;</td>
 			<td width="35%" align="left">
-				<input type="text" id="d-uname" name="uname" class="back-input" maxlength="10" onblur="checkName(this)" placeholder="请输入姓名"/>
+				<input type="text" id="duname" name="uname" class="back-input" maxlength="10" onblur="checkName(this)" placeholder="请输入姓名"/>
 			</td>
 			<td width="30%">
 				<div id="errTip" class="error-tips"></div>
@@ -135,7 +135,7 @@
 		<tr>
 			<td align="right">出生年份:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="d-age" name="age" class="back-input" maxlength="4" onblur="checkAge(this)" />
+				<input type="text" id="dage" name="age" class="back-input" maxlength="4" onblur="checkAge(this)" />
 			</td>
 			<td><span id="ageTips" class="ptips"></span></td>
 		</tr>
@@ -163,7 +163,7 @@
 		<tr>
 			<td align="right">残疾证号:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="d-dcno" name="dcno" class="back-input" maxlength="20" placeholder="请输入数字或字母" onblur="checkDcno(this)"/>
+				<input type="text" id="ddcno" name="dcno" class="back-input" maxlength="20" placeholder="请输入数字或字母" onblur="checkDcno(this)"/>
 			</td>
 			<td></td>
 		</tr>
@@ -177,7 +177,7 @@
 		<tr>
 			<td align="right">打工状况:&nbsp;&nbsp;</td>
 			<td align="left">
-				<s:select id="d-works" name="works" cssClass="d-semem5" list="#application.vta.GetList('work')" listKey="id" listValue="str" value="%{#ls2.works}"></s:select>
+				<s:select id="d-works" name="works" cssClass="d-semem5" list="#application.vta.GetList('workexex')" listKey="id" listValue="str" value="%{#ls2.works}"></s:select>
 			</td>
 			<td></td>
 		</tr>
@@ -191,7 +191,7 @@
 		<tr>
 			<td align="right">领取低保金、残疾金(元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="d-tbfd" name="tbfd" class="back-input" maxlength="6" placeholder="请输入金额"  onblur="checkDibao(this)"/>
+				<input type="text" id="dtbfd" name="tbfd" class="back-input" maxlength="6" placeholder="请输入金额"  onblur="checkDibao(this)"/>
 			</td>
 			<td></td>
 		</tr>
