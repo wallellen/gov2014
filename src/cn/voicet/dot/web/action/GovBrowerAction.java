@@ -66,6 +66,20 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 		return home();
 	}
 	
+	public String homeDirect() {
+		//根据ds.curBM显示列表信息，ds.curBM由各入口负责调整
+		DotSession ds = DotSession.getVTSession(request);
+		ds.curBM = ds.bmhm;
+		govBrowerService.getGovBrowerList(ds);
+		log.info("homeDirect-> bmhm:"+ds.bmhm);
+		String sListStr = govBrowerService.findNavListStr(ds);
+		log.info("homeDirect-> sListStr:"+sListStr);
+		ds.subPathTitle.setFullPath(sListStr);
+		ds.navPath=ds.subPathTitle.getHtmlString();
+		ds.popAllList(0);
+		return "home";
+	}
+	
 	public String returnList() {
 		DotSession ds = DotSession.getVTSession(request);
 		ds.popAllList(0);
@@ -233,8 +247,13 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 		ds.pushAllList();
 		ds.curHM = viewBM;
 		govBrowerService.getReportFamilyInfo(ds);
-		
 		ds.map.put("rtf", "home");
+		ds.bmhm = viewBM;
+		log.info("homeDirect-> bmhm:"+ds.bmhm);
+		String sListStr = govBrowerService.findNavListStr(ds);
+		log.info("homeDirect-> sListStr:"+sListStr);
+		ds.subPathTitle.setFullPath(sListStr);
+		ds.navPath=ds.subPathTitle.getHtmlString();
 		return "viewFamily";
 	}
 	

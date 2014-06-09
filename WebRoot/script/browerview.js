@@ -2,6 +2,7 @@
 function viewBMInfo(str){
 	document.getElementById("viewBM").value=str;
 	document.Form1.action="govBrowerAction_viewArea.do";
+	
 	document.Form1.submit();
 }
 //直接进入操作
@@ -25,7 +26,7 @@ function resDirectInfo(data, textStatus, jqXHR){
 	var dBM = document.getElementById("dirBM").value;
 	if(data.status=="bm"){
 		document.getElementById("viewBM").value = dBM;
-		document.Form1.action="govBrowerAction_viewArea.do";
+		document.Form1.action="govBrowerAction_homeDirect.do";
 		document.Form1.submit();
 	}else if(data.status=="hm"){
 		location.href="govBrowerAction_viewReportFamily.do?viewBM="+dBM;

@@ -7,6 +7,10 @@
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style-b.css" />
 	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
 	<script type="text/javascript">
+		window.onload=function(){
+			var v1 = parent.document.getElementById("navigate");
+			v1.innerHTML=document.getElementById('nav-hide').innerHTML;
+		}
 		var rflag = 1;
 		function printFamilyInfo(){
 			document.getElementById("printBtn").href='govBrowerAction_printFamily.do';
@@ -18,6 +22,9 @@
 	</script>
 </head>
 <body style="background:#E0EEFB;">
+<div style="display:none;" id="nav-hide">
+	<s:property value="#session.vts.navPath" escape="false"/>
+</div>
 <div id="leftCon1">
 	<div class="view-family-report">
     <h1>脱贫奔小康低收入农户登记表</h1>

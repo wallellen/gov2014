@@ -21,5 +21,6 @@ public interface GovBrowerDao {
 	void isDirectWithBmHm(DotSession ds);
 	void deleteFamilyWithHbm(DotSession ds, String hbm, int cause);
 	void checkFamilyInfoByHbm(DotSession ds, String hbm);
+	String findNavListStr(DotSession ds);
 
 }

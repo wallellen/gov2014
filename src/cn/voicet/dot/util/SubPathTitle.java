@@ -49,13 +49,33 @@ public class SubPathTitle {
 		return curPos>0;
 	}
 	
+	/**
+	 * 
+	 * @param sName 地区名称
+	 * @param sExt	当前编码
+	 * @param stag	根编码
+	 */
 	private void setNextInfo(String sName, String sExt,String stag) {
 		if (curPos < MAXSUBITEMNUM) {
 			setCurInfo(sName, sExt,stag);
 			curPos++;
 		}
 	}
-
+	
+	/**
+	 * 直接进入操作，修改当前地区导航
+	 * @param sListStr eg:江苏省;32;32;南京市;3208;32;
+	 */
+	public void setFullPath(String sListStr)
+	{
+		initPath();
+		String navArr[]=sListStr.split(";");
+		for(int i=0;i<navArr.length/3;i++)
+		{
+			setNextInfo(navArr[i*3],navArr[i*3+1],navArr[i*3+2]);
+		}
+	}
+	
 	public void setInfoByEx(String sName,String sEx,String stag) {
 		boolean bFound=false;
 		for (int i=0; i<curPos; i++) {

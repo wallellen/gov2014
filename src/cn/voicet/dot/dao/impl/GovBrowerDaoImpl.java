@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -598,7 +599,6 @@ public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrower
 				CallableStatement cs = conn.prepareCall(proc);
 				cs.setString(1, hbm);
 				cs.execute();
-				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
 				ds.list = new ArrayList();
@@ -613,6 +613,23 @@ public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrower
 				return null;
 			}
 		});
+	}
+
+	public String findNavListStr(final DotSession ds) {
+		String str = (String)getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				String proc = "{call sp_bm_getfullpath(?,?,?)}";
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall(proc);
+				cs.setString(1, ds.bmhm);
+				cs.setString(2, ds.rbm);
+				cs.registerOutParameter(3, Types.VARCHAR);
+				cs.execute();
+				return cs.getObject(3);
+			}
+		});
+		return str;
 	}
 
 }

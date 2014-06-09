@@ -70,4 +70,8 @@ public class GovBrowerServiceImpl implements GovBrowerService {
 	public void checkFamilyInfoByHbm(DotSession ds, String hbm) {
 		govBrowerDao.checkFamilyInfoByHbm(ds, hbm);
 	}
+
+	public String findNavListStr(DotSession ds) {
+		return govBrowerDao.findNavListStr(ds);
+	}
 }
