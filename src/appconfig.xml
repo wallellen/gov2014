@@ -156,6 +156,14 @@
 		<item id="4" name="4:省外务工" />
 		<item id="5" name="5:其他(国外)" />
 	</list>
+	<list name="workexex" describle="打工状况">
+		<item id="0" name="" />
+		<item id="1" name="1:在家务家" />
+		<item id="2" name="2:县内务工" />
+		<item id="3" name="3:县外省内务工" />
+		<item id="4" name="4:省外务工" />
+		<item id="5" name="5:其他(国外)" />
+	</list>
 	<list name="labor" describle="劳动力状况">
 		<item id="1" name="1:劳动力" />
 		<item id="2" name="2:丧失劳动力" />
