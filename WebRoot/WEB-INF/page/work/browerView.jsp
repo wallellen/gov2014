@@ -69,8 +69,8 @@
 					<td width="8%">扶贫户</td>
 					<td width="8%">低保户</td>
 					<td width="8%">五保户</td>
-					<td width="6%">审查数</td>
-					<td width="18%" class="tabtd1">操作</td>
+					<td width="8%">审查通过</td>
+					<td width="14%" class="tabtd1">操作</td>
 				</s:if>
 				<s:else>
 					<td height="20px" width="8%">农户编码</td>
@@ -128,14 +128,14 @@
 						<td align="left">&nbsp;<s:property value="#ls.property"/></td>
 						<td align="left">&nbsp;<s:property value="#ls.dcause"/></td>
 						<td align="center">
-							<s:if test="#ls.ischeck==1">
+							<s:if test="#ls.ischeck!=null && #ls.ischeck==1">
 							√
 							</s:if>
-							<s:elseif test="#ls.ischeck==2">
+							<s:elseif test="#ls.ischeck!=null && #ls.ischeck==2">
 							乂
 							</s:elseif>
 							<s:else>
-							
+							&nbsp;
 							</s:else>
 						</td>
 						<td class="tabtd1">
