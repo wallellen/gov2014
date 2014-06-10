@@ -14,7 +14,7 @@
     <li><input type="button" onClick="location.href='${pageContext.request.contextPath }/system/govFarmerQueryAction_member.do'" value="查询人口" class="button42"/></li>
     <li>
     	<s:if test="#session.vts.curBM.length()<10">
-    	<input type="button" onClick="location.href='${pageContext.request.contextPath }/system/govFarmerStatsAction_home.do'" value="统计农户" class="button42"/>
+    	<input type="button" onClick="location.href='${pageContext.request.contextPath }/system/govFarmerStatsAction_home.do'" value="农户分组汇总" class="button42"/>
     	</s:if><s:else>&nbsp;</s:else>
     </li>
     <li>
