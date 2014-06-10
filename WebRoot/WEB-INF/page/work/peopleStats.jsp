@@ -115,15 +115,19 @@
 	</fieldset>
 	<div style="height:24px; margin-top:5px;">
 		<div style="float:left; width:160px;">&nbsp;</div>
-		<div style="float:left; width:380px; padding-left:10px; padding-top:5px; border:0px solid red">
+		<div style="float:left; width:364px; padding-left:10px; padding-top:5px; border:0px solid red">
 			<div id="peocon1">
 			<label id="condition">分组条件设置</label>
 			<input type="text" id="tjstr1" name="tjstr" class="inptxt" value="<s:property value="#session.vts.map.tjstrPeople"/>" onfocus="this.className='input_on'" onblur="this.className='input_off'"/>
 			<p>分组条件设置的编辑格式：用半角的逗号分隔，如：10,100,1000</p>
 			</div>
 		</div>
-		<div style="float:right; width:80px; padding-top:5px;">
+		<div style="float:right; width:120px; padding-top:5px;">
 			<input type="submit" value="立即统计" class="button4"/>
+			&nbsp;
+			<s:if test="#session.vts.list5!=null">
+			<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govFarmerStatsAction_exportFarmerStatsInfo.do'" class="button43"/>
+			</s:if>
 		</div>
 	</div>
 </div>
