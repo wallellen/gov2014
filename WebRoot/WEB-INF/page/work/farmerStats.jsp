@@ -136,7 +136,7 @@
 		</div>
 		<div style="float:left; width:380px; padding-left:10px; padding-top:5px; border:0px solid red">
 			<div id="farcon2">
-				<label id="condition">统计条件</label>
+				<label id="condition">分组条件设置</label>
 				<input type="text" id="tjstr" name="tjstr" class="inptxt" value="<s:property value="#session.vts.map.tjstrFarmer"/>" onfocus="this.className='input_on'" onblur="this.className='input_off'"/>
 				&nbsp;格式:10,100,1000
 			</div>
