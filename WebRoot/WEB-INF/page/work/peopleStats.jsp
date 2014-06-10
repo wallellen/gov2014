@@ -75,7 +75,7 @@
 <body onload="initPeople()" style="background:#E0EEFB;">
 <div style="float:left">
 <!-- 统计条件 -->
-<div style="height:140px; border:0px solid blue; line-height:18px;">
+<div style="height:154px; border:0px solid blue; line-height:18px;">
 <form name="farmerForm" action="${pageContext.request.contextPath }/system/govPeopleStatsAction_home.do" method="post" onsubmit="return checkTjstr()">
 <input type="hidden" id="aids" value="<s:property value="#session.vts.map.aidPeople"/>"/>
 <div style="height:140px; width:666px; margin-top:10px; border:0px solid red;">
@@ -118,9 +118,9 @@
 		<div style="float:left; width:160px;">&nbsp;</div>
 		<div style="float:left; width:380px; padding-left:10px; padding-top:5px; border:0px solid red">
 			<div id="peocon1">
-			<label id="condition">统计条件</label>
+			<label id="condition">分组条件设置</label>
 			<input type="text" id="tjstr1" name="tjstr" class="inptxt" value="<s:property value="#session.vts.map.tjstrPeople"/>" onfocus="this.className='input_on'" onblur="this.className='input_off'"/>
-			&nbsp;格式:10,100,1000
+			<p>分组条件设置的编辑格式：用半角的逗号分隔，如：10,100,1000</p>
 			</div>
 		</div>
 		<div style="float:right; width:80px; padding-top:5px;">
@@ -131,7 +131,7 @@
 </form>
 </div>
 <s:if test="#session.vts.list5!=null && #session.vts.list5.size()>0">
-<div class="table-c" style="width:666px; height:500px; line-height:20px; border:0px solid red;">
+<div class="table-c" style="width:666px; height:484px; line-height:20px; border:0px solid red;">
 <table class="data_list" width="100%" bordercolor="gray" border="0" cellpadding="0" cellspacing="0">
 	<thead>
 	<tr height="40px" style="font-weight: bold; color: #2284E1;" background="${pageContext.request.contextPath }/images/tablehead2.jpg">
