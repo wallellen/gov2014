@@ -50,7 +50,6 @@ public class GovFarmerStatsDaoImpl extends CommonDaoImpl<Object> implements GovF
 						ds.map.put("c"+i, "");
 					}
 				}
-				ds.list5 = new ArrayList();
 				Map map;
 				if(rs!=null){
 					while (rs.next()) {

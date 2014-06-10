@@ -398,4 +398,116 @@ public class ExcelTemplateGenerator {
 		isLineBackGround = true;
 	}
 	
+	/** 
+	 * 首行为字符串，如>=3,..
+	 * @param response
+	 * @throws Exception
+	 */
+	public void exportExcelWithTemplate3(HttpServletResponse response) throws Exception {
+		ServletOutputStream out = response.getOutputStream(); //获得输出流 
+		String arrayt[]=new String[60];
+		if(null!=filePath){
+			File file = new File(filePath);
+			if(file.exists() && file.isFile()){
+				workBook = new HSSFWorkbook(new FileInputStream(filePath));
+				//读取第一个工作簿
+		       	HSSFSheet sheet = workBook.getSheetAt(0);
+		       	//改变模板文件中的单元格值
+		       	if(isSetCellName){
+		       		HSSFRow row = sheet.getRow(0);  
+		        	HSSFCell cell = row.getCell(0);
+		        	cell.setCellValue(tCellName);  
+		       	}
+		        HSSFRow dataRow = null;
+		        HSSFCell dataCell = null;
+		        String sColName;
+		        HSSFCellStyle style=null;
+		        HSSFRow row = sheet.getRow(this.srowData);//HeadRowNum  
+		        for(int i=0;i<60;i++)
+		        {
+		        	HSSFCell cell = row.getCell(i);
+		        	if(null!=cell)
+		        	{
+		        		arrayt[i]=cell.getStringCellValue();
+		        	}
+		        	else
+		        	{
+		        		arrayt[i]="";
+		        	}
+		        }
+		        //设置边框
+		        style = workBook.createCellStyle();
+		        if(isDrawBoard)
+		        {
+			        style.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+			        style.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+			        style.setBorderRight(HSSFCellStyle.BORDER_THIN);
+			        style.setBorderTop(HSSFCellStyle.BORDER_THIN);
+		        }
+		        for (int i=0; i<fieldData.size(); i++){
+					Map numMap=(Map)fieldData.get(i);
+					dataRow = sheet.createRow(i+srowData);
+					int dl= endcol>0 ? endcol : numMap.size();
+					for(int j=0; j<dl; j++){
+						dataCell = dataRow.createCell(j);
+						if(isDrawBoard){
+							dataCell.setCellStyle(style);
+						}
+						if(null!=colNameArr && colNameArr.length>0){
+							if(colNameArr.length>j){
+								sColName = colNameArr[j];
+							}else{
+								sColName ="^";
+							}
+						}else{
+							sColName = "c"+String.valueOf(j);
+						}
+						if(sColName!="^"){
+							if(arrayt[j].equals("N"))
+							{
+								String excelData = (String)numMap.get(sColName); 
+								if(null!=excelData && excelData.length()>0 && isNumeric(excelData))
+								{
+									dataCell.setCellValue(Double.parseDouble(excelData));
+								}
+								else
+								{
+									dataCell.setCellValue((String)numMap.get(sColName));
+								}
+							}
+							else
+							{
+								dataCell.setCellValue((String)numMap.get(sColName));
+							}
+						}
+					}
+				}
+				//重置输出流
+				response.reset();
+				//设置导出Excel报表的导出形式
+				response.setHeader("Content-Disposition", "attachment;filename=" + fileName);// 设定输出文件头
+				response.setContentType("application/vnd.ms-excel;charset=UTF-8");	// 定义输出类型
+				workBook.write(out);
+			    // 设置输出形式
+				//System.setOut(new PrintStream(out));
+				// 刷新输出流
+			}else{
+				System.out.println("excelTemplate ["+filePath+"] not exist");
+			}
+		}
+		out.flush();
+		out.close();
+	}
+	
+	public static boolean isNumeric(String str){
+		for (int i = str.length();--i>=0;)
+		{   
+			if (!Character.isDigit(str.charAt(i)))
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
 }
