@@ -54,7 +54,6 @@
 			}
 		}
 		function checkParam(x) {
-			document.getElementById("tjstr").readOnly=(x!=1);
 			if(x!=1){
 				document.getElementById("peocon1").style.display='none';
 			}else{
