@@ -19,7 +19,7 @@
     </li>
     <li>
 	    <s:if test="#session.vts.curBM.length()<10">
-	    <input type="button" onClick="location.href='${pageContext.request.contextPath }/system/govPeopleStatsAction_home.do'" value="统计人口" class="button42"/>
+	    <input type="button" onClick="location.href='${pageContext.request.contextPath }/system/govPeopleStatsAction_home.do'" value="人口分组汇总" class="button42"/>
 	    </s:if><s:else>&nbsp;</s:else>
    	</li>
 </ul>

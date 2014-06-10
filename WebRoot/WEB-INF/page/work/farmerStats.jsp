@@ -149,7 +149,7 @@
 </form>
 </div>
 <s:if test="#session.vts.list5!=null && #session.vts.list5.size()>0">
-<div class="table-c" style="width:666px; height:498px; line-height:20px; border:0px solid red; margin-top:0px;">
+<div class="table-c" style="width:666px; height:483px; line-height:20px; border:0px solid red; margin-top:0px;">
 	<table class="data_list" width="100%" border="0" cellpadding="0" cellspacing="0">
 		<thead>
 		<tr height="40px" style="font-weight: bold; color: #2284E1;" background="${pageContext.request.contextPath }/images/tablehead2.jpg">
