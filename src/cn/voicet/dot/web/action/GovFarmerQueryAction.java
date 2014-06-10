@@ -52,6 +52,22 @@ public class GovFarmerQueryAction extends BaseAction implements ModelDriven<GovF
 		return "showMemberHome";
 	}
 	
+	/** 导出农户信息 */
+	public String exportFarmerInfo() throws Exception{
+		DotSession ds = DotSession.getVTSession(request);
+		//从上次查询的list中取数据ds.list
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+		String fileName = "nhcx"+format.format(new Date())+".xls";
+	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"farmer.xls";
+	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 1, ds.list5);
+	    generator.setColList("c0,c1,c2");
+	    generator.setDrawBoard();
+	    generator.setEffectColNum(3);
+	    generator.exportExcelWithTemplate(response);
+		return null;
+	}
+	
+	/** 导出人口信息 */
 	public String exportMemberInfo() throws Exception{
 		DotSession ds = DotSession.getVTSession(request);
 		//从上次查询的list中取数据ds.list
