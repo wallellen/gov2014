@@ -83,7 +83,7 @@
 <body onload="initFarmer()" style="background:#E0EEFB;">
 <div style="float:left">
 <!-- 统计条件 -->
-<div style="height:140px; border:0px solid blue; line-height:18px;">
+<div style="height:154px; border:0px solid blue; line-height:18px;">
 <form name="farmerForm" action="${pageContext.request.contextPath }/system/govFarmerStatsAction_home.do" method="post" onsubmit="return checkTjstr()">
 <input type="hidden" id="aids" value="<s:property value="#session.vts.map.aidFarmer"/>"/>
 <div style="height:140px; width:666px;  margin-top:10px; border:0px solid red;">
@@ -134,11 +134,11 @@
 			</s:else>
 			</div>
 		</div>
-		<div style="float:left; width:380px; padding-left:10px; padding-top:5px; border:0px solid red">
+		<div style="float:left; width:380px; padding-left:10px; padding-top:5px; border:0px solid red;">
 			<div id="farcon2">
 				<label id="condition">分组条件设置</label>
 				<input type="text" id="tjstr" name="tjstr" class="inptxt" value="<s:property value="#session.vts.map.tjstrFarmer"/>" onfocus="this.className='input_on'" onblur="this.className='input_off'"/>
-				&nbsp;格式:10,100,1000
+				<p>分组条件设置的编辑格式：用半角的逗号分隔，如：10,100,1000</p>
 			</div>
 		</div>
 		<div style="float:right; width:80px; padding-top:5px;">
