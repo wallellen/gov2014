@@ -49,7 +49,7 @@ public class GovPeopleStatsDaoImpl extends CommonDaoImpl<Object> implements GovP
 				ds.map.remove("c9");
 				ResultSetMetaData rsm =rs.getMetaData(); //获得列集
 				int col = rsm.getColumnCount();
-				for(int i=0; i<9; i++){
+				for(int i=0; i<10; i++){
 					if(i<col){
 						ds.map.put("c"+i, rsm.getColumnName(i+1));
 					}else{
