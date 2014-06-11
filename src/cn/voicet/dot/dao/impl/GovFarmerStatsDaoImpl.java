@@ -41,6 +41,14 @@ public class GovFarmerStatsDaoImpl extends CommonDaoImpl<Object> implements GovF
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.list5 = new ArrayList();
+				ds.map.remove("c2");
+				ds.map.remove("c3");
+				ds.map.remove("c4");
+				ds.map.remove("c5");
+				ds.map.remove("c6");
+				ds.map.remove("c7");
+				ds.map.remove("c8");
+				ds.map.remove("c9");
 				ResultSetMetaData rsm =rs.getMetaData(); //获得列集
 				int col = rsm.getColumnCount();
 				for(int i=0; i<10; i++){

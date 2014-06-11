@@ -38,6 +38,15 @@ public class GovPeopleStatsDaoImpl extends CommonDaoImpl<Object> implements GovP
 				ds.map.put("tjstrPeople", govPeopleStatsForm.getTjstr());
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
+				ds.list5 = new ArrayList();
+				ds.map.remove("c2");
+				ds.map.remove("c3");
+				ds.map.remove("c4");
+				ds.map.remove("c5");
+				ds.map.remove("c6");
+				ds.map.remove("c7");
+				ds.map.remove("c8");
+				ds.map.remove("c9");
 				ResultSetMetaData rsm =rs.getMetaData(); //获得列集
 				int col = rsm.getColumnCount();
 				for(int i=0; i<9; i++){
@@ -47,7 +56,6 @@ public class GovPeopleStatsDaoImpl extends CommonDaoImpl<Object> implements GovP
 						ds.map.put("c"+i, "");
 					}
 				}
-				ds.list5 = new ArrayList();
 				Map map;
 				if(rs!=null){
 					while (rs.next()) {
