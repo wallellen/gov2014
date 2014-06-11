@@ -1,0 +1,75 @@
+为 SQL Server 启用 AWE 内存
+
+下一版本的 Microsoft SQL Server 将删除该功能。请不要在新的开发工作中使用该功能，并尽快修改当前还在使用该功能的应用程序。
+地址窗口化扩展插件 (AWE) 可以使 32 位操作系统访问大量内存。AWE 由操作系统公开，并且在 Microsoft Windows 2000 Server 和 Windows Server 2003 中的实现方式稍有不同。AWE 是使用 awe enabled 选项启用的。
+在 Windows 2000 Server 中使用 AWE 映射内存
+
+运行在 Windows 2000 上的 Microsoft SQL Server 实例在 SQL Server 启动过程中根据如下事件顺序分配内存：
+如果可用物理内存小于用户模式虚拟地址空间，则无法激活 AWE。在此情况下，SQL Server 将以非 AWE 模式运行，而不管 awe enabled 选项的设置情况。
+如果可用物理内存大于用户模式虚拟地址空间，则可以激活 AWE。
+如果可用物理内存大于 max server memory 选项的值，SQL Server 实例会锁定 max server memory 中指定的内存量。
+如果可用物理内存小于 max server memory 选项的值或如果尚未设置 max server memory 选项，SQL Server 实例只留下 256 兆字节 (MB)，而锁定所有其余的可用内存。
+AWE 映射内存一经分配便无法释放，除非关闭 SQL Server。
+配置内存选项
+极力建议每次启用 AWE 时都为 max server memory 设置一个值。如果 awe enabled 设置为 1（并且可用物理内存大于用户模式进程空间），则启动服务器后，运行在 Windows 2000 上的 SQL Server 实例将锁定几乎所有的可用内存（或 max server memory 的值指定的内存，如果设置了此选项的话）。如果尚未设置 max server memory，则其他应用程序或 SQL Server 实例的可用物理内存将小于 128 MB。
+无法将 AWE 映射内存池换出到分页系统文件。如果需要使用额外物理内存，Windows 必须换出其他应用程序，这样做可能会影响那些应用程序的性能。
+若不想影响其他应用程序的性能，请配置 max server memory 留出一些额外可用内存以备其他应用程序和操作系统的不时之需。可以通过了解计算机上使用的所有其他应用程序启动之后还有多少内存可用，来确定可安全分配给 SQL Server 实例的内存量。
+注意注意
+在 Windows 2000 Server 中，SQL Server AWE 将忽略 min server memory。
+使用 SQL Server 性能监视器 Total Server Memory (KB) 计数器可以确定在 AWE 模式下运行的 SQL Server 实例所分配的内存量，也可以从 sysperfinfo 中选择内存使用量来确定实例所分配的内存量。
+有关详细信息，请参阅监视内存使用量。
+使用 AWE 运行 SQL Server 的多个实例
+如果服务器运行的是 Windows 2000，则每个实例都应具有 max server memory 设置。由于 Windows 2000 操作系统上运行的 SQL Server 不支持动态分配 AWE 映射内存，因此，建议为每个实例都设置 max server memory 选项。
+所有实例的 max server memory 值的总和应小于计算机的总物理内存。如果总和大于总物理内存，某些实例或者不会启动，或者所使用的内存小于 max server memory 设置所指定的内存量。例如，假设某台计算机有 16 GB 的物理内存，并且在该计算机上安装了三个 SQL Server 实例。并且，每个实例的 max server memory 设置为 8 GB。如果您停止并重新启动所有三个实例，内存分配会如下所示：
+第一个实例使用 8 GB 的物理内存。
+第二个实例将启动，但使用的物理内存将略低于 8 GB（最多减少 128 MB）。
+第三个实例以动态内存模式启动并且使用 256 MB 的物理内存或更少的物理内存。
+有关详细信息，请参阅管理大型数据库的内存。
+在 Windows Server 2003 中使用 AWE 映射内存
+
+在 Windows Server 2003 中，SQL Server 支持动态分配 AWE 内存。启动过程中，SQL Server 仅保留一小部分 AWE 映射内存。当需要额外的 AWE 映射内存时，操作系统便会将其动态分配给 SQL Server。同样，如果所需的资源较少，则 SQL Server 可将 AWE 映射内存返回到操作系统，以供其他进程或应用程序使用。有关 awe enabled 配置选项的详细信息，请参阅 awe enabled 选项。
+Windows Server 2003 系列所支持的物理内存量有所增加。AWE 可使用的物理内存取决于您所使用的操作系统。下面的列表列出了写入时每个 Windows Server 2003 操作系统版本可以使用的最大物理内存。
+Windows Server 2003 Standard Edition 最高支持 4 GB 的物理内存。
+Windows Server 2003 Enterprise Edition 最高支持 32 GB 的物理内存。
+Windows Server 2003 Datacenter Edition 最高支持 64 GB 的物理内存。
+配置内存选项
+SQL Server 在任何 Windows Server 2003 操作系统版本上运行时，都会动态地分配 AWE 映射内存。换言之，缓冲池可以动态管理 AWE 映射内存（在 min server memory 和 max server memory 选项的约束内），以按照总体系统要求平衡 SQL Server 内存的使用。
+启用 AWE 后，SQL Server 将始终尝试使用 AWE 映射内存。这适用于所有内存配置，包括配置以提供给应用程序低于 3 GB 用户模式地址空间的计算机。
+建议将 AWE 设为在 Windows Server 2003 上运行的 SQL Server 的默认内存模式。热添加内存功能要求在启动 SQL Server 过程中启用 AWE。有关信息，请参阅热添加内存。
+注意注意
+64 位操作系统上不需要 AWE，也不能在这种系统上配置 AWE。
+由于所支持的 AWE 映射内存容量在 3 GB 以下，因此，可在物理内存范围内定义 min server memory 和 max server memory 的值，或使用这两个选项的默认值。
+可以考虑设置 SQL Server 的 max server memory 以保证其他内存能用于运行在计算机上的其他应用程序。虽然 SQL Server 可动态释放 AWE 映射内存，但当前已分配的 AWE 映射内存量无法换出页面文件。
+若要使 SQL Server 实例能够使用 AWE，请使用 sp_configure 将 awe enabled 选项设置为 1，然后重新启动 SQL Server。
+有关 min server memory 和 max server memory 的详细信息，请参阅服务器内存选项。
+在启用 AWE 之前，必须先配置“锁定内存页”策略。有关详细信息，请参阅如何启用“锁定内存页”选项 (Windows)。
+示例
+下面的示例显示如何激活 AWE 以及如何为 min server memory 配置 1 GB 的限制，为 max server memory 配置 6 GB 的限制。
+首先，配置 AWE：
+sp_configure 'show advanced options', 1
+RECONFIGURE
+GO
+
+sp_configure 'awe enabled', 1
+RECONFIGURE
+GO
+重新启动 SQL Server 之后，会将以下消息写入 SQL Server 错误日志中：“已启用地址窗口化扩展插件。”
+然后，配置内存：
+sp_configure 'min server memory', 1024
+RECONFIGURE
+GO
+
+sp_configure 'max server memory', 6144
+RECONFIGURE
+GO
+在此示例中，内存设置引导缓冲池在 1 GB 和 6 GB 之间动态管理 AWE 映射内存。如果其他应用程序需要额外的内存，则 SQL Server 可释放不再需要的已分配 AWE 映射内存。在此示例中，AWE 映射内存最多只能释放 1 GB。
+如果将额外的内存添加到支持热添加内存的计算机中，则 SQL Server 也可以使用动态 AWE 内存来增加内存。Windows Server 2003 Enterprise Edition 和 Datacenter Edition 中提供了热添加内存，因而允许在计算机运行时增加内存。例如，假设在具有 16 GB 物理内存的计算机上启动在 Windows Server 2003 Enterprise Edition 上运行的 SQL Server。将操作系统配置为限制应用程序可使用 2 GB 的虚拟内存地址空间；并且已在 SQL Server 上激活 AWE。稍后，在计算机运行时系统管理员要添加 16 GB 的内存。SQL Server 会立即识别添加的内存，并且，如有必要，可以利用这些内存。
+有关使用 AWE 的详细信息，请参阅 Windows Server 2003 文档。
+使用 AWE 运行 SQL Server 的多个实例
+如果在同一台计算机上运行多个 SQL Server 实例，并且每个实例都使用 AWE 映射内存，则应确保这些实例均按预期方式执行。
+如果服务器运行的是 Windows Server 2003，则每个实例都应设置 min server memory。由于在 Windows Server 2003 上运行的 SQL Server 支持动态 AWE 映射内存管理，因此，建议为每个实例都设置 min server memory 选项。由于 AWE 映射内存无法换出页面文件，因此，所有实例的 min server memory 值的总和应小于计算机上的物理总内存。
+启动时，min server memory 选项不会强制 SQL Server 获取最小量的内存。基于数据库工作负荷按需分配内存。但是，达到 min server memory 阈值后，如果 SQL Server 为自己保留的内存小于该量，则 SQL Server 将不释放内存。因此，若要确保每个实例所分配的内存至少等于 min server memory 值，建议您启动后立即执行数据库服务器加载。服务器正常运行时，每一实例的可用内存会随时变化，但决不会小于 min server memory 值。
+可以设置 max server memory 或将该选项保留为默认设置。将 max server memory 保留为默认值将导致 SQL Server 实例为争夺内存而竞争。
+一起使用 AWE 和故障转移群集
+
+如果使用的是 SQL Server 故障转移群集和 AWE 内存，则必须确保所有实例的 max server memory 设置的总和小于故障转移群集中任一服务器上可用的最小物理内存。如果故障转移节点的物理内存比原节点上的内存小，则 SQL Server 实例可能无法启动，或者可能在内存比在原节点上的内存小的情况下启动。
