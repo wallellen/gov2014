@@ -64,7 +64,6 @@ public class GovFarmerStatsAction extends BaseAction implements ModelDriven<GovF
 		map.put("c8", ds.map.get("c8"));
 		map.put("c9", ds.map.get("c9"));
 		ds.list5.add(0, map);
-		log.info("exportFarmerStatsInfo-> ds.list5:"+ds.list5);
 		
 		//从上次查询的list中取数据ds.list
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
