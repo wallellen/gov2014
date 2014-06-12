@@ -155,6 +155,7 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 	/** 保存或更新家庭成员信息  */
 	public String saveMember() {
 		DotSession ds = DotSession.getVTSession(request);
+		log.info("dcno:"+dcno);
 		govBrowerService.saveMemberInfo(ds, mid, uname, sex, age, school, education, health, dcno, labors, works, bla, tbfd);
 		ds.opCode = "saveMember";
 		ds.map.put("rtf","home");
@@ -426,7 +427,7 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 		if(dcno.length()>0)
 			this.dcno = dcno;
 		else
-			this.dcno = "0";
+			this.dcno = "";
 	}
 	public int getLabors() {
 		return labors;
