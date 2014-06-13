@@ -84,7 +84,7 @@ public class DotMenuAction extends BaseAction implements ModelDriven<DotUserForm
 		}
 		ds.curBM=ds.rbm;
 		ds.subPathTitle.initPath();
-		log.info("account: ["+ds.account+"] login success, isedit="+ds.isedit);
+		log.info("account: ["+ds.account+"] 登录 login success, isedit="+ds.isedit);
 		return "mainHome";
 	}
 	
