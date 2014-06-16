@@ -83,7 +83,7 @@
 					<td width="10%">属性</td>
 					<td width="10%">贫困原因</td>
 					<td width="4%">审查</td>
-					<td width="18%" class="tabtd1">操作</td>
+					<td width="20%" class="tabtd1">操作</td>
 				</s:else>
                 </tr>
             </thead>
@@ -117,10 +117,10 @@
 							<s:property value="#ls.zhu.length()>3?#ls.zhu.substring(0,2)+'..':#ls.zhu"/>
 							</s:if>
 							<s:else>
-								&nbsp;&nbsp;
+								&nbsp;
 							</s:else>
 						</td>
-						<td align="left" title="<s:property value='#ls.hname'/>">&nbsp;<s:property value="#ls.hname.length()>4?#ls.hname.substring(0,3)+'..':#ls.hname"/></td>
+						<td align="left" title="<s:property value='#ls.hname'/>">&nbsp;<s:property value="#ls.hname.length()>3?#ls.hname.substring(0,2)+'..':#ls.hname"/></td>
 						<td align="right"><s:property value="#ls.population"/>&nbsp;</td>
 						<td align="right"><s:property value="#ls.labornum"/>&nbsp;</td>
 						<td align="right"><s:property value="#ls.fields"/>&nbsp;</td>
