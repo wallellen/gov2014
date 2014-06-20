@@ -103,6 +103,7 @@ function popBangfuEdit(s,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,fdept,fx,fc){
 		document.getElementById("hh10").value=f8;
 		document.getElementById("hh11").value=f9;
 		document.getElementById("hh12").value=f10;
+		document.getElementById("iid").value=f1;
 	}else{
 		bt.innerHTML="<font color='#fff'>添加后方单位帮扶信息</font>";
 		document.getElementById("hh1").value=f1;
@@ -117,9 +118,9 @@ function popBangfuEdit(s,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,fdept,fx,fc){
 		document.getElementById("hh10").value=0;
 		document.getElementById("hh11").value=0;
 		document.getElementById("hh12").value=0;
+		document.getElementById("iid").value='';
 	}
-	//批次号
-	document.getElementById("iid").value=f1;
+	
 	var oWin = document.getElementById("win-bangfu");
 	var oLay = document.getElementById("overlay-bangfu");
 	var oClose = document.getElementById("y-close"); 
