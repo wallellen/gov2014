@@ -121,12 +121,14 @@ function subJiangBuBt(){
 	if(!checkMoney(document.all.vv2))return;
 	if(!checkMoney(document.all.vv3))return;
 	
-	if(s.indexOf("1")>=0 && vst>0){
+	//if(s.indexOf("1")>=0 && vst>=0){
+	if(vst>=0){
 		document.getElementById("jbstr").value=s;
 		document.jBForm.action="govJiangBuAction_saveJiangBu.do";
 		document.jBForm.submit();
 	}else{
-		alert("至少需要选择一项,且金额大于0");
+		//alert("至少需要选择一项,且金额大于等于0");
+		alert("金额大于等于0");
 	}
 }
 //
