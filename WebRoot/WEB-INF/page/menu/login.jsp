@@ -5,7 +5,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String tit = "";
-if(!basePath.contains("gov"))
+if(!basePath.contains("xmzj"))
 {
 	tit = "低收入农户管理系统";
 }

@@ -43,7 +43,7 @@ public class DotMenuAction extends BaseAction implements ModelDriven<DotUserForm
 		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";
 		log.info("basePath:"+basePath);
 		String xmlFilePath = null;
-		if(!basePath.contains("gov"))
+		if(!basePath.contains("xmzj"))
 		{
 			xmlFilePath = ServletActionContext.getServletContext().getRealPath("/WEB-INF/classes/appconfig.xml");
 			dotUserForm.setXflag(0);
