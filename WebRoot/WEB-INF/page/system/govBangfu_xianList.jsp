@@ -175,7 +175,7 @@
 		<tr>
 			<td align="right">到村项目资金(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh4" name="bftxt" class="back-input" maxlength="3" onblur="checkHoufMoney(this)"/>
+				<input type="text" id="hh4" name="bftxt" class="back-input" maxlength="8" onblur="checkHoufMoney(this)"/>
 			</td>
 		</tr>
 		<tr>
@@ -187,13 +187,13 @@
 		<tr>
 			<td align="right">后方单位自筹资金(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh6" name="bftxt" class="back-input" maxlength="3" onblur="checkHoufMoney(this)"/>
+				<input type="text" id="hh6" name="bftxt" class="back-input" maxlength="8" onblur="checkHoufMoney(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">协调资金(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh7" name="bftxt" class="back-input" maxlength="3" onblur="checkHoufMoney(this)"/>
+				<input type="text" id="hh7" name="bftxt" class="back-input" maxlength="8" onblur="checkHoufMoney(this)"/>
 			</td>
 		</tr>
 		<tr>
@@ -211,19 +211,19 @@
 		<tr>
 			<td align="right">帮扶实物折价(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh10" name="bftxt" class="back-input" maxlength="3" onblur="checkHoufMoney(this)"/>
+				<input type="text" id="hh10" name="bftxt" class="back-input" maxlength="8" onblur="checkHoufMoney(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">单位领导:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh11" name="bftxt" class="back-input" maxlength="3" onblur="checkHoufItem(this)"/>
+				<input type="text" id="hh11" name="bftxt" class="back-input" maxlength="5" onblur="checkHoufItem(this)"/>
 			</td>
 		</tr>
 		<tr>
 			<td align="right">中层及以下人员:&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="hh12" name="bftxt" class="back-input" maxlength="3" onblur="checkHoufItem(this)"/>
+				<input type="text" id="hh12" name="bftxt" class="back-input" maxlength="5" onblur="checkHoufItem(this)"/>
 			</td>
 		</tr>
 	</table>
