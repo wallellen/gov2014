@@ -130,9 +130,9 @@ public class GovBangfuAction extends BaseAction implements ModelDriven<GovBangfu
 	    String fileName = new String(("省级后方单位挂钩帮扶情况-"+title+"-"+byunit).getBytes("gb2312"), "ISO8859-1") +".xls";
 	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"bangfu-unit.xls";
 	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 3, ds.list);
-	    generator.setColList("c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13");
+	    generator.setColList("c1,^,^,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13");
 	    generator.setDrawBoard();
-	    generator.setEffectColNum(13);
+	    generator.setEffectColNum(15);
 	    generator.exportExcelWithTemplate(response);
         return null;
 	}
