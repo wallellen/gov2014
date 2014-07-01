@@ -33,7 +33,7 @@
 		#Tab{margin:0 auto;width:866px;}
 		.Menubox{height:28px;border-bottom:1px solid #64B8E4;background:#E4F2FB;}
 		.Menubox ul{list-style:none;margin:0px 2px;padding:0;position:absolute;}
-		.Menubox ul li{float:left;width:158px;background:#64B8E4;line-height:27px;display:block;cursor:pointer;text-align:center;color:#fff;font-weight:bold;border-top:1px solid #64B8E4;border-left:1px solid #64B8E4;border-right:1px solid #64B8E4; margin-right:2px;}
+		.Menubox ul li{float:left;background:#64B8E4;line-height:27px;display:block;cursor:pointer;text-align:center;color:#fff;font-weight:bold;border-top:1px solid #64B8E4;border-left:1px solid #64B8E4;border-right:1px solid #64B8E4; margin-right:2px;}
 		.Menubox ul li.hover{background:#fff;border-bottom:1px solid #fff;color:#147AB8;}
 		.Contentbox{clear:both;margin-top:0px;border-top:none;height:181px;padding-top:8px;height:100%;}
 		.Contentbox ul{list-style:none;margin:7px;padding:0;}
@@ -56,7 +56,7 @@
 	  	<div class="Menubox">
 	    	<ul>
 		      	<s:iterator value="#application.vta.GetList('bfdept')" var="ls" status="sc">
-					<li id="menu<s:property value="#sc.count"/>" onmouseover="setTab('menu',<s:property value="#sc.count"/>,4)"><s:property value="#ls.str"/></li>	      	
+					<li id="menu<s:property value="#sc.count"/>" onmouseover="setTab('menu',<s:property value="#sc.count"/>,6)"><s:property value="#ls.str"/></li>	      	
 		      	</s:iterator>
 		      	<li class="box_return"><input type="button" value="返回" onclick="javascript:history.go(-1)" class="button43"/></li>
 	    	</ul>
@@ -90,6 +90,20 @@
 		      	<ul>
 				<s:iterator value="#session.vts.list4" var="ls4">
 				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls4.c0"/>','','','','','','','','','4')" title="<s:property value='#ls4.c1'/>"><s:property value="#ls4.c1.length()>13?#ls4.c1.substring(0,12)+'...':#ls4.c1"/></a></li>
+				</s:iterator>
+	    		</ul>
+	    	</div>
+	    	<div id="con_menu_5"style="display:none">
+		      	<ul>
+				<s:iterator value="#session.vts.list5" var="ls5">
+				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls5.c0"/>','','','','','','','','','4')" title="<s:property value='#ls5.c1'/>"><s:property value="#ls5.c1.length()>13?#ls5.c1.substring(0,12)+'...':#ls5.c1"/></a></li>
+				</s:iterator>
+	    		</ul>
+	    	</div>
+	    	<div id="con_menu_6"style="display:none">
+		      	<ul>
+				<s:iterator value="#session.vts.list6" var="ls6">
+				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls6.c0"/>','','','','','','','','','4')" title="<s:property value='#ls6.c1'/>"><s:property value="#ls6.c1.length()>13?#ls6.c1.substring(0,12)+'...':#ls6.c1"/></a></li>
 				</s:iterator>
 	    		</ul>
 	    	</div>

@@ -309,6 +309,8 @@ public class GovBangfuDaoImpl extends CommonDaoImpl<Object> implements GovBangfu
 				ds.list2 = new ArrayList();
 				ds.list3 = new ArrayList();
 				ds.list4 = new ArrayList();
+				ds.list5 = new ArrayList();
+				ds.list6 = new ArrayList();
 				do{
 					updateCount = cs.getUpdateCount();
 					if(updateCount != -1){	
@@ -334,6 +336,14 @@ public class GovBangfuDaoImpl extends CommonDaoImpl<Object> implements GovBangfu
 								map = new HashMap();
 								ds.putMapData(map, rs);
 								ds.list4.add(map);
+							}else if (rid == 4){
+								map = new HashMap();
+								ds.putMapData(map, rs);
+								ds.list5.add(map);
+							}else if (rid == 5){
+								map = new HashMap();
+								ds.putMapData(map, rs);
+								ds.list6.add(map);
 							}
 						}
 					}

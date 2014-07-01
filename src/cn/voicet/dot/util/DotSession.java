@@ -38,6 +38,7 @@ public class DotSession {
 	public List list3;
 	public List list4;
 	public List list5;
+	public List list6;
 	public int curYear;	//当前年份
 	private int stackPos=0;
 	private StackInfo[] arrayStackInfo;
@@ -54,6 +55,7 @@ public class DotSession {
 		List list3;
 		List list4;
 		List list5;
+		List list6;
 	}
 	public void pushAllList() {
 		if(stackPos<8){
@@ -62,6 +64,7 @@ public class DotSession {
 			arrayStackInfo[stackPos].list3=list3;
 			arrayStackInfo[stackPos].list4=list4;
 			arrayStackInfo[stackPos++].list5=list5;
+			arrayStackInfo[stackPos++].list6=list6;
 		}
 		System.out.println("pushAllList cur:"+stackPos);
 	}
@@ -79,11 +82,13 @@ public class DotSession {
 			list3=arrayStackInfo[stackPos].list3;
 			list4=arrayStackInfo[stackPos].list4;
 			list5=arrayStackInfo[stackPos].list5;
+			list6=arrayStackInfo[stackPos].list6;
 			arrayStackInfo[stackPos].list=null;
 			arrayStackInfo[stackPos].list2=null;
 			arrayStackInfo[stackPos].list3=null;
 			arrayStackInfo[stackPos].list4=null;
 			arrayStackInfo[stackPos].list5=null;
+			arrayStackInfo[stackPos].list6=null;
 		}
 	}
 	
@@ -94,6 +99,7 @@ public class DotSession {
 			arrayStackInfo[i].list3=null;
 			arrayStackInfo[i].list4=null;
 			arrayStackInfo[i].list5=null;
+			arrayStackInfo[i].list6=null;
 		}
 		stackPos=0;
 	}
@@ -110,6 +116,7 @@ public class DotSession {
 		list3 = new ArrayList();
 		list4 = new ArrayList();
 		list5 = new ArrayList();
+		list6 = new ArrayList();
 	}
 	
 	public void emptyData() {
@@ -119,6 +126,7 @@ public class DotSession {
 		list3=null;
 		list4=null;
 		list5=null;
+		list6=null;
 	}
 	
 	public DotSession() {
