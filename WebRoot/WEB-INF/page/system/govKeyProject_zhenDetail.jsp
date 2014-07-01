@@ -142,35 +142,35 @@
 		<tr>
 			<td align="right">省级财政安排(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="kp3" name="kptxt" class="back-input" maxlength="4" onblur="checkMoney(this)"/>
+				<input type="text" id="kp3" name="kptxt" class="back-input" maxlength="10" onblur="checkMoney(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">市县财政安排(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="kp4" name="kptxt" class="back-input" maxlength="4" onblur="checkMoney(this)"/>
+				<input type="text" id="kp4" name="kptxt" class="back-input" maxlength="10" onblur="checkMoney(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">其他资金(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="kp5" name="kptxt" class="back-input" maxlength="4" onblur="checkMoney(this)"/>
+				<input type="text" id="kp5" name="kptxt" class="back-input" maxlength="10" onblur="checkMoney(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">资金拨付合计(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="kp6" name="kptxt" class="back-input" maxlength="4" onblur="checkMoney(this)"/>
+				<input type="text" id="kp6" name="kptxt" class="back-input" maxlength="10" onblur="checkMoney(this)"/>
 			</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td align="right">其中,已拨付省级财政补助资金(万元):&nbsp;&nbsp;</td>
 			<td align="left">
-				<input type="text" id="kp7" name="kptxt" class="back-input" maxlength="4" onblur="checkMoney(this)"/>
+				<input type="text" id="kp7" name="kptxt" class="back-input" maxlength="10" onblur="checkMoney(this)"/>
 			</td>
 			<td></td>
 		</tr>
