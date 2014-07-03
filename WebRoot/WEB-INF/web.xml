@@ -67,6 +67,25 @@
 		<url-pattern>/regFileDownLoad</url-pattern>
 	</servlet-mapping>
 	
+	<!-- vercode -->
+	<servlet>
+		<servlet-name>VerCode</servlet-name>
+		<servlet-class>cn.voicet.dot.servlet.VerCode</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>VerCode</servlet-name>
+		<url-pattern>/verCode</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CheckRandCodeAnsyn</servlet-name>
+		<servlet-class>cn.voicet.dot.servlet.CheckRandCodeAnsyn</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CheckRandCodeAnsyn</servlet-name>
+		<url-pattern>/checkRandCodeAnsyn</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
