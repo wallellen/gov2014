@@ -63,7 +63,7 @@ public class DotSession {
 			arrayStackInfo[stackPos].list2=list2;
 			arrayStackInfo[stackPos].list3=list3;
 			arrayStackInfo[stackPos].list4=list4;
-			arrayStackInfo[stackPos++].list5=list5;
+			arrayStackInfo[stackPos].list5=list5;
 			arrayStackInfo[stackPos++].list6=list6;
 		}
 		System.out.println("pushAllList cur:"+stackPos);
