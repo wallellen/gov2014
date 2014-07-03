@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 public class IndexAction extends BaseAction {
 	
 	public String home(){
-		
-		
 		return "home";
 	}
 }
