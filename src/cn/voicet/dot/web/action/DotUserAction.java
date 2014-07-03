@@ -27,7 +27,7 @@ public class DotUserAction extends BaseAction {
 	public String updatepwd() {
 		DotSession ds=DotSession.getVTSession(request);
 		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";
-		if(!basePath.contains("gov"))
+		if(!basePath.contains("xmzj"))
 		{
 			ds.sflag=0;
 		}
