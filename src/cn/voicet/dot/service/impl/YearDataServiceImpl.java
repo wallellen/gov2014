@@ -1,7 +1,5 @@
 package cn.voicet.dot.service.impl;
 
-import java.io.File;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -16,7 +14,7 @@ import cn.voicet.dot.util.DotSession;
 public class YearDataServiceImpl implements YearDataService {
 	@Resource(name=YearDataDao.SERVICE_NAME)
 	private YearDataDao yearDataDao;
-	public void batchImportYearData(DotSession ds, File excel) {
-		yearDataDao.batchImportYearData(ds, excel);
+	public void batchImportYearData(DotSession ds) {
+		yearDataDao.batchImportYearData(ds);
 	}
 }

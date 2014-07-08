@@ -54,7 +54,8 @@ public class YearDataAction extends BaseAction{
 				Row row = sheet.getRow(i);
 				for(int j=0;j<15;j++)
 				{
-					if(null != row.getCell(j)){
+					if(null != row.getCell(j))
+					{
 						row.getCell(j).setCellType(HSSFCell.CELL_TYPE_STRING);
 						vl[j] = row.getCell(j).getStringCellValue();
 						if(vl[j].length()<=0) bCheckOK=false;
@@ -70,7 +71,7 @@ public class YearDataAction extends BaseAction{
 				}
 			}
 			log.info("excel row count:"+ds.list.size());
-			yearDataService.batchImportYearData(ds, excel);
+			yearDataService.batchImportYearData(ds);
 			long endtime = System.currentTimeMillis();
 			opTime = (endtime-starttime)/1000;
 			log.info("ÏûºÄÊ±¼ä: "+opTime);
