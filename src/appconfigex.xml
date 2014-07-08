@@ -30,6 +30,7 @@
 			<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
 			<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
 			<fun name="扶贫小额贷款项目" action="govXianCreditAction_home.do" />
+			<fun name="年数据导入" action="yearDataAction_home.do"/>
 		</grp>
 	</role>
 	<role roleid="3" describle="市管理员">

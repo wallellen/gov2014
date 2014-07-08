@@ -9,6 +9,14 @@
 	<constant name="struts.devMode" value="true"></constant>
 	<!-- 配置struts的简单模式 -->
 	<constant name="struts.ui.theme" value="simple"></constant>
+	
+	<!-- 配置struts的开发模式 -->
+	<constant name="struts.devMode" value="true"></constant>
+	<!-- 配置struts文件上传大小限制 -->
+	<constant name="struts.multipart.maxSize" value="1000000000"/>
+	<!-- 配置struts上传目录 -->
+	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
+	
 	<package name="system" namespace="/system" extends="struts-default">
 		<!-- 首页功能 -->
 		<action name="dotMenuAction_*" class="dotMenuAction" method="{1}">
@@ -137,6 +145,12 @@
 			<result name="show_monthCredit_detail">/WEB-INF/page/credit/govCredit_monthCredit_detail.jsp</result>
 			<result name="showCredit_month">/WEB-INF/page/credit/govXianCredit_month.jsp</result>
 		</action>
+		
+		<!-- 年数据导入 -->
+		<action name="yearDataAction_*" class="yearDataAction" method="{1}">
+			<result name="show_year_import">/WEB-INF/page/year/data_import.jsp</result>
+		</action>
+		
 	</package>  
 	<package name="dot" namespace="/system" extends="json-default">
 		<!-- 修改密码 -->
