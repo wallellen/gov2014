@@ -93,7 +93,7 @@ public class GovFarmerQueryDaoImpl extends CommonDaoImpl<Object> implements GovF
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
 				String str = "";
-				String proc = "{call sp_query_member(?,?,?,?)}";
+				String proc = "{call sp_query_memberex(?,?,?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
 				cs.setString(1, ds.account);
@@ -127,7 +127,8 @@ public class GovFarmerQueryDaoImpl extends CommonDaoImpl<Object> implements GovF
 				}
 				System.out.println(str);
 				cs.setString(3, str);
-				cs.registerOutParameter(4, Types.INTEGER);
+				cs.setInt(4, 500);
+				cs.registerOutParameter(5, Types.INTEGER);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.list = new ArrayList();
@@ -140,7 +141,7 @@ public class GovFarmerQueryDaoImpl extends CommonDaoImpl<Object> implements GovF
 					}
 				}
 				//取出参(人口总数)
-				ds.map.put("membernt", cs.getObject(4));
+				ds.map.put("membernt", cs.getObject(5));
 				return null;
 			}
 		});
