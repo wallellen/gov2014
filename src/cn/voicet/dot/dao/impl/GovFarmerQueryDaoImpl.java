@@ -27,7 +27,7 @@ public class GovFarmerQueryDaoImpl extends CommonDaoImpl<Object> implements GovF
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
 				String str = "";
-				String proc = "{call sp_query_family(?,?,?,?)}";
+				String proc = "{call sp_query_familyex(?,?,?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
 				cs.setString(1, ds.account);
@@ -63,22 +63,25 @@ public class GovFarmerQueryDaoImpl extends CommonDaoImpl<Object> implements GovF
 					}
 					str+=";";
 				}
-				System.out.println(str);
+				str += ds.map.get("telhu")+";";
+				System.out.println("qstr:"+str);
 				cs.setString(3, str);
-				cs.registerOutParameter(4, Types.INTEGER);
+				cs.setInt(4, 500);
+				cs.registerOutParameter(5, Types.INTEGER);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
+				ds.initData();
 				ds.list5 = new ArrayList();
 				Map map;
 				if(rs!=null){
 					while (rs.next()) {
 						map = new HashMap();
-						ds.putMapData(map,rs);
+						ds.putMapDataByColName(map, rs);
 		        		ds.list5.add(map);
 					}
 				}
 				//取出参(农户总数)
-				ds.map.put("farmernt", cs.getObject(4));
+				ds.map.put("farmernt", cs.getObject(5));
 				return null;
 			}
 		});

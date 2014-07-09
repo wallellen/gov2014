@@ -29,12 +29,20 @@
 	<fieldset style="border:1px solid #3B9FFF; margin:0; padding:0; width:99%;">
 	<legend>查询条件</legend>
 	<div style="height:30px;">
-		<table cellpadding="0" cellspacing="0">
+		<table cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 				<td width="10%" align="right">农户编码:&nbsp;</td>
 				<td width="10%"><input type="text" name="qstr" value="<s:property value="#session.vts.map.qarr[0]"/>" maxlength="15" onkeyup="value=value.replace(/[^\d]/g,'')" class="inptxt1" onfocus="this.className='input_on1'" onblur="this.className='input_off1'"/></td>
 				<td width="10%" align="right">户主姓名:&nbsp;</td>
 				<td width="10%"><input type="text" name="qstr" value="<s:property value="#session.vts.map.qarr[1]"/>" maxlength="10" class="inptxt1" onfocus="this.className='input_on1'" onblur="this.className='input_off1'"/></td>
+				<td width="12%" align="right">
+					<s:if test="telhu==1">
+					<input type="checkbox" onclick="haveTelhu(this)" checked="checked"/>包含联系电话户
+					</s:if>
+					<s:else>
+					<input type="checkbox" onclick="haveTelhu(this)"/>包含联系电话户
+					</s:else>
+				</td>
 				<td width="10%" align="center"><input id="searchImg" type="submit" value="立即查询" class="button4"/></td>
 			</tr>
 		</table>	
@@ -97,6 +105,8 @@
 		</table>	
 	</div>
 	</fieldset>
+	<!-- 包含联系电话户 20140709添加 -->
+	<input type="hidden" id="telhu" name="telhu" value="0"/>
 	</form>
 	<s:if test="#session.vts.list5!=null && #session.vts.list5.size()>0">
 	<div style="height:16px; padding-top:2px; border:0px solid red;">
@@ -111,24 +121,26 @@
 		<table class="data_list" width="100%" bordercolor="gray" border="0" cellpadding="0" cellspacing="0">
 			<thead>
 			<tr class="tabtr1">
-				<td width="20%">农户编码</td>
-				<td width="49%">省、市、县、乡、村</td>
-				<td width="15%">户主姓名</td>
-				<td width="16%" class="tabtd1">操作</td>
+				<td width="15%">农户编码</td>
+				<td width="40%">省、市、县、乡、村</td>
+				<td width="12%">户主姓名</td>
+				<td width="15%">联系电话</td>
+				<td width="15%" class="tabtd1">操作</td>
 			</tr>
 			</thead>
 			<tbody id="splitpage">
 				<s:iterator value="#session.vts.list5" var="ls5">
 				<tr align="center" style="height:20px; display:none;">
-					<td align="left">&nbsp;<s:property value="#ls5.c0"/></td>
-					<td align="left" title="<s:property value='#ls5.c1'/>">&nbsp;<s:property value="#ls5.c1.length()>26?#ls5.c1.substring(0,25)+'...':#ls5.c1"/></td>
-					<td align="left" title="<s:property value='#ls5.c2'/>">&nbsp;<s:property value="#ls5.c2.length()>7?#ls5.c2.substring(0,6)+'...':#ls5.c2"/></td>
+					<td align="left">&nbsp;<s:property value="#ls5.hm"/></td>
+					<td align="left" title="<s:property value='#ls5.govname'/>">&nbsp;<s:property value="#ls5.govname.length()>26?#ls5.govname.substring(0,25)+'...':#ls5.govname"/></td>
+					<td align="left" title="<s:property value='#ls5.hname'/>">&nbsp;<s:property value="#ls5.hname.length()>7?#ls5.hname.substring(0,6)+'...':#ls5.hname"/></td>
+					<td align="left">&nbsp;<s:property value="#ls5.telnum"/></td>
 					<td class="tabtd1">
 						<s:if test="#session.vts.isedit==1">
-						<a href="${pageContext.request.contextPath }/system/govBrowerAction_detail.do?viewBM=<s:property value="#ls5.c0"/>&rtf=farmer">编辑</a>
+						<a href="${pageContext.request.contextPath }/system/govBrowerAction_detail.do?viewBM=<s:property value="#ls5.hm"/>&rtf=farmer">编辑</a>
 						</s:if>
-						<a href="${pageContext.request.contextPath }/system/govBrowerAction_viewReportFamilyWithQuery.do?viewBM=<s:property value="#ls5.c0"/>">查看</a>
-						<a id="printBt" href="${pageContext.request.contextPath }/system/govBrowerAction_printFamily.do?viewBM=<s:property value="#ls5.c0"/>" target="printFrame">打印</a>
+						<a href="${pageContext.request.contextPath }/system/govBrowerAction_viewReportFamilyWithQuery.do?viewBM=<s:property value="#ls5.hm"/>">查看</a>
+						<a id="printBt" href="${pageContext.request.contextPath }/system/govBrowerAction_printFamily.do?viewBM=<s:property value="#ls5.hm"/>" target="printFrame">打印</a>
 					</td>
 				</tr>
 				</s:iterator>
@@ -146,5 +158,19 @@
 <div id="rightCon">
 <%@ include file="/WEB-INF/page/work/overView.jsp"%> 
 </div>
+<script type="text/javascript">
+	function haveTelhu(o)
+	{
+		var telhu = document.getElementById("telhu");
+		if(o.checked)
+		{
+			telhu.value=1;
+		}
+		else
+		{
+			telhu.value=0;
+		}
+	}
+</script>
 </body>
 </html>

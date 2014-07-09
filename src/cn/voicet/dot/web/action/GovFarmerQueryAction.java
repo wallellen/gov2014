@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 
+import org.jfree.util.Log;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -35,6 +36,7 @@ public class GovFarmerQueryAction extends BaseAction implements ModelDriven<GovF
 		ds.initData();
 		if(null!=govFarmerQueryForm.getQstr()){
 			ds.map.put("qarr", govFarmerQueryForm.getQstr());
+			ds.map.put("telhu", govFarmerQueryForm.getTelhu());
 			govFarmerQueryService.getFarmerInfoList(ds);
 		}
 		return "home";
