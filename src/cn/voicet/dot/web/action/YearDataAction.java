@@ -75,7 +75,8 @@ public class YearDataAction extends BaseAction{
 			long endtime = System.currentTimeMillis();
 			opTime = (endtime-starttime)/1000;
 			log.info("消耗时间: "+opTime);
-			request.setAttribute("importinfo", "共计导入年数据记录 "+ds.list.size()+" 条, 耗时 "+opTime+" 秒 !");
+			request.setAttribute("importinfo", "文件 "+excelFileName+" 导入成功！共计导入年数据记录 "+ds.list.size()+" 条, 耗时 "+opTime+" 秒 !");
+			ds.list=null;
 			inStream.close();
 		} catch (Exception e) {
 			log.error(e);
