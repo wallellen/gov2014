@@ -220,7 +220,7 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 		ds.popAllList();
 		//
 		if(ds.opCode.equals("saveFamily")){
-			if(ds.map.get("rtf").equals("home"))
+			if(null!=ds.map.get("rtf") && ds.map.get("rtf").equals("home"))
 				govBrowerService.getGovBrowerList(ds);
 			else
 				govFarmerQueryService.getFarmerInfoList(ds);
