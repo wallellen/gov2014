@@ -5,7 +5,7 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 
-import org.jfree.util.Log;
+import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -21,6 +21,7 @@ import com.opensymphony.xwork2.ModelDriven;
 @SuppressWarnings({"serial","unchecked"})
 public class GovFarmerQueryAction extends BaseAction implements ModelDriven<GovFarmerQueryForm>{
  
+	private static Logger log = Logger.getLogger(GovFarmerQueryAction.class);
 	@Resource(name=GovFarmerQueryService.SERVICE_NAME)
 	private GovFarmerQueryService govFarmerQueryService;
 	private GovFarmerQueryForm govFarmerQueryForm = new GovFarmerQueryForm();
@@ -57,12 +58,14 @@ public class GovFarmerQueryAction extends BaseAction implements ModelDriven<GovF
 	/** 导出农户信息 */
 	public String exportFarmerInfo() throws Exception{
 		DotSession ds = DotSession.getVTSession(request);
+		govFarmerQueryService.getAllFarmerInfoList(ds);
 		//从上次查询的list中取数据ds.list
+		log.info("list5 size:"+ds.list5.size());
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 		String fileName = "nhcx"+format.format(new Date())+".xls";
 	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"farmer.xls";
 	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 1, ds.list5);
-	    generator.setColList("c0,c1,c2");
+	    generator.setColList("hm,govname,hname");
 	    generator.setDrawBoard();
 	    generator.setEffectColNum(3);
 	    generator.exportExcelWithTemplate(response);
@@ -72,6 +75,8 @@ public class GovFarmerQueryAction extends BaseAction implements ModelDriven<GovF
 	/** 导出人口信息 */
 	public String exportMemberInfo() throws Exception{
 		DotSession ds = DotSession.getVTSession(request);
+		govFarmerQueryService.getAllMemberInfoList(ds);
+		log.info("list size:"+ds.list.size());
 		//从上次查询的list中取数据ds.list
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 		String fileName = "rkcx"+format.format(new Date())+".xls";

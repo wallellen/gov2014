@@ -24,4 +24,12 @@ public class GovFarmerQueryServiceImpl implements GovFarmerQueryService {
 		govFarmerQueryDao.getMemberInfoList(ds);
 	}
 
+	public void getAllFarmerInfoList(DotSession ds) {
+		govFarmerQueryDao.getAllFarmerInfoList(ds);
+	}
+
+	public void getAllMemberInfoList(DotSession ds) {
+		govFarmerQueryDao.getAllMemberInfoList(ds);
+	}
+
 }

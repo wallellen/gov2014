@@ -27,7 +27,7 @@ public class GovFarmerQueryDaoImpl extends CommonDaoImpl<Object> implements GovF
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
 				String str = "";
-				String proc = "{call sp_query_familyex(?,?,?,?,?)}";
+				String proc = "{call sp_query_family(?,?,?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
 				cs.setString(1, ds.account);
@@ -93,7 +93,7 @@ public class GovFarmerQueryDaoImpl extends CommonDaoImpl<Object> implements GovF
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
 				String str = "";
-				String proc = "{call sp_query_memberex(?,?,?,?,?)}";
+				String proc = "{call sp_query_member(?,?,?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
 				cs.setString(1, ds.account);
@@ -145,6 +145,68 @@ public class GovFarmerQueryDaoImpl extends CommonDaoImpl<Object> implements GovF
 				return null;
 			}
 		});
+	}
+
+	public void getAllFarmerInfoList(final DotSession ds) {
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				String proc = "{call sp_query_family(?,?,?,?,?)}";
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall(proc);
+				cs.setString(1, ds.account);
+				cs.setString(2, ds.curBM);
+				cs.setString(3, null);
+				cs.setInt(4, 0);
+				cs.registerOutParameter(5, Types.INTEGER);
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				ds.initData();
+				ds.list5 = new ArrayList();
+				Map map;
+				if(rs!=null){
+					while (rs.next()) {
+						map = new HashMap();
+						ds.putMapDataByColName(map, rs);
+		        		ds.list5.add(map);
+					}
+				}
+				//取出参(农户总数)
+				ds.map.put("farmernt", cs.getObject(5));
+				return null;
+			}
+		});		
+	}
+
+	public void getAllMemberInfoList(final DotSession ds) {
+		final int apr[]={0,1,2,4,5,6,7,8,9};
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				String proc = "{call sp_query_member(?,?,?,?,?)}";
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall(proc);
+				cs.setString(1, ds.account);
+				cs.setString(2, ds.curBM);
+				cs.setString(3, null);
+				cs.setInt(4, 0);
+				cs.registerOutParameter(5, Types.INTEGER);
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				ds.list = new ArrayList();
+				Map map;
+				if(rs!=null){
+					while (rs.next()) {
+						map = new HashMap();
+						ds.putMapData(map,rs);
+		        		ds.list.add(map);
+					}
+				}
+				//取出参(人口总数)
+				ds.map.put("membernt", cs.getObject(5));
+				return null;
+			}
+		});		
 	}
 
 }
