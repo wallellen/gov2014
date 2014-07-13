@@ -5,6 +5,7 @@
 <head>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style.css" />
 	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/script/data_import.js"></script>
 	<style type="text/css">
 		.upload1{position:relative;width:260px;height:30px;}
 		.ipt_text{width:174px;height:24px;line-height:24px;padding:2px;border:1px solid #aaa;}
@@ -17,12 +18,12 @@
 	<h3 class="jiangbu-title">家庭成员数据导入</h3>
 	<div style="margin:0 auto; width:400px; height:300px; padding-top:10px;">
 		<p>
-			<label style="font-size:14px">年数据模版Excel文件,点击<a href="${pageContext.request.contextPath }/down/低收入农户年收入数据导入模板.xls">下载</a></label>
+			<label style="font-size:14px">家庭成员数据模版Excel文件,点击<a href="${pageContext.request.contextPath }/down/家庭成员数据导入模板.xls">下载</a></label>
 		</p>
 		<p>&nbsp;</p> 
-		<form action="${pageContext.request.contextPath }/system/yearDataAction_importData.do" method="post" enctype="multipart/form-data">  
+		<form action="${pageContext.request.contextPath }/system/memberDataAction_importData.do" method="post" enctype="multipart/form-data">  
        	<p>
-			<label style="font-size:14px">选择年数据Excel文件：</label>
+			<label style="font-size:14px">选择家庭成员数据Excel文件：</label>
 		</p>
 		<p>&nbsp;</p>
        	<div class="upload1">
@@ -38,27 +39,5 @@
         <p>${importinfo }</p>
       </form>
 	</div>
-	<script type="text/javascript">
-		function checkFile(){
-			var obj=document.getElementById('file_text');
-			if(obj.value=='')
-	        {
-				alert('请选择要上传的文件');
-	            return false;
-	        }
-	        //var stuff=obj.value.match(/^(.*)(.)(.{1,8})$/)[3]; //这个文件类型正则很有用：）
-	        var stuff=obj.value.substring(obj.value.lastIndexOf(".")+1);
-	        if(stuff=='xls' || stuff=='xlsx')
-	        {
-				return true;
-	        }
-	        else
-			{
-	        	alert('文件类型不正确，请选择.xls文件');
-	           	return false;
-			}
-	        return true;
-		}
-	</script>
 </body>
 </html>
