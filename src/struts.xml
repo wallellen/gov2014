@@ -146,9 +146,13 @@
 			<result name="showCredit_month">/WEB-INF/page/credit/govXianCredit_month.jsp</result>
 		</action>
 		
+		
+		
+		
+		
 		<!-- 年数据导入 -->
 		<action name="yearDataAction_*" class="yearDataAction" method="{1}">
-			<result name="show_year_import">/WEB-INF/page/year/data_import.jsp</result>
+			<result name="show_year_import">/WEB-INF/page/dataimport/yeardata_import.jsp</result>
 		</action>
 		
 	</package>  
