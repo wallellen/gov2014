@@ -148,7 +148,10 @@
 		
 		
 		
-		
+		<!--  -->
+		<action name="farmerDataAction_*" class="farmerDataAction" method="{1}">
+			<result name="show_farmer_import">/WEB-INF/page/dataimport/farmerdata_import.jsp</result>
+		</action>
 		
 		<!-- 年数据导入 -->
 		<action name="yearDataAction_*" class="yearDataAction" method="{1}">
