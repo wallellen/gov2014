@@ -147,10 +147,15 @@
 		</action>
 		
 		
-		
-		<!--  -->
+		<!-- 20140714 add -->
+		<!-- 农户数据导入 -->
 		<action name="farmerDataAction_*" class="farmerDataAction" method="{1}">
 			<result name="show_farmer_import">/WEB-INF/page/dataimport/farmerdata_import.jsp</result>
+		</action>
+		
+		<!-- 家庭成员数据导入 -->
+		<action name="memberDataAction_*" class="memberDataAction" method="{1}">
+			<result name="show_member_import">/WEB-INF/page/dataimport/memberdata_import.jsp</result>
 		</action>
 		
 		<!-- 年数据导入 -->
