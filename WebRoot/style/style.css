@@ -234,3 +234,15 @@ ul{margin:0; padding:0; list-style:none;}
 .view-report-tip{float:left; padding-left:40px;}
 .view-report-tip1{float:left; padding-left:64px;}
 
+.upload1{position:relative;width:260px;height:30px;}
+.ipt_text{width:174px;height:16px;line-height:16px;padding:2px;border:1px solid #aaa;}
+.ver_text{width:114px;height:24px;line-height:24px;padding:2px;border:1px solid #aaa;}
+.btn{width:70px;height:23px;line-height:20px;border:1px solid #aaa;}
+.upload_file1{position:absolute;left:0;top:0;width:260px;height:20px;line-height:20px;opacity:0;filter:alpha(opacity:0);}
+
+.xm_tip_ok{width:140px; height:30px; display:inline; padding-left:18px; background: url("../images/tip_ok_err.png") no-repeat; margin-left:10px;}
+.xm_tip_err{width:140px; height:30px; display:inline; padding-left:18px; background: url("../images/tip_ok_err.png") no-repeat; background-position:0 -20px; color:#F00; margin-left:5px;}
+
+
+
+

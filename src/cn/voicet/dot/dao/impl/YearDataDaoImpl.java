@@ -1,8 +1,11 @@
 package cn.voicet.dot.dao.impl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -15,6 +18,28 @@ import cn.voicet.dot.util.DotSession;
 @Repository(YearDataDao.SERVICE_NAME)
 @SuppressWarnings("deprecation")
 public class YearDataDaoImpl extends CommonDaoImpl<Object> implements YearDataDao {
+
+	public void getYearInfo(final DotSession ds) {
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall("{call sp_report_list(?,?)}");
+				cs.setString(1, "year_items");
+				cs.setInt(2, 1);
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				ds.initData();
+				ds.list = new ArrayList();	
+				if(rs!=null){
+					while (rs.next()) {
+		        		ds.list.add(rs.getString("rid"));
+					}
+				}
+				return null;
+			}
+		});
+	}
 	
 	public void batchImportYearData(final DotSession ds) {
 		getHibernateTemplate().execute(new HibernateCallback() {
@@ -23,7 +48,7 @@ public class YearDataDaoImpl extends CommonDaoImpl<Object> implements YearDataDa
 				Connection conn = session.connection();
 				PreparedStatement ps = null;
 				String vl[];
-	        	String storedProc = "{call sp_year_import_byweb(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+	        	String storedProc = "{call mp_import_year(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 	        	//关闭事务自动提交
 	        	conn.setAutoCommit(false);
 	        	ps = conn.prepareStatement(storedProc);
@@ -69,6 +94,21 @@ public class YearDataDaoImpl extends CommonDaoImpl<Object> implements YearDataDa
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				return null;
+			}
+		});
+	}
+
+	public void emptyYearDataByXmWithYear(final DotSession ds, final String xm, final String year) {
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall("{call mp_year_empty(?,?,?)}");
+				cs.setString(1, ds.account);
+				cs.setString(2, xm);
+				cs.setString(3, year);
+				cs.execute();
 				return null;
 			}
 		});

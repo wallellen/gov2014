@@ -17,4 +17,7 @@ public class FarmerDataServiceImpl implements FarmerDataService {
 	public void batchImportFarmerData(DotSession ds) {
 		farmerDataDao.batchImportFarmerData(ds);
 	}
+	public void emptyFarmerDataByXm(DotSession ds, String xm) {
+		farmerDataDao.emptyFarmerDataByXm(ds, xm);
+	}
 }

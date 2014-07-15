@@ -29,6 +29,8 @@ public class YearDataAction extends BaseAction{
 	private YearDataService yearDataService;
 
 	public String home() {
+		DotSession ds = DotSession.getVTSession(request);
+		yearDataService.getYearInfo(ds);
 		return "show_year_import";
 	}
 	
@@ -85,6 +87,14 @@ public class YearDataAction extends BaseAction{
 		return "show_year_import";
 	}
 	
+	public String emptyYear(){
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("emptyYear -> account:"+ds.account+", xm:"+xm+", year:"+year);
+		yearDataService.emptyYearDataByXmWithYear(ds, xm, year);
+		log.info("emptyYear -> Complete");
+		return null;
+	}
+	
 	//myFile属性用来封装上传的文件  
     private File excel;  
     //myFileContentType属性用来封装上传文件的类型  
@@ -95,6 +105,8 @@ public class YearDataAction extends BaseAction{
     private int totalRow;
     //操作消耗时间
     private double opTime;
+    private String xm;
+    private String year;
 	public File getExcel() {
 		return excel;
 	}
@@ -124,5 +136,17 @@ public class YearDataAction extends BaseAction{
 	}
 	public void setOpTime(double opTime) {
 		this.opTime = opTime;
+	}
+	public String getXm() {
+		return xm;
+	}
+	public void setXm(String xm) {
+		this.xm = xm;
+	}
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
 	}
 }

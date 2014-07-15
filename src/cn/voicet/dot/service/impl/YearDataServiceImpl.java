@@ -14,7 +14,14 @@ import cn.voicet.dot.util.DotSession;
 public class YearDataServiceImpl implements YearDataService {
 	@Resource(name=YearDataDao.SERVICE_NAME)
 	private YearDataDao yearDataDao;
+	public void getYearInfo(DotSession ds) {
+		yearDataDao.getYearInfo(ds);
+	}
 	public void batchImportYearData(DotSession ds) {
 		yearDataDao.batchImportYearData(ds);
 	}
+	public void emptyYearDataByXmWithYear(DotSession ds, String xm, String year) {
+		yearDataDao.emptyYearDataByXmWithYear(ds, xm, year);
+	}
+
 }

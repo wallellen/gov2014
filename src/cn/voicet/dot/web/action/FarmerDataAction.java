@@ -32,6 +32,11 @@ public class FarmerDataAction extends BaseAction{
 		return "show_farmer_import";
 	}
 	
+	public String checkXM(){
+		log.info("xm:"+xm);
+		return null;
+	}
+	
 	public String importData(){
 		String vl[];
 		
@@ -45,20 +50,24 @@ public class FarmerDataAction extends BaseAction{
 			inStream = new FileInputStream(excel);
 			wb = VTXiang.create(inStream);
 			Sheet sheet = wb.getSheetAt(0);
-			totalRow = sheet.getLastRowNum();
+			totalRow = sheet.getPhysicalNumberOfRows();
+			log.info("totalRow:"+totalRow);
 			ds.list = new ArrayList();
 			for(int i=1; i<totalRow; i++)
 			{
-				vl=new String[15];
+				vl=new String[13];
 				bCheckOK=true;
 				Row row = sheet.getRow(i);
-				for(int j=0;j<15;j++)
+				for(int j=0;j<13;j++)
 				{
 					if(null != row.getCell(j))
 					{
 						row.getCell(j).setCellType(HSSFCell.CELL_TYPE_STRING);
 						vl[j] = row.getCell(j).getStringCellValue();
-						if(vl[j].length()<=0) bCheckOK=false;
+						if(vl[j].length()<=0) 
+						{
+							bCheckOK=false;
+						}
 					}
 					else
 					{
@@ -85,6 +94,14 @@ public class FarmerDataAction extends BaseAction{
 		return "show_farmer_import";
 	}
 	
+	public String emptyFarmer(){
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("emptyFarmer -> xm:"+xm);
+		farmerDataService.emptyFarmerDataByXm(ds, xm);
+		log.info("emptyFarmer -> Complete");
+		return null;
+	}
+	
 	//myFile属性用来封装上传的文件  
     private File excel;  
     //myFileContentType属性用来封装上传文件的类型  
@@ -95,6 +112,7 @@ public class FarmerDataAction extends BaseAction{
     private int totalRow;
     //操作消耗时间
     private double opTime;
+    private String xm;
 	public File getExcel() {
 		return excel;
 	}
@@ -124,5 +142,11 @@ public class FarmerDataAction extends BaseAction{
 	}
 	public void setOpTime(double opTime) {
 		this.opTime = opTime;
+	}
+	public String getXm() {
+		return xm;
+	}
+	public void setXm(String xm) {
+		this.xm = xm;
 	}
 }

@@ -1,5 +1,6 @@
 package cn.voicet.dot.dao.impl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ public class MemberDataDaoImpl extends CommonDaoImpl<Object> implements MemberDa
 				Connection conn = session.connection();
 				PreparedStatement ps = null;
 				String vl[];
-	        	String storedProc = "{call sp_member_import_byweb(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+	        	String storedProc = "{call mp_import_member(?,?,?,?,?,?,?,?,?,?,?,?)}";
 	        	//关闭事务自动提交
 	        	conn.setAutoCommit(false);
 	        	ps = conn.prepareStatement(storedProc);
@@ -31,35 +32,47 @@ public class MemberDataDaoImpl extends CommonDaoImpl<Object> implements MemberDa
 					int rownum = 0;
 					for(int i=0; i<ds.list.size(); i++){
 						vl = (String[]) ds.list.get(i);
-						ps.setString(1, vl[0]);
-						ps.setInt(2, Integer.parseInt(vl[1]));
-						ps.setFloat(3, Float.parseFloat(vl[2]));
-						ps.setFloat(4, Float.parseFloat(vl[3]));
-						ps.setFloat(5, Float.parseFloat(vl[4]));
-						ps.setFloat(6, Float.parseFloat(vl[5]));
-						ps.setFloat(7, Float.parseFloat(vl[6]));
-						ps.setFloat(8, Float.parseFloat(vl[7]));
-						ps.setFloat(9, Float.parseFloat(vl[8]));
-						ps.setFloat(10, Float.parseFloat(vl[9]));
-						ps.setFloat(11, Float.parseFloat(vl[10]));
-						ps.setFloat(12, Float.parseFloat(vl[11]));
-						ps.setFloat(13, Float.parseFloat(vl[12]));
-						ps.setInt(14, Integer.parseInt(vl[13]));
-						ps.setInt(15, Integer.parseInt(vl[14]));
+						vl = (String[]) ds.list.get(i);
+						System.out.println("vl_0:"+vl[0]);
+						System.out.println("vl_1:"+vl[1]);
+						System.out.println("vl_2:"+vl[2]);
+						System.out.println("vl_3:"+vl[3]);
+						System.out.println("vl_4:"+vl[4]);
+						System.out.println("vl_5:"+vl[5]);
+						System.out.println("vl_6:"+vl[6]);
+						System.out.println("vl_7:"+vl[7]);
+						System.out.println("vl_8:"+vl[8]);
+						System.out.println("vl_9:"+vl[9]);
+						System.out.println("vl_10:"+vl[10]);
+						System.out.println("vl_11:"+vl[11]);
+						System.out.println("---------------");
+						
+						ps.setString(1, vl[0]);	//户码
+						ps.setString(2, vl[1]);	//姓名
+						ps.setInt(3, Integer.parseInt(vl[2]));	//性别
+						ps.setInt(4, Integer.parseInt(vl[3]));	//年龄 
+						ps.setInt(5, Integer.parseInt(vl[4]));	//在校生
+						ps.setInt(6, Integer.parseInt(vl[5]));	//文化程度
+						ps.setInt(7, Integer.parseInt(vl[6]));	//身体状况
+						ps.setString(8, vl[7]);	//残疾证号
+						ps.setInt(9, Integer.parseInt(vl[8]));	//劳动力状况
+						ps.setInt(10, Integer.parseInt(vl[9]));	//打工状况
+						ps.setInt(11, Integer.parseInt(vl[10]));//低保人口
+						ps.setFloat(12, Float.parseFloat(vl[11]));	//领取金额
 			        	//
-						ps.addBatch();
+						//ps.addBatch();
 			        	if(++rownum >= 1000){
 			        		//执行批量更新    
-			        		ps.executeBatch();
+			        		//ps.executeBatch();
 			        		//语句执行完毕，提交本事务 
-			        		conn.commit();
+			        		//conn.commit();
 			        		ps.clearBatch();
 			        		rownum = 0;
 			        	}
 					}
 					if(rownum > 0){
-						ps.executeBatch();
-						conn.commit();
+						//ps.executeBatch();
+						//conn.commit();
 						ps.clearBatch();
 						
 					}
@@ -69,6 +82,20 @@ public class MemberDataDaoImpl extends CommonDaoImpl<Object> implements MemberDa
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				return null;
+			}
+		});
+	}
+
+	public void emptyMemberDataByXm(final DotSession ds, final String xm) {
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall("{call mp_member_empty(?,?)}");
+				cs.setString(1, ds.account);
+				cs.setString(2, xm);
+				cs.execute();
 				return null;
 			}
 		});

@@ -17,4 +17,7 @@ public class MemberDataServiceImpl implements MemberDataService {
 	public void batchImportMemberData(DotSession ds) {
 		memberDataDao.batchImportMemberData(ds);
 	}
+	public void emptyMemberDataByXm(DotSession ds, String xm) {
+		memberDataDao.emptyMemberDataByXm(ds, xm);
+	}
 }

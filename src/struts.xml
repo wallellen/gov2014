@@ -185,5 +185,19 @@
 		<action name="govXianCreditAction_saveXianCredit" class="govXianCreditAction" method="saveXianCredit">
 			<result type="json"></result>	
 		</action>
+		<!-- 20140715 add -->
+		<action name="farmerDataAction_checkXM" class="farmerDataAction" method="checkXM">
+			<result type="json"></result>	
+		</action>
+		<!-- empty data -->
+		<action name="farmerDataAction_emptyFarmer" class="farmerDataAction" method="emptyFarmer">
+			<result type="json"></result>	
+		</action>
+		<action name="memberDataAction_emptyFarmer" class="memberDataAction" method="emptyMember">
+			<result type="json"></result>	
+		</action>
+		<action name="yearDataAction_emptyFarmer" class="yearDataAction" method="emptyYear">
+			<result type="json"></result>	
+		</action>
 	</package>
 </struts>
