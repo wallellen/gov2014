@@ -23,5 +23,8 @@ public class YearDataServiceImpl implements YearDataService {
 	public void emptyYearDataByXmWithYear(DotSession ds, String xm, String year) {
 		yearDataDao.emptyYearDataByXmWithYear(ds, xm, year);
 	}
+	public void getOpnameByXm(DotSession ds, String xm) {
+		yearDataDao.getOpnameByXm(ds, xm);
+	}
 
 }

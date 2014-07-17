@@ -19,6 +19,8 @@ ul{margin:0; padding:0; list-style:none;}
 
 .button46{width:72px; height:18px; line-height:18px; background:url(../images/bt45.png) no-repeat; display:inline; color:#FFF; border:medium none; cursor:pointer;}
 
+.btn_w70{width:70px; height:22px; color:#FFF; background:url(../images/bt70.png) no-repeat; display:inline; border:medium none; cursor:pointer;}
+
 /* leftCon */
 #leftCon{width:666px; height:672px; float:left; text-align:center;}
 #leftCon .input-goto{width:100px; height:18px;}
@@ -240,8 +242,8 @@ ul{margin:0; padding:0; list-style:none;}
 .btn{width:70px;height:23px;line-height:20px;border:1px solid #aaa;}
 .upload_file1{position:absolute;left:0;top:0;width:260px;height:20px;line-height:20px;opacity:0;filter:alpha(opacity:0);}
 
-.xm_tip_ok{width:140px; height:30px; display:inline; padding-left:18px; background: url("../images/tip_ok_err.png") no-repeat; margin-left:10px;}
-.xm_tip_err{width:140px; height:30px; display:inline; padding-left:18px; background: url("../images/tip_ok_err.png") no-repeat; background-position:0 -20px; color:#F00; margin-left:5px;}
+.xm_tip_ok{width:140px; height:30px; display:inline; padding-left:18px; background: url("../images/tip_ok_err.png") no-repeat; margin-left:2px;}
+.xm_tip_err{width:140px; height:30px; display:inline; padding-left:18px; background: url("../images/tip_ok_err.png") no-repeat; background-position:0 -20px; color:#F00; margin-left:2px;}
 
 
 

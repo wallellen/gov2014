@@ -2,10 +2,13 @@ package cn.voicet.dot.web.action;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
+
+import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -17,6 +20,7 @@ import org.springframework.stereotype.Controller;
 
 import cn.voicet.dot.service.YearDataService;
 import cn.voicet.dot.util.DotSession;
+import cn.voicet.dot.util.StringHelper;
 import cn.voicet.dot.util.VTXiang;
 
 @Controller("yearDataAction")
@@ -34,56 +38,230 @@ public class YearDataAction extends BaseAction{
 		return "show_year_import";
 	}
 	
+
+	public String checkXM(){
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("xm:"+xm);
+		yearDataService.getOpnameByXm(ds, xm);
+		JSONObject jsonObj = new JSONObject();
+		String ret = (String)ds.map.get("ret");
+		String xbm = (String)ds.map.get("bm");
+		String xname = (String)ds.map.get("oname");
+		log.info("ret:"+ret+", xbm:"+xbm+", xname:"+xname);
+		if(ret.equals("1"))
+		{
+			jsonObj.put("status", "ok");
+		}
+		else
+		{
+			jsonObj.put("status", "err");
+		}
+		jsonObj.put("xname", xname);
+		try {
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().print(jsonObj.toString());
+			response.getWriter().flush();
+		} catch (IOException e) {
+		}
+		return null;
+	}
+	
 	public String importData(){
 		String vl[];
-		
+		String fi;
 		long starttime = System.currentTimeMillis();
 		log.info("excel file: "+excel);
 		DotSession ds = DotSession.getVTSession(request);
 		InputStream inStream = null; 
 		boolean bCheckOK=true;
+		boolean valid = true;
+		String errMsg = "";
 		Workbook wb = null;
 		try {
 			inStream = new FileInputStream(excel);
 			wb = VTXiang.create(inStream);
 			Sheet sheet = wb.getSheetAt(0);
-			totalRow = sheet.getLastRowNum();
-			ds.list = new ArrayList();
-			for(int i=1; i<totalRow; i++)
+			totalRow = sheet.getPhysicalNumberOfRows();
+			log.info("totalRow:"+totalRow);
+			Row fisrtRow = sheet.getRow(0);
+			if(null!=fisrtRow.getCell(255))
 			{
-				vl=new String[15];
-				bCheckOK=true;
-				Row row = sheet.getRow(i);
-				for(int j=0;j<15;j++)
+				fi = fisrtRow.getCell(255).getStringCellValue();
+				log.info("fi:"+fi);
+				if(fi.equalsIgnoreCase("FYI"))
 				{
-					if(null != row.getCell(j))
+					ds.list = new ArrayList();
+					for(int i=1; i<totalRow; i++)
 					{
-						row.getCell(j).setCellType(HSSFCell.CELL_TYPE_STRING);
-						vl[j] = row.getCell(j).getStringCellValue();
-						if(vl[j].length()<=0) bCheckOK=false;
+						vl=new String[15];
+						bCheckOK=true;
+						Row row = sheet.getRow(i);
+						for(int j=0;j<15;j++)
+						{
+							if(null != row.getCell(j))
+							{
+								row.getCell(j).setCellType(HSSFCell.CELL_TYPE_STRING);
+								vl[j] = row.getCell(j).getStringCellValue();
+								if(vl[j].length()>0)
+								{
+									switch (j) {
+									case 0:
+										String hm = row.getCell(j).getStringCellValue();
+										log.info("xm:"+xm);
+										log.info("hm:"+hm);
+										if(!checkHuma(hm))
+										{
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 户码不属于县["+xm+"], 或者户码长度不足15位<br/>";
+										}
+										break;
+									case 1:
+										String year = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(year) || year.length()!=4){
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 年份不能为空<br/>";
+										}
+										break;
+									case 2:
+										String total = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(total)){
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 家庭年总收入不能为空<br/>";
+										}
+										break;
+									case 3:
+										String crop = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(crop)){
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 种植业不能为空<br/>";
+										}
+										break;
+									case 4:
+										String livstock = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(livstock)){
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 养殖业不能为空<br/>";
+										}
+										break;
+									case 5:
+										String work = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(work)){
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 务工收入不能为空<br/>";
+										}
+										break;
+									case 6:
+										String bla = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(bla)){
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 领取低保、五保、养老收入不能为空<br/>";
+										}
+										break;
+									case 7:
+										String subside = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(subside)){
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 补贴性收入不能为空<br/>";
+										}
+										break;
+									case 8:
+										String other = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(other)){
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 其它收入不能为空<br/>";
+										}
+										break;
+									case 9:
+										String personal = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(personal)){
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 家庭人均收入不能为空<br/>";
+										}
+										break;
+									case 10:
+										String aid = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(aid)){
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 无偿帮扶资金收入不能为空<br/>";
+										}
+										break;
+									case 11:
+										String share = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(share)){
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 得到股份不能为空<br/>";
+										}
+										break;
+									case 12:
+										String loan = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(loan)){
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 小额贷款和互助资金不能为空<br/>";
+										}
+										break;
+									case 13:
+										String train = row.getCell(j).getStringCellValue();
+										if(!StringHelper.isNumber(train)){
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 劳动力转移培训大于或等于0<br/>";
+										}
+										break;
+									case 14:
+										String job = row.getCell(j).getStringCellValue();
+										if(!StringHelper.isNumber(job)){
+											valid=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 劳动力转移就业人数大于或等于0<br/>";
+										}
+										break;
+									default:
+										break;
+									}
+								}
+								else
+								{
+									bCheckOK=false;
+								}
+							}
+							else
+							{
+								bCheckOK=false;
+							}
+						}
+						if(bCheckOK)
+						{
+							ds.list.add(vl);
+						}
+					}
+					if(valid)
+					{
+						log.info("excel row count:"+ds.list.size());
+						yearDataService.batchImportYearData(ds);
+						long endtime = System.currentTimeMillis();
+						opTime = (endtime-starttime)/1000;
+						log.info("消耗时间: "+opTime);
+						request.setAttribute("importinfo", "文件 "+excelFileName+" 导入成功！共计导入年数据记录 "+ds.list.size()+" 条, 耗时 "+opTime+" 秒 !");
+						ds.list=null;
+						inStream.close();
 					}
 					else
 					{
-						bCheckOK=false;
+						request.setAttribute("importinfo",errMsg);	
 					}
 				}
-				if(bCheckOK)
+				else
 				{
-					ds.list.add(vl);
+					request.setAttribute("importinfo","请从年收入及帮扶资料维护页面,下载Excel模版文件整理数据");
 				}
 			}
-			log.info("excel row count:"+ds.list.size());
-			yearDataService.batchImportYearData(ds);
-			long endtime = System.currentTimeMillis();
-			opTime = (endtime-starttime)/1000;
-			log.info("消耗时间: "+opTime);
-			request.setAttribute("importinfo", "文件 "+excelFileName+" 导入成功！共计导入年数据记录 "+ds.list.size()+" 条, 耗时 "+opTime+" 秒 !");
-			ds.list=null;
-			inStream.close();
+			else
+			{
+				log.info("fi is null");
+				request.setAttribute("importinfo","请从年收入及帮扶资料维护页面,下载Excel模版文件整理数据");
+			}
 		} catch (Exception e) {
 			log.error(e);
 		}
-		
+		yearDataService.getYearInfo(ds);
 		return "show_year_import";
 	}
 	
@@ -148,5 +326,13 @@ public class YearDataAction extends BaseAction{
 	}
 	public void setYear(String year) {
 		this.year = year;
+	}
+	public boolean checkHuma(String hm)
+	{
+		if(!hm.startsWith(xm) || hm.length()!=15)
+		{
+			return false;
+		}
+		return true;
 	}
 }

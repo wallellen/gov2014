@@ -3,6 +3,8 @@ package cn.voicet.dot.dao.impl;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import org.hibernate.HibernateException;
@@ -24,7 +26,7 @@ public class FarmerDataDaoImpl extends CommonDaoImpl<Object> implements FarmerDa
 				Connection conn = session.connection();
 				PreparedStatement ps = null;
 				String vl[];
-	        	String storedProc = "{call mp_import_family(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+	        	String storedProc = "{call mp_import_family(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 	        	//关闭事务自动提交
 	        	conn.setAutoCommit(false);
 	        	ps = conn.prepareStatement(storedProc);
@@ -45,21 +47,23 @@ public class FarmerDataDaoImpl extends CommonDaoImpl<Object> implements FarmerDa
 						System.out.println("vl_10:"+vl[10]);
 						System.out.println("vl_11:"+vl[11]);
 						System.out.println("vl_12:"+vl[12]);
+						System.out.println("vl_13:"+vl[13]);
 						System.out.println("---------------");
 						
 						ps.setString(1, vl[0]);	//户码
-						ps.setString(2, vl[1]);	//户主姓名
-						ps.setInt(3, Integer.parseInt(vl[2]));	//人口
-						ps.setInt(4, Integer.parseInt(vl[3]));	//劳动力
-						ps.setFloat(5, Float.parseFloat(vl[4]));//耕地
-						ps.setFloat(6, Float.parseFloat(vl[5]));//住房
-						ps.setInt(7, Integer.parseInt(vl[6]));	//农户属性
-						ps.setString(8, vl[7]);	//电话号码
-						ps.setInt(9, Integer.parseInt(vl[8]));	//贫困原因
-						ps.setString(10, vl[9]);//身份证号码
-						ps.setString(11, vl[10]);	//帮扶人姓名
-						ps.setString(12, vl[11]);	//帮扶人电话号码
-						ps.setString(13, vl[12]);	//帮扶人职务
+						ps.setString(2, vl[1]);	//组名
+						ps.setString(3, vl[2]);	//户主姓名
+						ps.setInt(4, Integer.parseInt(vl[3]));	//人口
+						ps.setInt(5, Integer.parseInt(vl[4]));	//劳动力
+						ps.setFloat(6, Float.parseFloat(vl[5]));//耕地
+						ps.setFloat(7, Float.parseFloat(vl[6]));//住房
+						ps.setInt(8, Integer.parseInt(vl[7]));	//农户属性
+						ps.setString(9, vl[8]);	//电话号码
+						ps.setInt(10, Integer.parseInt(vl[9]));	//贫困原因
+						ps.setString(11, vl[10]);//身份证号码
+						ps.setString(12, vl[11]);	//帮扶人姓名
+						ps.setString(13, vl[12]);	//帮扶人电话号码
+						ps.setString(14, vl[13]);	//帮扶人职务
 			        	//
 						ps.addBatch();
 			        	if(++rownum >= 1000){
@@ -97,6 +101,33 @@ public class FarmerDataDaoImpl extends CommonDaoImpl<Object> implements FarmerDa
 				cs.setString(1, ds.account);
 				cs.setString(2, xm);
 				cs.execute();
+				return null;
+			}
+		});
+	}
+
+	public void getOpnameByXm(final DotSession ds, final String xm) {
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall("{call ybh_getopnamebyxm(?)}");
+				cs.setString(1, xm);
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				if(null != rs)
+				{
+					while(rs.next()){
+						ResultSetMetaData rsm =rs.getMetaData();
+						int colCount = rsm.getColumnCount();
+						String colName;
+						for(int i=1; i<=colCount; i++)
+						{
+							colName=rsm.getColumnName(i);
+							ds.map.put(colName, rs.getString(colName));
+						}
+					}
+				}
 				return null;
 			}
 		});

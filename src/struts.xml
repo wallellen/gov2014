@@ -189,6 +189,12 @@
 		<action name="farmerDataAction_checkXM" class="farmerDataAction" method="checkXM">
 			<result type="json"></result>	
 		</action>
+		<action name="memberDataAction_checkXM" class="memberDataAction" method="checkXM">
+			<result type="json"></result>	
+		</action>
+		<action name="yearDataAction_checkXM" class="yearDataAction" method="checkXM">
+			<result type="json"></result>	
+		</action>
 		<!-- empty data -->
 		<action name="farmerDataAction_emptyFarmer" class="farmerDataAction" method="emptyFarmer">
 			<result type="json"></result>	

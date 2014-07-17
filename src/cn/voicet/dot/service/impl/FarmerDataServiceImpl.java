@@ -20,4 +20,7 @@ public class FarmerDataServiceImpl implements FarmerDataService {
 	public void emptyFarmerDataByXm(DotSession ds, String xm) {
 		farmerDataDao.emptyFarmerDataByXm(ds, xm);
 	}
+	public void getOpnameByXm(DotSession ds, String xm) {
+		farmerDataDao.getOpnameByXm(ds, xm);
+	}
 }

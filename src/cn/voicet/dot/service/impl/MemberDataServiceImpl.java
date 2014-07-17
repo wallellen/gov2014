@@ -20,4 +20,7 @@ public class MemberDataServiceImpl implements MemberDataService {
 	public void emptyMemberDataByXm(DotSession ds, String xm) {
 		memberDataDao.emptyMemberDataByXm(ds, xm);
 	}
+	public void getOpnameByXm(DotSession ds, String xm) {
+		memberDataDao.getOpnameByXm(ds, xm);
+	}
 }

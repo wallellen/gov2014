@@ -7,4 +7,5 @@ public interface YearDataService {
 	void batchImportYearData(DotSession ds);
 	void getYearInfo(DotSession ds);
 	void emptyYearDataByXmWithYear(DotSession ds, String xm, String year);
+	void getOpnameByXm(DotSession ds, String xm);
 }

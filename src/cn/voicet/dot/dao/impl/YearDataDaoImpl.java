@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -109,6 +110,33 @@ public class YearDataDaoImpl extends CommonDaoImpl<Object> implements YearDataDa
 				cs.setString(2, xm);
 				cs.setString(3, year);
 				cs.execute();
+				return null;
+			}
+		});
+	}
+	
+	public void getOpnameByXm(final DotSession ds, final String xm) {
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall("{call ybh_getopnamebyxm(?)}");
+				cs.setString(1, xm);
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				if(null != rs)
+				{
+					while(rs.next()){
+						ResultSetMetaData rsm =rs.getMetaData();
+						int colCount = rsm.getColumnCount();
+						String colName;
+						for(int i=1; i<=colCount; i++)
+						{
+							colName=rsm.getColumnName(i);
+							ds.map.put(colName, rs.getString(colName));
+						}
+					}
+				}
 				return null;
 			}
 		});

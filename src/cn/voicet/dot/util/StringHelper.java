@@ -3,6 +3,8 @@ package cn.voicet.dot.util;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringHelper {
 
@@ -20,6 +22,35 @@ public class StringHelper {
 			e.printStackTrace();
 		}
 		return d;
+	}
+	
+	public static boolean isNumber(String str){
+		Pattern pattern = Pattern.compile("[0-9]*");
+		Matcher match = pattern.matcher(str);
+		if(match.matches()==false){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	
+	public static boolean checkIdCard(String str)
+	{
+		if(str.length()!=15 || str.length()!=18)
+		{
+			return false;
+		}
+		return true;
+	}
+	
+	public static boolean checkNull(String str)
+	{
+		if(null==str || str.length()==0)
+		{
+			return false;
+		}
+		return true;
 	}
 
 }
