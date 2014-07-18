@@ -192,7 +192,7 @@ public class MemberDataAction extends BaseAction{
 									bCheckOK=false;
 								}
 								//²Ð¼²Ö¤ºÅÎª¿Õ
-								if(null==row.getCell(6))
+								if(null==row.getCell(7))
 								{
 									bCheckOK=true;
 								}

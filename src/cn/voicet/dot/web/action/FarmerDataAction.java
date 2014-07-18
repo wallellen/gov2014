@@ -172,7 +172,7 @@ public class FarmerDataAction extends BaseAction{
 										break;
 									case 10:
 										String card = row.getCell(j).getStringCellValue();
-										if(!StringHelper.checkIdCard(card)){
+										if(StringHelper.checkIdCard(card)){
 											valid=false;
 											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 户主身份证号码格式不正确，请输入正确的身份证号码<br/>";
 										}

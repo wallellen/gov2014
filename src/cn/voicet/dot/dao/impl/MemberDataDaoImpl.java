@@ -62,19 +62,19 @@ public class MemberDataDaoImpl extends CommonDaoImpl<Object> implements MemberDa
 						ps.setInt(11, Integer.parseInt(vl[10]));//低保人口
 						ps.setFloat(12, Float.parseFloat(vl[11]));	//领取金额
 			        	//
-						//ps.addBatch();
+						ps.addBatch();
 			        	if(++rownum >= 1000){
 			        		//执行批量更新    
-			        		//ps.executeBatch();
+			        		ps.executeBatch();
 			        		//语句执行完毕，提交本事务 
-			        		//conn.commit();
+			        		conn.commit();
 			        		ps.clearBatch();
 			        		rownum = 0;
 			        	}
 					}
 					if(rownum > 0){
-						//ps.executeBatch();
-						//conn.commit();
+						ps.executeBatch();
+						conn.commit();
 						ps.clearBatch();
 						
 					}
