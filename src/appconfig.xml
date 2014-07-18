@@ -11,7 +11,7 @@
       		<!-- 20140713 add -->
 			<fun name="农户资料维护" action="farmerDataAction_home.do"/>
 		    <fun name="家庭成员资料维护" action="memberDataAction_home.do"/>
-		    <fun name="年收入及帮扶数据维护" action="yearDataAction_home.do"/>
+		    <fun name="年收入及帮扶资料维护" action="yearDataAction_home.do"/>
 		</grp>
 		<grp name="管理配置">
 			<fun name="角色权限" action="govConfigAction_home.do" />
