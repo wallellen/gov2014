@@ -37,7 +37,6 @@ public class StringHelper {
 	
 	public static boolean checkIdCard(String str)
 	{
-		System.out.println("str length:"+str.length());
 		if(str.length()!=15 || str.length()!=18)
 		{
 			return false;

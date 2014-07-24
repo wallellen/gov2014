@@ -71,7 +71,6 @@ public class MemberDataAction extends BaseAction{
 		DotSession ds = DotSession.getVTSession(request);
 		InputStream inStream = null; 
 		boolean bCheckOK=true;
-		boolean valid = true;
 		String errMsg = "";
 		Workbook wb = null;
 		try {
@@ -90,10 +89,11 @@ public class MemberDataAction extends BaseAction{
 				if(fi.equalsIgnoreCase("FMI"))
 				{
 					ds.list = new ArrayList();
+					log.info("member data excel template files correctly, allow import...");
 					for(int i=1; i<totalRow; i++)
 					{
-						vl=new String[12];
 						bCheckOK=true;
+						vl=new String[12];
 						Row row = sheet.getRow(i);
 						for(int j=0;j<12;j++)
 						{
@@ -108,80 +108,78 @@ public class MemberDataAction extends BaseAction{
 										String hm = row.getCell(j).getStringCellValue();
 										if(!checkHuma(hm))
 										{
-											valid=false;
+											bCheckOK=false;
 											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 户码不属于县["+xm+"], 或者户码长度不足15位<br/>";
 										}
 										break;
 									case 1:
 										String hname = row.getCell(j).getStringCellValue();
 										if(!StringHelper.checkNull(hname)){
-											valid=false;
+											bCheckOK=false;
 											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 姓名不能为空<br/>";
 										}
 										break;
 									case 2:
 										String sex = row.getCell(j).getStringCellValue();
 										if(!StringHelper.isNumber(sex)){
-											valid=false;
+											bCheckOK=false;
 											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 性别格式不正确，请输入数字代码<br/>";
 										}
 										break;
 									case 3:
 										String byear = row.getCell(j).getStringCellValue();
 										if(!StringHelper.isNumber(byear) || byear.length()!=4){
-											valid=false;
+											bCheckOK=false;
 											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 出生年份格式不正确，请输入4位数字<br/>";
 										}
 										break;
 									case 4:
 										String school = row.getCell(j).getStringCellValue();
 										if(!StringHelper.isNumber(school)){
-											valid=false;
+											bCheckOK=false;
 											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 在校生格式不正确，请输入数字代码<br/>";
 										}
 										break;
 									case 5:
 										String edu = row.getCell(j).getStringCellValue();
 										if(!StringHelper.isNumber(edu)){
-											valid=false;
+											bCheckOK=false;
 											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 文化程度格式不正确，请输入数字代码<br/>";
 										}
 										break;
 									case 6:
 										String health = row.getCell(j).getStringCellValue();
 										if(!StringHelper.isNumber(health)){
-											valid=false;
+											bCheckOK=false;
 											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 身体状况格式不正确，请输入数字代码<br/>";
 										}
 										break;
 									case 7:
 										String cjno = row.getCell(j).getStringCellValue();
-										
 										break;
 									case 8:
 										String lab = row.getCell(j).getStringCellValue();
 										if(!StringHelper.isNumber(lab)){
-											valid=false;
+											bCheckOK=false;
 											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 劳动力状况格式不正确，请输入数字代码<br/>";
 										}
 										break;
 									case 9:
 										String work = row.getCell(j).getStringCellValue();
 										if(!StringHelper.isNumber(work)){
-											valid=false;
+											bCheckOK=false;
 											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 打工状况格式不正确，请输入数字代码<br/>";
 										}
 										break;
 									case 10:
 										String dibao = row.getCell(j).getStringCellValue();
 										if(!StringHelper.isNumber(dibao)){
-											valid=false;
+											bCheckOK=false;
 											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 低保人口格式不正确，请输入数字代码<br/>";
 										}
 										break;
 									case 11:
 										String dbje = row.getCell(j).getStringCellValue();
-										
 										break;
 									default:
 										break;
@@ -189,17 +187,19 @@ public class MemberDataAction extends BaseAction{
 								}
 								else 
 								{
-									bCheckOK=false;
-								}
-								//残疾证号为空
-								if(null==row.getCell(7))
-								{
-									bCheckOK=true;
+									//残疾证号可为空
+									if(j!=7)
+									{
+										bCheckOK=false;
+									}
 								}
 							}
 							else
 							{
-								bCheckOK=false;
+								if(j!=7)
+								{
+									bCheckOK=false;
+								}
 							}
 						}
 						if(bCheckOK)
@@ -207,16 +207,21 @@ public class MemberDataAction extends BaseAction{
 							ds.list.add(vl);
 						}
 					}
-					if(valid)
+					log.info("excel row count:"+ds.list.size());
+					if(ds.list.size()>0)
 					{
-						log.info("excel row count:"+ds.list.size());
-						memberDataService.batchImportMemberData(ds);
-						long endtime = System.currentTimeMillis();
-						opTime = (endtime-starttime)/1000;
-						log.info("消耗时间: "+opTime);
-						request.setAttribute("importinfo", "文件 "+excelFileName+" 导入成功！共计导入年数据记录 "+ds.list.size()+" 条, 耗时 "+opTime+" 秒 !");
-						ds.list=null;
-						inStream.close();
+						try {
+							memberDataService.batchImportMemberData(ds);
+							long endtime = System.currentTimeMillis();
+							opTime = (endtime-starttime)/1000;
+							log.info("消耗时间:"+opTime+"second");
+							request.setAttribute("importinfo", "文件 "+excelFileName+" 导入成功！共计导入家庭成员数据记录 "+ds.list.size()+" 条, 耗时 "+opTime+" 秒 !");
+							ds.list=null;
+							inStream.close();
+						} catch (Exception e) {
+							log.error(e);
+							request.setAttribute("importinfo", "文件 "+excelFileName+" 导入失败");
+						}
 					}
 					else
 					{
@@ -236,7 +241,6 @@ public class MemberDataAction extends BaseAction{
 		} catch (Exception e) {
 			log.error(e);
 		}
-		
 		return "show_member_import";
 	}
 	

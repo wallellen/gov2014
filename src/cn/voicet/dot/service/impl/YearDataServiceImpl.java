@@ -17,7 +17,7 @@ public class YearDataServiceImpl implements YearDataService {
 	public void getYearInfo(DotSession ds) {
 		yearDataDao.getYearInfo(ds);
 	}
-	public void batchImportYearData(DotSession ds) {
+	public void batchImportYearData(DotSession ds){
 		yearDataDao.batchImportYearData(ds);
 	}
 	public void emptyYearDataByXmWithYear(DotSession ds, String xm, String year) {

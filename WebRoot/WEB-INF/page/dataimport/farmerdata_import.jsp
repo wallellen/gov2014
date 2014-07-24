@@ -12,11 +12,11 @@
 	<h3 class="jiangbu-title">低收入农户资料维护</h3>
 	<div style="margin:0 auto; width:490px; height:300px; padding-top:10px;">
 		<p>
-			<label style="font-size:14px">农户数据模版Excel文件,点击<a href="${pageContext.request.contextPath }/down/低收入农户家庭信息导入模板.xls">下载</a></label>
+			<label style="font-size:14px">农户数据模版Excel文件,点击<a href="${pageContext.request.contextPath }/down/低收入农户家庭信息导入模板.xls?v=1">下载</a></label>
 		</p>
 		<form name="farmerForm" action="" method="post" enctype="multipart/form-data"> 
 		<p>&nbsp;</p> 
-		<p>县码：<input type="text" id="xm" name="xm" class="input_w60" maxlength="6" onblur="checkXianma(this,'farmer')"/>
+		<p>县码：<input type="text" id="xm" name="xm" value="<s:property value='xm'/>" class="input_w60" maxlength="6" onblur="checkXianma(this,'farmer')"/>
 		<label id="xmTip"></label>
         	&nbsp;&nbsp;<input type="button" value="清除县数据" class="btn_w70" onclick="emptyFarmerData()">
         	<label class="color_r">(清除指定县的农户资料)</label>
