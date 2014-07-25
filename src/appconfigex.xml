@@ -32,6 +32,9 @@
 			<fun name="扶贫小额贷款项目" action="govXianCreditAction_home.do" />
 			<fun name="年收入及帮扶资料维护" action="yearDataAction_home.do"/>
 		</grp>
+		<grp name="管理配置">
+			<fun name="下级密码初始化" action="initPassAction_home.do"/>
+		</grp>
 	</role>
 	<role roleid="3" describle="市管理员">
 	  	<grp name="日常工作">
@@ -46,6 +49,9 @@
 			<fun name="村级集体经济发展项目" action="govVillageProjectAction_home.do" />
 			<fun name="奖补资金到户项目" action="govJiangBuAction_home.do" />
 			<fun name="扶贫小额贷款项目" action="govXianCreditAction_home.do" />
+		</grp>
+		<grp name="管理配置">
+			<fun name="下级密码初始化" action="initPassAction_home.do"/>
 		</grp>
 	</role>
 	<role roleid="5" describle="乡管理员">

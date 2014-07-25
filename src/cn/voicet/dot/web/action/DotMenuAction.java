@@ -64,7 +64,14 @@ public class DotMenuAction extends BaseAction implements ModelDriven<DotUserForm
 			request.getSession().setAttribute("vts", ds);
 		}
 		DotSession ds=DotSession.getVTSession(request);
-		
+		if(!basePath.contains("xmzj"))
+		{
+			ds.sflag=0;
+		}
+		else
+		{
+			ds.sflag=1;
+		}
 		map = dotUserService.dotUserLogin(dotUserForm);
 		
 		ds.username=map.get("username");
