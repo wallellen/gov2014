@@ -40,6 +40,8 @@ public class GovFarmerQueryAction extends BaseAction implements ModelDriven<GovF
 			ds.map.put("telhu", govFarmerQueryForm.getTelhu());
 			govFarmerQueryService.getFarmerInfoList(ds);
 		}
+		log.info("farmernt:"+ds.map.get("farmernt"));
+		log.info("peoplent:"+ds.map.get("peoplent"));
 		return "home";
 	}
 	
@@ -69,6 +71,8 @@ public class GovFarmerQueryAction extends BaseAction implements ModelDriven<GovF
 	    generator.setDrawBoard();
 	    generator.setEffectColNum(3);
 	    generator.exportExcelWithTemplate(response);
+	    log.info("farmernt:"+ds.map.get("farmernt"));
+		log.info("peoplent:"+ds.map.get("peoplent"));
 		return null;
 	}
 	

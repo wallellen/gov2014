@@ -27,7 +27,7 @@ public class GovFarmerQueryDaoImpl extends CommonDaoImpl<Object> implements GovF
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
 				String str = "";
-				String proc = "{call sp_query_family(?,?,?,?,?)}";
+				String proc = "{call sp_query_family(?,?,?,?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
 				cs.setString(1, ds.account);
@@ -68,6 +68,7 @@ public class GovFarmerQueryDaoImpl extends CommonDaoImpl<Object> implements GovF
 				cs.setString(3, str);
 				cs.setInt(4, 500);
 				cs.registerOutParameter(5, Types.INTEGER);
+				cs.registerOutParameter(6, Types.INTEGER);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
@@ -82,6 +83,7 @@ public class GovFarmerQueryDaoImpl extends CommonDaoImpl<Object> implements GovF
 				}
 				//取出参(农户总数)
 				ds.map.put("farmernt", cs.getObject(5));
+				ds.map.put("peoplent", cs.getObject(6));
 				return null;
 			}
 		});
@@ -148,17 +150,54 @@ public class GovFarmerQueryDaoImpl extends CommonDaoImpl<Object> implements GovF
 	}
 
 	public void getAllFarmerInfoList(final DotSession ds) {
+		final int apr[]={0,1,2,4,6,7,9,11,12,14,16};
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				String proc = "{call sp_query_family(?,?,?,?,?)}";
+				String str = "";
+				String proc = "{call sp_query_family(?,?,?,?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
 				cs.setString(1, ds.account);
 				cs.setString(2, ds.curBM);
-				cs.setString(3, null);
+				
+				String a[]=(String[]) ds.map.get("qarr");
+				for(int i=0; i<11; i++)
+				{
+					if(a[apr[i]].length()>0)
+					{
+						if(i<2)
+							str+=a[apr[i]];
+						else if((i-2)%3==2)
+						{
+							if(!a[apr[i]].equals("0"))
+							{
+								str+=a[apr[i]];
+							}
+						}
+						else
+						{
+							if(a[apr[i]].equals("1") && a[apr[i]+1].length()>0) 
+							{
+								str+=">=";
+								str+=a[apr[i]+1];
+							}
+							else if(a[apr[i]].equals("2") && a[apr[i]+1].length()>0)
+							{
+								str+="<=";
+								str+=a[apr[i]+1];
+							}
+						}
+					}
+					str+=";";
+				}
+				str += ds.map.get("telhu")+";";
+				System.out.println("qstr:"+str);
+				cs.setString(3, str);
+				
 				cs.setInt(4, 0);
 				cs.registerOutParameter(5, Types.INTEGER);
+				cs.registerOutParameter(6, Types.INTEGER);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
 				ds.initData();
@@ -173,6 +212,7 @@ public class GovFarmerQueryDaoImpl extends CommonDaoImpl<Object> implements GovF
 				}
 				//取出参(农户总数)
 				ds.map.put("farmernt", cs.getObject(5));
+				ds.map.put("peoplent", cs.getObject(6));
 				return null;
 			}
 		});		
@@ -183,12 +223,41 @@ public class GovFarmerQueryDaoImpl extends CommonDaoImpl<Object> implements GovF
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
+				String str = "";
 				String proc = "{call sp_query_member(?,?,?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
 				cs.setString(1, ds.account);
 				cs.setString(2, ds.curBM);
-				cs.setString(3, null);
+				String a[]=(String[]) ds.map.get("marr");
+				for(int i=0; i<9; i++)
+				{
+					if(a[apr[i]].length()>0)
+					{
+						if(i!=2)
+						{
+							if(!a[apr[i]].equals("0")){
+								str+=a[apr[i]];
+							}
+						}
+						else
+						{
+							if(a[apr[i]].equals("1") && a[apr[i]+1].length()>0) 
+							{
+								str+=">=";
+								str+=a[apr[i]+1];
+							}
+							else if(a[apr[i]].equals("2") && a[apr[i]+1].length()>0)
+							{
+								str+="<=";
+								str+=a[apr[i]+1];
+							}
+						}
+					}
+					str+=";";
+				}
+				System.out.println(str);
+				cs.setString(3, str);
 				cs.setInt(4, 0);
 				cs.registerOutParameter(5, Types.INTEGER);
 				cs.execute();
