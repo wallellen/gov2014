@@ -302,11 +302,11 @@ public class MemberDataAction extends BaseAction{
 	
 	public boolean checkHuma(String hm)
 	{
-		if(!hm.startsWith(xm) || hm.length()!=15)
+		if(hm.startsWith(xm) && hm.length()==15)
 		{
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
 }

@@ -77,189 +77,188 @@ public class FarmerDataAction extends BaseAction{
 		try {
 			inStream = new FileInputStream(excel);
 			wb = VTXiang.create(inStream);
-		} catch (Exception e) {
-			log.error(e);
-		}
-		Sheet sheet = wb.getSheetAt(0);
-		totalRow = sheet.getPhysicalNumberOfRows();
-		log.info("totalRow:"+totalRow);
-		Row fisrtRow = sheet.getRow(0);
-		if(null!=fisrtRow.getCell(255))
-		{
-			fi = fisrtRow.getCell(255).getStringCellValue();
-			log.info("fi:"+fi);
-			if(fi.equalsIgnoreCase("FFI"))
+			Sheet sheet = wb.getSheetAt(0);
+			totalRow = sheet.getPhysicalNumberOfRows();
+			log.info("totalRow:"+totalRow);
+			Row fisrtRow = sheet.getRow(0);
+			if(null!=fisrtRow.getCell(255))
 			{
-				
-				ds.list = new ArrayList();
-				log.info("farmer data excel template files correctly, allow import...");
-				for(int i=1; i<totalRow; i++)
+				fi = fisrtRow.getCell(255).getStringCellValue();
+				log.info("fi:"+fi);
+				if(fi.equalsIgnoreCase("FFI"))
 				{
-					bCheckOK=true;
-					vl=new String[14];
-					Row row = sheet.getRow(i);
-					for(int j=0;j<14;j++)
+					ds.list = new ArrayList();
+					log.info("farmer data excel template files correctly, allow import...");
+					for(int i=1; i<totalRow; i++)
 					{
-						if(null != row.getCell(j))
+						bCheckOK=true;
+						vl=new String[14];
+						Row row = sheet.getRow(i);
+						for(int j=0;j<14;j++)
 						{
-							row.getCell(j).setCellType(HSSFCell.CELL_TYPE_STRING);
-							vl[j] = row.getCell(j).getStringCellValue();
-							if(vl[j].length()>0)
+							if(null != row.getCell(j))
 							{
-								switch (j) {
-								case 0:
-									String hm = row.getCell(j).getStringCellValue();
-									log.info("hm:"+hm);
-									if(!checkHuma(hm))
+								row.getCell(j).setCellType(HSSFCell.CELL_TYPE_STRING);
+								vl[j] = row.getCell(j).getStringCellValue();
+								if(vl[j].length()>0)
+								{
+									switch (j) {
+									case 0:
+										String hm = row.getCell(j).getStringCellValue();
+										log.info("hm:"+hm);
+										if(!checkHuma(hm))
+										{
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 户码不属于县["+xm+"], 或者户码长度不足15位<br/>";
+										}
+										break;
+									case 1:
+										String zhu = row.getCell(j).getStringCellValue();
+										log.info("zhu:"+zhu);
+										if(!StringHelper.checkNull(zhu)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 组名不能为空<br/>";
+										}
+										break;
+									case 2:
+										String hname = row.getCell(j).getStringCellValue();
+										log.info("hname:"+hname);
+										if(!StringHelper.checkNull(hname)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 户主姓名不能为空<br/>";
+										}
+										break;
+									case 3:
+										String rk = row.getCell(j).getStringCellValue();
+										log.info("rk:"+rk);
+										if(!StringHelper.isNumber(rk)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 人口格式不正确，请输入数字代码<br/>";
+										}
+										break;
+									case 4:
+										String laodl = row.getCell(j).getStringCellValue();
+										log.info("laodl:"+laodl);
+										if(!StringHelper.isNumber(laodl)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 劳动力格式不正确，请输入数字代码<br/>";
+										}
+										break;
+									case 5:
+										String gengd = row.getCell(j).getStringCellValue();
+										log.info("gengd:"+gengd);
+										if(!StringHelper.checkNull(gengd)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 承包耕地面积必须大于等于0<br/>";
+										}
+										break;
+									case 6:
+										String zhuf = row.getCell(j).getStringCellValue();
+										log.info("zhuf:"+zhuf);
+										if(!StringHelper.checkNull(zhuf)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 住房面积必须大于等于0<br/>";
+										}
+										break;
+									case 7:
+										String property = row.getCell(j).getStringCellValue();
+										log.info("property:"+property);
+										if(!StringHelper.isNumber(property)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 农户属性格式不正确，请输入数字代码<br/>";
+										}
+										break;
+									case 8:
+										String tel = row.getCell(j).getStringCellValue();
+										log.info("tel:"+tel);
+										break;
+									case 9:
+										String cause = row.getCell(j).getStringCellValue();
+										log.info("cause:"+cause);
+										if(!StringHelper.isNumber(cause)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 贫困原因格式不正确，请输入数字代码<br/>";
+										}
+										break;
+									case 10:
+										String card = row.getCell(j).getStringCellValue();
+										log.info("card:"+card);
+										if(!StringHelper.checkIdCard(card)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 户主身份证号码格式不正确，请输入正确的身份证号码<br/>";
+										}
+										break;
+									case 11:
+										String bfnane = row.getCell(j).getStringCellValue();
+										log.info("bfnane:"+bfnane);
+										break;
+									case 12:
+										String bftel = row.getCell(j).getStringCellValue();
+										log.info("bftel:"+bftel);
+										break;
+									case 13:
+										String bfwork = row.getCell(j).getStringCellValue();
+										log.info("bfwork:"+bfwork);
+										break;
+									default:
+										break;
+									}
+								}
+								else
+								{
+									if(j!=8 && j!=11 && j!=12 && j!=13)
 									{
 										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 户码不属于县["+xm+"], 或者户码长度不足15位<br/>";
 									}
-									break;
-								case 1:
-									String zhu = row.getCell(j).getStringCellValue();
-									log.info("zhu:"+zhu);
-									if(!StringHelper.checkNull(zhu)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 组名不能为空<br/>";
-									}
-									break;
-								case 2:
-									String hname = row.getCell(j).getStringCellValue();
-									log.info("hname:"+hname);
-									if(!StringHelper.checkNull(hname)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 户主姓名不能为空<br/>";
-									}
-									break;
-								case 3:
-									String rk = row.getCell(j).getStringCellValue();
-									log.info("rk:"+rk);
-									if(!StringHelper.isNumber(rk)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 人口格式不正确，请输入数字代码<br/>";
-									}
-									break;
-								case 4:
-									String laodl = row.getCell(j).getStringCellValue();
-									log.info("laodl:"+laodl);
-									if(!StringHelper.isNumber(laodl)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 劳动力格式不正确，请输入数字代码<br/>";
-									}
-									break;
-								case 5:
-									String gengd = row.getCell(j).getStringCellValue();
-									log.info("gengd:"+gengd);
-									if(!StringHelper.checkNull(gengd)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 承包耕地面积必须大于等于0<br/>";
-									}
-									break;
-								case 6:
-									String zhuf = row.getCell(j).getStringCellValue();
-									log.info("zhuf:"+zhuf);
-									if(!StringHelper.checkNull(zhuf)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 住房面积必须大于等于0<br/>";
-									}
-									break;
-								case 7:
-									String property = row.getCell(j).getStringCellValue();
-									log.info("property:"+property);
-									if(!StringHelper.isNumber(property)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 农户属性格式不正确，请输入数字代码<br/>";
-									}
-									break;
-								case 8:
-									String tel = row.getCell(j).getStringCellValue();
-									log.info("tel:"+tel);
-									break;
-								case 9:
-									String cause = row.getCell(j).getStringCellValue();
-									log.info("cause:"+cause);
-									if(!StringHelper.isNumber(cause)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 贫困原因格式不正确，请输入数字代码<br/>";
-									}
-									break;
-								case 10:
-									String card = row.getCell(j).getStringCellValue();
-									log.info("card:"+card);
-									if(!StringHelper.checkIdCard(card)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 户主身份证号码格式不正确，请输入正确的身份证号码<br/>";
-									}
-									break;
-								case 11:
-									String bfnane = row.getCell(j).getStringCellValue();
-									log.info("bfnane:"+bfnane);
-									break;
-								case 12:
-									String bftel = row.getCell(j).getStringCellValue();
-									log.info("bftel:"+bftel);
-									break;
-								case 13:
-									String bfwork = row.getCell(j).getStringCellValue();
-									log.info("bfwork:"+bfwork);
-									break;
-								default:
-									break;
 								}
 							}
 							else
 							{
+								//电话号码, 帮扶人姓名, 帮扶人电话, 帮扶人职务
 								if(j!=8 && j!=11 && j!=12 && j!=13)
 								{
 									bCheckOK=false;
 								}
 							}
 						}
-						else
+						if(bCheckOK)
 						{
-							//电话号码, 帮扶人姓名, 帮扶人电话, 帮扶人职务
-							if(j!=8 && j!=11 && j!=12 && j!=13)
-							{
-								bCheckOK=false;
-							}
+							ds.list.add(vl);
 						}
 					}
-					if(bCheckOK)
+					log.info("excel row count:"+ds.list.size());
+					if(ds.list.size()>0)
 					{
-						ds.list.add(vl);
+						try {
+							farmerDataService.batchImportFarmerData(ds);
+							long endtime = System.currentTimeMillis();
+							opTime = (endtime-starttime)/1000;
+							log.info("消耗时间:"+opTime+"second");
+							request.setAttribute("importinfo", "文件 "+excelFileName+" 导入成功！共计导入农户数据记录 "+ds.list.size()+" 条, 耗时 "+opTime+" 秒 !");
+							ds.list=null;
+							inStream.close();
+						} catch (Exception e) {
+							log.error(e);
+							request.setAttribute("importinfo", "文件 "+excelFileName+" 导入失败");
+						}
 					}
-				}
-				log.info("excel row count:"+ds.list.size());
-				if(ds.list.size()>0)
-				{
-					try {
-						farmerDataService.batchImportFarmerData(ds);
-						long endtime = System.currentTimeMillis();
-						opTime = (endtime-starttime)/1000;
-						log.info("消耗时间:"+opTime+"second");
-						request.setAttribute("importinfo", "文件 "+excelFileName+" 导入成功！共计导入农户数据记录 "+ds.list.size()+" 条, 耗时 "+opTime+" 秒 !");
-						ds.list=null;
-						inStream.close();
-					} catch (Exception e) {
-						log.error(e);
-						request.setAttribute("importinfo", "文件 "+excelFileName+" 导入失败");
+					else
+					{
+						request.setAttribute("importinfo",errMsg);	
 					}
 				}
 				else
 				{
-					request.setAttribute("importinfo",errMsg);	
+					request.setAttribute("importinfo","请从农户资料维护页面,下载Excel模版文件整理数据");
 				}
 			}
 			else
 			{
+				log.info("fi is null");
 				request.setAttribute("importinfo","请从农户资料维护页面,下载Excel模版文件整理数据");
 			}
-		}
-		else
-		{
-			log.info("fi is null");
-			request.setAttribute("importinfo","请从农户资料维护页面,下载Excel模版文件整理数据");
+		} catch (Exception e) {
+			log.error(e);
 		}
 		return "show_farmer_import";
 	}
@@ -323,11 +322,11 @@ public class FarmerDataAction extends BaseAction{
 	
 	public boolean checkHuma(String hm)
 	{
-		if(!hm.startsWith(xm) || hm.length()!=15)
+		if(hm.startsWith(xm) && hm.length()==15)
 		{
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
 }

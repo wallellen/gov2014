@@ -79,143 +79,145 @@ public class YearDataAction extends BaseAction{
 		try {
 			inStream = new FileInputStream(excel);
 			wb = VTXiang.create(inStream);
-		} catch (Exception e) {
-			log.error(e.getMessage());
-		}
-		Sheet sheet = wb.getSheetAt(0);
-		totalRow = sheet.getPhysicalNumberOfRows();
-		log.info("totalRow:"+totalRow);
-		Row fisrtRow = sheet.getRow(0);
-		if(null!=fisrtRow.getCell(255))
-		{
-			fi = fisrtRow.getCell(255).getStringCellValue();
-			log.info("fi:"+fi);
-			if(fi.equalsIgnoreCase("FYI"))
+			Sheet sheet = wb.getSheetAt(0);
+			totalRow = sheet.getPhysicalNumberOfRows();
+			log.info("totalRow:"+totalRow);
+			Row fisrtRow = sheet.getRow(0);
+			if(null!=fisrtRow.getCell(255))
 			{
-				ds.list = new ArrayList();
-				log.info("year data excel template files correctly, allow import...");
-				for(int i=1; i<totalRow; i++)
+				fi = fisrtRow.getCell(255).getStringCellValue();
+				log.info("fi:"+fi);
+				if(fi.equalsIgnoreCase("FYI"))
 				{
-					vl=new String[15];
-					bCheckOK=true;
-					Row row = sheet.getRow(i);
-					for(int j=0;j<15;j++)
+					ds.list = new ArrayList();
+					log.info("year data excel template files correctly, allow import...");
+					for(int i=1; i<totalRow; i++)
 					{
-						if(null != row.getCell(j))
+						vl=new String[15];
+						bCheckOK=true;
+						Row row = sheet.getRow(i);
+						for(int j=0;j<15;j++)
 						{
-							row.getCell(j).setCellType(HSSFCell.CELL_TYPE_STRING);
-							vl[j] = row.getCell(j).getStringCellValue();
-							if(vl[j].length()>0)
+							if(null != row.getCell(j))
 							{
-								switch (j) {
-								case 0:
-									String hm = row.getCell(j).getStringCellValue();
-									if(!checkHuma(hm))
-									{
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 户码不属于县["+xm+"], 或者户码长度不足15位<br/>";
+								row.getCell(j).setCellType(HSSFCell.CELL_TYPE_STRING);
+								vl[j] = row.getCell(j).getStringCellValue();
+								if(vl[j].length()>0)
+								{
+									switch (j) {
+									case 0:
+										String hm = row.getCell(j).getStringCellValue();
+										if(!checkHuma(hm))
+										{
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 户码不属于县["+xm+"], 或者户码长度不足15位<br/>";
+										}
+										break;
+									case 1:
+										String year = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(year) || year.length()!=4){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 年份不能为空<br/>";
+										}
+										break;
+									case 2:
+										String total = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(total)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 家庭年总收入不能为空<br/>";
+										}
+										break;
+									case 3:
+										String crop = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(crop)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 种植业不能为空<br/>";
+										}
+										break;
+									case 4:
+										String livstock = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(livstock)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 养殖业不能为空<br/>";
+										}
+										break;
+									case 5:
+										String work = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(work)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 务工收入不能为空<br/>";
+										}
+										break;
+									case 6:
+										String bla = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(bla)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 领取低保、五保、养老收入不能为空<br/>";
+										}
+										break;
+									case 7:
+										String subside = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(subside)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 补贴性收入不能为空<br/>";
+										}
+										break;
+									case 8:
+										String other = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(other)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 其它收入不能为空<br/>";
+										}
+										break;
+									case 9:
+										String personal = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(personal)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 家庭人均收入不能为空<br/>";
+										}
+										break;
+									case 10:
+										String aid = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(aid)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 无偿帮扶资金收入不能为空<br/>";
+										}
+										break;
+									case 11:
+										String share = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(share)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 得到股份不能为空<br/>";
+										}
+										break;
+									case 12:
+										String loan = row.getCell(j).getStringCellValue();
+										if(!StringHelper.checkNull(loan)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 小额贷款和互助资金不能为空<br/>";
+										}
+										break;
+									case 13:
+										String train = row.getCell(j).getStringCellValue();
+										if(!StringHelper.isNumber(train)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 劳动力转移培训大于或等于0<br/>";
+										}
+										break;
+									case 14:
+										String job = row.getCell(j).getStringCellValue();
+										if(!StringHelper.isNumber(job)){
+											bCheckOK=false;
+											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 劳动力转移就业人数大于或等于0<br/>";
+										}
+										break;
+									default:
+										break;
 									}
-									break;
-								case 1:
-									String year = row.getCell(j).getStringCellValue();
-									if(!StringHelper.checkNull(year) || year.length()!=4){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 年份不能为空<br/>";
-									}
-									break;
-								case 2:
-									String total = row.getCell(j).getStringCellValue();
-									if(!StringHelper.checkNull(total)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 家庭年总收入不能为空<br/>";
-									}
-									break;
-								case 3:
-									String crop = row.getCell(j).getStringCellValue();
-									if(!StringHelper.checkNull(crop)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 种植业不能为空<br/>";
-									}
-									break;
-								case 4:
-									String livstock = row.getCell(j).getStringCellValue();
-									if(!StringHelper.checkNull(livstock)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 养殖业不能为空<br/>";
-									}
-									break;
-								case 5:
-									String work = row.getCell(j).getStringCellValue();
-									if(!StringHelper.checkNull(work)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 务工收入不能为空<br/>";
-									}
-									break;
-								case 6:
-									String bla = row.getCell(j).getStringCellValue();
-									if(!StringHelper.checkNull(bla)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 领取低保、五保、养老收入不能为空<br/>";
-									}
-									break;
-								case 7:
-									String subside = row.getCell(j).getStringCellValue();
-									if(!StringHelper.checkNull(subside)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 补贴性收入不能为空<br/>";
-									}
-									break;
-								case 8:
-									String other = row.getCell(j).getStringCellValue();
-									if(!StringHelper.checkNull(other)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 其它收入不能为空<br/>";
-									}
-									break;
-								case 9:
-									String personal = row.getCell(j).getStringCellValue();
-									if(!StringHelper.checkNull(personal)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 家庭人均收入不能为空<br/>";
-									}
-									break;
-								case 10:
-									String aid = row.getCell(j).getStringCellValue();
-									if(!StringHelper.checkNull(aid)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 无偿帮扶资金收入不能为空<br/>";
-									}
-									break;
-								case 11:
-									String share = row.getCell(j).getStringCellValue();
-									if(!StringHelper.checkNull(share)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 得到股份不能为空<br/>";
-									}
-									break;
-								case 12:
-									String loan = row.getCell(j).getStringCellValue();
-									if(!StringHelper.checkNull(loan)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 小额贷款和互助资金不能为空<br/>";
-									}
-									break;
-								case 13:
-									String train = row.getCell(j).getStringCellValue();
-									if(!StringHelper.isNumber(train)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 劳动力转移培训大于或等于0<br/>";
-									}
-									break;
-								case 14:
-									String job = row.getCell(j).getStringCellValue();
-									if(!StringHelper.isNumber(job)){
-										bCheckOK=false;
-										errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 劳动力转移就业人数大于或等于0<br/>";
-									}
-									break;
-								default:
-									break;
+								}
+								else
+								{
+									bCheckOK=false;
 								}
 							}
 							else
@@ -223,46 +225,44 @@ public class YearDataAction extends BaseAction{
 								bCheckOK=false;
 							}
 						}
-						else
+						if(bCheckOK)
 						{
-							bCheckOK=false;
+							ds.list.add(vl);
 						}
 					}
-					if(bCheckOK)
+					log.info("excel row count:"+ds.list.size());
+					if(ds.list.size()>0)
 					{
-						ds.list.add(vl);
+						try {
+							yearDataService.batchImportYearData(ds);
+							long endtime = System.currentTimeMillis();
+							opTime = (endtime-starttime)/1000;
+							log.info("消耗时间:"+opTime+"second");
+							request.setAttribute("importinfo", "文件 "+excelFileName+" 导入成功！共计导入年收入及帮扶资料记录 "+ds.list.size()+" 条, 耗时 "+opTime+" 秒 !");
+							ds.list=null;
+							inStream.close();
+						} catch (Exception e) {
+							log.error(e.getMessage());
+							request.setAttribute("importinfo", "文件 "+excelFileName+" 导入失败！不能重复导入年数据及帮扶资料!");
+						}
 					}
-				}
-				log.info("excel row count:"+ds.list.size());
-				if(ds.list.size()>0)
-				{
-					try {
-						yearDataService.batchImportYearData(ds);
-						long endtime = System.currentTimeMillis();
-						opTime = (endtime-starttime)/1000;
-						log.info("消耗时间:"+opTime+"second");
-						request.setAttribute("importinfo", "文件 "+excelFileName+" 导入成功！共计导入年收入及帮扶资料记录 "+ds.list.size()+" 条, 耗时 "+opTime+" 秒 !");
-						ds.list=null;
-						inStream.close();
-					} catch (Exception e) {
-						log.error(e.getMessage());
-						request.setAttribute("importinfo", "文件 "+excelFileName+" 导入失败！不能重复导入年数据及帮扶资料!");
+					else
+					{
+						request.setAttribute("importinfo",errMsg);	
 					}
 				}
 				else
 				{
-					request.setAttribute("importinfo",errMsg);	
+					request.setAttribute("importinfo","请从年收入及帮扶资料维护页面,下载Excel模版文件整理数据");
 				}
 			}
 			else
 			{
+				log.info("fi is null");
 				request.setAttribute("importinfo","请从年收入及帮扶资料维护页面,下载Excel模版文件整理数据");
 			}
-		}
-		else
-		{
-			log.info("fi is null");
-			request.setAttribute("importinfo","请从年收入及帮扶资料维护页面,下载Excel模版文件整理数据");
+		} catch (Exception e) {
+			log.error(e.getMessage());
 		}
 		yearDataService.getYearInfo(ds);
 		return "show_year_import";
@@ -332,10 +332,10 @@ public class YearDataAction extends BaseAction{
 	}
 	public boolean checkHuma(String hm)
 	{
-		if(!hm.startsWith(xm) || hm.length()!=15)
+		if(hm.startsWith(xm) && hm.length()==15)
 		{
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 }
