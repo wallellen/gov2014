@@ -50,6 +50,7 @@ public class YearDataAction extends BaseAction{
 		log.info("ret:"+ret+", xbm:"+xbm+", xname:"+xname);
 		if(ret.equals("1"))
 		{
+			ds.map.put("importXM", xm);
 			jsonObj.put("status", "ok");
 		}
 		else
@@ -217,11 +218,13 @@ public class YearDataAction extends BaseAction{
 								}
 								else
 								{
+									errMsg+="["+excelFileName+"]文件中的有数据项为空,请按要求重新整理数据";
 									bCheckOK=false;
 								}
 							}
 							else
 							{
+								errMsg+="["+excelFileName+"]文件中的有数据项为空,请按要求重新整理数据";
 								bCheckOK=false;
 							}
 						}

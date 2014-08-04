@@ -16,7 +16,7 @@
 		</p>
 		<form name="farmerForm" action="" method="post" enctype="multipart/form-data"> 
 		<p>&nbsp;</p> 
-		<p>县码：<input type="text" id="xm" name="xm" value="<s:property value='xm'/>" class="input_w60" maxlength="6" onblur="checkXianma(this,'farmer')"/>
+		<p>县码：<input type="text" id="xm" name="xm" value="<s:property value='#session.vts.map.importXM'/>" class="input_w60" maxlength="6" onblur="checkXianma(this,'farmer')"/>
 		<label id="xmTip"></label>
         	&nbsp;&nbsp;<input type="button" value="清除县数据" class="btn_w70" onclick="emptyFarmerData()">
         	<label class="color_r">(清除指定县的农户资料)</label>

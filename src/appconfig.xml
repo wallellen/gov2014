@@ -8,10 +8,6 @@
 			<fun name="建档立卡农户信息" action="govBrowerAction_home.do" />
 			<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
       		<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
-      		<!-- 20140713 add -->
-			<fun name="农户资料维护" action="farmerDataAction_home.do"/>
-		    <fun name="家庭成员资料维护" action="memberDataAction_home.do"/>
-		    <fun name="年收入及帮扶资料维护" action="yearDataAction_home.do"/>
 		</grp>
 		<grp name="管理配置">
 			<fun name="角色权限" action="govConfigAction_home.do" />
@@ -22,6 +18,10 @@
 		<grp name="数据库">
 			<fun name="数据库维护" action="databaseConfigAction_home.do" />
 			<fun name="系统日志查看" action="systemLogAction_home.do" />
+      		<!-- 20140713 add -->
+			<fun name="农户资料维护" action="farmerDataAction_home.do"/>
+		    <fun name="家庭成员资料维护" action="memberDataAction_home.do"/>
+		    <fun name="年收入及帮扶资料维护" action="yearDataAction_home.do"/>
 		</grp>
 	</role>
 	<role roleid="2" describle="省管理员">

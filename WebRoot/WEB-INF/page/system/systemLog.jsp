@@ -100,11 +100,11 @@
     	<table class="data_list" cellpadding="0" cellspacing="0">
         	<thead>
                 <tr class="tabtr1">
-                    <td width="10%">编号</td>
+                    <td width="8%">编号</td>
                     <td width="10%">来源</td>
-                    <td width="10%">类型</td>
-                    <td width="20%">日期时间</td>
-                    <td width="50%" class="tabtd1">描述</td>
+                    <td width="6%">类型</td>
+                    <td width="16%">日期时间</td>
+                    <td width="60%" class="tabtd1">描述</td>
                 </tr>
             </thead>
             <tbody>

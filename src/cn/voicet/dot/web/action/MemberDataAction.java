@@ -47,6 +47,7 @@ public class MemberDataAction extends BaseAction{
 		log.info("ret:"+ret+", xbm:"+xbm+", xname:"+xname);
 		if(ret.equals("1"))
 		{
+			ds.map.put("importXM", xm);
 			jsonObj.put("status", "ok");
 		}
 		else
@@ -128,7 +129,7 @@ public class MemberDataAction extends BaseAction{
 										break;
 									case 3:
 										String byear = row.getCell(j).getStringCellValue();
-										if(!StringHelper.isNumber(byear) || byear.length()!=4){
+										if(!StringHelper.isNumber(byear)){
 											bCheckOK=false;
 											errMsg += "第"+(i+1)+"行, 第"+(j+1)+"列, 出生年份格式不正确，请输入4位数字<br/>";
 										}
@@ -190,6 +191,7 @@ public class MemberDataAction extends BaseAction{
 									//残疾证号可为空
 									if(j!=7)
 									{
+										errMsg+="["+excelFileName+"]文件中的有数据项为空,请按要求重新整理数据";
 										bCheckOK=false;
 									}
 								}
@@ -198,6 +200,7 @@ public class MemberDataAction extends BaseAction{
 							{
 								if(j!=7)
 								{
+									errMsg+="["+excelFileName+"]文件中的有数据项为空,请按要求重新整理数据";
 									bCheckOK=false;
 								}
 							}

@@ -37,11 +37,11 @@ public class StringHelper {
 	
 	public static boolean checkIdCard(String str)
 	{
-		if(str.length()!=15 || str.length()!=18)
+		if(str.length()==15 || str.length()==18)
 		{
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
 	public static boolean checkNull(String str)

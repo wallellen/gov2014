@@ -47,6 +47,7 @@ public class FarmerDataAction extends BaseAction{
 		log.info("ret:"+ret+", xbm:"+xbm+", xname:"+xname);
 		if(ret.equals("1"))
 		{
+			ds.map.put("importXM", xm);
 			jsonObj.put("status", "ok");
 		}
 		else
@@ -208,6 +209,7 @@ public class FarmerDataAction extends BaseAction{
 								{
 									if(j!=8 && j!=11 && j!=12 && j!=13)
 									{
+										errMsg+="["+excelFileName+"]文件中的有数据项为空,请按要求重新整理数据";
 										bCheckOK=false;
 									}
 								}
@@ -217,6 +219,7 @@ public class FarmerDataAction extends BaseAction{
 								//电话号码, 帮扶人姓名, 帮扶人电话, 帮扶人职务
 								if(j!=8 && j!=11 && j!=12 && j!=13)
 								{
+									errMsg+="["+excelFileName+"]文件中的有数据项为空,请按要求重新整理数据";
 									bCheckOK=false;
 								}
 							}
