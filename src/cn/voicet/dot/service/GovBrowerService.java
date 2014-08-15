@@ -5,7 +5,6 @@ import cn.voicet.dot.web.form.GovFamilyForm;
 
 public interface GovBrowerService {
 
-	
 	public final static String SERVICE_NAME = "cn.voicet.dot.service.impl.GovBrowerServiceImpl";
 	void getGovBrowerList(DotSession ds);
 	void getGovFamilyList(DotSession ds);
@@ -23,5 +22,6 @@ public interface GovBrowerService {
 	void deleteFamilyWithHbm(DotSession ds, String hbm, int cause);
 	void checkFamilyInfoByHbm(DotSession ds, String hbm);
 	String findNavListStr(DotSession ds);
+	void checkCunInfoByCunBM(DotSession ds, String cunbm);
 
 }

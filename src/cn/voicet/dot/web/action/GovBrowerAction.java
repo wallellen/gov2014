@@ -315,8 +315,19 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 		return "show_checkFamily";
 	}
 	
+	/** ÉóºË´å */
+	public String checkCun(){
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("checkCun-> cunbm:"+cunbm);
+		govBrowerService.checkCunInfoByCunBM(ds, cunbm);
+		log.info("list:"+ds.list);
+		return "show_checkCun";
+	}
+	
 	private String viewBM="";
 	private String hbm;
+	private String cunbm;
+	private String cunname;
 	public String insBm;
 	public String insName;
 	public int insHtn;
@@ -466,5 +477,17 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 	}
 	public void setCause(int cause) {
 		this.cause = cause;
+	}
+	public String getCunbm() {
+		return cunbm;
+	}
+	public void setCunbm(String cunbm) {
+		this.cunbm = cunbm;
+	}
+	public String getCunname() {
+		return cunname;
+	}
+	public void setCunname(String cunname) {
+		this.cunname = cunname;
 	}
 }

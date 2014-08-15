@@ -74,4 +74,8 @@ public class GovBrowerServiceImpl implements GovBrowerService {
 	public String findNavListStr(DotSession ds) {
 		return govBrowerDao.findNavListStr(ds);
 	}
+
+	public void checkCunInfoByCunBM(DotSession ds, String cunbm) {
+		govBrowerDao.checkCunInfoByCunBM(ds, cunbm);
+	}
 }

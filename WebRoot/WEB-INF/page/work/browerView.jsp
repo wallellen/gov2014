@@ -105,6 +105,10 @@
 						<s:if test="#session.vts.isedit==1">
 						<a href="#" onclick="popEditName('<s:property value="#ls.oname"/>','<s:property value="#ls.htn"/>', '<s:property value="#ls.ptn"/>', '<s:property value="#ls.bm"/>')">修改</a>
 						</s:if>
+						<!-- 20140815添加 -->
+						<s:if test="#session.vts.rbm.length()==6 && #session.vts.curBM.length()==9">
+							<a href="${pageContext.request.contextPath }/system/govBrowerAction_checkCun.do?cunbm=<s:property value="#ls.bm"/>&cunname=<s:property value="#ls.oname"/>">审查</a>
+						</s:if>
 						<s:if test="#session.vts.roleID==1">
 						<a href="#" onclick="popManager('<s:property value="#ls.bm"/>')">管理</a>
 						</s:if>

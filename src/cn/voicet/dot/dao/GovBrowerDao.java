@@ -22,5 +22,6 @@ public interface GovBrowerDao {
 	void deleteFamilyWithHbm(DotSession ds, String hbm, int cause);
 	void checkFamilyInfoByHbm(DotSession ds, String hbm);
 	String findNavListStr(DotSession ds);
+	void checkCunInfoByCunBM(DotSession ds, String cunbm);
 
 }

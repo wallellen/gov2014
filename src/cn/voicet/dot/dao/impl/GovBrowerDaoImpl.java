@@ -694,4 +694,30 @@ public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrower
 		return str;
 	}
 
+	public void checkCunInfoByCunBM(final DotSession ds, final String cunbm) {
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				String proc = "{call sp_chun_check(?,?)}";
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall(proc);
+				cs.setString(1, ds.rbm);
+				cs.setString(2, cunbm);
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				ds.initData();
+				ds.list = new ArrayList();
+				Map map;
+				if(rs!=null){
+					while (rs.next()) {
+						map = new HashMap();
+						ds.putMapDataByColName(map, rs);
+		        		ds.list.add(map);
+					}
+				}
+				return null;
+			}
+		});
+	}
+
 }

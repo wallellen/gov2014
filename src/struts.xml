@@ -52,6 +52,9 @@
 			
 			<!-- check family -->
 			<result name="show_checkFamily">/WEB-INF/page/work/check_family.jsp</result>
+			
+			<!-- check cun -->
+			<result name="show_checkCun">/WEB-INF/page/work/check_cun.jsp</result>
 		</action>
 		<!-- 农户查询 -->
 		<action name="govFarmerQueryAction_*" class="govFarmerQueryAction" method="{1}">
