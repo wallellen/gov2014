@@ -99,7 +99,9 @@
 			<td>
 			<s:if test="#session.vts.isedit==1">
 				<a href="javascript:popSaveMember('<s:property value="#ls2.mid"/>','edit','<s:property value="#sc.count"/>')">修改</a>
+				<!--
 				<a href="${pageContext.request.contextPath }/system/govBrowerAction_deleteMember.do?mid=<s:property value="#ls2.mid"/>" onclick="return confirm('您确定要删除 <s:property value="%{#ls2.uname}"/>&nbsp;吗?')">删除</a>
+				-->
 			</s:if>
 			</td>
 		</tr>
