@@ -37,7 +37,7 @@
     <s:else>
     <tr>
         <td align="center">1</td>
-        <td align="left">&nbsp;&nbsp;审核通过</td>
+        <td align="left">&nbsp;&nbsp;审核结束</td>
     </tr>
     </s:else>
 	</tbody>
