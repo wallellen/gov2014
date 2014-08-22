@@ -147,9 +147,9 @@
 			 				<a id="printBt" href="${pageContext.request.contextPath }/system/govBrowerAction_printFamily.do?viewBM=<s:property value="#ls.hm"/>" target="printFrame">打印</a>
 			 				<s:if test="#session.vts.isedit==1">
 							<a href="${pageContext.request.contextPath }/system/govBrowerAction_detail.do?viewBM=<s:property value="#ls.hm"/>&rtf=home">编辑</a>
-							<!--
+							<s:if test="#session.vts.rbm.length()==2">
 							<a href="javascript:popDelFamily('<s:property value="#ls.hm"/>','<s:property value="#ls.hname"/>')">删除</a>
-							-->
+							</s:if>
 			 				</s:if>
 			 				<a href="${pageContext.request.contextPath }/system/govBrowerAction_checkFamily.do?hbm=<s:property value="#ls.hm"/>">审查</a>
 						</td>
