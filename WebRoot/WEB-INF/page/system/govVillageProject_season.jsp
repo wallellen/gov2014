@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
 </head>
 <body style="background:#E0EEFB;">
-<h3 class="jiangbu-title">省级财政支持村级集体经济发展项目实施进度&nbsp;[<s:property value="#session.vts.rbn"/>]</h3>
+<h3 class="jiangbu-title">财政支持村级集体经济发展项目实施进度&nbsp;[<s:property value="#session.vts.rbn"/>]</h3>
 <div id="jiangbu-data">
 <table class="data_list" cellpadding="0" cellspacing="0" width="100%">
    	<thead>

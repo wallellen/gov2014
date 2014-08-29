@@ -28,7 +28,7 @@
         <td rowspan="2" width="16%">县名</td>
         <td rowspan="2" width="4%">项目数</td>
     	<td colspan="4">资金总量(万元)</td>
-        <td colspan="2">资金拨付情况(万元)</td>
+        <td colspan="2">资金拨付到项目情况(万元)</td>
         <td colspan="3">项目实施进度</td>
         <td rowspan="2" width="5%">
         	<p>
