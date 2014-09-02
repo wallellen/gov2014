@@ -171,6 +171,11 @@
 			<result name="show_init_pass">/WEB-INF/page/new/init_password.jsp</result>
 		</action>
 		
+		<!-- 县数据导出 -->
+		<action name="dataExportAction_*" class="dataExportAction" method="{1}">
+			<result name="show_export">/WEB-INF/page/new/xianDataExport.jsp</result>
+		</action>
+		
 	</package>  
 	<package name="dot" namespace="/system" extends="json-default">
 		<!-- 修改密码 -->

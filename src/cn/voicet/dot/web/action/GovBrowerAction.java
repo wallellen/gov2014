@@ -320,7 +320,6 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 	public String checkCun() throws InterruptedException{
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("checkCun-> cunbm:"+cunbm);
-		Thread.sleep(3000);
 		govBrowerService.checkCunInfoByCunBM(ds, cunbm);
 		log.info("list:"+ds.list);
 		return "show_checkCun";

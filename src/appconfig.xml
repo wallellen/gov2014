@@ -49,6 +49,7 @@
 		</grp>
 		<grp name="管理配置">
 			<fun name="下级密码初始化" action="initPassAction_home.do"/>
+			<fun name="数据导出" action="dataExportAction_home.do"/>
 		</grp>
 	</role>
 	<role roleid="5" describle="乡管理员">
