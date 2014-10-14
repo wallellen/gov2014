@@ -176,6 +176,13 @@
 			<result name="show_export">/WEB-INF/page/new/xianDataExport.jsp</result>
 		</action>
 		
+		<!-- 20141014 add -->
+		<action name="bayou_*" class="bayouAction" method="{1}">
+			<result name="show_bayou">/WEB-INF/page/bayou/bayouList.jsp</result>
+			<result name="show_bayou_detail">/WEB-INF/page/bayou/bayouDetail.jsp</result>
+			<result name="show_bayou_report">/WEB-INF/page/bayou/bayouReport.jsp</result>
+		</action>
+		
 	</package>  
 	<package name="dot" namespace="/system" extends="json-default">
 		<!-- 修改密码 -->

@@ -267,6 +267,9 @@ ul{margin:0; padding:0; list-style:none;}
 .xm_tip_ok{width:140px; height:30px; display:inline; padding-left:18px; background: url("../images/tip_ok_err.png") no-repeat; margin-left:2px;}
 .xm_tip_err{width:140px; height:30px; display:inline; padding-left:18px; background: url("../images/tip_ok_err.png") no-repeat; background-position:0 -20px; color:#F00; margin-left:2px;}
 
-
+#view-bayou-tit{width:649px; height:60px;}
+#view-bayou-tit .view-sp1,.view-sp2{width:645px; height:24px; line-height:24px;}
+#view-bayou-tit .view-sp1 span{width:115px; padding-left:5px; display:block; float:left; overflow:hidden}
+#view-bayou-tit .view-sp2 span{margin-right:20px; padding-left:10px; display:block; float:left; overflow:hidden}
 
 
