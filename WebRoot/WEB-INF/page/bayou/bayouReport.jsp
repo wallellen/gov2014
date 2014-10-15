@@ -35,7 +35,7 @@
 		</p>
 		<p class="view-sp2">
 			<span>201<u>&nbsp;4&nbsp;</u>年度</span>
-            <span>片区村<u>&nbsp;1&nbsp;</u>(1、是&nbsp;&nbsp;2、否)</span>
+            <span>片区村<u>&nbsp;${byMap.pq }&nbsp;</u>(1、是&nbsp;&nbsp;2、否)</span>
         </p>
         <p class="view-sp2">
 			<span>挂钩帮扶单位：<u>&nbsp;${byMap.fu }&nbsp;</u></span>
@@ -44,7 +44,7 @@
             <span>电话：<u>&nbsp;${byMap.ct }&nbsp;</u></span>
         </p>
         <p class="view-sp2">
-			<span>村集体经济收入：<u>&nbsp;${byMap.sr }&nbsp;</u>万元</span>
+			<span>上年度村集体经济收入：<u>&nbsp;${byMap.sr }&nbsp;</u>万元</span>
             <span>主要来源：<u>&nbsp;${byMap.ly }&nbsp;</u></span>
         </p>
     </div>

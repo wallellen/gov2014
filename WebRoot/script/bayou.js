@@ -35,8 +35,33 @@ $(function(){
 	//村集体经济
 	$("#jtjj").bind("blur",checkJtjj);
 	$("#telnum").bind("blur",checkTelnum);
+	//片区
+	$("#pianqu").bind("blur",checkPianqu);
 });
 
+/************** check 片区 start **************/
+function checkPianqu()
+{
+	var pq=$("#pianqu").val();
+	var reg =  /^[1-2]*$/; //正整数
+	if(!pq)
+	{
+		showBanfErrTip(5,"片区不能为空");
+		return false;
+	}
+	if(reg.test(pq))
+	{
+		hideBanfErrTip();
+		return true;
+	}
+	else
+	{
+		showBanfErrTip(5,"片区村只能是数字1或2");
+		return false;
+	}
+}
+
+/************** check 片区 end **************/
 
 /************** check 得分 start **************/
 function checkDefen1()
@@ -474,6 +499,7 @@ function checkTelnum()
 
 function saveBayou()
 {
+	if(!checkPianqu(document.all.pianqu)) return;
 	if(!checkTelnum(document.all.telnum)) return;
 	if(!checkJtjj(document.all.jtjj)) return;
 	if(!checkRzsy(document.all.rzsy)) return;

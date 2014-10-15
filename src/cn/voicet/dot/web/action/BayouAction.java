@@ -152,6 +152,7 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 		log.info("areabm:"+bayouForm.getAreabm());
 		log.info("bytxt[] length:"+bayouForm.getBytxt().length);
 		bayouService.saveBayouInfo(bayouForm);
+		rflag = rflag+1;
 		return view();
 	}
 	
@@ -160,7 +161,16 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 		Map<String, Object> map = bayouService.queryBayouDetailInfo(bayouForm);
 		log.info("map:"+map);
 		request.setAttribute("byMap", map);
+		rflag = rflag+1;
 		return "show_bayou_report";
+	}
+	
+	private int rflag=1;
+	public int getRflag() {
+		return rflag;
+	}
+	public void setRflag(int rflag) {
+		this.rflag = rflag;
 	}
 	
 }

@@ -12,9 +12,6 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.jfree.util.Log;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
@@ -83,43 +80,48 @@ public class BayouDaoImpl extends CommonDaoImpl<Object> implements BayouDao {
 	}
 
 	public void saveBayouInfo(final BayouForm bayouForm) {
-		log.info("sp:y8_chun_update(24)");
+		log.info("sp:y8_chun_update(25)");
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
 				Connection conn = session.connection();
-				CallableStatement cs = conn.prepareCall("{call y8_chun_update(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+				CallableStatement cs = conn.prepareCall("{call y8_chun_update(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
 				//cs.setString(1, bayouForm.getAreabm());
 				//cs.setInt(2, 2014);
 				String ix[][] = 
 					{
 						{"0","s"},
 						{"1","i"},
-						
-						{"8","i"},
+						//得分
 						{"9","i"},
 						{"10","i"},
 						{"11","i"},
-						{"20","i"},
-						{"21","i"},
+						{"12","i"},
+						{"13","i"},
+						
 						{"22","i"},
 						{"23","i"},
+						{"24","i"},
 						
-						{"12","s"},
-						{"13","s"},
 						{"14","s"},
 						{"15","s"},
+						
+						//项目资金
 						{"16","s"},
 						{"17","s"},
-						{"18","s"},
 						{"19","s"},
+						{"21","s"},
+						{"18","s"},
+						{"20","s"},
 						
-						{"2","s"},
 						{"3","s"},
 						{"4","s"},
 						{"5","s"},
 						{"6","s"},
 						{"7","s"},
+						{"8","s"},
+						//片区
+						{"2","i"},
 					};
 				DotSession.prepareParamFromInputArray(cs, bayouForm.getBytxt(), ix);
 				cs.execute();

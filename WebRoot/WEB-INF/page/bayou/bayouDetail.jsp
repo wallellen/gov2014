@@ -8,12 +8,10 @@
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style-b.css" />
 	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
 	<script type="text/javascript">
-		var rflag = 1;
-		function printBayouInfo(areabm){
+		function printBayouInfo(areabm,rflag){
 			document.getElementById("printBtn").href='bayou_printBayou.do?areabm='+areabm;
-			rflag=rflag+1;
 		}
-		function returnBayouList(){
+		function returnBayouList(rflag){
 			document.getElementById("returnBtn").href="javascript:history.go(-"+rflag+");";
 		}
 	</script>
@@ -32,8 +30,8 @@
     <h1>经济薄弱村新“八有”考核表</h1>
     <p class="view-print">
     	<a onclick="saveBayou()" style="cursor:pointer;">保存</a>
-	    <a id="printBtn" onclick="printBayouInfo('${areabm }')" target="printFrame" style="cursor:pointer;">打印</a>
-		<a id="returnBtn" onclick="returnBayouList()" style="cursor:pointer;">返回</a>
+	    <a id="printBtn" onclick="printBayouInfo('${areabm }','${rflag }')" target="printFrame" style="cursor:pointer;">打印</a>
+		<a id="returnBtn" onclick="returnBayouList('${rflag }')" style="cursor:pointer;">返回</a>
     </p>
     <div id="view-bayou-tit">
        	<p class="view-sp1">
@@ -44,7 +42,7 @@
 		</p>
 		<p class="view-sp2">
 			<span>201<u>&nbsp;4&nbsp;</u>年度</span>
-            <span>片区村<u>&nbsp;1&nbsp;</u>(1、是&nbsp;&nbsp;2、否)</span>
+            <span>片区村<input type="text" id="pianqu" name="bytxt" value="${byMap.pq }" class="input_w20" maxlength="1" tabindex="9"/>(1、是&nbsp;&nbsp;2、否)</span>
         </p>
         <p class="view-sp2">
 			<span>挂钩帮扶单位：<input type="text" name="bytxt" value="${byMap.fu }" class="input_w75" tabindex="10"/></span>
@@ -53,7 +51,7 @@
             <span>电话：<input type="text" id="telnum" name="bytxt" value="${byMap.ct }" class="input_w75" tabindex="13"/></span>
         </p>
         <p class="view-sp2">
-			<span>村集体经济收入：<input type="text" id="jtjj" name="bytxt" value="${byMap.sr }" class="input_w60" tabindex="20"/>万元</span>
+			<span>上年度村集体经济收入：<input type="text" id="jtjj" name="bytxt" value="${byMap.sr }" class="input_w60" tabindex="20"/>万元</span>
             <span>主要来源：<input type="text" name="bytxt" value="${byMap.ly }" class="input_w75" tabindex="21"/></span>
         </p>
     </div>
@@ -148,6 +146,6 @@
     </div>
     </form>
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath }/script/bayou.js?v=6"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/bayou.js?v=8"></script>
 </body>
 </html>
