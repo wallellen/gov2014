@@ -55,6 +55,10 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 		}
 		else
 		{
+			if(ds.rbm.length()==2)
+			{
+				returnBTN = "村码：<input type='text' id='areabm' name='areabm' class='input_w100' maxlength='12'/><input type='button' onclick='addCun()' value='添加' class='button43'/>&nbsp;&nbsp;";
+			}
 			returnBTN += "<input type='button' onclick='history.go(-"+rflag+")' value='返回' class='button43'/>";
 		}
 		html+="<div class='Contentbox_shi'>";
@@ -78,14 +82,14 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 			//
 			if(bm.length()==6)
 			{
-				aflag = "<a href='bayou_query.do?areabm="+bm+"&retbtn=y&shiname="+sXXCName[0]+"&xianname="+name+"'>进入</a>";
+				aflag = "<a href='bayou_query.do?areabm="+bm+"&retbtn=y&shiname="+sXXCName[0]+"&xianname="+name+"&titlename=["+sXXCName[0]+"/"+name+"]'>进入</a>";
 			}
 			else if(bm.length()==12)
 			{
 				aflag = "<a href='bayou_view.do?areabm="+bm+"&zhenname="+sXXCName[0]+"&cunname="+name+"'>查看</a>&nbsp;&nbsp;";
 				if(ds.rbm.length()==2)
 				{
-					aflag += "<a href='bayou_deletecun.do?areabm="+bm+"&retbtn=y&zhenname="+sXXCName[0]+"&cunname="+name+"'>删除</a>";;
+					aflag += "<a href='bayou_deletecun.do?areabm="+bm+"&retbtn=y&zhenname="+sXXCName[0]+"&cunname="+name+"' onclick=\"if(confirm('确定删除？')==false)return false;\">删除</a>";;
 				}
 			}
 			//

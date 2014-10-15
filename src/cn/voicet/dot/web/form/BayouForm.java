@@ -11,6 +11,8 @@ public class BayouForm {
 	
 	private String[] bytxt;
 	
+	private String titlename;
+	
 	public String getAreabm() {
 		return areabm;
 	}
@@ -52,5 +54,11 @@ public class BayouForm {
 	}
 	public void setBytxt(String[] bytxt) {
 		this.bytxt = bytxt;
+	}
+	public String getTitlename() {
+		return titlename;
+	}
+	public void setTitlename(String titlename) {
+		this.titlename = titlename;
 	}
 }
