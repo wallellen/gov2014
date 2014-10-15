@@ -21,6 +21,8 @@
 </head>
 <body style="background:#E0EEFB;">
 <form name="form1" action="${pageContext.request.contextPath }/system/bayou_addcun.do" method="post">
+<input type="hidden" name="rflag" value="${rflag }"/>
+<input type="hidden" name="retbtn" value="y"/>
 <h3 class="jiangbu-title">经济薄弱村新“八有”考核&nbsp;
 	<s:if test="#session.vts.rbm.length()==2">
 	<span style="float:right; margin-right:10px; color:#000; font-weight:normal;">村码：<input type="text" id="areabm" name="areabm" class="input_w100" maxlength="12"/><input type="button" onclick="addCun()" value="添加" class="button43"/></span>
