@@ -7,22 +7,34 @@
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style.css" />
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style-b.css" />
 	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
-	<script type="text/javascript">
-		function printBayouInfo(areabm,rflag){
-			document.getElementById("printBtn").href='bayou_printBayou.do?areabm='+areabm;
-		}
-		function returnBayouList(rflag){
-			document.getElementById("returnBtn").href="javascript:history.go(-"+rflag+");";
-		}
-	</script>
 	<style type="text/css">
 		.bottomborder{border-bottom:1px solid #000;}
 	</style>
+	<script type="text/javascript">
+		var rflag = 1;
+		function printBayouInfo(areabm){
+			document.getElementById("printBtn").href='bayou_printBayou.do?areabm='+areabm;
+			rflag=rflag+1;
+		}
+		function returnBayouList(srflag){
+			if(rflag>=2)
+			{
+				document.getElementById("returnBtn").href="javascript:history.go(-"+rflag+");";
+				rflag = 1;
+			}
+			else
+			{
+				document.getElementById("returnBtn").href="javascript:history.go(-"+srflag+");";
+			}
+		}
+	</script>
 </head>
 <body style="background:#E0EEFB;">
 <div id="leftCon1">
 	<form name="form1" action="${pageContext.request.contextPath }/system/bayou_saveBayou.do" method="post">
+	<input type="hidden" name="rflag" value="${rflag }"/>
 	<input type="hidden" name="areabm" value="${areabm }"/>
+	<input type="hidden" name="zhenname" value="${zhenname }"/>
 	<input type="hidden" name="cunname" value="${cunname }"/>
 	<input type="hidden" name="bytxt" value="${areabm }"/>
 	<input type="hidden" name="bytxt" value="2014"/>
@@ -30,14 +42,21 @@
     <h1>经济薄弱村新“八有”考核表</h1>
     <p class="view-print">
     	<a onclick="saveBayou()" style="cursor:pointer;">保存</a>
-	    <a id="printBtn" onclick="printBayouInfo('${areabm }','${rflag }')" target="printFrame" style="cursor:pointer;">打印</a>
+	    <a id="printBtn" onclick="printBayouInfo('${areabm }')" target="printFrame" style="cursor:pointer;">打印</a>
 		<a id="returnBtn" onclick="returnBayouList('${rflag }')" style="cursor:pointer;">返回</a>
     </p>
     <div id="view-bayou-tit">
        	<p class="view-sp1">
        		<span><u><s:property value="#session.vts.map.shiname"/></u>&nbsp;市</span>
-           	<span><u><s:property value="#session.vts.map.shiname"/></u>&nbsp;县(市、区)</span>
-            <span><u><s:property value="#session.vts.map.xianname"/></u>&nbsp;乡(镇)</span>
+           	<span><u>
+           		<s:if test="#session.vts.rbm.length()==6">
+           			<s:property value="#session.vts.rbn"/>
+           		</s:if>
+           		<s:else>
+           		<s:property value="#session.vts.map.xianname"/>
+           		</s:else>          	
+           	</u>&nbsp;县(市、区)</span>
+            <span><u><s:property value="#session.vts.map.zhenname"/></u>&nbsp;乡(镇)</span>
             <span><u><s:property value="#session.vts.map.cunname"/></u>&nbsp;村</span>
 		</p>
 		<p class="view-sp2">
@@ -146,6 +165,6 @@
     </div>
     </form>
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath }/script/bayou.js?v=8"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/bayou.js?v=9"></script>
 </body>
 </html>

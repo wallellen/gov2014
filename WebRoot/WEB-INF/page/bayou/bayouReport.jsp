@@ -29,8 +29,15 @@
     <div id="view-bayou-tit">
        	<p class="view-sp1">
        		<span><u><s:property value="#session.vts.map.shiname"/></u>&nbsp;市</span>
-           	<span><u><s:property value="#session.vts.map.shiname"/></u>&nbsp;县(市、区)</span>
-            <span><u><s:property value="#session.vts.map.xianname"/></u>&nbsp;乡(镇)</span>
+           	<span><u>
+           		<s:if test="#session.vts.rbm.length()==6">
+           			<s:property value="#session.vts.rbn"/>
+           		</s:if>
+           		<s:else>
+           		<s:property value="#session.vts.map.xianname"/>
+           		</s:else>
+           	</u>&nbsp;县(市、区)</span>
+            <span><u><s:property value="#session.vts.map.zhenname"/></u>&nbsp;乡(镇)</span>
             <span><u><s:property value="#session.vts.map.cunname"/></u>&nbsp;村</span>
 		</p>
 		<p class="view-sp2">
