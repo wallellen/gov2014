@@ -109,7 +109,9 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 			}
 			else if(rn==1)
 			{
+				temp=temp.replace("<td></td>", "<td>"+aflag+"</td>");
 				temp=temp.replace("#NAME#", name);
+				log.info("temp:"+temp);
 			}
 			//
 			else
