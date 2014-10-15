@@ -56,8 +56,8 @@
         </p>
     </div>
     
-	<table width="100%" cellpadding="0" cellspacing="0" style="text-align:left">
-			<tr>
+	<table width="100%" cellpadding="4" cellspacing="0" style="text-align:left;">
+			<tr style="text-align:center; font-weight:bold">
 				<td>新“八有”</td>		
 				<td>指标</td>
 				<td>考评内容</td>
@@ -116,7 +116,7 @@
 			<tr>
 				<td>有先进适用<br/>的信息网络</td>
 				<td>因特网入户率</td>
-				<td>掼通过宽带、有线电视、电话拨号、移动上网（含手<br/>机上网），能够接入因特网的农户占本村农户总数的<br/>比重。70%以上得满分，每少10%扣2分</td>
+				<td>指通过宽带、有线电视、电话拨号、移动上网（含手<br/>机上网），能够接入因特网的农户占本村农户总数的<br/>比重。70%以上得满分，每少10%扣2分</td>
 				<td>10</td>
 				<td>${byMap.f6 }</td>
 			</tr>
