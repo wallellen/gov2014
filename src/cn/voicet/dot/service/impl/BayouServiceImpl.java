@@ -29,4 +29,13 @@ public class BayouServiceImpl implements BayouService {
 	public void saveBayouInfo(BayouForm bayouForm) {
 		bayouDao.saveBayouInfo(bayouForm);
 	}
+
+	public void addCunWithAreabm(DotSession ds, BayouForm bayouForm) {
+		bayouDao.addCunWithAreabm(ds, bayouForm);
+	}
+	
+	public void deleteCunByAreabm(DotSession ds, BayouForm bayouForm) {
+		bayouDao.deleteCunByAreabm(ds, bayouForm);
+	}
+
 }

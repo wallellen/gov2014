@@ -5,6 +5,8 @@ input{padding: 1px; vertical-align:middle; line-height:normal;}
 .input_w45{width:45px; height:16px; line-height:16px; border:1px solid #aaa;}
 .input_w60{width:60px; height:16px; line-height:16px; border:1px solid #aaa;}
 .input_w75{width:75px; height:16px; line-height:16px; border:1px solid #aaa;}
+.input_w100{width:100px; height:16px; line-height:16px; border:1px solid #aaa;}
+.input_w140{width:140px; height:16px; line-height:16px; border:1px solid #aaa;}
 .input_w160{width:160px; height:16px; line-height:16px; border:1px solid #aaa;}
 
 .color_r{color:#F00}

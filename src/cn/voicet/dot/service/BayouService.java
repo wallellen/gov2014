@@ -10,4 +10,6 @@ public interface BayouService {
 	void queryBayouInfo(DotSession ds, BayouForm bayouForm);
 	Map<String, Object> queryBayouDetailInfo(BayouForm bayouForm);
 	void saveBayouInfo(BayouForm bayouForm);
+	void addCunWithAreabm(DotSession ds, BayouForm bayouForm);
+	void deleteCunByAreabm(DotSession ds, BayouForm bayouForm);
 }

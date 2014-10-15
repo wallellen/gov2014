@@ -129,5 +129,35 @@ public class BayouDaoImpl extends CommonDaoImpl<Object> implements BayouDao {
 			}
 		});
 	}
+
+	public void deleteCunByAreabm(final DotSession ds, final BayouForm bayouForm) {
+		log.info("sp:y8_chun_remove(2)");
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall("{call y8_chun_remove(?,?)}");
+				cs.setString(1, ds.rbm);
+				cs.setString(2, bayouForm.getAreabm());
+				cs.execute();
+				return null;
+			}
+		});
+	}
+
+	public void addCunWithAreabm(final DotSession ds, final BayouForm bayouForm) {
+		log.info("sp:y8_chun_add(2)");
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall("{call y8_chun_add(?,?)}");
+				cs.setString(1, ds.rbm);
+				cs.setString(2, bayouForm.getAreabm());
+				cs.execute();
+				return null;
+			}
+		});
+	}
 	
 }

@@ -1,3 +1,30 @@
+function addCun()
+{
+	if(!checkAreabm(document.all.areabm)) return;
+	document.form1.submit();
+}
+
+function checkAreabm()
+{
+	var are=$("#areabm").val();
+	var reg =  /^[0-9]*[0-9][0-9]*$/; //正整数
+	if(!are)
+	{
+		alert("村码不能为空!");
+		return false;
+	}
+	if(reg.test(are))
+	{
+		return true;
+	}
+	else
+	{
+		alert("村码只能是数字!");
+		return false;
+	}
+}
+
+
 function showBanfErrTip(top,c)
 {
 	var errTip=document.getElementById("errTip1");
@@ -13,6 +40,9 @@ function hideBanfErrTip()
 
 
 $(function(){
+	//添加八有村
+	$("#areabm").bind("blur",checkAreabm);
+	//
 	$("#defen1").bind("blur",checkDefen1);
 	$("#defen2").bind("blur",checkDefen2);
 	$("#defen3").bind("blur",checkDefen3);

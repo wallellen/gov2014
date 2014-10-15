@@ -41,6 +41,7 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 		{
 			bayouForm.setAreabm(ds.rbm);
 		}
+		log.info("areabm:"+bayouForm.getAreabm());
 		bayouService.queryBayouInfo(ds, bayouForm);
 		log.info("list size:"+ds.list.size());
 		//
@@ -54,7 +55,7 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 		}
 		else
 		{
-			returnBTN = "<input type='button' onclick='history.go(-1)' value='返回'/>";
+			returnBTN += "<input type='button' onclick='history.go(-"+rflag+")' value='返回' class='button43'/>";
 		}
 		html+="<div class='Contentbox_shi'>";
 		html += "<table cellspacing='0' cellpadding='0' width='100%'>";
@@ -81,7 +82,11 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 			}
 			else if(bm.length()==12)
 			{
-				aflag = "<a href='bayou_view.do?areabm="+bm+"&zhenname="+sXXCName[0]+"&cunname="+name+"'>查看</a>";
+				aflag = "<a href='bayou_view.do?areabm="+bm+"&zhenname="+sXXCName[0]+"&cunname="+name+"'>查看</a>&nbsp;&nbsp;";
+				if(ds.rbm.length()==2)
+				{
+					aflag += "<a href='bayou_deletecun.do?areabm="+bm+"&retbtn=y&zhenname="+sXXCName[0]+"&cunname="+name+"'>删除</a>";;
+				}
 			}
 			//
 			if(idd==0 && temp.length()>0)
@@ -104,7 +109,6 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 			}
 			else if(rn==1)
 			{
-				log.info("temp:"+temp);
 				temp=temp.replace("#NAME#", name);
 			}
 			//
@@ -170,6 +174,28 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 		request.setAttribute("byMap", map);
 		return "show_bayou_report";
 	}
+	
+	public String addcun()
+	{
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("areabm:"+bayouForm.getAreabm());
+		bayouService.addCunWithAreabm(ds, bayouForm);
+		bayouForm.setAreabm(bayouForm.getAreabm().substring(0, 6));
+		rflag = rflag+1;
+		return query();
+	}
+	
+	public String deletecun()
+	{
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("areabm:"+bayouForm.getAreabm());
+		bayouService.deleteCunByAreabm(ds, bayouForm);
+		bayouForm.setAreabm(bayouForm.getAreabm().substring(0, 6));
+		rflag = rflag+1;
+		return query();
+	}
+	
+	
 	
 	private int rflag=1;
 	public int getRflag() {
