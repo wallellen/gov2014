@@ -66,6 +66,7 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 		"</td>" +
 		"</tr>";
 		String temp = "";
+		String aflag = "";
 		int rn=0;
 		for (int i=0; i<ds.list.size(); i++) {
 			map = (Map) ds.list.get(i);
@@ -73,6 +74,16 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 			int idd = Integer.parseInt(map.get("idd").toString());
 			String name= (String)map.get("name");
 			String bm= (String)map.get("bm");
+			//
+			if(bm.length()==6)
+			{
+				aflag = "<a href='bayou_query.do?areabm="+bm+"&retbtn=y&shiname="+sXXCName[0]+"&xianname="+name+"'>进入</a>";
+			}
+			else if(bm.length()==12)
+			{
+				aflag = "<a href='bayou_view.do?areabm="+bm+"&zhenname="+sXXCName[0]+"&cunname="+name+"'>查看</a>";
+			}
+			//
 			if(idd==0 && temp.length()>0)
 			{
 				temp=temp.replace("#ROWSPAN_NUM#",String.valueOf(rn-1));
@@ -85,26 +96,20 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 				temp="<tr>"
 					+"<td rowspan='#ROWSPAN_NUM#'>"+name+"</td>"
 					+"<td>#NAME#</td>"
-					+"<td></td>"
+					+ "<td>"
+					+ aflag
+					+ "</td>"
 					+"</tr>";
 				sXXCName[0]=name;
 			}
 			else if(rn==1)
 			{
+				log.info("temp:"+temp);
 				temp=temp.replace("#NAME#", name);
 			}
 			//
 			else
 			{
-				String aflag = "";
-				if(bm.length()==6)
-				{
-					aflag = "<a href='bayou_query.do?areabm="+bm+"&retbtn=y&shiname="+sXXCName[0]+"&xianname="+name+"'>进入</a>";
-				}
-				else if(bm.length()==12)
-				{
-					aflag = "<a href='bayou_view.do?areabm="+bm+"&zhenname="+sXXCName[0]+"&cunname="+name+"'>查看</a>";
-				}
 				temp += "<tr>"
 					+ "<td>"+name+"</td>"
 					+ "<td>"
