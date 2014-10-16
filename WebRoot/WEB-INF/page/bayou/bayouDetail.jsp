@@ -75,7 +75,7 @@
         </p>
     </div>
     
-	<table width="100%" cellpadding="4" cellspacing="0" style="text-align:left;">
+	<table width="100%" cellpadding="1" cellspacing="0" style="text-align:left;">
 			<tr style="text-align:center; font-weight:bold">
 				<td>新“八有”</td>		
 				<td>指标</td>
@@ -85,29 +85,29 @@
 			</tr>
 			<tr>
 				<td>有群众拥护<br/>的“双强”<br/>班子</td>
-				<td>党员和村民代表<br/>对村“两委”班<br/>子工作的满意度</td>
-				<td>“双强”指村“两委”班子思想政治素质强、科学发展能<br/>力强。参加测评的党员和村民代表满意度票数与总票数<br/>之比，80%以上得满分，每少5%减1分，低于50%不<br/>得分</td>
+				<td>党员和村民代表对村“两委”<br/>班子工作的满意度</td>
+				<td>“双强”指村“两委”班子思想政治素质强、科学发展能力强。参加<br/>测评的党员和村民代表满意度票数与总票数之比，80%以上得满分，<br/>每少5%减1分，低于50%不得分</td>
 				<td>10</td>
 				<td><input type="text" id="defen1" name="bytxt" value="${byMap.f1 }" class="input_w20" maxlength="2" tabindex="30"/></td>
 			</tr>
 			<tr>
 				<td>有科学合理<br/>的发展规划</td>
-				<td>村级发屏和建设<br/>规划达标率</td>
-				<td>有经县、乡政府确认的发展规划或村庄建设规<br/>划，按规划要求执行得满分，执行不到位的酌情减分，<br/>没有规划不得分</td>
+				<td>村级发屏和建设规划达标率</td>
+				<td>有经县、乡政府确认的发展规划或村庄建设规划，按规划要求执行<br/>得满分，执行不到位的酌情减分，没有规划不得分</td>
 				<td>10</td>
 				<td><input type="text" id="defen2" name="bytxt" value="${byMap.f2 }" class="input_w20" maxlength="2" tabindex="31"/></td>
 			</tr>
 			<tr>
 				<td>有高产高效<br/>的农业设施</td>
-				<td>设施农业面积比<br/>重</td>
-				<td>村有温室、各类棚架、喷滴灌、遮阳网、防虫网等设<br/>施进行种植的实际建设面积占全村耕地面积的比重。<br/>10%以上得满分，每少1%扣1分</td>
+				<td>设施农业面积比重</td>
+				<td>村有温室、各类棚架、喷滴灌、遮阳网、防虫网等设施进行种植的<br/>实际建设面积占全村耕地面积的比重。10%以上得满分，每少1%扣1分</td>
 				<td>10</td>
 				<td><input type="text" id="defen3" name="bytxt" value="${byMap.f3 }" class="input_w20" maxlength="2" tabindex="32"/></td>
 			</tr>
 			<tr>
 				<td>有特色鲜明<br/>的主导产业</td>
-				<td>特色产业带动低<br/>收入农户比重</td>
-				<td>特色产业带动低收入农户数与村低收入农户总数之<br/>比，50%以上得满分，每减少5%减1分</td>
+				<td>特色产业带动低收入农户比重</td>
+				<td>特色产业带动低收入农户数与村低收入农户总数之比，50%以上得满<br/>分，每减少5%减1分</td>
 				<td>10</td>
 				<td><input type="text" id="defen4" name="bytxt" value="${byMap.f4 }" class="input_w20" maxlength="2" tabindex="33"/></td>
 			</tr>
@@ -119,8 +119,9 @@
 				<td rowspan="2"><input type="text" id="defen5" name="bytxt" value="${byMap.f5 }" class="input_w20" maxlength="2" tabindex="48"/></td>
 			</tr>
 			<tr>
-				<td>已入账收益<input type="text" id="rzsy" name="bytxt" value="${byMap.m1 }" class="input_w45" maxlength="12" tabindex="40"/>万<br/>元；已签协议还未<br/>
-					实现收益<input type="text" id="sxsy" name="bytxt" value="${byMap.m2 }" class="input_w45" maxlength="12" tabindex="41"/>万<br/>元
+				<td>
+					已入账收益<input type="text" id="rzsy" name="bytxt" value="${byMap.m1 }" class="input_w45" maxlength="12" tabindex="40"/>万元；<br/>
+					已签协议<br/>还未实现收益<input type="text" id="sxsy" name="bytxt" value="${byMap.m2 }" class="input_w45" maxlength="12" tabindex="41"/>万元
 				</td>
 				<td>
 					实施项目数<input type="text" id="ssxm" name="bytxt" value="${byMap.pi }" class="input_w20" maxlength="12" tabindex="42"/>个。项目资金来源：<br/>
@@ -135,7 +136,7 @@
 			<tr>
 				<td>有先进适用<br/>的信息网络</td>
 				<td>因特网入户率</td>
-				<td>指通过宽带、有线电视、电话拨号、移动上网（含手<br/>机上网），能够接入因特网的农户占本村农户总数的<br/>比重。70%以上得满分，每少10%扣2分</td>
+				<td>指通过宽带、有线电视、电话拨号、移动上网（含手机上网），能够<br/>接入因特网的农户占本村农户总数的比重。70%以上得满分，每少10%<br/>扣2分</td>
 				<td>10</td>
 				<td><input type="text" id="defen6" name="bytxt" value="${byMap.f6 }" class="input_w20" maxlength="2" tabindex="50"/></td>
 			</tr>
