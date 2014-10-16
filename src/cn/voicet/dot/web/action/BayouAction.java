@@ -201,7 +201,16 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 		return query();
 	}
 	
-	
+	/**
+	 * °ËÓÐ»ã×Ü
+	 */
+	public String total()
+	{
+		DotSession ds = DotSession.getVTSession(request);
+		log.info("bm:"+ds.rbm);
+		bayouService.queryBayouTotalInfo(ds);
+		return "show_bayou_total";
+	}
 	
 	private int rflag=1;
 	public int getRflag() {

@@ -181,6 +181,7 @@
 			<result name="show_bayou">/WEB-INF/page/bayou/bayouList.jsp</result>
 			<result name="show_bayou_detail">/WEB-INF/page/bayou/bayouDetail.jsp</result>
 			<result name="show_bayou_report">/WEB-INF/page/bayou/bayouReport.jsp</result>
+			<result name="show_bayou_total">/WEB-INF/page/bayou/bayouTotal.jsp</result>
 		</action>
 		
 	</package>  

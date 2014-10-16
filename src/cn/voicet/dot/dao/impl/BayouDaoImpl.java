@@ -159,5 +159,31 @@ public class BayouDaoImpl extends CommonDaoImpl<Object> implements BayouDao {
 			}
 		});
 	}
+
+	public void queryBayouTotalInfo(final DotSession ds) {
+		log.info("sp:y8_group_xian(1)");
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				Connection conn = session.connection();
+				CallableStatement cs = conn.prepareCall("{call y8_group_xian(?)}");
+				cs.setString(1, ds.rbm);
+				cs.execute();
+				ResultSet rs = cs.getResultSet();
+				ds.initData();
+				ds.list = new ArrayList();
+				Map map;
+				if(null != rs)
+				{
+					while(rs.next()){
+						map = new HashMap();
+						ds.putMapDataByColName(map, rs);
+		        		ds.list.add(map);
+					}
+				}
+				return null;
+			}
+		});
+	}
 	
 }

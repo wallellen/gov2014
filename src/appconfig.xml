@@ -30,6 +30,7 @@
 			<fun name="年收入及帮扶情况" action="govIncomeAction_home.do" />
 			<fun name="省后方单位挂钩帮扶" action="govBangfuAction_home.do" />
 			<fun name="新八有考核" action="bayou_query.do" />
+			<fun name="新八有考核汇总" action="bayou_total.do" />
 		</grp>
 		<grp name="管理配置">
 			<fun name="下级密码初始化" action="initPassAction_home.do"/>

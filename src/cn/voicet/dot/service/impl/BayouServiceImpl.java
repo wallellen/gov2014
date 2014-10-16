@@ -38,4 +38,8 @@ public class BayouServiceImpl implements BayouService {
 		bayouDao.deleteCunByAreabm(ds, bayouForm);
 	}
 
+	public void queryBayouTotalInfo(DotSession ds) {
+		bayouDao.queryBayouTotalInfo(ds);
+	}
+
 }

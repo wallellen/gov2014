@@ -12,4 +12,5 @@ public interface BayouDao {
 	void saveBayouInfo(BayouForm bayouForm);
 	void deleteCunByAreabm(DotSession ds, BayouForm bayouForm);
 	void addCunWithAreabm(DotSession ds, BayouForm bayouForm);
+	void queryBayouTotalInfo(DotSession ds);
 }
