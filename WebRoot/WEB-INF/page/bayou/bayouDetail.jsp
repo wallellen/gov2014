@@ -114,7 +114,7 @@
 			<tr>
 				<td rowspan="2">有持续稳定<br/>的集体收入</td>
 				<td>集体经营性收入</td>
-				<td>2014年所有经济薄弱村的集体经营性收入要达到15<br/>万元以上。各年度考核时每少1万元扣2分</td>
+				<td>2014年所有经济薄弱村的集体经营性收入要达到15万元以上。各年度<br/>考核时每少1万元扣2分</td>
 				<td rowspan="2">30</td>
 				<td rowspan="2"><input type="text" id="defen5" name="bytxt" value="${byMap.f5 }" class="input_w20" maxlength="2" tabindex="48"/></td>
 			</tr>
