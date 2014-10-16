@@ -39,43 +39,42 @@
 	<input type="hidden" name="bytxt" value="${areabm }"/>
 	<input type="hidden" name="bytxt" value="2014"/>
 	<div class="view-family-report">
-    <h1>经济薄弱村新“八有”考核表</h1>
-    <p class="view-print">
-    	<a onclick="saveBayou()" style="cursor:pointer;">保存</a>
-	    <a id="printBtn" onclick="printBayouInfo('${areabm }')" target="printFrame" style="cursor:pointer;">打印</a>
-		<a id="returnBtn" onclick="returnBayouList('${rflag }')" style="cursor:pointer;">返回</a>
-    </p>
-    <div id="view-bayou-tit">
-       	<p class="view-sp1">
-       		<span><u><s:property value="#session.vts.map.shiname"/></u>&nbsp;市</span>
-           	<span><u>
-           		<s:if test="#session.vts.rbm.length()==6">
-           			<s:property value="#session.vts.rbn"/>
-           		</s:if>
-           		<s:else>
-           		<s:property value="#session.vts.map.xianname"/>
-           		</s:else>          	
-           	</u>&nbsp;县(市、区)</span>
-            <span><u><s:property value="#session.vts.map.zhenname"/></u>&nbsp;乡(镇)</span>
-            <span><u><s:property value="#session.vts.map.cunname"/></u>&nbsp;村</span>
-		</p>
-		<p class="view-sp2">
-			<span>201<u>&nbsp;4&nbsp;</u>年度</span>
-            <span>片区村<input type="text" id="pianqu" name="bytxt" value="${byMap.pq }" class="input_w20" maxlength="1" tabindex="9"/>(1、是&nbsp;&nbsp;2、否)</span>
-        </p>
-        <p class="view-sp2">
-			<span>挂钩帮扶单位：<input type="text" name="bytxt" value="${byMap.fu }" class="input_w75" tabindex="10"/></span>
-            <span>驻村人：<input type="text" name="bytxt" value="${byMap.fr }" class="input_w75" tabindex="11"/></span>
-            <span>村支书：<input type="text" name="bytxt" value="${byMap.cm }" class="input_w75" tabindex="12"/></span>
-            <span>电话：<input type="text" id="telnum" name="bytxt" value="${byMap.ct }" class="input_w75" tabindex="13"/></span>
-        </p>
-        <p class="view-sp2">
-			<span>上年度村集体经济收入：<input type="text" id="jtjj" name="bytxt" value="${byMap.sr }" class="input_w60" tabindex="20"/>万元</span>
-            <span>主要来源：<input type="text" name="bytxt" value="${byMap.ly }" class="input_w75" tabindex="21"/></span>
-        </p>
-    </div>
-    
-	<table width="100%" cellpadding="1" cellspacing="0" style="text-align:left;">
+	    <h1>经济薄弱村新“八有”考核表</h1>
+	    <p class="view-print" style="height:28px; line-height:28px;">
+	    	<a onclick="saveBayou()" style="cursor:pointer;">保存</a>
+		    <a id="printBtn" onclick="printBayouInfo('${areabm }')" target="printFrame" style="cursor:pointer;">打印</a>
+			<a id="returnBtn" onclick="returnBayouList('${rflag }')" style="cursor:pointer;">返回</a>
+	    </p>
+	    <div id="view-bayou-tit">
+	       	<p class="view-sp1">
+	       		<span><u><s:property value="#session.vts.map.shiname"/></u>&nbsp;市</span>
+	           	<span><u>
+	           		<s:if test="#session.vts.rbm.length()==6">
+	           			<s:property value="#session.vts.rbn"/>
+	           		</s:if>
+	           		<s:else>
+	           		<s:property value="#session.vts.map.xianname"/>
+	           		</s:else>          	
+	           	</u>&nbsp;县(市、区)</span>
+	            <span><u><s:property value="#session.vts.map.zhenname"/></u>&nbsp;乡(镇)</span>
+	            <span><u><s:property value="#session.vts.map.cunname"/></u>&nbsp;村</span>
+			</p>
+			<p class="view-sp2">
+				<span>201<u>&nbsp;4&nbsp;</u>年度</span>
+	            <span>片区村<input type="text" id="pianqu" name="bytxt" value="${byMap.pq }" class="input_w20" maxlength="1" tabindex="9"/>(1、是&nbsp;&nbsp;2、否)</span>
+	        </p>
+	        <p class="view-sp2">
+				<span>挂钩帮扶单位：<input type="text" name="bytxt" value="${byMap.fu }" class="input_w75" tabindex="10"/></span>
+	            <span>驻村人：<input type="text" name="bytxt" value="${byMap.fr }" class="input_w75" tabindex="11"/></span>
+	            <span>村支书：<input type="text" name="bytxt" value="${byMap.cm }" class="input_w75" tabindex="12"/></span>
+	            <span>电话：<input type="text" id="telnum" name="bytxt" value="${byMap.ct }" class="input_w75" tabindex="13"/></span>
+	        </p>
+	        <p class="view-sp2">
+				<span>上年度村集体经济收入：<input type="text" id="jtjj" name="bytxt" value="${byMap.sr }" class="input_w60" tabindex="20"/>万元</span>
+	            <span>主要来源：<input type="text" name="bytxt" value="${byMap.ly }" class="input_w75" tabindex="21"/></span>
+	        </p>
+	    </div>
+		<table width="100%" cellpadding="1" cellspacing="0" style="text-align:left;">
 			<tr style="text-align:center; font-weight:bold">
 				<td>新“八有”</td>		
 				<td>指标</td>
