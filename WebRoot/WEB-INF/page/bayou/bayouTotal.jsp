@@ -25,11 +25,11 @@
 	<table cellpadding="0" cellspacing="0" width="100%">
 		<tr style="font-weight:bold;">
 			<td width="12%">县名称</td>
-			<td width="10%">省级财政<br/>资金</td>
-			<td width="10%">市级财政<br/>资金</td>
-			<td width="10%">县级财政<br/>资金</td>
-			<td width="10%">帮扶单位<br/>资金</td>
-			<td width="10%">其他资金</td>
+			<td width="10%">省级财政<br/>资金(万元)</td>
+			<td width="10%">市级财政<br/>资金(万元)</td>
+			<td width="10%">县级财政<br/>资金(万元)</td>
+			<td width="10%">帮扶单位<br/>资金(万元)</td>
+			<td width="10%">其他<br/>资金(万元)</td>
 			<td width="10%">实施项目<br/>个数</td>
 			<td width="10%">2014年上报实现<br/>八有村个数</td>
 			<td width="10%">实际实现<br/>八有村个数</td>
