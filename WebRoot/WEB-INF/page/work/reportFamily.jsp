@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -61,21 +63,21 @@
 			<td width="8%">低保人口<br/>1是2否</td>
 			<td width="12%">领取低保金、五保、残疾金(元)</td>
         </tr>
-        <s:iterator value="#session.vts.list" var="ls" status="sc">
+        <c:forEach items="${sessionScope.vts.list}" var="ls">
 		<tr>
-			<td>&nbsp;<s:property value="#ls.uname"/></td>
-			<td>&nbsp;<s:property value="#ls.sex"/></td>
-			<td>&nbsp;<s:property value="#ls.age"/></td>
-			<td>&nbsp;<s:property value="#ls.school"/></td>
-			<td>&nbsp;<s:property value="#ls.education"/></td>
-			<td>&nbsp;<s:property value="#ls.health"/></td>
-			<td>&nbsp;<s:property value="#ls.dcno"/></td>
-			<td>&nbsp;<s:property value="#ls.labors"/></td>
-			<td>&nbsp;<s:property value="#ls.works"/></td>
-			<td>&nbsp;<s:property value="#ls.bla"/></td>
-			<td>&nbsp;<s:property value="#ls.tbfd"/></td>
+			<td>&nbsp;${ls.uname }</td>
+			<td>&nbsp;${ls.sex }</td>
+			<td>&nbsp;${ls.age }</td>
+			<td>&nbsp;${ls.school }</td>
+			<td>&nbsp;${ls.education }</td>
+			<td>&nbsp;${ls.health }</td>
+			<td>&nbsp;${ls.dcno }</td>
+			<td>&nbsp;${ls.labors }</td>
+			<td>&nbsp;${ls.works }</td>
+			<td>&nbsp;${ls.bla }</td>
+			<td>&nbsp;${ls.tbfd }</td>
 		</tr>
-		</s:iterator>
+        </c:forEach>
     </table>
     <table width="100%" cellpadding="0" cellspacing="0">
     	<tr>
@@ -121,8 +123,8 @@
     </table>
     <table class="last-tab" width="100%" cellpadding="0" cellspacing="0">
     	<!-- start -->
-    	<s:iterator value="#session.vts.list2" var="ls2" status="sc">
-    	<s:if test="#sc.count==1">
+    	<c:forEach items="${sessionScope.vts.list2 }" var="ls2" varStatus="status">
+    	<c:if test="${status.count eq 1 }">
     		<tr>
                 <td rowspan="9">二、脱贫进程</td>
                 <td width="20%">指标名称</td>
@@ -134,21 +136,21 @@
 		       	<td width="10%"><s:property value="#session.vts.map.y4"/>年</td>
 		       	<td width="10%"><s:property value="#session.vts.map.y5"/>年</td>
             </tr>
-    	</s:if>
+    	</c:if>
     	<tr>
-    		<s:elseif test="#sc.count==9">
+    		<c:if test="${status.count eq 9}">
     		<td rowspan="5">三、帮扶情况</td>
-    		</s:elseif>
-    		<td align="left">&nbsp;&nbsp;<s:property value="#ls2.ids"/></td>
-	      	<td>&nbsp;<s:property value="#ls2.unit"/></td>
-	       	<td>&nbsp;<s:property value="#ls2.code"/></td>
-	       	<td>&nbsp;<s:property value="#ls2.v1"/></td>
-	       	<td>&nbsp;<s:property value="#ls2.v2"/></td>
-	       	<td>&nbsp;<s:property value="#ls2.v3"/></td>
-	       	<td>&nbsp;<s:property value="#ls2.v4"/></td>
-	       	<td>&nbsp;<s:property value="#ls2.v5"/></td>
+    		</c:if>
+    		<td align="left">&nbsp;&nbsp;${ls2.ids }</td>
+	      	<td>${ls2.unit }</td>
+			<td>${ls2.code }</td>
+			<td>${ls2.v1 }</td>
+			<td>${ls2.v2 }</td>
+			<td>${ls2.v3 }</td>
+			<td>${ls2.v4 }</td>
+			<td>${ls2.v5 }</td>
     	</tr>
-    	</s:iterator>
+    	</c:forEach>
     	<!-- end -->
 		<tr>
 			<td colspan="4">农&nbsp;&nbsp;户&nbsp;&nbsp;签&nbsp;&nbsp;名&nbsp;&nbsp;(盖章)</td>
