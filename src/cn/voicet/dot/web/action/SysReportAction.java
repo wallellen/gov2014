@@ -10,7 +10,7 @@ import cn.voicet.dot.util.DotSession;
 
 @Controller("sysReportAction")
 @Scope("prototype")
-@SuppressWarnings({"serial","unchecked"})
+@SuppressWarnings("serial")
 public class SysReportAction extends BaseAction{
 
 	@Resource(name=SysReportService.SERVICE_NAME)
@@ -22,8 +22,9 @@ public class SysReportAction extends BaseAction{
 	
 	public String configReport(){
 		DotSession ds=DotSession.getVTSession(request);
-		ds.initData();
 		sysReportService.getSysReportInfo(ds, reportflag);
+		request.setAttribute("reportList", ds.list);
+		ds.list=null;
 		return "showReport";
 	}
 	

@@ -282,6 +282,132 @@ public class DotSession implements Serializable{
 	public void setList6(List list6) {
 		this.list6 = list6;
 	}
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getRoleName() {
+		return roleName;
+	}
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+	public String getRoleID() {
+		return roleID;
+	}
+	public void setRoleID(String roleID) {
+		this.roleID = roleID;
+	}
+	public SubPathTitle getSubPathTitle() {
+		return subPathTitle;
+	}
+	public void setSubPathTitle(SubPathTitle subPathTitle) {
+		this.subPathTitle = subPathTitle;
+	}
+	public String getRbm() {
+		return rbm;
+	}
+	public void setRbm(String rbm) {
+		this.rbm = rbm;
+	}
+	public String getRbn() {
+		return rbn;
+	}
+	public void setRbn(String rbn) {
+		this.rbn = rbn;
+	}
+	public String getCurBM() {
+		return curBM;
+	}
+	public void setCurBM(String curBM) {
+		this.curBM = curBM;
+	}
+	public String getCurHM() {
+		return curHM;
+	}
+	public void setCurHM(String curHM) {
+		this.curHM = curHM;
+	}
+	public String getNavPath() {
+		return navPath;
+	}
+	public void setNavPath(String navPath) {
+		this.navPath = navPath;
+	}
+	public String getOpCode() {
+		return opCode;
+	}
+	public void setOpCode(String opCode) {
+		this.opCode = opCode;
+	}
+	public int getIsedit() {
+		return isedit;
+	}
+	public void setIsedit(int isedit) {
+		this.isedit = isedit;
+	}
+	public int getWorkyear() {
+		return workyear;
+	}
+	public void setWorkyear(int workyear) {
+		this.workyear = workyear;
+	}
+	public int getYearlock() {
+		return yearlock;
+	}
+	public void setYearlock(int yearlock) {
+		this.yearlock = yearlock;
+	}
+	public int getCurGolbalPage() {
+		return curGolbalPage;
+	}
+	public void setCurGolbalPage(int curGolbalPage) {
+		this.curGolbalPage = curGolbalPage;
+	}
+	public Map getMap() {
+		return map;
+	}
+	public void setMap(Map map) {
+		this.map = map;
+	}
+	public int getCurYear() {
+		return curYear;
+	}
+	public void setCurYear(int curYear) {
+		this.curYear = curYear;
+	}
+	public int getStackPos() {
+		return stackPos;
+	}
+	public void setStackPos(int stackPos) {
+		this.stackPos = stackPos;
+	}
+	public String getBmhm() {
+		return bmhm;
+	}
+	public void setBmhm(String bmhm) {
+		this.bmhm = bmhm;
+	}
+	public int getSflag() {
+		return sflag;
+	}
+	public void setSflag(int sflag) {
+		this.sflag = sflag;
+	}
 	
 	/**
 	 * 

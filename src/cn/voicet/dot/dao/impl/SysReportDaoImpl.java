@@ -31,6 +31,7 @@ public class SysReportDaoImpl extends CommonDaoImpl<Object> implements SysReport
 					cs.setString(1, reportflag);
 					cs.setInt(2, 1);
 					cs.execute();
+					ds.initData();
 					ResultSet rs = cs.getResultSet();
 					ds.list = new ArrayList();	
 					Map map;

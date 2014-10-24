@@ -1,17 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style.css" />
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
 </head>
 <body style="background:#E0EEFB;">
 <h3 class="jiangbu-title">
-	<s:property value="year"/>&nbsp;年家庭收入及帮扶情况&nbsp;
-	<s:if test="areaName!=null">[<s:property value="areaName"/>]</s:if>
+	${year }&nbsp;年家庭收入及帮扶情况&nbsp;
+	<c:if test="${areaName ne null }">[${areaName }]</c:if>
 </h3>
 <div id="jiangbu-data">
 <table class="data_list" cellpadding="0" cellspacing="0" width="100%">
@@ -29,22 +28,24 @@
     </tr>
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
+    <c:forEach items="${yearList }" var="ls">
     <tr style="display:none">
-        <td><s:property value="#ls.c0"/></td>
-        <td><s:property value="#ls.c1"/></td>
-        <td><s:property value="#ls.c2"/></td>
-        <td><s:property value="#ls.c3"/></td>
+        <td>${ ls.c0 }</td>
+		<td>${ ls.c1 }</td>
+		<td>${ ls.c2 }</td>
+		<td>${ ls.c3 }</td>
         <td>
-        	<s:if test="#ls.c0.length()<12">
-        	<a href="${pageContext.request.contextPath }/system/govIncomeAction_viewYearIncome.do?cbm=<s:property value="#ls.c0"/>&year=<s:property value="year"/>&title=<s:property value="title"/>&sdt=<s:property value="sdt"/>&edt=<s:property value="edt"/>&areaName=<s:property value="#ls.c1"/>">查看</a>
-        	</s:if>
-        	<s:else>
-        	<a href="${pageContext.request.contextPath }/system/govIncomeAction_viewIncomeHu.do?cbm=<s:property value="#ls.c0"/>&year=<s:property value="year"/>&title=<s:property value="title"/>&sdt=<s:property value="sdt"/>&edt=<s:property value="edt"/>&areaName=<s:property value="#ls.c1"/>">查看</a>
-        	</s:else>
+        	<c:choose>
+        		<c:when test="${fn:length(ls.c0) lt 12 }">
+        			<a href="${pageContext.request.contextPath }/system/govIncomeAction_viewYearIncome.do?cbm=${ls.c0 }&year=${year }&title=${title }&sdt=${sdt }&edt=${edt }&areaName=${ls.c1 }">查看</a>	
+        		</c:when>
+        		<c:otherwise>
+        			<a href="${pageContext.request.contextPath }/system/govIncomeAction_viewIncomeHu.do?cbm=${ls.c0 }&year=${year }&title=${title }&sdt=${sdt }&edt=${edt }&areaName=${ls.c1 }">查看</a>	
+        		</c:otherwise>
+        	</c:choose>
         </td>
     </tr>
-    </s:iterator>
+    </c:forEach>
 	</tbody>
 </table>
 </div>
@@ -52,5 +53,8 @@
 	<input type="hidden" id="pageRows" value="23"/>
 	<div id="changePage"></div>
 </div>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
 </body>
 </html>

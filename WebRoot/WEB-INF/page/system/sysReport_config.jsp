@@ -1,15 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style.css" />
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/datePicker/skin/WdatePicker.css" />
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/datePicker/WdatePicker.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/report.js"></script>
 	<style type="text/css">
 		#overlay-report{position:absolute;top:0;left:0;width:100%;height:670px;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
 		#win-report{position:absolute;top:30%;left:45%;width:450px;height:280px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;} 
@@ -18,7 +15,7 @@
 	</style>
 </head>
 <body style="background:#E0EEFB;">
-<h3 class="jiangbu-title">[<s:property value="reportName"/>]&nbsp;报告列表</h3>
+<h3 class="jiangbu-title">[${reportName }]&nbsp;报告列表</h3>
 <div id="jiangbu-data">
 <table class="data_list" cellpadding="0" cellspacing="0" width="100%">
    	<thead>
@@ -39,20 +36,20 @@
     </tr>
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
+    <c:forEach items="${reportList }" var="ls">
     <tr style="display:none">
-        <td><s:property value="#ls.c0"/></td>
-        <td><s:property value="#ls.c1"/></td>
-        <td><s:property value="#ls.c2"/></td>
-        <td><s:property value="#ls.c3"/></td>
-        <td><s:property value="#ls.c4==1?'√':''"/></td>
-        <td><s:property value="#ls.c5==1?'√':''"/></td>
+        <td>${ls.c0 }</td>
+		<td>${ls.c1 }</td>
+		<td>${ls.c2 }</td>
+		<td>${ls.c3 }</td>
+        <td><c:if test="${ls.c4 eq 1}">√</c:if></td>
+        <td><c:if test="${ls.c5 eq 1}">√</c:if></td>
         <td>
-        	<a href="javascript:popReport('edit','<s:property value="#ls.c0"/>','<s:property value="#ls.c1"/>','<s:property value="#ls.c2"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c4"/>','<s:property value="#ls.c5"/>')">修改</a>
-        	<a href="javascript:deleteReport('<s:property value="#ls.c0"/>')">删除</a>
+        	<a href="javascript:popReport('edit','${ls.c0 }','${ls.c1 }','${ls.c2 }','${ls.c3 }','${ls.c4 }','${ls.c5 }')">修改</a>
+        	<a href="javascript:deleteReport('${ls.c0 }')">删除</a>
         </td>
     </tr>
-    </s:iterator>
+    </c:forEach>
 	</tbody>
 </table>
 </div>
@@ -133,5 +130,10 @@
 	}	
 </script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/datePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/report.js"></script>
 </body>
 </html>

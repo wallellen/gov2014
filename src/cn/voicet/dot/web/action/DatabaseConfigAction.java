@@ -19,6 +19,8 @@ public class DatabaseConfigAction extends BaseAction{
 	public String home() {
 		DotSession ds = DotSession.getVTSession(request);
 		databaseConfigService.databaseInfo(ds);
+		request.setAttribute("dbList", ds.list);
+		ds.list=null;
 		return "home";
 	}
 	

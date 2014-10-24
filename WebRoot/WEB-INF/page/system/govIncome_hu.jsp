@@ -1,20 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style.css" />
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/income.js"></script>
 	<style type="text/css">
 		#overlay-year{position:absolute;top:0;left:0;width:100%;height:670px;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
 		#win-year{position:absolute;top:30%;left:45%;width:500px;height:460px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;} 
 		h2{font-size:12px;height:18px;text-align:right;background:#3F89EC;border-bottom:3px solid #F7F7F7;padding:5px;cursor:move;} 
 		h2 span{border:0px solid #f90;padding:0 2px;} 
-		
 		.back-input{
 			width:120px; height:20px;
 		}
@@ -27,7 +23,7 @@
 	</style>
 </head>
 <body style="background:#E0EEFB;">
-<h3 class="jiangbu-title"><s:property value="year"/>&nbsp;年收入及帮扶情况&nbsp;<s:if test="areaName!=null">[<s:property value="areaName"/>]</s:if></h3>
+<h3 class="jiangbu-title">${year }&nbsp;年收入及帮扶情况&nbsp;<c:if test="${areaName ne null }">[${areaName }]</c:if></h3>
 <div id="jiangbu-data">
 <table class="data_list" cellpadding="0" cellspacing="0" width="100%">
    	<thead>
@@ -38,7 +34,7 @@
         <td colspan="5">帮扶情况</td>
         <td rowspan="3" width="8%">
         	<p>
-        	<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govIncomeAction_exportIncome.do?cbm=<s:property value="cbm"/>&title=<s:property value="title"/>&sdt=<s:property value="sdt"/>&edt=<s:property value="edt"/>&year=<s:property value="year"/>&areaName=<s:property value="areaName"/>'" class="button43"/>
+        	<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govIncomeAction_exportIncome.do?cbm=${cbm }&title=${title }&sdt=${sdt }&edt=${edt }&year=${year }&areaName=${areaName }'" class="button43"/>
         	</p>
         	<p>&nbsp;</p>
         	<p>
@@ -66,36 +62,47 @@
     </tr>
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
+    <c:forEach items="${yearList }" var="ls">
     <tr style="display:none">
-        <td><s:property value="#ls.c0"/></td>
-        <td title="<s:property value='#ls.c1'/>"><s:property value="#ls.c1.length()>5?#ls.c1.substring(0,4)+'...':#ls.c1"/></td>
-        <td><s:property value="#ls.c2"/></td>
-        <td><s:property value="#ls.c3"/></td>
-        <td><s:property value="#ls.c4"/></td>
-        <td><s:property value="#ls.c5"/></td>
-        <td><s:property value="#ls.c6"/></td>
-        <td><s:property value="#ls.c7"/></td>
-        <td><s:property value="#ls.c8"/></td>
-        <td><s:property value="#ls.c9"/></td>
-        <td><s:property value="#ls.c10"/></td>
-        <td><s:property value="#ls.c11"/></td>
-        <td><s:property value="#ls.c12"/></td>
-        <td><s:property value="#ls.c13"/></td>
-        <td><s:property value="#ls.c14"/></td>
+        <td>${ls.c0 }</td>
+        <td title="${ls.c1 }">
+        	<c:choose>
+        		<c:when test="${fn:length(ls.c1)>5 }">
+        			${fn:substring(ls.c1,0,4) }..
+        		</c:when>
+        		<c:otherwise>
+        			${ls.c1 }
+        		</c:otherwise>
+        	</c:choose>
+        </td>
+        <td>${ls.c2 }</td>
+		<td>${ls.c3 }</td>
+		<td>${ls.c4 }</td>
+		<td>${ls.c5 }</td>
+		<td>${ls.c6 }</td>
+		<td>${ls.c7 }</td>
+		<td>${ls.c8 }</td>
+		<td>${ls.c9 }</td>
+		<td>${ls.c10 }</td>
+		<td>${ls.c11 }</td>
+		<td>${ls.c12 }</td>
+		<td>${ls.c13 }</td>
+		<td>${ls.c14 }</td>
         <td>
         	<s:if test="#session.vts.isedit==1 && #session.vts.rbm.length()>4">
-			<s:if test="#ls.c2.length()>0">        	
-			<a href="javascript:popIncomeYear('edit','<s:property value="#ls.c0"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c4"/>','<s:property value="#ls.c5"/>','<s:property value="#ls.c6"/>','<s:property value="#ls.c7"/>','<s:property value="#ls.c8"/>','<s:property value="#ls.c10"/>','<s:property value="#ls.c11"/>','<s:property value="#ls.c12"/>','<s:property value="#ls.c13"/>','<s:property value="#ls.c14"/>','<s:property value="#ls.c1"/>')">修改</a>
+			<c:choose>
+				<c:when test="${fn:length(ls.c2) gt 0 }">
+					<a href="javascript:popIncomeYear('edit','${ls.c0 }','${ls.c3 }','${ls.c4 }','${ls.c5 }','${ls.c6 }','${ls.c7 }','${ls.c8 }','${ls.c10 }','${ls.c11 }','${ls.c12 }','${ls.c13 }','${ls.c14 }','${ls.c1 }')">修改</a>	
+				</c:when>
+				<c:otherwise>
+					<a href="javascript:popIncomeYear('add','${ls.c0 }','','','','','','','','','','','','${ls.c1 }')">添加</a>	
+				</c:otherwise>
+			</c:choose>
         	</s:if>
-        	<s:else>
-        	<a href="javascript:popIncomeYear('add','<s:property value="#ls.c0"/>','','','','','','','','','','','','<s:property value="#ls.c1"/>')">添加</a>
-        	</s:else>
-        	</s:if>
-        	<a href="${pageContext.request.contextPath }/system/govBrowerAction_viewReportFamily.do?viewBM=<s:property value='#ls.c0'/>">查看</a>
+        	<a href="${pageContext.request.contextPath }/system/govBrowerAction_viewReportFamily.do?viewBM=${ls.c0 }">查看</a>
         </td>
     </tr>
-    </s:iterator>
+    </c:forEach>
 	</tbody>
 </table>
 </div>
@@ -110,13 +117,13 @@
 <h2 style="line-height:20px; text-align:left; margin-top:2px;"><span id="ytitle"><font color="#fff">添加</font></span></h2>
 <form name="incomeForm" action="" method="post">
 <!-- areaName -->
-<input type="hidden" id="areaName" name="areaName" value="<s:property value="areaName"/>"/>
+<input type="hidden" id="areaName" name="areaName" value="${areaName }"/>
 <!-- return button flag -->
-<input type="hidden" id="rflag" name="rflag" value="<s:property value="rflag"/>"/>
+<input type="hidden" id="rflag" name="rflag" value="${rflag }"/>
 <!-- year -->
-<input type="hidden" id="year" name="year" value="<s:property value="year"/>"/>
+<input type="hidden" id="year" name="year" value="${year }"/>
 <!-- cbm -->
-<input type="hidden" id="cbm" name="cbm" value="<s:property value="cbm"/>"/>
+<input type="hidden" id="cbm" name="cbm" value="${cbm }"/>
 <!-- add or edit flag -->
 <input type="hidden" id="i1" name="instr"/>
 <!-- hm -->
@@ -201,6 +208,10 @@
 </form>
 </div>
 <!-- add year end-->
-
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/income.js"></script>
 </body>
 </html>

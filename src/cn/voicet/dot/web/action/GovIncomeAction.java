@@ -29,6 +29,8 @@ public class GovIncomeAction extends BaseAction implements ModelDriven<GovIncome
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govIncomeService.getIncomeYear(ds);
+		request.setAttribute("yearList", ds.list);
+		ds.list=null;
 		return "showIncome_year";
 	}
 	
@@ -37,6 +39,8 @@ public class GovIncomeAction extends BaseAction implements ModelDriven<GovIncome
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govIncomeService.getIncomeInfoBycbm(ds, cbm, year);
+		request.setAttribute("yearList", ds.list);
+		ds.list=null;
 		return "showIncome_detail";
 	}
 	
@@ -45,6 +49,8 @@ public class GovIncomeAction extends BaseAction implements ModelDriven<GovIncome
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govIncomeService.getIncomeInfoBycbm(ds, cbm, year);
+		request.setAttribute("yearList", ds.list);
+		ds.list=null;
 		return "showIncome_hu";
 	}
 	
