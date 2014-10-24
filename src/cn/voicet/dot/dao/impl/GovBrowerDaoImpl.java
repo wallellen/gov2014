@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
@@ -22,7 +23,7 @@ import cn.voicet.dot.web.form.GovFamilyForm;
 @SuppressWarnings({"unchecked", "deprecation","static-access"})
 @Repository(GovBrowerDao.SERVICE_NAME)
 public class GovBrowerDaoImpl extends CommonDaoImpl<Object> implements GovBrowerDao {
-	
+	private static Logger log = Logger.getLogger(GovBrowerDaoImpl.class);
 	/** 获取地区信息列表 */
 	public void getGovBrowerList(final DotSession ds) {
 		getHibernateTemplate().execute(new HibernateCallback() {

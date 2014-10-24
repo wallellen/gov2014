@@ -1,5 +1,7 @@
 package cn.voicet.dot.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -16,15 +18,15 @@ public class SystemLogServiceImpl implements SystemLogService {
 	@Resource(name=SystemLogDao.SERVICE_NAME)
 	private SystemLogDao systemLogDao;
 
-	public void findLogInfo(DotSession ds, String startdate,
+	public List findLogInfo(String startdate,
 			String enddate, String msgtype, String sender, int curPage,
 			int pageSize) {
-		systemLogDao.findLogInfo(ds, startdate, enddate, msgtype, sender, curPage, pageSize);
+		return systemLogDao.findLogInfo(startdate, enddate, msgtype, sender, curPage, pageSize);
 	}
 
-	public Integer findLogTotalPage(DotSession ds, String startdate,
+	public Integer findLogTotalPage(String startdate,
 			String enddate, String msgtype, String sender, int pageSize) {
-		return systemLogDao.findLogTotalPage(ds, startdate, enddate, msgtype, sender, pageSize);
+		return systemLogDao.findLogTotalPage(startdate, enddate, msgtype, sender, pageSize);
 	}
 
 }

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -97,6 +98,9 @@
    	<input type="hidden" id="curPage" name="curPage" value="<s:property value="curPage" />">
     </form>
     <div class="content-log">
+    	<%
+   			long st = System.currentTimeMillis();
+   		%>
     	<table class="data_list" cellpadding="0" cellspacing="0">
         	<thead>
                 <tr class="tabtr1">
@@ -108,21 +112,25 @@
                 </tr>
             </thead>
             <tbody>
-                <s:iterator id="log" value="#session.vts.list" status="lo">
+            	<c:forEach items="${logList }" var="lo">
 				<tr align="center" style="font-size: 12px; height: 20px">
-					<td><s:property value="#log.logid"/></td>
-					<td><s:property value="#log.sender"/></td>
+					<td>${lo.logid }</td>
+					<td>${lo.sender }</td>
 					<td>
-						<s:if test="#log.msgtype==1">信息</s:if>
-						<s:elseif test="#log.msgtype==2">警告</s:elseif>
-						<s:else>错误</s:else>
+						<c:if test="${lo.msgtype eq 1}">信息</c:if>
+						<c:if test="${lo.msgtype eq 2 }">警告</c:if>
 					</td>
-					<td><s:property value="#log.occdt"/></td>
-					<td align="left" class="tabtd1">&nbsp;&nbsp;<s:property value="#log.content"/></td>
+					<td>${lo.occdt }</td>
+					<td align="left" class="tabtd1">&nbsp;&nbsp;${lo.content }</td>
 				</tr>
-				</s:iterator>
+				</c:forEach>
             </tbody>
         </table>
+        <%
+   			long onet = System.currentTimeMillis();
+    		String onetime = String.valueOf((onet-st)/1000);
+   		%>
+   		<input type="hidden" value="<%=onetime %>s"/>
     </div>
     <!-- js splitpage -->
     <div class="split-page">

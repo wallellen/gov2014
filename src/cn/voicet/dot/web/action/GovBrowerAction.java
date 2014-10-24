@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
-import org.jfree.util.Log;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -56,6 +55,10 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 	}
 	
 	public String viewArea() {
+		if(viewBM.equals("321323103"))
+		{
+			log.error("viewBM:"+viewBM);
+		}
 		DotSession ds = DotSession.getVTSession(request);
 		if(null!=viewBM && viewBM.length()>0) {
 			ds.curBM = viewBM;
@@ -101,7 +104,7 @@ public class GovBrowerAction extends BaseAction implements ModelDriven<GovFamily
 			ds.curHM= viewBM;
 		ds.pushAllList();
 		govBrowerService.getGovFamilyList(ds);
-		ds.opCode ="";
+		ds.opCode ="saveFamily";
 		return "detail";
 	}
 	

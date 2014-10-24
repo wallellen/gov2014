@@ -2,6 +2,7 @@ package cn.voicet.dot.web.action;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -31,7 +32,6 @@ public class SystemLogAction extends BaseAction{
 	private int curPage = 1;	//当前页, 默认为第一页, 为0时,则不做分页处理
 	
 	public String home() {
-		DotSession ds = DotSession.getVTSession(request);
 		//如果开始日期 或 结束日期为空, 查询结果为当前日期的系统日志
 		if (request.getParameter("startdate") == "" || request.getParameter("enddate") == ""){
 			startdate = date;
@@ -41,12 +41,13 @@ public class SystemLogAction extends BaseAction{
 		if(curPage<1){
 			curPage=1;
 		}
-		totalPage = systemLogService.findLogTotalPage(ds, startdate, enddate, msgtype, sender, pageSize);
+		totalPage = systemLogService.findLogTotalPage(startdate, enddate, msgtype, sender, pageSize);
 		//判断,下一页大于总页数时, 下一页等于最后一页
 		if(curPage>totalPage){
 			curPage=totalPage;
 		}
-		systemLogService.findLogInfo(ds, startdate, enddate, msgtype, sender, curPage, pageSize);
+		List list = systemLogService.findLogInfo(startdate, enddate, msgtype, sender, curPage, pageSize);
+		request.setAttribute("logList", list);
 		return "home";
 	}
 

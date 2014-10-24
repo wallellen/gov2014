@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.hibernate.HibernateException;
@@ -21,17 +22,17 @@ import cn.voicet.dot.util.DotSession;
 @Repository(SystemLogDao.SERVICE_NAME)
 public class SystemLogDaoImpl extends CommonDaoImpl<Object> implements SystemLogDao {
 
-	public void findLogInfo(final DotSession ds, final String startdate,
+	public List findLogInfo(final String startdate,
 			final String enddate, final String msgtype, final String sender, final int curPage,
 			final int pageSize) {
-		getHibernateTemplate().execute(new HibernateCallback() {
+		return (List)getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
 				String proc = "{call sys_log_query_page(?,?,?,?,?,?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
-				cs.setString(1, ds.rbm);
-				cs.setString(2, ds.roleID);
+				cs.setString(1, "32");
+				cs.setString(2, "1");
 				cs.setString(3, startdate);
 				cs.setString(4, enddate);
 				cs.setString(5, msgtype);
@@ -40,7 +41,7 @@ public class SystemLogDaoImpl extends CommonDaoImpl<Object> implements SystemLog
 				cs.setInt(8, pageSize);
 				cs.execute();
 				ResultSet rs = cs.getResultSet();
-				ds.list = new ArrayList();
+				List list = new ArrayList();
 				if(rs!=null){
 					while (rs.next()) {
 						 Map map = new HashMap();
@@ -49,15 +50,15 @@ public class SystemLogDaoImpl extends CommonDaoImpl<Object> implements SystemLog
 		        		 map.put("msgtype", rs.getString("msgtype"));	//信息类型
 		        		 map.put("occdt", rs.getString("occdt"));		//日期时间
 		        		 map.put("content", rs.getString("content"));	//描述内容
-		        		 ds.list.add(map);
+		        		 list.add(map);
 					}
 				}
-				return null;
+				return list;
 			}
 		});
 	}
 
-	public Integer findLogTotalPage(final DotSession ds, final String startdate,
+	public Integer findLogTotalPage(final String startdate,
 			final String enddate, final String msgtype, final String sender, final int pageSize) {
 		Integer totalPage = (Integer) getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
@@ -65,8 +66,8 @@ public class SystemLogDaoImpl extends CommonDaoImpl<Object> implements SystemLog
 				String proc = "{call sys_log_query_page_t(?,?,?,?,?,?,?,?)}";
 				Connection conn = session.connection();
 				CallableStatement cs = conn.prepareCall(proc);
-				cs.setString(1, ds.rbm);
-				cs.setString(2, ds.roleID);
+				cs.setString(1, "32");
+				cs.setString(2, "1");
 				cs.setString(3, startdate);
 		        cs.setString(4, enddate);
 		        cs.setString(5, msgtype);

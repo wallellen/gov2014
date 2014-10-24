@@ -1,36 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<%@page import="org.apache.struts2.components.Include"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
-<%@ page import="cn.voicet.dot.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style.css" />
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style-b.css" />
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/browerview.js"></script>
 	<style type="text/css">
 		#overlay-edit{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
 		#win-edit{position:absolute;top:50%;left:50%;width:500px;height:240px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;}
-		
 		#overlay-manage{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
 		#win-manage{position:absolute;top:50%;left:50%;width:500px;height:240px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;}
-		
 		#overlay-delfamily{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
 		#win-delfamily{position:absolute;top:50%;left:50%;width:400px;height:160px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;}
-		
 		h2{font-size:12px;height:18px;text-align:right;background:#3F89EC;border-bottom:3px solid #F7F7F7;padding:2px;cursor:move;margin-top:2px;} 
 		h2 span{border:0px solid #f90;padding:0 2px;} 
 	</style>
-	<script type="text/javascript">
-		window.onload=function(){
-			var v1 = parent.document.getElementById("navigate");
-			v1.innerHTML=document.getElementById('nav-hide').innerHTML;
-		}
-	</script>
 </head>
 <body style="background:#E0EEFB;">
 <div style="display:none;" id="nav-hide">
@@ -38,12 +24,6 @@
 </div>
 <div id="leftCon">
 	<ul>
-    	<!--
-    	<li><input type="button" onClick="location.href='${pageContext.request.contextPath }/system/govBrowerAction_returnList.do?viewBM=<s:property value="#session.vts.curBM"/>'" value="列表显示" class="button41"/></li>
-        <li><input type="button" onClick="location.href='${pageContext.request.contextPath }/system/govBrowerAction_overView.do?page=property&viewBM=<s:property value="#session.vts.curBM"/>'" value="农户属性" class="button41"/></li>
-        <li><input type="button" onClick="location.href='${pageContext.request.contextPath }/system/govBrowerAction_viewPoverty.do'" value="扶贫情况" class="button41"/></li>
-        <li><input type="button" onClick="location.href='${pageContext.request.contextPath }/system/govBrowerAction_overView.do?page=dcause&viewBM=<s:property value="#session.vts.curBM"/>'" value="贫困原因" class="button41"/></li>
-        -->
         <li>输入代码：<input type="text" id="dirBM" value="<s:property value="#session.vts.bmhm"/>" maxlength="18" onkeyup="checkIntInput(this)" onkeydown="javascript:if(event.keyCode==13) directAccess();" class="input-goto"/>&nbsp;<input type="button" id="btn-go" value="直接进入" onclick="directAccess();return false;" class="button4"/></li>
         <li>
         	<s:if test="#session.vts.isedit==1">
@@ -60,7 +40,7 @@
     	<table class="data_list" cellpadding="0" cellspacing="0">
         	<thead>
             	<tr class="tabtr1">
-                	<s:if test="#session.vts.curBM.length()<=9">
+                <s:if test="#session.vts.curBM.length()<=9">
 					<td height="20px" width="12%">地区编码</td>
 					<td width="15%">地区名称</td>
 					<td width="8%">农户总数</td>
@@ -88,74 +68,79 @@
                 </tr>
             </thead>
             <tbody id="splitpage">
-            	<s:iterator value="#session.vts.list" var="ls" status="li">
+            	<c:forEach items="${sessionScope.vts.list }" var="bo">
 				<tr style="display:none;">
 					<s:if test="#session.vts.curBM.length()<=9">
-					<td height="20px" align="left">&nbsp;<s:property value="#ls.bm"/></td>
-					<td align="left" title="<s:property value='#ls.oname'/>">&nbsp;<s:property value="#ls.oname.length()>7?#ls.oname.substring(0,7)+'..':#ls.oname"/></td>
-					<td align="right"><s:property value="#ls.htn"/>&nbsp;</td>
-					<td align="right"><s:property value="#ls.ptn"/>&nbsp;</td>
-					<td align="right"><s:property value="#ls.m"/>&nbsp;</td>
-					<td align="right"><s:property value="#ls.v1"/>&nbsp;</td>
-					<td align="right"><s:property value="#ls.v2"/>&nbsp;</td>
-					<td align="right"><s:property value="#ls.v3"/>&nbsp;</td>
-					<td align="right"><s:property value="#ls.cknum"/>&nbsp;</td>
+					<td height="20px" align="left">&nbsp;${bo.bm }</td>
+					<td align="left" title="${bo.oname }">&nbsp;
+						<c:choose>
+							<c:when test="${fn:length(bo.oname)>6}">${fn:substring(bo.oname,0,6) }..</c:when>
+							<c:otherwise>${bo.oname }</c:otherwise>
+						</c:choose>
+					</td>
+					<td align="right">${bo.htn }&nbsp;</td>
+					<td align="right">${bo.ptn }&nbsp;</td>
+					<td align="right">${bo.m }&nbsp;</td>
+					<td align="right">${bo.v1 }&nbsp;</td>
+					<td align="right">${bo.v2 }&nbsp;</td>
+					<td align="right">${bo.v3 }&nbsp;</td>
+					<td align="right">${bo.cknum }&nbsp;</td>
 					<td class="tabtd1">
-						<a href="#" onclick="viewBMInfo('<s:property value="#ls.bm"/>')">进入</a>
+						<a href="#" onclick="viewBMInfo('${bo.bm}')">进入</a>
 						<s:if test="#session.vts.isedit==1">
-						<a href="#" onclick="popEditName('<s:property value="#ls.oname"/>','<s:property value="#ls.htn"/>', '<s:property value="#ls.ptn"/>', '<s:property value="#ls.bm"/>')">修改</a>
+						<a href="#" onclick="popEditName('${bo.oname }','${bo.htn }', '${bo.ptn }', '${bo.bm }')">修改</a>
 						</s:if>
 						<!-- 20140815添加 -->
 						<s:if test="#session.vts.rbm.length()==6 && #session.vts.curBM.length()==9">
-							<a href="${pageContext.request.contextPath }/system/govBrowerAction_checkCun.do?cunbm=<s:property value="#ls.bm"/>&cunname=<s:property value="#ls.oname"/>">审查</a>
+							<a href="${pageContext.request.contextPath }/system/govBrowerAction_checkCun.do?cunbm=${bo.bm }&cunname=${bo.oname }">审查</a>
 						</s:if>
 						<s:if test="#session.vts.roleID==1">
-						<a href="#" onclick="popManager('<s:property value="#ls.bm"/>')">管理</a>
+						<a href="#" onclick="popManager('${bo.bm }')">管理</a>
 						</s:if>
 					</td>
 					</s:if>
 					<s:else>
-						<td align="left" height="20px">&nbsp;<s:property value="#ls.hm"/></td>
-						<td align="left" title="<s:property value='#ls.zhu'/>">
-							<s:if test="#ls.zhu!=null">
-							<s:property value="#ls.zhu.length()>3?#ls.zhu.substring(0,2)+'..':#ls.zhu"/>
-							</s:if>
-							<s:else>
-								&nbsp;
-							</s:else>
+						<td align="left" height="20px">&nbsp;${bo.hm }</td>
+						<td align="left" title="${bo.zhu }">&nbsp;
+							<c:choose>
+								<c:when test="${fn:length(bo.zhu)>3}">${fn:substring(bo.zhu,0,3) }..</c:when>
+								<c:otherwise>${bo.zhu }</c:otherwise>
+							</c:choose>
 						</td>
-						<td align="left" title="<s:property value='#ls.hname'/>">&nbsp;<s:property value="#ls.hname.length()>3?#ls.hname.substring(0,2)+'..':#ls.hname"/></td>
-						<td align="right"><s:property value="#ls.population"/>&nbsp;</td>
-						<td align="right"><s:property value="#ls.labornum"/>&nbsp;</td>
-						<td align="right"><s:property value="#ls.fields"/>&nbsp;</td>
-						<td align="right"><s:property value="#ls.house"/>&nbsp;</td>
-						<td align="left">&nbsp;<s:property value="#ls.property"/></td>
-						<td align="left">&nbsp;<s:property value="#ls.dcause"/></td>
+						<td align="left" title="${bo.hname }">&nbsp;
+							<c:choose>
+								<c:when test="${fn:length(bo.hname)>3}">${fn:substring(bo.hname,0,3) }..</c:when>
+								<c:otherwise>${bo.hname }</c:otherwise>
+							</c:choose>
+						</td>
+						<td align="right">${bo.population }&nbsp;</td>
+						<td align="right">${bo.labornum }&nbsp;</td>
+						<td align="right">${bo.fields }&nbsp;</td>
+						<td align="right">${bo.house }&nbsp;</td>
+						<td align="left">&nbsp;${bo.property }</td>
+						<td align="left">&nbsp;${bo.dcause }</td>
 						<td align="center">
-							<s:if test="#ls.ischeck!=null && #ls.ischeck==1">
+							<c:if test="${bo.ischeck eq 1}">
 							√
-							</s:if>
-							<s:elseif test="#ls.ischeck!=null && #ls.ischeck==2">
+							</c:if>
+							<c:if test="${bo.ischeck eq 2}">
 							乂
-							</s:elseif>
-							<s:else>
-							&nbsp;
-							</s:else>
+							</c:if>
 						</td>
 						<td class="tabtd1">
-							<a href="${pageContext.request.contextPath }/system/govBrowerAction_viewReportFamily.do?viewBM=<s:property value="#ls.hm"/>">查看</a>
-			 				<a id="printBt" href="${pageContext.request.contextPath }/system/govBrowerAction_printFamily.do?viewBM=<s:property value="#ls.hm"/>" target="printFrame">打印</a>
+							<a href="${pageContext.request.contextPath }/system/govBrowerAction_viewReportFamily.do?viewBM=${bo.hm }">查看</a>
+			 				<a id="printBt" href="${pageContext.request.contextPath }/system/govBrowerAction_printFamily.do?viewBM=${bo.hm }" target="printFrame">打印</a>
 			 				<s:if test="#session.vts.isedit==1">
-							<a href="${pageContext.request.contextPath }/system/govBrowerAction_detail.do?viewBM=<s:property value="#ls.hm"/>&rtf=home">编辑</a>
+							<a href="${pageContext.request.contextPath }/system/govBrowerAction_detail.do?viewBM=${bo.hm }&rtf=home">编辑</a>
 							<s:if test="#session.vts.rbm.length()==2">
-							<a href="javascript:popDelFamily('<s:property value="#ls.hm"/>','<s:property value="#ls.hname"/>')">删除</a>
+							<a href="javascript:popDelFamily('${bo.hm }','${bo.hname }')">删除</a>
 							</s:if>
 			 				</s:if>
-			 				<a href="${pageContext.request.contextPath }/system/govBrowerAction_checkFamily.do?hbm=<s:property value="#ls.hm"/>">审查</a>
+			 				<a href="${pageContext.request.contextPath }/system/govBrowerAction_checkFamily.do?hbm=${bo.hm}">审查</a>
 						</td>
 					</s:else>
 				</tr>
-				</s:iterator>
+				</c:forEach>
             </tbody>
         </table>
     </div>
@@ -168,7 +153,6 @@
 <div id="rightCon">
 	<%@ include file="/WEB-INF/page/work/overView.jsp"%>
 </div>
-
 <!-- update name -->
 <div id="overlay-edit"></div>
 <div id="win-edit" style="line-height: 30px">
@@ -266,5 +250,16 @@
 <s:if test="#session.vts.hasStack()">
 	<s:property value="#session.vts.popAllList()"/>
 </s:if>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/browerview.js"></script>	
+<script type="text/javascript">
+	window.onload=function(){
+		var v1 = parent.document.getElementById("navigate");
+		v1.innerHTML=document.getElementById('nav-hide').innerHTML;
+	}
+</script>
 </body>
 </html>

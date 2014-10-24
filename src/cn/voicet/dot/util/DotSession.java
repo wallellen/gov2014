@@ -1,5 +1,6 @@
 package cn.voicet.dot.util;
 
+import java.io.Serializable;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -13,9 +14,14 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-@SuppressWarnings("unchecked")
-public class DotSession {
+import org.apache.log4j.Logger;
 
+@SuppressWarnings("unchecked")
+public class DotSession implements Serializable{
+
+	private static Logger log = Logger.getLogger(DotSession.class);
+	private static final long serialVersionUID = 8459257118802276422L;
+	
 	public String account;
 	public String password;
 	public String username;
@@ -68,7 +74,7 @@ public class DotSession {
 			arrayStackInfo[stackPos].list5=list5;
 			arrayStackInfo[stackPos++].list6=list6;
 		}
-		System.out.println("pushAllList cur:"+stackPos);
+		log.info("pushAllList cur:"+stackPos);
 	}
 	public int getStackLevel(){
 		return stackPos;
@@ -113,6 +119,12 @@ public class DotSession {
 	}
 	
 	public void initData() {
+		if(null!=list)
+			list.clear();
+		if(null!=list2)
+			list2.clear();
+		if(null!=list3)
+			list3.clear();
 		list = new ArrayList();
 		list2 = new ArrayList();
 		list3 = new ArrayList();
@@ -178,7 +190,7 @@ public class DotSession {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("");
+			log.info("error");
 		}
 	}
 	/** 将结果集数据放进Map */
@@ -197,7 +209,7 @@ public class DotSession {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("");
+			log.info("error");
 		}
 	}
 	
@@ -234,4 +246,45 @@ public class DotSession {
 			}
 		}
 	}
+	public List getList() {
+		return list;
+	}
+	public void setList(List list) {
+		this.list = list;
+	}
+	public List getList2() {
+		return list2;
+	}
+	public void setList2(List list2) {
+		this.list2 = list2;
+	}
+	public List getList3() {
+		return list3;
+	}
+	public void setList3(List list3) {
+		this.list3 = list3;
+	}
+	public List getList4() {
+		return list4;
+	}
+	public void setList4(List list4) {
+		this.list4 = list4;
+	}
+	public List getList5() {
+		return list5;
+	}
+	public void setList5(List list5) {
+		this.list5 = list5;
+	}
+	public List getList6() {
+		return list6;
+	}
+	public void setList6(List list6) {
+		this.list6 = list6;
+	}
+	
+	/**
+	 * 
+	 */
+	
 }
