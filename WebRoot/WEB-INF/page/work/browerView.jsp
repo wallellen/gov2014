@@ -72,7 +72,7 @@
 				<tr style="display:none;">
 					<s:if test="#session.vts.curBM.length()<=9">
 					<td height="20px" align="left">&nbsp;${bo.bm }</td>
-					<td align="left" title="${bo.oname }">&nbsp;
+					<td align="left" title="${bo.oname }">
 						<c:choose>
 							<c:when test="${fn:length(bo.oname)>6}">${fn:substring(bo.oname,0,6) }..</c:when>
 							<c:otherwise>${bo.oname }</c:otherwise>
@@ -101,13 +101,13 @@
 					</s:if>
 					<s:else>
 						<td align="left" height="20px">&nbsp;${bo.hm }</td>
-						<td align="left" title="${bo.zhu }">&nbsp;
+						<td align="left" title="${bo.zhu }">
 							<c:choose>
 								<c:when test="${fn:length(bo.zhu)>3}">${fn:substring(bo.zhu,0,3) }..</c:when>
 								<c:otherwise>${bo.zhu }</c:otherwise>
 							</c:choose>
 						</td>
-						<td align="left" title="${bo.hname }">&nbsp;
+						<td align="left" title="${bo.hname }">
 							<c:choose>
 								<c:when test="${fn:length(bo.hname)>3}">${fn:substring(bo.hname,0,3) }..</c:when>
 								<c:otherwise>${bo.hname }</c:otherwise>
