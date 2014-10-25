@@ -209,6 +209,8 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("bm:"+ds.rbm);
 		bayouService.queryBayouTotalInfo(ds);
+		request.setAttribute("byList", ds.list);
+		ds.list=null;
 		return "show_bayou_total";
 	}
 	

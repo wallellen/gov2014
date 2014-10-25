@@ -29,6 +29,8 @@ public class GovBangfuAction extends BaseAction implements ModelDriven<GovBangfu
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govBangfuService.getBangfuMonth(ds);
+		request.setAttribute("bfList", ds.list);
+		ds.list=null;
 		return "showBangFu_month";
 	}
 	
@@ -37,6 +39,8 @@ public class GovBangfuAction extends BaseAction implements ModelDriven<GovBangfu
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govBangfuService.getBangfuInfoByDept(ds, rid, fuid);
+		request.setAttribute("bfList", ds.list);
+		ds.list=null;
 		return "showBangFu_dept";
 	}
 	
@@ -45,6 +49,8 @@ public class GovBangfuAction extends BaseAction implements ModelDriven<GovBangfu
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govBangfuService.getBangfuInfoByXian(ds, rid, fuid);
+		request.setAttribute("bfList", ds.list);
+		ds.list=null;
 		return "showBangFu_xian";
 	}
 	
@@ -53,6 +59,8 @@ public class GovBangfuAction extends BaseAction implements ModelDriven<GovBangfu
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govBangfuService.getXianInfoWithDept(ds, fuid);
+		request.setAttribute("bfList", ds.list);
+		ds.list=null;
 		return "showBangFu_deptDetail";
 	}
 	
@@ -61,6 +69,8 @@ public class GovBangfuAction extends BaseAction implements ModelDriven<GovBangfu
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govBangfuService.getDeptInfoWithXian(ds, rid, xm);
+		request.setAttribute("bfList", ds.list);
+		ds.list=null;
 		return "showBangFu_xianDetail";
 	}
 	
@@ -69,6 +79,8 @@ public class GovBangfuAction extends BaseAction implements ModelDriven<GovBangfu
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govBangfuService.getDeptInfoWithReport(ds, rid);
+		request.setAttribute("bfList", ds.list);
+		ds.list=null;
 		return "showBangFu_xianList";
 	}
 	
@@ -93,7 +105,6 @@ public class GovBangfuAction extends BaseAction implements ModelDriven<GovBangfu
 	public String deleteBangfuDept(){
 		DotSession ds = DotSession.getVTSession(request);
 		govBangfuService.deleteBangfuDeptByfuid(ds, fuid);
-		System.out.println(rflag);
 		rflag=rflag+1;
 		return deptManage();
 	}
@@ -111,6 +122,18 @@ public class GovBangfuAction extends BaseAction implements ModelDriven<GovBangfu
 		DotSession ds = DotSession.getVTSession(request);
 		govBangfuService.getBangfuInfoWithGroup(ds);
 		rflag=rflag+1;
+		request.setAttribute("bfList", ds.list);
+		request.setAttribute("bf2List", ds.list2);
+		request.setAttribute("bf3List", ds.list3);
+		request.setAttribute("bf4List", ds.list4);
+		request.setAttribute("bf5List", ds.list5);
+		request.setAttribute("bf6List", ds.list6);
+		ds.list=null;
+		ds.list2=null;
+		ds.list3=null;
+		ds.list4=null;
+		ds.list5=null;
+		ds.list6=null;
 		return "showBangFu_add";
 	}
 	
@@ -118,6 +141,8 @@ public class GovBangfuAction extends BaseAction implements ModelDriven<GovBangfu
 	public String deptManage(){
 		DotSession ds = DotSession.getVTSession(request);
 		govBangfuService.getBangfuDeptList(ds);
+		request.setAttribute("deptList", ds.list);
+		ds.list=null;
 		return "showBangFu_deptManage";
 	}
 	

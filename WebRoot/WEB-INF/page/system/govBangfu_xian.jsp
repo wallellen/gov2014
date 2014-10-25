@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style.css" />
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/bangfu.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
 	<style type="text/css">
 		h2{font-size:12px;height:18px;text-align:right;background:#3F89EC;border-bottom:3px solid #F7F7F7;padding:5px;cursor:move;} 
 		h2 span{border:0px solid #f90;padding:0 2px;} 
@@ -65,30 +62,38 @@
     </tr>
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
-    <tr style="display:none" title="县名称: <s:property value='#ls.c1'/>">
-        <td><s:property value="#ls.c0"/></td>
-        <td align="left">&nbsp;<s:property value="#ls.c1.length()>10?#ls.c1.substring(0,9)+'...':#ls.c1"/></td>
+    <c:forEach items="${bfList }" var="ls" varStatus="status">
+    <tr style="display:none" title="县名称: ${ls.c1 }">
+        <td>${ls.c0 }</td>
+        <td align="left">
+        	<c:set var="c1len" value="${fn:length(ls.c1) }"></c:set>
+        	<c:choose>
+        		<c:when test="${c1len gt 10 }">
+        			${fn:substring(ls.c1,0,9) }..
+        		</c:when>
+        		<c:otherwise>${ls.c1 }</c:otherwise>
+        	</c:choose>
+        </td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
-        <td><s:property value="#ls.c2"/></td>
-        <td><s:property value="#ls.c3"/></td>
-        <td><s:property value="#ls.c4"/></td>
-        <td><s:property value="#ls.c5"/></td>
-        <td><s:property value="#ls.c6"/></td>
-        <td><s:property value="#ls.c7"/></td>
-        <td><s:property value="#ls.c8"/></td>
-        <td><s:property value="#ls.c9"/></td>
-        <td><s:property value="#ls.c10"/></td>
-        <td><s:property value="#ls.c11"/></td>
-        <td><s:property value="#ls.c12"/></td>
-        <td><s:property value="#ls.c13"/></td>
+        <td>${ls.c2 }</td>
+		<td>${ls.c3 }</td>
+		<td>${ls.c4 }</td>
+		<td>${ls.c5 }</td>
+		<td>${ls.c6 }</td>
+		<td>${ls.c7 }</td>
+		<td>${ls.c8 }</td>
+		<td>${ls.c9 }</td>
+		<td>${ls.c10 }</td>
+		<td>${ls.c11 }</td>
+		<td>${ls.c12 }</td>
+		<td>${ls.c13 }</td>
         <td></td>
         <td>
-        	<a href="${pageContext.request.contextPath }/system/govBangfuAction_viewXianDetail.do?rid=<s:property value="rid"/>&xm=<s:property value="#ls.c0"/>&xianName=<s:property value="#ls.c1"/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&byxian=<s:property value="byxian"/>">查看详细</a>
+        	<a href="${pageContext.request.contextPath }/system/govBangfuAction_viewXianDetail.do?rid=${rid }&xm=${ls.c0 }&xianName=${ls.c1 }&title=${title }&sdt=${sdt }&edt=${edt }&byxian=${byxian }">查看详细</a>
         </td>
     </tr>
-    </s:iterator>
+    </c:forEach>
 	</tbody>
 </table>
 </div>
@@ -213,5 +218,10 @@
 </form>
 </div>
 <!-- add jiangbu end -->
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/bangfu.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
 </body>
 </html>

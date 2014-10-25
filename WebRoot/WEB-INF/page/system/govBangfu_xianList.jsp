@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style.css" />
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/bangfu.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
 	<style type="text/css">
 		h2{font-size:12px;height:18px;text-align:right;background:#3F89EC;border-bottom:3px solid #F7F7F7;padding:5px;cursor:move;} 
 		h2 span{border:0px solid #f90;padding:0 2px;} 
@@ -18,7 +15,6 @@
 		#overlay-bangfus{position:absolute;top:0;left:0;width:100%;height:670px;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
 		#win-bangfus{position:absolute;top:30%;left:45%;width:500px;height:190px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;}
 		#win-bangfus .back-input{height:20px; width:140px;}
-		
 		.hourf-errtip{
 			width:265px; 
 			height:18px;
@@ -26,15 +22,6 @@
 			color:#F00;
 		}
 	</style>
-	<script type="text/javascript">
-		function deleteBangFu(c){
-			document.getElementById("iids").value=c;
-			if(confirm('您确定要删除吗？')){
-				document.Form1.action="govBangfuAction_deleteBangfuInfo.do";
-				document.Form1.submit();
-			}
-		}
-	</script>
 </head>
 <body style="background:#E0EEFB;">
 <form name="Form1" id="Form1">
@@ -94,31 +81,55 @@
     </tr>
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
-    <tr style="display:none" title="省级后方单位名称: <s:property value='#ls.c1'/>&#10;所在乡镇名称: <s:property value='#ls.c14'/>&#10;挂钩村名称: <s:property value='#ls.c15'/>">
-        <td><s:property value="#sc.count"/></td>
-        <td align="left">&nbsp;<s:property value="#ls.c1.length()>10?#ls.c1.substring(0,9)+'...':#ls.c1"/></td>
-        <td><s:property value="#ls.c14.length()>2?#ls.c14.substring(0,1)+'...':#ls.c14"/></td>
-        <td><s:property value="#ls.c15.length()>2?#ls.c15.substring(0,1)+'...':#ls.c15"/></td>
-        <td><s:property value="#ls.c2"/></td>
-        <td><s:property value="#ls.c3"/></td>
-        <td><s:property value="#ls.c4"/></td>
-        <td><s:property value="#ls.c5"/></td>
-        <td><s:property value="#ls.c6"/></td>
-        <td><s:property value="#ls.c7"/></td>
-        <td><s:property value="#ls.c8"/></td>
-        <td><s:property value="#ls.c9"/></td>
-        <td><s:property value="#ls.c10"/></td>
-        <td><s:property value="#ls.c11"/></td>
-        <td><s:property value="#ls.c12"/></td>
-        <td><s:property value="#ls.c13"/></td>
+    <c:forEach items="${bfList }" var="ls" varStatus="status">
+    <tr style="display:none" title="省级后方单位名称: ${ls.c1 }&#10;所在乡镇名称: ${ls.c14 }&#10;挂钩村名称: ${ls.c15 }">
+        <td>${status.count }</td>
+        <td align="left">
+       	 	<c:set var="c1len" value="${fn:length(ls.c1) }"></c:set>
+        	<c:choose>
+        		<c:when test="${c1len gt 10 }">
+        			${fn:substring(ls.c1,0,9) }..
+        		</c:when>
+        		<c:otherwise>${ls.c1 }</c:otherwise>
+        	</c:choose>
+        </td>
+        <td>
+        	<c:set var="c14len" value="${fn:length(ls.c14) }"></c:set>
+        	<c:choose>
+        		<c:when test="${c14len gt 2 }">
+        			${fn:substring(ls.c14,0,1) }..
+        		</c:when>
+        		<c:otherwise>${ls.c14 }</c:otherwise>
+        	</c:choose>
+        </td>
+        <td>
+        	<c:set var="c15len" value="${fn:length(ls.c15) }"></c:set>
+        	<c:choose>
+        		<c:when test="${c15len gt 2 }">
+        			${fn:substring(ls.c15,0,1) }..
+        		</c:when>
+        		<c:otherwise>${ls.c15 }</c:otherwise>
+        	</c:choose>
+        </td>
+        <td>${ls.c2 }</td>
+		<td>${ls.c3 }</td>
+		<td>${ls.c4 }</td>
+		<td>${ls.c5 }</td>
+		<td>${ls.c6 }</td>
+		<td>${ls.c7 }</td>
+		<td>${ls.c8 }</td>
+		<td>${ls.c9 }</td>
+		<td>${ls.c10 }</td>
+		<td>${ls.c11 }</td>
+		<td>${ls.c12 }</td>
+		<td>${ls.c13 }</td>
         <td></td>
         <td>
-        	<a href="javascript:popBangfuEdit('edit','<s:property value="#ls.c0"/>','<s:property value="#ls.c2"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c5"/>','<s:property value="#ls.c6"/>','<s:property value="#ls.c8"/>','<s:property value="#ls.c9"/>','<s:property value="#ls.c10"/>','<s:property value="#ls.c12"/>','<s:property value="#ls.c13"/>','<s:property value="#ls.c1"/>','<s:property value="#ls.c14"/>','<s:property value="#ls.c15"/>','<s:property value="#ls.c16"/>')">修改</a>
-        	<a href="javascript:deleteBangFu('<s:property value="#ls.c0"/>')">删除</a>
+        	<a href="javascript:popBangfuEdit('edit','${ls.c0 }','${ls.c2 }','${ls.c3 }','${ls.c5 }','${ls.c6 }','${ls.c8 }','${ls.c9 }','${ls.c10 }','${ls.c12 }','${ls.c13 }','${ls.c1 }','${ls.c14 }','${ls.c15 }','${ls.c16 }')">修改</a>
+        	<a href="javascript:deleteBangFu('${ls.c0 }')">删除</a>
         </td>
     </tr>
-    </s:iterator>
+    </c:forEach>
 	</tbody>
 </table>
 </div>
@@ -244,5 +255,19 @@
 </form>
 </div>
 <!-- add jiangbu end -->
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/bangfu.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
+<script type="text/javascript">
+	function deleteBangFu(c){
+		document.getElementById("iids").value=c;
+		if(confirm('您确定要删除吗？')){
+			document.Form1.action="govBangfuAction_deleteBangfuInfo.do";
+			document.Form1.submit();
+		}
+	}
+</script>
 </body>
 </html>

@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style.css" />
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/bangfu.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
 	<style type="text/css">
 		h2{font-size:12px;height:18px;text-align:right;background:#3F89EC;border-bottom:3px solid #F7F7F7;padding:5px;cursor:move;} 
 		h2 span{border:0px solid #f90;padding:0 2px;} 
@@ -27,18 +24,8 @@
 		.Contentbox{clear:both;margin-top:0px;border-top:none;height:181px;padding-top:8px;height:100%;}
 		.Contentbox ul{list-style:none;margin:7px;padding:0;}
 		.Contentbox ul li{line-height:24px; width:158px; float:left; margin-right:5px;}	
-		
 		.Menubox ul .box_return{float:left;width:158px;background:#E0EEFB;line-height:27px;display:block;text-align:center;color:#E0EEFB;font-weight:bold;border-top:0px solid #64B8E4;border-left:0px solid #64B8E4;border-right:0px solid #64B8E4; margin-left:190px;}
 	</style>
-	<script type="text/javascript">
-		function deleteHoufang(f){
-			document.getElementById("fuids").value=f;
-			if(confirm('您确定要删除吗？')){
-				document.Form1.action="govBangfuAction_deleteBangfuDept.do";
-				document.Form1.submit();
-			}
-		}
-	</script>
 </head>
 <body style="background:#E0EEFB;">
 <form name="Form1" method="post">
@@ -57,16 +44,16 @@
 			</tr>
 		</thead>
 		<tbody id="splitpage">
-			<s:iterator value="#session.vts.list" var="ls" status="sc">
+			<c:forEach items="${deptList }" var="ls">
 				<tr style="display:none">
-					<td><s:property value="#ls.c0"/></td>
-					<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;<s:property value="#ls.c3"/></td>
+					<td>${ls.c0 }</td>
+					<td align="left">&nbsp;&nbsp;&nbsp;&nbsp;${ls.c3 }</td>
 					<td>
-						<a href="javascript:popBangfuDeptEdit('edit','<s:property value="#ls.c0"/>','<s:property value="#ls.c1"/>','<s:property value="#ls.c2"/>','<s:property value="#ls.c3"/>')">编辑</a>
-						<a href="javascript:deleteHoufang('<s:property value="#ls.c0"/>')">删除</a>
+						<a href="javascript:popBangfuDeptEdit('edit','${ls.c0 }','${ls.c1 }','${ls.c2 }','${ls.c3 }')">编辑</a>
+						<a href="javascript:deleteHoufang('${ls.c0 }')">删除</a>
 					</td>
 				</tr>
-			</s:iterator>
+			</c:forEach>
 		</tbody>
 	</table>
 </div>
@@ -106,5 +93,19 @@
 </form>
 </div>
 <!-- add deptName end -->
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/bangfu.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
+<script type="text/javascript">
+	function deleteHoufang(f){
+		document.getElementById("fuids").value=f;
+		if(confirm('您确定要删除吗？')){
+			document.Form1.action="govBangfuAction_deleteBangfuDept.do";
+			document.Form1.submit();
+		}
+	}
+</script>
 </body>
 </html>

@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@ page import="java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style.css" />
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/familyincome.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
 	<style type="text/css">
 		#overlay-year{position:absolute;top:0;left:0;width:100%;height:670px;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
 		#win-year{position:absolute;top:30%;left:45%;width:500px;height:480px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;} 
@@ -60,34 +59,34 @@
 	        <td width="5%">其他收入</td>
 	    </tr>
 	    </thead>
-	    <s:iterator value="#session.vts.list5" var="ls5" status="tc">
+	    <c:forEach items="${sessionScope.vts.list5 }" var="ls5" varStatus="status">
 		<tr>
-			<td><s:property value="#ls5.c0"/></td>
-			<td><s:property value="#ls5.c1"/></td>
-			<td><s:property value="#ls5.c2"/></td>
-			<td><s:property value="#ls5.c3"/></td>
-			<td><s:property value="#ls5.c4"/></td>
-			<td><s:property value="#ls5.c5"/></td>
-			<td><s:property value="#ls5.c6"/></td>
-			<td><s:property value="#ls5.c7"/></td>
-			<td><s:property value="#ls5.c8"/></td>
-			<td><s:property value="#ls5.c9"/></td>
-			<td><s:property value="#ls5.c10"/></td>
-			<td><s:property value="#ls5.c11"/></td>
-			<td><s:property value="#ls5.c12"/></td>
-			<td><s:property value="#ls5.c13"/></td>
+			<td>${ls5.c0 }</td>
+			<td>${ls5.c1 }</td>
+			<td>${ls5.c2 }</td>
+			<td>${ls5.c3 }</td>
+			<td>${ls5.c4 }</td>
+			<td>${ls5.c5 }</td>
+			<td>${ls5.c6 }</td>
+			<td>${ls5.c7 }</td>
+			<td>${ls5.c8 }</td>
+			<td>${ls5.c9 }</td>
+			<td>${ls5.c10 }</td>
+			<td>${ls5.c11 }</td>
+			<td>${ls5.c12 }</td>
+			<td>${ls5.c13 }</td>
 			<td>
-			<s:if test="#session.vts.isedit==1 && #ls5.c14==1">
-				<s:if test="#ls5.c1.length()>0">
-				<a href="javascript:popSaveYear('edit','<s:property value="#ls5.c0"/>','<s:property value="#ls5.c2"/>','<s:property value="#ls5.c3"/>','<s:property value="#ls5.c4"/>','<s:property value="#ls5.c5"/>','<s:property value="#ls5.c6"/>','<s:property value="#ls5.c7"/>','<s:property value="#ls5.c9"/>','<s:property value="#ls5.c10"/>','<s:property value="#ls5.c11"/>','<s:property value="#ls5.c12"/>','<s:property value="#ls5.c13"/>')">修改</a>
-				</s:if>
-				<s:if test="#ls5.c1.length()==0">
-					<a href="javascript:popSaveYear('add','<s:property value="#ls5.c0"/>','','','','','','','','','','','')">添加</a>
-				</s:if>
-			</s:if>
+			<c:if test="${sessionScope.vts.isedit eq 1 and ls5.c14 eq 1}">
+				<c:if test="${fn:length(ls5.c1) gt 0}">
+					<a href="javascript:popSaveYear('edit','${ls5.c0 }','${ls5.c2 }','${ls5.c3 }','${ls5.c4 }','${ls5.c5 }','${ls5.c6 }','${ls5.c7 }','${ls5.c9 }','${ls5.c10 }','${ls5.c11 }','${ls5.c12 }','${ls5.c13 }')">修改</a>
+				</c:if>
+				<c:if test="${fn:length(ls5.c1) eq 0 }">
+					<a href="javascript:popSaveYear('add','${ls5.c0 }','','','','','','','','','','','')">添加</a>
+				</c:if>
+			</c:if>
 			</td>
 		</tr>
-		</s:iterator>
+		</c:forEach>
 	</table>
 </div>
 </s:if>
@@ -197,5 +196,8 @@
 <s:if test="#session.vts.hasStack()">
 	<s:property value="#session.vts.popAllList()"/>
 </s:if>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/familyincome.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
 </body>
 </html>

@@ -1,25 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style.css" />
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/bangfu.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
-	<script type="text/javascript">
-		function setTab(name,cursel,n){
-			for(i=1;i<=n;i++){
-				var menu=document.getElementById(name+i);
-				var con=document.getElementById("con_"+name+"_"+i);
-				menu.className=i==cursel?"hover":"";
-				con.style.display=i==cursel?"block":"none";
-			}
-		}
-	</script>
-	
 	<style type="text/css">
 		h2{font-size:12px;height:18px;text-align:right;background:#3F89EC;border-bottom:3px solid #F7F7F7;padding:5px;cursor:move;} 
 		h2 span{border:0px solid #f90;padding:0 2px;} 
@@ -29,7 +15,6 @@
 		#overlay-bangfus{position:absolute;top:0;left:0;width:100%;height:670px;background:#000;opacity:0.5;filter:alpha(opacity=50);display:none;} 
 		#win-bangfus{position:absolute;top:30%;left:45%;width:500px;height:190px;background:#EAECEA;border:4px solid #F7F7F7;margin:-102px 0 0 -202px;display:none;}
 		#win-bangfus .back-input{height:20px; width:140px;}
-		
 		#Tab{margin:0 auto;width:866px;}
 		.Menubox{height:28px;border-bottom:1px solid #64B8E4;background:#E4F2FB;}
 		.Menubox ul{list-style:none;margin:0px 2px;padding:0;position:absolute;}
@@ -38,14 +23,12 @@
 		.Contentbox{clear:both;margin-top:0px;border-top:none;height:181px;padding-top:8px;height:100%;}
 		.Contentbox ul{list-style:none;margin:7px;padding:0;}
 		.Contentbox ul li{line-height:24px; width:158px; float:left; margin-right:5px;}	
-		
 		.hourf-errtip{
 			width:265px; 
 			height:18px;
 			line-height:18px;
 			color:#F00;
 		}
-		
 		.Menubox ul .box_return{float:left;width:128px;background:#E0EEFB;line-height:27px;display:block;text-align:center;color:#E0EEFB;font-weight:bold;border-top:0px solid #64B8E4;border-left:0px solid #64B8E4;border-right:0px solid #64B8E4; margin-left:50px;}
 	</style>
 </head>
@@ -67,44 +50,76 @@
 	  	<div class="Contentbox"> 
 	    	<div id="con_menu_1" class="hover">
 	      		<ul>
-				<s:iterator value="#session.vts.list" var="ls">
-				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls.c0"/>','','','','','','','','','1')" title="<s:property value='#ls.c1'/>"><s:property value="#ls.c1"/></a></li>
-				</s:iterator>
+				<c:forEach items="${bfList }" var="ls">
+				<li><a href="javascript:popBangfuEdit('add','${ls.c0 }','','','','','','','','','1')" title="${ls.c1 }">${ls.c1 }</a></li>
+				</c:forEach>
 	    		</ul>
 	    	</div>
 	    	<div id="con_menu_2" style="display:none">
 	      		<ul>
-				<s:iterator value="#session.vts.list2" var="ls2">
-				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls2.c0"/>','','','','','','','','','2')" title="<s:property value='#ls2.c1'/>"><s:property value="#ls2.c1"/></a></li>
-				</s:iterator>
+				<c:forEach items="${bf2List }" var="ls2">
+				<li><a href="javascript:popBangfuEdit('add','${ls2.c0 }','','','','','','','','','2')" title="${ls2.c1 }">${ls2.c1 }</a></li>
+				</c:forEach>
 	    		</ul>
 	    	</div>
 	    	<div id="con_menu_3"style="display:none">
 		      	<ul>
-				<s:iterator value="#session.vts.list3" var="ls3">
-				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls3.c0"/>','','','','','','','','','3')" title="<s:property value='#ls3.c1'/>"><s:property value="#ls3.c1.length()>13?#ls3.c1.substring(0,12)+'...':#ls3.c1"/></a></li>
-				</s:iterator>
+				<c:forEach items="${bf3List }" var="ls3">
+				<li><a href="javascript:popBangfuEdit('add','${ls3.c0 }','','','','','','','','','3')" title="${ls3.c1 }">
+					<c:set var="c1len" value="${fn:length(ls3.c1) }"></c:set>
+		        	<c:choose>
+		        		<c:when test="${c1len gt 13 }">
+		        			${fn:substring(ls3.c1,0,12) }..
+		        		</c:when>
+		        		<c:otherwise>${ls3.c1 }</c:otherwise>
+		        	</c:choose>
+				</a></li>
+				</c:forEach>
 	    		</ul>
 	    	</div>
 	    	<div id="con_menu_4"style="display:none">
 		      	<ul>
-				<s:iterator value="#session.vts.list4" var="ls4">
-				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls4.c0"/>','','','','','','','','','4')" title="<s:property value='#ls4.c1'/>"><s:property value="#ls4.c1.length()>13?#ls4.c1.substring(0,12)+'...':#ls4.c1"/></a></li>
-				</s:iterator>
+				<c:forEach items="${bf4List }" var="ls4">
+				<li><a href="javascript:popBangfuEdit('add','${ls4.c0 }','','','','','','','','','4')" title="${ls4.c1 }">
+					<c:set var="c2len" value="${fn:length(ls4.c1) }"></c:set>
+		        	<c:choose>
+		        		<c:when test="${c2len gt 13 }">
+		        			${fn:substring(ls4.c1,0,12) }..
+		        		</c:when>
+		        		<c:otherwise>${ls4.c1 }</c:otherwise>
+		        	</c:choose>	
+				</a></li>
+				</c:forEach>
 	    		</ul>
 	    	</div>
 	    	<div id="con_menu_5"style="display:none">
 		      	<ul>
-				<s:iterator value="#session.vts.list5" var="ls5">
-				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls5.c0"/>','','','','','','','','','4')" title="<s:property value='#ls5.c1'/>"><s:property value="#ls5.c1.length()>13?#ls5.c1.substring(0,12)+'...':#ls5.c1"/></a></li>
-				</s:iterator>
+				<c:forEach items="${bf5List }" var="ls5">
+				<li><a href="javascript:popBangfuEdit('add','${ls5.c0 }','','','','','','','','','4')" title="${ls5.c1 }">
+					<c:set var="c3len" value="${fn:length(ls5.c1) }"></c:set>
+		        	<c:choose>
+		        		<c:when test="${c3len gt 13 }">
+		        			${fn:substring(ls5.c1,0,12) }..
+		        		</c:when>
+		        		<c:otherwise>${ls5.c1 }</c:otherwise>
+		        	</c:choose>	
+				</a></li>
+				</c:forEach>
 	    		</ul>
 	    	</div>
 	    	<div id="con_menu_6"style="display:none">
 		      	<ul>
-				<s:iterator value="#session.vts.list6" var="ls6">
-				<li><a href="javascript:popBangfuEdit('add','<s:property value="#ls6.c0"/>','','','','','','','','','4')" title="<s:property value='#ls6.c1'/>"><s:property value="#ls6.c1.length()>13?#ls6.c1.substring(0,12)+'...':#ls6.c1"/></a></li>
-				</s:iterator>
+				<c:forEach items="${bf6List }" var="ls6">
+				<li><a href="javascript:popBangfuEdit('add','${ls6.c0 }','','','','','','','','','4')" title="${ls6.c1 }">
+					<c:set var="c4len" value="${fn:length(ls6.c1) }"></c:set>
+		        	<c:choose>
+		        		<c:when test="${c4len gt 13 }">
+		        			${fn:substring(ls6.c1,0,12) }..
+		        		</c:when>
+		        		<c:otherwise>${ls6.c1 }</c:otherwise>
+		        	</c:choose>
+				</a></li>
+				</c:forEach>
 	    		</ul>
 	    	</div>
 	  	</div>
@@ -229,5 +244,20 @@
 </form>
 </div>
 <!-- add jiangbu end -->
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/splitpage.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/bangfu.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/voicet-common-1.0.js"></script>
+<script type="text/javascript">
+	function setTab(name,cursel,n){
+		for(i=1;i<=n;i++){
+			var menu=document.getElementById(name+i);
+			var con=document.getElementById("con_"+name+"_"+i);
+			menu.className=i==cursel?"hover":"";
+			con.style.display=i==cursel?"block":"none";
+		}
+	}
+</script>
 </body>
 </html>

@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<%@taglib uri="/struts-tags" prefix="s" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/global_cn.css?v=3" />
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style.css" />
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/style/style-b.css" />
-	<script type="text/javascript" src="${pageContext.request.contextPath }/script/jquery-1.5.1.min.js"></script>
 	<style type="text/css">
 		.Contentbox_shi{clear:both;margin-top:0px;border-top:none;height:640px; overflow-y:auto;text-align:center; line-height:22px;}
 		.Contentbox_shi table{border-right:1px solid #3B9FFF; border-bottom:1px solid #3B9FFF; margin-top:2px;}
@@ -34,19 +34,19 @@
 			<td width="10%">2014年上报实现<br/>八有村个数</td>
 			<td width="10%">实际实现<br/>八有村个数</td>
 		</tr>
-		<s:iterator value="#session.vts.list">
+		<c:forEach items="${byList }" var="ls">
 			<tr>
-				<td>${OName }</td>
-				<td>${v1 }</td>
-				<td>${v2 }</td>
-				<td>${v3 }</td>
-				<td>${v4 }</td>
-				<td>${v5 }</td>
-				<td>${pi }</td>
-				<td>${y1 }</td>
-				<td>${y2 }</td>
+				<td>${ls.OName }</td>
+				<td>${ls.v1 }</td>
+				<td>${ls.v2 }</td>
+				<td>${ls.v3 }</td>
+				<td>${ls.v4 }</td>
+				<td>${ls.v5 }</td>
+				<td>${ls.pi }</td>
+				<td>${ls.y1 }</td>
+				<td>${ls.y2 }</td>
 			</tr>
-		</s:iterator>
+		</c:forEach>
 	</table>
 </div>
 </body>
