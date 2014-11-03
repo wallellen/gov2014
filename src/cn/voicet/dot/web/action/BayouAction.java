@@ -1,5 +1,6 @@
 package cn.voicet.dot.web.action;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 
 import cn.voicet.dot.service.BayouService;
 import cn.voicet.dot.util.DotSession;
+import cn.voicet.dot.util.ExcelTemplateGenerator;
 import cn.voicet.dot.web.form.BayouForm;
 
 import com.opensymphony.xwork2.ModelDriven;
@@ -212,6 +214,25 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 		request.setAttribute("byList", ds.list);
 		ds.list=null;
 		return "show_bayou_total";
+	}
+	
+	/**
+	 * 导出八有汇总数据
+	 * @throws Exception 
+	 */
+	public String export() throws Exception
+	{
+		DotSession ds = DotSession.getVTSession(request);
+		bayouService.queryBayouTotalInfo(ds);
+		String fileName = new String(("经济薄弱村新“八有”考核汇总").getBytes("gb2312"), "ISO8859-1") +".xls";
+	    String filePath = request.getSession().getServletContext().getRealPath("excelTemplate")+"/"+"bayou-total.xls";
+	    ExcelTemplateGenerator generator = new ExcelTemplateGenerator(filePath, fileName, 1, ds.list);
+	    generator.setColList("OName,v1,v2,v3,v4,v5,pi,y1,y2");
+	    generator.setDrawBoard();
+	    generator.setEffectColNum(9);
+		generator.exportExcelWithTemplate(response);
+		ds.list=null;
+		return null;
 	}
 	
 	private int rflag=1;

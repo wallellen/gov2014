@@ -20,7 +20,7 @@
 	</style>
 </head>
 <body style="background:#E0EEFB;">
-<h3 class="jiangbu-title">经济薄弱村新“八有”考核汇总</h3>
+<h3 class="jiangbu-title">经济薄弱村新“八有”考核汇总</h3><div class="jiangbu-unit1"><input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/bayou_export.do'" class="button43"/></div>
 <div class="Contentbox_shi">
 	<table cellpadding="0" cellspacing="0" width="100%">
 		<tr style="font-weight:bold;">
