@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,7 +11,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/script/changeColor.js"></script>
 </head>
 <body style="background:#E0EEFB;">
-<h3 class="jiangbu-title">小额贷款情况&nbsp;[<s:property value="#session.vts.rbn"/>]</h3>
+<h3 class="jiangbu-title">小额贷款情况&nbsp;[${sessionScope.vts.rbn }]</h3>
 <div id="jiangbu-data">
 <table class="data_list" cellpadding="0" cellspacing="0" width="100%">
    	<thead>
@@ -24,24 +26,27 @@
     </tr>
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
+    <c:set var="rbmlen" value="${fn:length(sessionScope.vts.rbm) }"></c:set>
+    <c:forEach items="${xiaoeList }" var="ls">
     <tr style="display:none">
-        <td><s:property value="#ls.c0"/></td>
-        <td><s:property value="#ls.c1"/></td>
-        <td><s:property value="#ls.c2"/></td>
-        <td><s:property value="#ls.c3"/></td>
+        <td>${ls.c0 }</td>
+		<td>${ls.c1 }</td>
+		<td>${ls.c2 }</td>
+		<td>${ls.c3 }</td>
         <td>
-        	<s:if test="#session.vts.rbm.length()==2 || #session.vts.rbm.length()==4">
-        		<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewCreditReport.do?year=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&areaName=<s:property value="#session.vts.rbn"/>">年度查看</a>
-        		&nbsp;&nbsp;&nbsp;&nbsp;
-        		<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewMonthList.do?year=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&areaName=<s:property value="#session.vts.rbn"/>">月度查看</a>
-        	</s:if>
-        	<s:else>
-        		<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewCreditYear.do?xbm=<s:property value="#session.vts.rbm"/>&year=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&areaName=<s:property value='#session.vts.rbn'/>">查看</a>
-        	</s:else>
+        	<c:choose>
+        		<c:when test="${rbmlen eq 2 or rbmlen eq 4}">
+        			<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewCreditReport.do?year=${ls.c0 }&title=${ls.c1 }&sdt=${ls.c2 }&edt=${ls.c3 }&areaName=${sessionScope.vts.rbn }">年度查看</a>
+	        		&nbsp;&nbsp;&nbsp;&nbsp;
+	        		<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewMonthList.do?year=${ls.c0 }&title=${ls.c1 }&sdt=${ls.c2 }&edt=${ls.c3 }&areaName=${sessionScope.vts.rbn }">月度查看</a>
+        		</c:when>
+        		<c:otherwise>
+        			<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewCreditYear.do?xbm=<s:property value="#session.vts.rbm"/>&year=${ls.c0 }&title=${ls.c1 }&sdt=${ls.c2 }&edt=${ls.c3 }&areaName=${sessionScope.vts.rbn }">查看</a>
+        		</c:otherwise>
+        	</c:choose>
         </td>
     </tr>
-    </s:iterator>
+    </c:forEach>
 	</tbody>
 </table>
 </div>

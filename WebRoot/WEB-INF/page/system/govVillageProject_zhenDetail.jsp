@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -97,34 +99,44 @@
     </tr>
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
-    <tr style="display:none" title="村名: <s:property value='#ls.c2'/>&#10;村编码: <s:property value='#ls.c1'/>&#10;项目名称: <s:property value='#ls.c3'/>&#10;项目描述: <s:property value='#ls.c4'/>">
-		<td><label id="#sc.count"></label><s:property value="#sc.count"/></td>
-		<td align="left">&nbsp;<s:property value="#ls.c2.length()>6?#ls.c2.substring(0,5)+'...':#ls.c2"/></td>
-		<td align="left">&nbsp;<s:property value="#ls.c3.length()>11?#ls.c3.substring(0,10)+'...':#ls.c3"/></td>
-        <td><s:property value="#ls.c5"/></td>
-        <td><s:property value="#ls.c6"/></td>
-        <td><s:property value="#ls.c7"/></td>
-        <td><s:property value="#ls.c8"/></td>
-        <td><s:property value="#ls.c9"/></td>
-        <td><s:property value="#ls.c10"/></td>
-        <td><s:property value="#ls.c11"/></td>
-        <td><s:property value="#ls.c12"/></td>
-        <td><s:property value="#ls.c13"/></td>
-        <td><s:property value="#ls.c14"/></td>
-        <td><s:property value="#ls.c15"/></td>
-        <td><s:property value="#ls.c16"/></td>
-        <td><s:property value="#ls.c17.substring(0,7)"/></td>
-        <td><s:property value="#ls.c18"/></td>
-        <td><s:property value="#ls.c19"/></td>
+    <c:forEach items="${cunList }" var="ls" varStatus="status">
+    <tr style="display:none" title="村名: ${ls.c2 }&#10;村编码: ${ls.c1 }&#10;项目名称: ${ls.c3 }&#10;项目描述: ${ls.c4 }">
+		<td><label id="${status.count }"></label>${status.count }</td>
+		<td align="left">
+			<c:choose>
+				<c:when test="${fn:length(ls.c2) gt 6}">${fn:substring(ls.c2,0,5) }..</c:when>
+				<c:otherwise>${ls.c2 }</c:otherwise>
+			</c:choose>
+		</td>
+		<td align="left">
+			<c:choose>
+				<c:when test="${fn:length(ls.c3) gt 11}">${fn:substring(ls.c3,0,10) }..</c:when>
+				<c:otherwise>${ls.c3 }</c:otherwise>
+			</c:choose>
+		</td>
+        <td>${ls.c5 }</td>
+        <td>${ls.c6 }</td>
+        <td>${ls.c7 }</td>
+        <td>${ls.c8 }</td>
+        <td>${ls.c9 }</td>
+        <td>${ls.c10 }</td>
+        <td>${ls.c11 }</td>
+        <td>${ls.c12 }</td>
+        <td>${ls.c13 }</td>
+        <td>${ls.c14 }</td>
+        <td>${ls.c15 }</td>
+        <td>${ls.c16 }</td>
+        <td>${fn:substring(ls.c17,0,7) }</td>
+        <td>${ls.c18 }</td>
+        <td>${ls.c19 }</td>
         <td>
-        	<s:if test="#session.vts.rbm.length()>4">
-        	<a href="javascript:popVillageProjectEdit('edit','<s:property value="#ls.c1"/>','<s:property value="#ls.c0"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c4"/>','<s:property value="#ls.c7"/>','<s:property value="#ls.c8"/>','<s:property value="#ls.c9"/>','<s:property value="#ls.c10"/>','<s:property value="#ls.c12"/>','<s:property value="#ls.c13"/>','<s:property value="#ls.c14"/>','<s:property value="#ls.c15"/>','<s:property value="#ls.c16"/>','<s:property value="#ls.c17"/>','<s:property value="#ls.c18"/>','<s:property value="#ls.c19"/>','<s:property value="#ls.c2"/>')">修改</a>
-        	<a href="javascript:deleteVillageProject('<s:property value="#ls.c0"/>','<s:property value="#ls.c1"/>')">删除</a>
-        	</s:if>
+        	<c:if test="${fn:length(sessionScope.vts.rbm) gt 4 }">
+        	<a href="javascript:popVillageProjectEdit('edit','${ls.c1 }','${ls.c0 }','${ls.c3 }','${ls.c4 }','${ls.c7 }','${ls.c8 }','${ls.c9 }','${ls.c10 }','${ls.c12 }','${ls.c13 }','${ls.c14 }','${ls.c15 }','${ls.c16 }','${ls.c17 }','${ls.c18 }','${ls.c19 }','${ls.c2 }')">修改</a>
+        	<a href="javascript:deleteVillageProject('${ls.c0 }','${ls.c1 }')">删除</a>
+        	</c:if>
         </td>
 	</tr>
-	</s:iterator>
+	</c:forEach>
 	</tbody>
 </table>
 </div>
@@ -132,18 +144,18 @@
 	<input type="hidden" id="pageRows" value="18"/>
 	<div id="changePage"></div>
 </div>
-<s:if test="#session.vts.rbm.length()>4">
+<c:if test="${fn:length(sessionScope.vts.rbm) gt 4 }">
 <div id="village-add">
 	<fieldset>
 	<legend>请点击村名称,添加新项目</legend>
 	<ul>
-		<s:iterator value="#session.vts.list2" var="ls2">
-			<li><a href="javascript:popVillageProjectEdit('add','<s:property value="#ls2.c0"/>','','','','','','','','','','','','','','','','<s:property value="#ls2.c1"/>')"><s:property value="#ls2.c1"/></a></li>
-		</s:iterator>
+		<c:forEach items="${cunList2 }" var="ls2">
+			<li><a href="javascript:popVillageProjectEdit('add','${ls2.c0 }','','','','','','','','','','','','','','','','${ls2.c1 }')">${ls2.c1 }</a></li>
+		</c:forEach>
     </ul>
     </fieldset>
 </div>
-</s:if>
+</c:if>
 <!-- add key project start -->
 <div id="overlay-villageproject"></div>
 <div id="win-villageproject" style="line-height: 30px">

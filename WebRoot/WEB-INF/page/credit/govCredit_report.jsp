@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,8 +41,8 @@
 	<input type="hidden" name="rflag" value="<s:property value='rflag'/>"/>
 	<input type="hidden" name="areaName" value="<s:property value='areaName'/>"/>
 </form>
-<h3 class="jiangbu-title"><s:property value="year"/>扶贫小额贷款发放进度&nbsp;[<s:property value="areaName"/>]</h3><div class="jiangbu-unit1">单位：户、万元</div>
-<p class="jiangbu-title1"><span class="j_return"></span><span><s:property value="title"/>&nbsp;(<s:property value="sdt"/>~<s:property value="edt"/>)</span></p>
+<h3 class="jiangbu-title">${year }扶贫小额贷款发放进度&nbsp;[${areaName }]</h3><div class="jiangbu-unit1">单位：户、万元</div>
+<p class="jiangbu-title1"><span class="j_return"></span><span>${title }&nbsp;(${sdt }~${edt })</span></p>
 <div id="village-data1">
 <table class="data_list1" cellpadding="0" cellspacing="0" width="100%">
    	<thead>
@@ -52,7 +54,7 @@
         <td rowspan="2" width="8%">与上年度累计发放比较(%)</td>
         <td rowspan="2" width="10%">
         	<p>
-        		<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govXianCreditAction_exportXiaoeYear.do?year=<s:property value="year"/>&title=<s:property value="title"/>&rflag=<s:property value="rflag"/>'" class="button43"/>
+        		<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govXianCreditAction_exportXiaoeYear.do?year=${year }&title=${title }&rflag=${rflag }'" class="button43"/>
 				<input type="button" value="返回" onclick="history.go(-1)" class="button43"/>        	
         	</p>
         </td>
@@ -68,29 +70,31 @@
     
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
-    	<s:if test="#ls.xid==0">
-    	<tr style="display:none; font-weight:bold; background-color:#c0c0c0;">
-    	 	<td align="left">&nbsp;&nbsp;<s:property value="#ls.oname"/></td>
-    	</s:if>
-    	<s:else>
-    	<tr style="display:none">
-    	 	<td><s:property value="#ls.oname"/></td>
-    	</s:else>
-	        <td><s:property value="#ls.tsh"/></td>
-	        <td><s:property value="#ls.tsv"/></td>
-	        <td><s:property value="#ls.th"/></td>
-	        <td><s:property value="#ls.tv"/></td>
-	        <td><s:property value="#ls.lsh"/></td>
-	        <td><s:property value="#ls.lsv"/></td>
-	        <td><s:property value="#ls.perc"/></td>
+    <c:forEach items="${xiaoeList }" var="ls">
+    	<c:choose>
+    		<c:when test="${ls.xid eq 0 }">
+    		<tr style="display:none; font-weight:bold; background-color:#c0c0c0;">
+    	 		<td align="left">&nbsp;&nbsp;${ls.oname }</td>
+    		</c:when>
+    		<c:otherwise>
+    		<tr style="display:none">
+    	 		<td>${ls.oname }</td>
+    		</c:otherwise>
+    	</c:choose>
+	        <td>${ls.tsh }</td>
+			<td>${ls.tsv }</td>
+			<td>${ls.th }</td>
+			<td>${ls.tv }</td>
+			<td>${ls.lsh }</td>
+			<td>${ls.lsv }</td>
+			<td>${ls.perc }</td>
 	        <td>
-	        	<s:if test="#ls.xid>0">
-	        	<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewXianCreditWithXbm.do?xbm=<s:property value='#ls.bm'/>&title=<s:property value="title"/>&year=<s:property value='year'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value="#ls.oname"/>">查看</a>
-	        	</s:if>
+	        	<c:if test="${ls.xid gt 0 }">
+	        	<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewXianCreditWithXbm.do?xbm=${ls.bm }&title=${title }&year=${year }&sdt=${sdt }&edt=${edt }&areaName=${ls.oname }">查看</a>	
+	        	</c:if>
 	        </td>
     	</tr>
-	</s:iterator>
+	</c:forEach>
 	</tbody>
 </table>
 </div>

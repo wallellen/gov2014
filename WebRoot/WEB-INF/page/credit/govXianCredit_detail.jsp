@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -43,8 +45,8 @@
 	<input type="hidden" name="rflag" value="<s:property value='rflag'/>"/>
 	<input type="hidden" name="areaName" value="<s:property value='areaName'/>"/>
 </form>
-<h3 class="jiangbu-title">扶贫小额贷款发放、回收情况&nbsp;[<s:property value="areaName"/>]</h3><div class="jiangbu-unit1">单位：户、万元</div>
-<p class="jiangbu-title1"><span class="j_return"></span><span><s:property value="title"/>&nbsp;(<s:property value="sdt"/>~<s:property value="edt"/>)</span></p>
+<h3 class="jiangbu-title">扶贫小额贷款发放、回收情况&nbsp;[${areaName }]</h3><div class="jiangbu-unit1">单位：户、万元</div>
+<p class="jiangbu-title1"><span class="j_return"></span><span>${title }&nbsp;(${sdt }~${edt })</span></p>
 <div id="village-data1">
 <table class="data_list" cellpadding="0" cellspacing="0" width="100%">
    	<thead>
@@ -57,7 +59,7 @@
         <td width="5%">五</td>
         <td rowspan="4" width="8%">
         	<p>
-        		<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govXianCreditAction_exportXiaoeMonth.do?year=<s:property value="year"/>&xbm=<s:property value="xbm"/>&title=<s:property value="title"/>&rflag=<s:property value="rflag"/>'" class="button43"/>
+        		<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govXianCreditAction_exportXiaoeMonth.do?year=${year }&xbm=${xbm }&title=${title }&rflag=${rflag }'" class="button43"/>
         	</p>
         	<p>&nbsp;</p>
         	<p>
@@ -94,40 +96,41 @@
     
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
+    <c:forEach items="${xiaoeList }" var="ls">
     	<tr style="display:none">
-	        <td><s:property value="#ls.month"/></td>
-	        <td><s:property value="#ls.lh"/></td>
-	        <td><s:property value="#ls.lv"/></td>
-	        <td><s:property value="#ls.tsh"/></td>
-	        <td><s:property value="#ls.tsv"/></td>
-	        <td><s:property value="#ls.trh"/></td>
-	        <td><s:property value="#ls.trv"/></td>
-	        <td><s:property value="#ls.th"/></td>
-	        <td><s:property value="#ls.tv"/></td>
-	        <td><s:property value="#ls.nh"/></td>
-	        <td><s:property value="#ls.nv"/></td>
-	        <td><s:property value="#ls.eh"/></td>
-	        <td><s:property value="#ls.ev"/></td>
+	        <td>${ls.month }</td>
+			<td>${ls.lh }</td>
+			<td>${ls.lv }</td>
+			<td>${ls.tsh }</td>
+			<td>${ls.tsv }</td>
+			<td>${ls.trh }</td>
+			<td>${ls.trv }</td>
+			<td>${ls.th }</td>
+			<td>${ls.tv }</td>
+			<td>${ls.nh }</td>
+			<td>${ls.nv }</td>
+			<td>${ls.eh }</td>
+			<td>${ls.ev }</td>
 	        <td>&nbsp;</td>
 	        <td>
-	        	<s:if test="#session.vts.rbm.length()==6">
-		        	<s:if test="#ls.lh.length()>0">
-			        	<s:if test="#session.vts.map.month-1==#ls.month || #ls.month==0 || #ls.month==12">
-			        	<a href="javascript:popXianCreditEdit('edit','<s:property value="#ls.month"/>','<s:property value="#ls.lh"/>','<s:property value="#ls.lv"/>','<s:property value="#ls.tsh"/>','<s:property value="#ls.tsv"/>','<s:property value="#ls.trh"/>','<s:property value="#ls.trv"/>','<s:property value="#ls.th"/>','<s:property value="#ls.tv"/>','<s:property value="#ls.nh"/>','<s:property value="#ls.nv"/>','<s:property value="#ls.eh"/>','<s:property value="#ls.ev"/>')">修改</a>
-			        	<a href="javascript:deleteXianCredit('<s:property value="#ls.month"/>')">删除</a>
-			        	</s:if>
-			        	
-		        	</s:if>
-		        	<s:else>
-			        	<s:if test="#session.vts.map.month==#ls.month">
-			        	<a href="javascript:popXianCreditEdit('add','<s:property value="#ls.month"/>','<s:property value="#session.vts.map.lh"/>','<s:property value="#session.vts.map.lv"/>','','','','','','','','','','')">添加</a>
-			        	</s:if>
-		        	</s:else>
-	        	</s:if>
+	        	<c:if test="${fn:length(sessionScope.vts.rbm) eq 6 }">
+		        	<c:choose>
+		        		<c:when test="${fn:length(ls.lh) gt 0}">
+		        			<c:if test="${sessionScope.vts.map.month-1 eq ls.month or ls.month eq 0 or ls.month eq 12}">
+		        				<a href="javascript:popXianCreditEdit('edit','${ls.month }','${ls.lh }','${ls.lv }','${ls.tsh }','${ls.tsv }','${ls.trh }','${ls.trv }','${ls.th }','${ls.tv }','${ls.nh }','${ls.nv }','${ls.eh }','${ls.ev }')">修改</a>
+			        			<a href="javascript:deleteXianCredit('${ls.month }')">删除</a>
+		        			</c:if>
+		        		</c:when>
+		        		<c:otherwise>
+		        			<c:if test="${sessionScope.vts.map.month eq ls.month }">
+		        				<a href="javascript:popXianCreditEdit('add','${ls.month }','${sessionScope.vts.map.lh }','${sessionScope.vts.map.lv }','','','','','','','','','','')">添加</a>
+		        			</c:if>
+		        		</c:otherwise>
+		        	</c:choose>
+	        	</c:if>
 	        </td>
     	</tr>
-	</s:iterator>
+	</c:forEach>
 	</tbody>
 </table>
 </div>

@@ -33,6 +33,8 @@ public class GovXianCreditAction extends BaseAction implements ModelDriven<GovXi
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govXianCreditService.getXianCreditYear(ds);
+		request.setAttribute("xiaoeList", ds.list);
+		ds.list=null;
 		return "showCredit_year";
 	}
 	
@@ -41,6 +43,8 @@ public class GovXianCreditAction extends BaseAction implements ModelDriven<GovXi
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("viewCreditYear -> year:"+year);
 		govXianCreditService.getCreditInfoWithYear(ds, year, month, mode);
+		request.setAttribute("xiaoeList", ds.list);
+		ds.list=null;
 		return "showCredit_detail";
 	}
 	
@@ -48,6 +52,8 @@ public class GovXianCreditAction extends BaseAction implements ModelDriven<GovXi
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("viewCreditYear -> year:"+year+", xbm:"+xbm);
 		govXianCreditService.getXianCreditByXbm(ds, year, xbm, month, mode);
+		request.setAttribute("xiaoeList", ds.list);
+		ds.list=null;
 		return "showCredit_detail";
 	}
 	
@@ -82,6 +88,8 @@ public class GovXianCreditAction extends BaseAction implements ModelDriven<GovXi
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("viewCreditReport -> year:"+year);
 		govXianCreditService.getShenCreditReportList(ds, year, month, mode);
+		request.setAttribute("xiaoeList", ds.list);
+		ds.list=null;
 		return "show_creditReport";
 	}
 	
@@ -90,6 +98,8 @@ public class GovXianCreditAction extends BaseAction implements ModelDriven<GovXi
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("viewCreditMonthReport -> year:"+year+", month:"+month);
 		govXianCreditService.getCreditMonthReportList(ds, year, month, mode);
+		request.setAttribute("xiaoeList", ds.list);
+		ds.list=null;
 		return "show_monthCredit_detail";
 	}
 	
@@ -99,6 +109,8 @@ public class GovXianCreditAction extends BaseAction implements ModelDriven<GovXi
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("viewMonthList -> year:"+year);
 		govXianCreditService.getXianCreditMonth(ds, year);
+		request.setAttribute("xiaoeList", ds.list);
+		ds.list=null;
 		return "showCredit_month";
 	}
 	

@@ -29,6 +29,8 @@ public class GovVillageProjectAction extends BaseAction implements ModelDriven<G
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govVillageProjectService.getVillageProjectSeason(ds);
+		request.setAttribute("cunList", ds.list);
+		ds.list=null;
 		return "showVillageProject_season";
 	}
 	
@@ -36,6 +38,8 @@ public class GovVillageProjectAction extends BaseAction implements ModelDriven<G
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govVillageProjectService.getVillageProjectXian(ds, navbm, crid);
+		request.setAttribute("cunList", ds.list);
+		ds.list=null;
 		return "showVillageProject_shi";
 	}
 	
@@ -50,6 +54,10 @@ public class GovVillageProjectAction extends BaseAction implements ModelDriven<G
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govVillageProjectService.getVillageProjectInfo(ds, navbm, crid);
+		request.setAttribute("cunList", ds.list);
+		request.setAttribute("cunList2", ds.list2);
+		ds.list=null;
+		ds.list2=null;
 		return "showVillageProject_zhenDetail";
 	}
 	
@@ -57,6 +65,10 @@ public class GovVillageProjectAction extends BaseAction implements ModelDriven<G
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govVillageProjectService.getVillageProjectInfo(ds, navbm, crid);
+		request.setAttribute("cunList", ds.list);
+		request.setAttribute("cunList2", ds.list2);
+		ds.list=null;
+		ds.list2=null;
 		return "showVillageProject_zhenDetail";
 	}
 	

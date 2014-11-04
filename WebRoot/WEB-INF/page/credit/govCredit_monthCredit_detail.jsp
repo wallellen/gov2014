@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,8 +41,8 @@
 	<input type="hidden" name="rflag" value="<s:property value='rflag'/>"/>
 	<input type="hidden" name="areaName" value="<s:property value='areaName'/>"/>
 </form>
-<h3 class="jiangbu-title">扶贫小额贷款发放、回收情况&nbsp;[<s:property value="areaName"/>]</h3><div class="jiangbu-unit1">单位：户、万元</div>
-<p class="jiangbu-title1"><span class="j_return"></span><span><s:property value="title"/>&nbsp;(<s:property value="sdt"/>~<s:property value="edt"/>)</span></p>
+<h3 class="jiangbu-title">扶贫小额贷款发放、回收情况&nbsp;[${areaName }]</h3><div class="jiangbu-unit1">单位：户、万元</div>
+<p class="jiangbu-title1"><span class="j_return"></span><span>${title }&nbsp;(${sdt }~${edt })</span></p>
 <div id="village-data1">
 <table class="data_list1" cellpadding="0" cellspacing="0" width="100%">
    	<thead>
@@ -52,7 +54,7 @@
         <td colspan="6">四</td>
         <td rowspan="4" width="8%">
         	<p>
-        		<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govXianCreditAction_exportXiaoeByue.do?year=<s:property value="year"/>&month=<s:property value="month"/>&title=<s:property value="title"/>&rflag=<s:property value="rflag"/>'" class="button43"/>
+        		<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govXianCreditAction_exportXiaoeByue.do?year=${year }&month=${month }&title=${title }&rflag=${rflag }'" class="button43"/>
         		<input type="button" value="返回" onclick="history.go(-<s:property value="rflag"/>)" class="button43"/>
         	</p>
         </td>
@@ -85,34 +87,36 @@
     
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
-    	<s:if test="#ls.xid==0">
-    	<tr style="display:none; background-color:#c0c0c0;">
-    	<td align="left" style="font-weight:bold;">&nbsp;&nbsp;<s:property value="#ls.oname"/></td>
-    	</s:if>
-    	<s:else>
-    	<tr style="display:none;">
-    	<td><s:property value="#ls.oname"/></td>
-    	</s:else>
-	        <td><s:property value="#ls.lh"/></td>
-	        <td><s:property value="#ls.lv"/></td>
-	        <td><s:property value="#ls.tsh"/></td>
-	        <td><s:property value="#ls.tsv"/></td>
-	        <td><s:property value="#ls.trh"/></td>
-	        <td><s:property value="#ls.trv"/></td>
-	        <td><s:property value="#ls.th"/></td>
-	        <td><s:property value="#ls.tv"/></td>
-	        <td><s:property value="#ls.nh"/></td>
-	        <td><s:property value="#ls.nv"/></td>
-	        <td><s:property value="#ls.eh"/></td>
-	        <td><s:property value="#ls.ev"/></td>
+    <c:forEach items="${xiaoeList }" var="ls">
+    	<c:choose>
+    		<c:when test="${ls.xid eq 0 }">
+    			<tr style="display:none; background-color:#c0c0c0;">
+    			<td align="left" style="font-weight:bold;">&nbsp;&nbsp;${ls.oname }</td>
+    		</c:when>
+    		<c:otherwise>
+    			<tr style="display:none;">
+    			<td>${ls.oname }</td>
+    		</c:otherwise>
+    	</c:choose>
+	        <td>${ls.lh }</td>
+	        <td>${ls.lv }</td>
+	        <td>${ls.tsh }</td>
+	        <td>${ls.tsv }</td>
+	        <td>${ls.trh }</td>
+	        <td>${ls.trv }</td>
+	        <td>${ls.th }</td>
+	        <td>${ls.tv }</td>
+	        <td>${ls.nh }</td>
+	        <td>${ls.nv }</td>
+	        <td>${ls.eh }</td>
+	        <td>${ls.ev }</td>
 	        <td>
-	        	<s:if test="#ls.xid>0">
-	        	<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewXianCreditWithXbm.do?xbm=<s:property value='#ls.bm'/>&year=<s:property value='year'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value="#ls.oname"/>">查看</a>
-	        	</s:if>
+	        	<c:if test="${ls.xid gt 0 }">
+	        	<a href="${pageContext.request.contextPath }/system/govXianCreditAction_viewXianCreditWithXbm.do?xbm=${ls.bm }&year=${year }&sdt=${sdt }&edt=${edt }&areaName=${ls.oname }">查看</a>
+	        	</c:if>
 	        </td>
     	</tr>
-	</s:iterator>
+	</c:forEach>
 	</tbody>
 </table>
 </div>

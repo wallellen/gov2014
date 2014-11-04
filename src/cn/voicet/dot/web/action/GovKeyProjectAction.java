@@ -3,7 +3,6 @@ package cn.voicet.dot.web.action;
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
-import org.jfree.util.Log;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
