@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -53,25 +55,25 @@
     </tr>
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
+    <c:forEach items="${keyList}" var="ls" varStatus="status">
     <tr style="display:none">
-		<td><s:property value="#ls.bm"/></td>
-        <td><s:property value="#ls.oname"/></td>
-        <td><s:property value="#ls.rn"/></td>
-        <td><s:property value="#ls.prt"/></td>
-        <td><s:property value="#ls.spr"/></td>
-        <td><s:property value="#ls.sspr"/></td>
-        <td><s:property value="#ls.opr"/></td>
-        <td><s:property value="#ls.pyt"/></td>
-        <td><s:property value="#ls.spy"/></td>
+		<td>${ls.bm }</td>
+        <td>${ls.oname }</td>
+        <td>${ls.rn }</td>
+        <td>${ls.prt }</td>
+        <td>${ls.spr }</td>
+        <td>${ls.sspr }</td>
+        <td>${ls.opr }</td>
+        <td>${ls.pyt }</td>
+        <td>${ls.spy }</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>
-        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_writeReportZhen.do?navbm=<s:property value='#ls.bm'/>&pianId=<s:property value="pianId"/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&areaName=<s:property value='#ls.oname'/>">查看详细</a>
+        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_writeReportZhen.do?navbm=${ls.bm }&pianId=${pianId }&crid=${crid }&title=${title }&sdt=${sdt }&edt=${edt }&areaName=${ls.oname }">查看详细</a>
         </td>
 	</tr>
-	</s:iterator>
+	</c:forEach>
 	</tbody>
 </table>
 </div>

@@ -30,6 +30,8 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 	public String home() {
 		DotSession ds = DotSession.getVTSession(request);
 		govKeyProjectService.getKeyProjectSeason(ds);
+		request.setAttribute("keyList", ds.list);
+		ds.list=null;
 		return "showKeyProject_season";
 	}
 	
@@ -44,13 +46,19 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 		{
 			log.info("viewPianquProject-> pqid:"+ds.map.get("pqid"));
 			govKeyProjectService.getKeyProjectListByPiqnquId(ds, navbm, crid);
+			request.setAttribute("keyList", ds.list);
+			ds.list=null;
 			return "showKeyProject_zhenDetail";
 		}
 		if(ds.list.size()==0)
 		{
 			govKeyProjectService.getKeyProjectSeason(ds);
+			request.setAttribute("keyList", ds.list);
+			ds.list=null;
 			return "showKeyProject_season";
 		}
+		request.setAttribute("keyList", ds.list);
+		ds.list=null;
 		return "show_pianqu";
 	}
 	
@@ -59,6 +67,8 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 		DotSession ds = DotSession.getVTSession(request);
 		log.info("viewKeyProjectList-> navbm:"+navbm);
 		govKeyProjectService.getKeyProjectZhen(ds, navbm, crid, pianId);
+		request.setAttribute("keyList", ds.list);
+		ds.list=null;
 		return "showKeyProject_zhen";
 	}
 	
@@ -73,6 +83,8 @@ public class GovKeyProjectAction extends BaseAction implements ModelDriven<GovKe
 		ds.map.put("pqid", pianId);
 		log.info("writeReportZhen-> pianId:"+pianId);
 		govKeyProjectService.getKeyProjectInfo(ds, navbm, crid, pianId);
+		request.setAttribute("keyList", ds.list);
+		ds.list=null;
 		return "showKeyProject_zhenDetail";
 	}
 	

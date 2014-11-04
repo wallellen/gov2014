@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -22,17 +24,17 @@
     </tr>
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
+    <c:forEach items="${keyList }" var="ls" varStatus="status">
     <tr style="display:none">
-        <td><s:property value="#sc.count"/></td>
-        <td><s:property value="#ls.c1"/></td>
-        <td><s:property value="#ls.c2"/></td>
-        <td><s:property value="#ls.c3"/></td>
+        <td>${status.count }</td>
+        <td>${ls.c1 }</td>
+        <td>${ls.c2 }</td>
+        <td>${ls.c3 }</td>
         <td>
-        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_viewPianquProject.do?navbm=<s:property value="#session.vts.rbm"/>&crid=<s:property value="#ls.c0"/>&title=<s:property value="#ls.c1"/>&sdt=<s:property value="#ls.c2"/>&edt=<s:property value="#ls.c3"/>&areaName=<s:property value="#session.vts.rbn"/>">查看</a>
+        	<a href="${pageContext.request.contextPath }/system/govKeyProjectAction_viewPianquProject.do?navbm=${sessionScope.vts.rbm }&crid=${ls.c0 }&title=${ls.c1 }&sdt=${ls.c2 }&edt=${ls.c3 }&areaName=${sessionScope.vts.rbn }">查看</a>
         </td>
     </tr>
-    </s:iterator>
+    </c:forEach>
 	</tbody>
 </table>
 </div>

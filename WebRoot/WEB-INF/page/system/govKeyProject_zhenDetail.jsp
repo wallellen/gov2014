@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -61,9 +63,9 @@
         <td colspan="3">项目实施进度</td>
         <td rowspan="2" width="6%">
         	<p>
-        	<s:if test="#session.vts.rbm.length()==6">
-        	<input type="button" value="添加" onclick="popKeyProjectEdit('add','<s:property value="#session.vts.rbm"/>','','','','','','','','','','','')" class="button43"/>
-        	</s:if>
+        	<c:if test="${fn:length(sessionScope.vts.rbm) eq 6 }">
+        	<input type="button" value="添加" onclick="popKeyProjectEdit('add','${sessionScope.vts.rbm }','','','','','','','','','','','')" class="button43"/>
+        	</c:if>
         	</p>
         	<p style="margin-top:8px; margin-bottom:8px;">
         		<input type="button" value="导出" onclick="location.href='${pageContext.request.contextPath }/system/govKeyProjectAction_exportKeyProjectDetail.do?crid=<s:property value="crid"/>&navbm=<s:property value="navbm"/>&pianId=<s:property value="pianId"/>&title=<s:property value="title"/>'" class="button43"/>
@@ -86,28 +88,38 @@
     </tr>
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
+    <c:forEach items="${keyList }" var="ls" varStatus="status">
     <tr style="display:none">
-		<td><s:property value="#ls.pid"/></td>
-        <td align="left" title="<s:property value='#ls.itemname'/>">&nbsp;<s:property value="#ls.itemname.length()>13?#ls.itemname.substring(0,12)+'...':#ls.itemname"/></td>
-        <td align="left" title="<s:property value='#ls.oname'/>">&nbsp;<s:property value="#ls.oname.length()>11?#ls.oname.substring(0,10)+'...':#ls.oname"/></td>
-        <td><s:property value="#ls.prt"/></td>
-        <td><s:property value="#ls.spr"/></td>
-        <td><s:property value="#ls.sspr"/></td>
-        <td><s:property value="#ls.opr"/></td>
-        <td><s:property value="#ls.pyt"/></td>
-        <td><s:property value="#ls.spy"/></td>
-        <td><s:property value="#ls.yt"/></td>
-        <td><s:property value="#ls.yp"/></td>
-        <td><s:property value="#ls.np"/></td>
+		<td>${ls.pid }</td>
+        <td align="left" title="${ls.itemname }">
+        	<c:choose>
+				<c:when test="${fn:length(ls.itemname)>13}">${fn:substring(ls.itemname,0,12) }..</c:when>
+				<c:otherwise>${ls.itemname }</c:otherwise>
+			</c:choose>
+        </td>
+        <td align="left" title="${ls.oname }">
+			<c:choose>
+				<c:when test="${fn:length(ls.oname)>11}">${fn:substring(ls.oname,0,10) }..</c:when>
+				<c:otherwise>${ls.oname }</c:otherwise>
+			</c:choose>
+		</td>
+        <td>${ls.prt }</td>
+        <td>${ls.spr }</td>
+        <td>${ls.sspr }</td>
+        <td>${ls.opr }</td>
+        <td>${ls.pyt }</td>
+        <td>${ls.spy }</td>
+        <td>${ls.yt }</td>
+        <td>${ls.yp }</td>
+        <td>${ls.np }</td>
         <td>
-        	<s:if test="#session.vts.rbm.length()==6">
-        	<a href="javascript:popKeyProjectEdit('edit','<s:property value="#ls.bm"/>','<s:property value="#ls.pid"/>','<s:property value="#ls.itemname"/>','<s:property value="#ls.oname"/>','<s:property value="#ls.spr"/>','<s:property value="#ls.sspr"/>','<s:property value="#ls.opr"/>','<s:property value="#ls.pyt"/>','<s:property value="#ls.spy"/>','<s:property value="#ls.yt"/>','<s:property value="#ls.yp"/>','<s:property value="#ls.np"/>')">修改</a>
-        	<a href="javascript:deleteKeyProject('<s:property value="#ls.pid"/>','<s:property value="#ls.bm"/>')">删除</a>
-        	</s:if>
+        	<c:if test="${fn:length(sessionScope.vts.rbm ) eq 6 }">
+        	<a href="javascript:popKeyProjectEdit('edit','${ls.bm }','${ls.pid }','${ls.itemname }','${ls.oname }','${ls.spr }','${ls.sspr }','${ls.opr }','${ls.pyt }','${ls.spy }','${ls.yt }','${ls.yp }','${ls.np }')">修改</a>
+        	<a href="javascript:deleteKeyProject('${ls.pid }','${ls.bm }')">删除</a>
+        	</c:if>
         </td>
 	</tr>
-	</s:iterator>
+	</c:forEach>
 	</tbody>
 </table>
 </div>

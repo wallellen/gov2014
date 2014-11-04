@@ -29,6 +29,8 @@ public class GovJiangBuAction extends BaseAction implements ModelDriven<GovJiang
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govJiangBuService.getJiangBuYear(ds);
+		request.setAttribute("jbList", ds.list);
+		ds.list=null;
 		return "showJiangBu_year";
 	}
 	
@@ -37,6 +39,8 @@ public class GovJiangBuAction extends BaseAction implements ModelDriven<GovJiang
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govJiangBuService.getJiangBuXianInfo(ds, crid);
+		request.setAttribute("jbList", ds.list);
+		ds.list=null;
 		return "showJiangBu_xian";
 	}
 	
@@ -44,6 +48,8 @@ public class GovJiangBuAction extends BaseAction implements ModelDriven<GovJiang
 		DotSession ds = DotSession.getVTSession(request);
 		ds.initData();
 		govJiangBuService.getJiangBuInfoWithXian(ds, cbm, crid);
+		request.setAttribute("jbList", ds.list);
+		ds.list=null;
 		return "showJiangBu_xianDetail";
 	}
 	
@@ -66,6 +72,8 @@ public class GovJiangBuAction extends BaseAction implements ModelDriven<GovJiang
 			navbm = request.getParameter("navbm");
 		}
 		govJiangBuService.getJiangBuInfo(ds, navbm, crid);
+		request.setAttribute("jbList", ds.list);
+		ds.list=null;
 		return "showjiangBu_huDetail";
 	}
 	

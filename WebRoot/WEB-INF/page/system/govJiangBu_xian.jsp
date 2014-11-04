@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -59,34 +61,39 @@
 	</tr>
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
+    <c:forEach items="${jbList }" var="ls" varStatus="status">
     <tr style="display:none">
-        <td><s:property value="#ls.c0"/></td>
-        <td align="left" title="<s:property value="#ls.c1"/>">
-        	&nbsp;<s:property value="#ls.c1.length()>8?#ls.c1.substring(0,7)+'...':#ls.c1"/>
+        <td>${ls.c0 }</td>
+        <td align="left" title="${ls.c1 }">
+        	<c:choose>
+        		<c:when test="${fn:length(ls.c1) gt 8}">${fn:substring(ls.c1,0,7)}..</c:when>
+        		<c:otherwise>${ls.c1 }</c:otherwise>
+        	</c:choose>
         </td>
-        <td><s:property value="#ls.c2"/></td>
-        <td><s:property value="#ls.c3"/></td>
-        <td><s:property value="#ls.c4"/></td>
-        <td><s:property value="#ls.c5"/></td>
-        <td><s:property value="#ls.c6"/></td>
-        <td><s:property value="#ls.c7"/></td>
-        <td><s:property value="#ls.c8"/></td>
-        <td><s:property value="#ls.c9"/></td>
-        <td><s:property value="#ls.c10"/></td>
-        <td><s:property value="#ls.c11"/></td>
-        <td><s:property value="#ls.c12"/></td>
-        <td><s:property value="#ls.c13"/></td>
+        <td>${ls.c2 }</td>
+        <td>${ls.c3 }</td>
+        <td>${ls.c4 }</td>
+        <td>${ls.c5 }</td>
+        <td>${ls.c6 }</td>
+        <td>${ls.c7 }</td>
+        <td>${ls.c8 }</td>
+        <td>${ls.c9 }</td>
+        <td>${ls.c10 }</td>
+        <td>${ls.c11 }</td>
+        <td>${ls.c12 }</td>
+        <td>${ls.c13 }</td>
         <td>
-        	<s:if test="#ls.c0.length()<10">
-        	<a href="${pageContext.request.contextPath }/system/govJiangBuAction_viewXianDetail.do?cbm=<s:property value='#ls.c0'/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&xianName=<s:property value='#ls.c1'/>">查看详细</a>
-        	</s:if>
-        	<s:else>
-        	<a href="${pageContext.request.contextPath }/system/govJiangBuAction_writeReport.do?navbm=<s:property value='#ls.c0'/>&crid=<s:property value='crid'/>&title=<s:property value='title'/>&sdt=<s:property value='sdt'/>&edt=<s:property value='edt'/>&xianName=<s:property value='#ls.c1'/>">查看详细</a>
-        	</s:else>
+        	<c:choose>
+        		<c:when test="${fn:length(ls.c0) lt 10 }">
+        	<a href="${pageContext.request.contextPath }/system/govJiangBuAction_viewXianDetail.do?cbm=${ls.c0 }&crid=${crid }&title=${title }&sdt=${sdt }&edt=${edt }&xianName=${ls.c1 }">查看详细</a>	
+        		</c:when>
+        		<c:otherwise>
+        	<a href="${pageContext.request.contextPath }/system/govJiangBuAction_writeReport.do?navbm=${ls.c0 }&crid=${crid }&title=${title }&sdt=${sdt }&edt=${edt }&xianName=${ls.c1 }">查看详细</a>	
+        		</c:otherwise>
+        	</c:choose>
         </td>
 	</tr>
-	</s:iterator>
+	</c:forEach>
 	</tbody>
 </table>
 </div>

@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -86,36 +88,43 @@
 	</tr>
     </thead>
     <tbody id="splitpage">
-    <s:iterator value="#session.vts.list" var="ls" status="sc">
+    <c:forEach items="${jbList }" var="ls" varStatus="status">
     <tr style="display:none">
-		<td><label id="#sc.count"></label><s:property value="#sc.count"/></td>
-        <td title="<s:property value='#ls.c1'/>"><s:property value="#ls.c1.length()>3?#ls.c1.substring(0,3)+'...':#ls.c1"/></td>
-        <td><s:property value="#ls.c0"/></td>
-        <td><s:property value="#ls.c2==1?'√':''"/></td>
-        <td><s:property value="#ls.c3==1?'√':''"/></td>
-        <td><s:property value="#ls.c4==1?'√':''"/></td>
-        <td><s:property value="#ls.c5==1?'√':''"/></td>
-        <td><s:property value="#ls.c6==1?'√':''"/></td>
-        <td><s:property value="#ls.c7==1?'√':''"/></td>
-        <td><s:property value="#ls.c8==1?'√':''"/></td>
-        <td><s:property value="#ls.c9>0?#ls.c9:''"/></td>
-        <td><s:property value="#ls.c10>0?#ls.c10:''"/></td>
-        <td><s:property value="#ls.c11>0?#ls.c11:''"/></td>
-        <td><s:property value="#ls.c12>0?#ls.c12:''"/></td>
-        <td><s:property value="#ls.c13==1?'√':''"/></td>
+		<td><label id="${status.count }"></label>${status.count }</td>
+        <td title="${ls.c1 }">
+        	<c:choose>
+        		<c:when test="${fn:length(ls.c1) gt 3 }">${fn:substring(ls.c1,0,3)}..</c:when>
+        		<c:otherwise>${ls.c1 }</c:otherwise>
+        	</c:choose>
+        </td>
+        <td>${ls.c0 }</td>
+        <td>${ls.c2==1?'√':'' }</td>
+        <td>${ls.c3==1?'√':'' }</td>
+        <td>${ls.c4==1?'√':'' }</td>
+        <td>${ls.c5==1?'√':'' }</td>
+        <td>${ls.c6==1?'√':'' }</td>
+        <td>${ls.c7==1?'√':'' }</td>
+        <td>${ls.c8==1?'√':'' }</td>
+        <td>${ls.c9>0?ls.c9:'' }</td>
+        <td>${ls.c10>0?ls.c10:'' }</td>
+        <td>${ls.c11>0?ls.c11:'' }</td>
+        <td>${ls.c12>0?ls.c12:'' }</td>
+        <td>${ls.c13==1?'√':'' }</td>
         <td>
-        	<s:if test="#session.vts.rbm.length()>4">
-        	<s:if test="#ls.c9>0">
-        	<a href="javascript:popJiangBuEdit('edit','<s:property value="#ls.c0"/>','<s:property value="#ls.c2"/>','<s:property value="#ls.c3"/>','<s:property value="#ls.c4"/>','<s:property value="#ls.c5"/>','<s:property value="#ls.c6"/>','<s:property value="#ls.c7"/>','<s:property value="#ls.c8"/>','<s:property value="#ls.c10"/>','<s:property value="#ls.c11"/>','<s:property value="#ls.c12"/>','<s:property value="#ls.c13"/>','<s:property value="#ls.c1"/>')">修改</a>
-        	<a href="javascript:deleteJiangBu('<s:property value="#ls.c0"/>')">删除</a>
-        	</s:if>
-        	<s:else>
-        	<a href="javascript:popJiangBuEdit('add','<s:property value="#ls.c0"/>','','','','','','','','','','','','<s:property value="#ls.c1"/>')">添加</a>
-        	</s:else>
-        	</s:if>
+        	<c:if test="${fn:length(sessionScope.vts.rbm) gt 4 }">
+        	<c:choose>
+        		<c:when test="${ls.c9 gt 0 }">
+		        	<a href="javascript:popJiangBuEdit('edit','${ls.c0 }','${ls.c2 }','${ls.c3 }','${ls.c4 }','${ls.c5 }','${ls.c6 }','${ls.c7 }','${ls.c8 }','${ls.c10 }','${ls.c11 }','${ls.c12 }','${ls.c13 }','${ls.c1 }')">修改</a>
+		        	<a href="javascript:deleteJiangBu('${ls.c0 }')">删除</a>	
+        		</c:when>
+        		<c:otherwise>
+        			<a href="javascript:popJiangBuEdit('add','${ls.c0 }','','','','','','','','','','','','${ls.c1 }')">添加</a>	
+        		</c:otherwise>
+        	</c:choose>
+        	</c:if>
         </td>
 	</tr>
-	</s:iterator>
+	</c:forEach>
 	</tbody>
 </table>
 </div>
