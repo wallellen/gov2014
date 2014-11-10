@@ -73,6 +73,7 @@
         		</c:when>
         		<c:otherwise>${ls.c1 }</c:otherwise>
         	</c:choose>
+        </td>
         <td>${ls.c14 }</td>
         <td>${ls.c15 }</td>
         <td>

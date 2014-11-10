@@ -174,6 +174,7 @@ public class GovBangfuAction extends BaseAction implements ModelDriven<GovBangfu
 	    generator.setDrawBoard();
 	    generator.setEffectColNum(15);
 	    generator.exportExcelWithTemplate(response);
+	    ds.list=null;
 		return null;
 	}
 	
@@ -192,6 +193,7 @@ public class GovBangfuAction extends BaseAction implements ModelDriven<GovBangfu
 	    generator.setDrawBoard();
 	    generator.setEffectColNum(13);
 	    generator.exportExcelWithTemplate(response);
+	    ds.list=null;
         return null;
 	}
 	
@@ -208,6 +210,7 @@ public class GovBangfuAction extends BaseAction implements ModelDriven<GovBangfu
 	    generator.setDrawBoard();
 	    generator.setEffectColNum(13);
 	    generator.exportExcelWithTemplate(response);
+	    ds.list=null;
         return null;
 	}
 	
@@ -224,6 +227,7 @@ public class GovBangfuAction extends BaseAction implements ModelDriven<GovBangfu
 	    generator.setDrawBoard();
 	    generator.setEffectColNum(13);
 	    generator.exportExcelWithTemplate(response);
+	    ds.list=null;
         return null;
 	}
 	
