@@ -103,7 +103,7 @@
 						<td align="left" height="20px">&nbsp;${bo.hm }</td>
 						<td align="left" title="${bo.zhu }">
 							<c:choose>
-								<c:when test="${fn:length(bo.zhu)>3}">${fn:substring(bo.zhu,0,3) }..</c:when>
+								<c:when test="${fn:length(bo.zhu)>3}">${fn:substring(bo.zhu,0,2) }..</c:when>
 								<c:otherwise>${bo.zhu }</c:otherwise>
 							</c:choose>
 						</td>
