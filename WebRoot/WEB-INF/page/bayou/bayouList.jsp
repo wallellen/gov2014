@@ -24,8 +24,8 @@
 <input type="hidden" name="rflag" value="${rflag }"/>
 <input type="hidden" name="retbtn" value="y"/>
 <h3 class="jiangbu-title">经济薄弱村新“八有”考核&nbsp;${titlename }</h3>
-</form>
 <s:property value="#request.h" escape="false"/>
+</form>
 <script type="text/javascript" src="${pageContext.request.contextPath }/script/bayou.js?v=1"></script>
 </body>
 </html>
