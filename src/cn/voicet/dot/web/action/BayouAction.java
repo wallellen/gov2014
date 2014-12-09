@@ -1,6 +1,5 @@
 package cn.voicet.dot.web.action;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -105,7 +104,7 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 			if(rn==0)
 			{
 				temp="<tr>"
-					+"<td rowspan='#ROWSPAN_NUM#'>"+name+"</td>"
+					+"<td rowspan='#ROWSPAN_NUM#'>"+"["+bm+"]"+name+"</td>"
 					+"<td>#NAME#</td>"
 					+ "<td>"
 					+ aflag
@@ -116,14 +115,14 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 			else if(rn==1)
 			{
 				temp=temp.replace("<td></td>", "<td>"+aflag+"</td>");
-				temp=temp.replace("#NAME#", name);
+				temp=temp.replace("#NAME#", "["+bm+"]"+name);
 				log.info("temp:"+temp);
 			}
 			//
 			else
 			{
 				temp += "<tr>"
-					+ "<td>"+name+"</td>"
+					+ "<td>"+"["+bm+"]"+name+"</td>"
 					+ "<td>"
 					+ aflag
 					+ "</td>"
