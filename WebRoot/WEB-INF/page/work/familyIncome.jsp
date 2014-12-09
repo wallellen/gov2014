@@ -170,7 +170,7 @@
 			<td></td>
 		</tr>
 		<tr>
-			<td align="right">劳动力转移培训(元):&nbsp;&nbsp;</td>
+			<td align="right">劳动力转移培训(人):&nbsp;&nbsp;</td>
 			<td align="left">
 				<input type="text" id="ylabTrain" name="incomearr" size="12" class="back-input" maxlength="8" onblur="checkIncomeMoney(this)"/>
 			</td>
