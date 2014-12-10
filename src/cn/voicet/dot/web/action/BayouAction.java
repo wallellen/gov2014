@@ -99,6 +99,8 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 				temp=temp.replace("#ROWSPAN_NUM#",String.valueOf(rn-1));
 				html+=temp;
 				temp="";
+				//20141210修正页面【进入或查看】村名不正确情况
+				aflag="";
 				rn=0;
 			}
 			if(rn==0)
@@ -116,7 +118,6 @@ public class BayouAction extends BaseAction implements ModelDriven<BayouForm>{
 			{
 				temp=temp.replace("<td></td>", "<td>"+aflag+"</td>");
 				temp=temp.replace("#NAME#", "["+bm+"]"+name);
-				log.info("temp:"+temp);
 			}
 			//
 			else
