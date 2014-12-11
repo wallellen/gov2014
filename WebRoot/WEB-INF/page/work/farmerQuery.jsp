@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -124,6 +126,7 @@
 				<td width="15%">农户编码</td>
 				<td width="40%">省、市、县、乡、村</td>
 				<td width="12%">户主姓名</td>
+				<td width="4%">人口</td>
 				<td width="15%">联系电话</td>
 				<td width="15%" class="tabtd1">操作</td>
 			</tr>
@@ -133,7 +136,8 @@
 				<tr align="center" style="height:20px; display:none;">
 					<td align="left">&nbsp;<s:property value="#ls5.hm"/></td>
 					<td align="left" title="<s:property value='#ls5.govname'/>">&nbsp;<s:property value="#ls5.govname.length()>26?#ls5.govname.substring(0,25)+'...':#ls5.govname"/></td>
-					<td align="left" title="<s:property value='#ls5.hname'/>">&nbsp;<s:property value="#ls5.hname.length()>7?#ls5.hname.substring(0,6)+'...':#ls5.hname"/></td>
+					<td align="left" title="<s:property value='#ls5.hname'/>">&nbsp;<s:property value="#ls5.hname.length()>4?#ls5.hname.substring(0,3)+'...':#ls5.hname"/></td>
+					<td align="left">&nbsp;<s:property value="#ls5.population"/></td>
 					<td align="left">&nbsp;<s:property value="#ls5.telnum"/></td>
 					<td class="tabtd1">
 						<s:if test="#session.vts.isedit==1">
