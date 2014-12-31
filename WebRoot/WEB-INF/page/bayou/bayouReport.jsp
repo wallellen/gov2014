@@ -24,41 +24,40 @@
 <body onload="findPrint3()" style="background:#E0EEFB;">
 <div id="leftCon1">
 	<div class="view-family-report">
-    <h1>经济薄弱村新“八有”考核表</h1>
-    <p class="view-print"></p>
-    <div id="view-bayou-tit">
-       	<p class="view-sp1">
-       		<span><u><s:property value="#session.vts.map.shiname"/></u>&nbsp;市</span>
-           	<span><u>
-           		<s:if test="#session.vts.rbm.length()==6">
-           			<s:property value="#session.vts.rbn"/>
-           		</s:if>
-           		<s:else>
-           		<s:property value="#session.vts.map.xianname"/>
-           		</s:else>
-           	</u>&nbsp;县(市、区)</span>
-            <span><u><s:property value="#session.vts.map.zhenname"/></u>&nbsp;乡(镇)</span>
-            <span><u><s:property value="#session.vts.map.cunname"/></u>&nbsp;村</span>
-		</p>
-		<p class="view-sp2">
-			<span>201<u>&nbsp;4&nbsp;</u>年度</span>
-            <span>片区村<u>&nbsp;${byMap.pq }&nbsp;</u>(1、是&nbsp;&nbsp;2、否)</span>
-        </p>
-        <p class="view-sp2">
-			<span>挂钩帮扶单位：<u>&nbsp;${byMap.fu }&nbsp;</u></span>
-            <span>驻村人：<u>&nbsp;${byMap.fr }&nbsp;</u></span>
-            <span>村支书：<u>&nbsp;${byMap.cm }&nbsp;</u></span>
-            <span>电话：<u>&nbsp;${byMap.ct }&nbsp;</u></span>
-        </p>
-        <p class="view-sp2">
-			<span>上年度村集体经济收入：<u>&nbsp;${byMap.sr }&nbsp;</u>万元</span>
-            <span>主要来源：<u>&nbsp;${byMap.ly }&nbsp;</u></span>
-        </p>
-    </div>
-    
-	<table width="100%" cellpadding="1" cellspacing="0" style="text-align:left;">
+	    <h1>经济薄弱村新“八有”考核表</h1>
+	    <p class="view-print"></p>
+	    <div id="view-bayou-tit">
+	       	<p class="view-sp1">
+	       		<span><u><s:property value="#session.vts.map.shiname"/></u>&nbsp;市</span>
+	           	<span><u>
+	           		<s:if test="#session.vts.rbm.length()==6">
+	           			<s:property value="#session.vts.rbn"/>
+	           		</s:if>
+	           		<s:else>
+	           		<s:property value="#session.vts.map.xianname"/>
+	           		</s:else>
+	           	</u>&nbsp;县(市、区)</span>
+	            <span><u><s:property value="#session.vts.map.zhenname"/></u>&nbsp;乡(镇)</span>
+	            <span><u><s:property value="#session.vts.map.cunname"/></u>&nbsp;村</span>
+			</p>
+			<p class="view-sp2">
+				<span>201<u>&nbsp;4&nbsp;</u>年度</span>
+	            <span>片区村<u>&nbsp;${byMap.pq }&nbsp;</u>(1、是&nbsp;&nbsp;2、否)</span>
+	        </p>
+	        <p class="view-sp2">
+				<span>挂钩帮扶单位：<u>&nbsp;${byMap.fu }&nbsp;</u></span>
+	            <span>驻村人：<u>&nbsp;${byMap.fr }&nbsp;</u></span>
+	            <span>村支书：<u>&nbsp;${byMap.cm }&nbsp;</u></span>
+	            <span>电话：<u>&nbsp;${byMap.ct }&nbsp;</u></span>
+	        </p>
+	        <p class="view-sp2">
+				<span>上年度村集体经济收入：<u>&nbsp;${byMap.sr }&nbsp;</u>万元</span>
+	            <span>主要来源：<u>&nbsp;${byMap.ly }&nbsp;</u></span>
+	        </p>
+	    </div>
+		<table width="100%" cellpadding="1" cellspacing="0" style="text-align:left;">
 			<tr style="text-align:center; font-weight:bold">
-				<td>新“八有”</td>		
+				<td>新八有</td>		
 				<td>指标</td>
 				<td>考评内容</td>
 				<td>分值</td>

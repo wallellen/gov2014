@@ -76,7 +76,7 @@
 	    </div>
 		<table width="100%" cellpadding="1" cellspacing="0" style="text-align:left;">
 			<tr style="text-align:center; font-weight:bold">
-				<td>新“八有”</td>		
+				<td>新八有</td>		
 				<td>指标</td>
 				<td>考评内容</td>
 				<td>分值</td>
