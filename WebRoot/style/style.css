@@ -147,7 +147,7 @@ ul{margin:0; padding:0; list-style:none;}
 /* caizhengjiangbu */
 .jiangbu-title{margin-top:4px; text-align:center; color:#8F2629; font-size:14px; font-weight:bold;}
 .jiangbu-title1{height:18px; line-height:18px;}
-.jiangbu-title1 span{float:right; width:240px; display:inline-block; height:18px;}
+.jiangbu-title1 span{float:right; width:300px; display:inline-block; height:18px;}
 .jiangbu-title1 .add_return{float:right; width:102px; display:inline-block; height:18px;}
 .jiangbu-title1 .j_return{width:60px;}
 .jiangbu-unit{float:right; margin-top:-15px; width:80px;}
